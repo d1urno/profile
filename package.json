@@ -1,0 +1,21 @@
+{
+  "name": "profile",
+  "version": "1.0.0",
+  "main": "src/index.html",
+  "author": "Pablo Miceli <d1urno@gmx.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production parcel build src/index.html",
+    "start": "cross-env NODE_ENV=development parcel serve src/index.html"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-only-warn": "^1.0.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "parcel": "latest",
+    "prettier": "latest",
+    "tailwindcss": "latest"
+  }
+}
