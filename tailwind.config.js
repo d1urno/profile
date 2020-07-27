@@ -12,11 +12,15 @@ module.exports = {
   important: false,
   separator: ':',
   theme: {
+    interFontFeatures: {
+      default: ['calt', 'liga', 'kern'],
+      numeric: ['tnum', 'salt', 'ss02']
+    },
     screens: {
       sm: '640px',
       md: '768px',
-      lg: '1024px',
-      xl: '1280px'
+      lg: '992px',
+      xl: '1200px'
     },
     colors: {
       transparent: 'transparent',
@@ -85,7 +89,7 @@ module.exports = {
         200: '#b2f5ea',
         300: '#81e6d9',
         400: '#4fd1c5',
-        500: '#38b2ac',
+        500: '#31a39f',
         600: '#319795',
         700: '#2c7a7b',
         800: '#285e61',
@@ -266,7 +270,11 @@ module.exports = {
       '3xl': '1.875rem',
       '4xl': '2.25rem',
       '5xl': '3rem',
-      '6xl': '4rem'
+      '6xl': '4rem',
+      '7xl': '6rem',
+      '8xl': '8rem',
+      '9xl': '9rem',
+      '10xl': '10rem'
     },
     fontWeight: {
       hairline: '100',
@@ -731,5 +739,10 @@ module.exports = {
     transitionDelay: ['responsive']
   },
   corePlugins: {},
-  plugins: []
+  plugins: [
+    require('tailwindcss-font-inter')({
+      importFontFace: true,
+      disableUnusedFeatures: true
+    })
+  ]
 }

@@ -9,6 +9,8 @@
     "start": "cross-env NODE_ENV=development parcel serve src/index.html"
   },
   "devDependencies": {
+    "@vue/component-compiler-utils": "^3.2.0",
+    "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "eslint": "^7.5.0",
     "eslint-config-prettier": "^6.11.0",
@@ -16,6 +18,15 @@
     "eslint-plugin-prettier": "^3.1.4",
     "parcel": "latest",
     "prettier": "latest",
-    "tailwindcss": "latest"
+    "sass": "^1.26.10",
+    "tailwindcss": "latest",
+    "tailwindcss-font-inter": "^1.0.8",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "dependencies": {
+    "messageformat": "^2.3.0",
+    "vue": "^2.6.11",
+    "vue-hot-reload-api": "^2.3.4",
+    "vue-i18n": "^8.19.0"
   }
 }

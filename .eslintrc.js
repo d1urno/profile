@@ -4,6 +4,7 @@ module.exports = {
     node: true,
     browser: true
   },
+  parser: 'babel-eslint',
   extends: ['eslint:recommended', 'prettier', 'plugin:prettier/recommended'],
   plugins: ['prettier', 'only-warn'],
   // add your custom rules here
