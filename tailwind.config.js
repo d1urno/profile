@@ -2,7 +2,7 @@ module.exports = {
   purge: {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
     mode: 'all',
-    content: ['**/*.html'],
+    content: ['src/**/*.html', 'src/**/*.vue'],
     options: {
       keyframes: true
     }
