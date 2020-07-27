@@ -35,17 +35,18 @@ export default new VueI18n({
         subtitle1: 'Languages',
         subtitle2: 'Libraries/Frameworks',
         subtitle3: 'Other',
+        subtitle4: 'Ops',
         text: `Ordered from top to bottom, skills I'll be more likely to work with. The horizontal extension of each bar represents actual knowledge/experience I do have on such.`
       },
       experience: {
         title: 'Recent experiences',
         exp1: {
           title: 'Institutional Website - Matera Fintech (ongoing)',
-          text: `Project lead developer, code review, dedicated both on backend and frontend using Drupal Headless, GraphQL API, with a statically generated configuration (JAMStack). Frontend using NuxtJS with Vuex, i18n for internationalization, TailwindCSS and my own custom module`
+          text: `Project lead developer, code review, dedicated both on backend and frontend using Drupal Headless, GraphQL API. Frontend using NuxtJS with Vuex, i18n for internationalization, TailwindCSS, static generated configuration (JAMStack) and my own custom module`
         },
         exp2: {
           title: 'Institutional Website - Paraná Banco',
-          text: `Project lead developer, dedicated to backend using Drupal Headless exposing a GraphQL endpoint and DevOps tasks as CI/CD with Bank's developer team. Collaborated on frontend with my team using React (Hooks, Styled components, Redux) and Apollo Client.`
+          text: `Project lead developer, dedicated to backend using Drupal Headless exposing a GraphQL endpoint and DevOps tasks as CI/CD in cooperation with Bank's developer team. Collaborated on frontend with my team using React (Hooks, Styled components, Redux) and Apollo Client.`
         },
         exp3: {
           title: 'Fullstack Developer - Ctrl365',
@@ -80,12 +81,13 @@ export default new VueI18n({
         subtitle1: 'Lenguajes',
         subtitle2: 'Librerías/Frameworks',
         subtitle3: 'Otros',
+        subtitle4: 'Ops',
         text: `Ordenadas de arriba a abajo, habilidades con las que estaría mas dispuesto a trabajar. La extensión horizontal de cada barra representa el conocimiento/experiencia que tengo al respecto.`
       },
       experience: {
         title: 'Experiencias recientes',
         exp1: {
-          title: 'Website Institucional - Matera Fintech (en processo)',
+          title: 'Website Institucional - Matera Fintech (en proceso)',
           text: `Desarrollador líder del proyecto, revisión de código, dedicado tanto en backend como en frontend usando Drupal Headless y API GraphQL. Frontend usando NuxtJS con Vuex, i18n para internacionalización, TailwindCSS, con una configuración de generación estatica (JAMStack) y mi propio módulo personalizado`
         },
         exp2: {
@@ -125,6 +127,7 @@ export default new VueI18n({
         subtitle1: 'Línguas',
         subtitle2: 'Bibliotecas/Frameworks',
         subtitle3: 'Outros',
+        subtitle4: 'Ops',
         text: `Ordenadas de cima para baixo, habilidades com as quais estou mais disposto a trabalhar. A extensão horizontal de cada barra representa o conhecimento/experiência que tenho naquele item.`
       },
       experience: {

@@ -17,7 +17,7 @@ module.exports = {
       numeric: ['tnum', 'salt', 'ss02']
     },
     screens: {
-      sm: '640px',
+      sm: '590px',
       md: '768px',
       lg: '992px',
       xl: '1200px'
