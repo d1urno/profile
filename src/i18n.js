@@ -58,9 +58,9 @@ export default new VueI18n({
       },
       score: {
         title: 'Notes',
-        text1: `The source code of this page can be found `,
-        text2: `here`,
-        text3: `, it was made using Vue, TailwindCSS, i18n and Parcel.`,
+        text1: `You can inspect the `,
+        text2: `source code`,
+        text3: ` of this page, it was made using Vue, TailwindCSS, i18n and Parcel.`,
         text4: `Lighthouse 6.0 score:`
       }
     },
@@ -111,9 +111,9 @@ export default new VueI18n({
       },
       score: {
         title: 'Notas',
-        text1: `El código fuente de esta página se encuentra `,
-        text2: `aquí`,
-        text3: `, fue desarrollada utilizando Vue, TailwindCSS, i18n y Parcel.`,
+        text1: `Puede revisar el `,
+        text2: `código fuente`,
+        text3: ` de esta página, fue desarrollada utilizando Vue, TailwindCSS, i18n y Parcel.`,
         text4: `Puntuación Lighthouse 6.0:`
       }
     },
@@ -164,9 +164,9 @@ export default new VueI18n({
       },
       score: {
         title: 'Notas',
-        text1: `O código fonte desta página pode ser encontrado `,
-        text2: `aqui`,
-        text3: `, foi desenvolvida utilizando Vue, TailwindCSS, i18n e Parcel.`,
+        text1: `Pode revisar o `,
+        text2: `código fonte`,
+        text3: ` desta página, foi desenvolvida utilizando Vue, TailwindCSS, i18n e Parcel.`,
         text4: `Puntuação Lighthouse 6.0:`
       }
     }
