@@ -335,7 +335,7 @@ export default {
 <style lang="scss">
 html {
   font-size: 14px;
-  min-width: 360px;
+  min-width: 320px;
   @screen lg {
     font-size: 16px;
   }
