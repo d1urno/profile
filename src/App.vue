@@ -13,7 +13,7 @@
             <source srcset="img/pic_w_320.webp" type="image/webp" />
             <source srcset="img/pic_w_320.jpg" type="image/jpg" />
 
-            <img class="mx-auto mb-3 border-2 rounded shadow-md c-height" src="img/pic_w_320.jpg" alt="Face picture" />
+            <img class="mx-auto mb-3 border-2 rounded shadow-md c-size" src="img/pic_w_320.jpg" alt="Face picture" />
           </picture>
           <div class="px-6 text-center sm:text-left">
             <h1 class="text-4xl font-bold opacity-75">Pablo Miceli</h1>
@@ -354,16 +354,20 @@ a {
   }
 }
 
-.c-height {
-  height: 300.01px;
+.c-size {
+  height: calc(300px + 0.3rem);
+  width: calc(300px + 0.3rem);
   @screen sm {
-    height: 220.01px;
+    height: calc(220px + 0.3rem);
+    width: calc(220px + 0.3rem);
   }
   @screen lg {
-    height: 260.01px;
+    height: calc(260px + 0.3rem);
+    width: calc(260px + 0.3rem);
   }
   @screen xl {
-    height: 320.01px;
+    height: calc(320px + 0.3rem);
+    width: calc(320px + 0.3rem);
   }
 }
 </style>
