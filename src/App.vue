@@ -170,7 +170,7 @@
         </div>
         <hr class="my-4 -mx-6 border border-gray-500" />
         <p class="mb-8">{{ $t('skills.text') }}</p>
-        <div class="grid gap-6 row-gap-16 mb-10 sm:grid-cols-2">
+        <div class="grid gap-6 mb-10 sm:grid-cols-2">
           <div class="col-span-1">
             <h3 class="mb-4 text-sm font-semibold opacity-75">{{ $t('skills.subtitle1') }}</h3>
             <svg
@@ -184,7 +184,7 @@
               Sorry, your browser does not support inline SVG.
             </svg>
           </div>
-          <div class="col-span-1">
+          <div class="col-span-1 print-space-bottom">
             <h3 class="mb-4 text-sm font-semibold opacity-75">{{ $t('skills.subtitle2') }}</h3>
             <svg
               v-for="(value, key) in $options.libs"
@@ -265,7 +265,7 @@
         <a class="font-semibold" rel="noopener" href="https://ctrl365.com.br" target="_blank">
           https://ctrl365.com.br
         </a>
-        <p class="mb-8 text-gray-900 text-opacity-75">
+        <p class="print-space-bottom-2 mb-8 text-gray-900 text-opacity-75">
           {{ $t('experience.exp3.text1') }}
           <a rel="noopener" href="https://dev.ctrl365.com.br/acer/predator-thronos/" target="_blank">Acer</a>,
           <a
@@ -324,6 +324,7 @@
           <source srcset="img/score_w_598.jpg 1x, img/score_w_598@3x.jpg 3x" type="image/jpg" />
 
           <img
+            class="mx-auto"
             src="img/score_w_598.jpg"
             srcset="img/score_w_598.jpg 1x, img/score_w_598@3x.jpg 3x"
             alt="Lighthouse 6.0 score 100"
@@ -424,6 +425,14 @@ a {
   @page {
     size: 210mm 297mm;
     margin: 0;
+  }
+
+  .print-space-bottom {
+    @apply pb-16;
+  }
+
+  .print-space-bottom-2 {
+    @apply pb-64;
   }
 }
 
