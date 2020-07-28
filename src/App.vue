@@ -35,9 +35,15 @@
         </div>
         <div class="px-6">
           <div class="flex justify-center mb-6 space-x-5 lg:mb-0">
-            <a href="https://github.com/d1urno" aria-label="GitHub" target="_blank" rel="noopener">
+            <a
+              class="transition duration-300 transform hover:text-teal-500 hover:scale-125"
+              href="https://github.com/d1urno"
+              aria-label="GitHub"
+              target="_blank"
+              rel="noopener"
+            >
               <svg
-                class="w-10 transition-colors duration-300 opacity-75 fill-current hover:text-teal-500"
+                class="w-10 opacity-75 fill-current"
                 viewBox="0 0 1024 1024"
                 height="100%"
                 width="100%"
@@ -48,9 +54,15 @@
                 />
               </svg>
             </a>
-            <a href="https://www.linkedin.com/in/pmicel/" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <a
+              class="transition duration-300 transform hover:text-teal-500 hover:scale-125"
+              href="https://www.linkedin.com/in/pmicel/"
+              aria-label="LinkedIn"
+              target="_blank"
+              rel="noopener"
+            >
               <svg
-                class="w-10 transition-colors duration-300 opacity-75 fill-current hover:text-teal-500"
+                class="w-10 opacity-75 fill-current"
                 enable-background="new 0 0 56.693 56.693"
                 height="100%"
                 id="Layer_1"
@@ -67,9 +79,15 @@
                 </g>
               </svg>
             </a>
-            <a href="https://twitter.com/d1urno" aria-label="Twitter" target="_blank" rel="noopener">
+            <a
+              class="transition duration-300 transform hover:text-teal-500 hover:scale-125"
+              href="https://twitter.com/d1urno"
+              aria-label="Twitter"
+              target="_blank"
+              rel="noopener"
+            >
               <svg
-                class="w-10 transition-colors duration-300 opacity-75 fill-current hover:text-teal-500"
+                class="w-10 opacity-75 fill-current"
                 height="100%"
                 id="Layer_1"
                 viewBox="0 0 512 512"
