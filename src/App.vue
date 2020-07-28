@@ -7,11 +7,11 @@
       <div class="sm:flex sm:mt-3 lg:block lg:mt-0">
         <div>
           <picture>
-            <source srcset="img/pic_w_300.webp" type="image/webp" media="(max-width: 300px)" />
-            <source srcset="img/pic_w_300.jpg" type="image/jpg" media="(max-width: 300px)" />
+            <source srcset="img/pic_w_300.webp" type="image/webp" media="(max-width: 360px)" />
+            <source srcset="img/pic_w_300.jpg" type="image/jpg" media="(max-width: 360px)" />
 
-            <source srcset="img/pic_w_320.webp" type="image/webp" media="(max-width: 320px)" />
-            <source srcset="img/pic_w_320.jpg" type="image/jpg" media="(max-width: 320px)" />
+            <source srcset="img/pic_w_320.webp" type="image/webp" />
+            <source srcset="img/pic_w_320.jpg" type="image/jpg" />
 
             <img class="mx-auto mb-3 rounded c-height" src="img/pic_w_320.jpg" alt="Face picture" />
           </picture>
