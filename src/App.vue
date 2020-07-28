@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto md:container lg:grid lg:grid-cols-8">
     <aside class="flex flex-col items-center py-8 bg-gray-400 lg:p-8 lg:col-span-3">
-      <div class="mb-4 ml-auto -mt-4 mr-8 lg:mr-5 xl:mr-8">
+      <div class="mb-4 ml-auto mr-8 -mt-4 lg:mr-5 xl:mr-8">
         <locale-switcher />
       </div>
       <div class="sm:flex sm:mt-3 lg:block lg:mt-0">
@@ -13,7 +13,7 @@
             <source srcset="img/pic_w_320.webp" type="image/webp" />
             <source srcset="img/pic_w_320.jpg" type="image/jpg" />
 
-            <img class="mx-auto mb-3 rounded c-height" src="img/pic_w_320.jpg" alt="Face picture" />
+            <img class="mx-auto mb-3 border-2 rounded shadow-md c-height" src="img/pic_w_320.jpg" alt="Face picture" />
           </picture>
           <div class="px-6 text-center sm:text-left">
             <h1 class="text-4xl font-bold opacity-75">Pablo Miceli</h1>
@@ -355,15 +355,15 @@ a {
 }
 
 .c-height {
-  height: 300px;
+  height: 300.01px;
   @screen sm {
-    height: 220px;
+    height: 220.01px;
   }
   @screen lg {
-    height: 260px;
+    height: 260.01px;
   }
   @screen xl {
-    height: 320px;
+    height: 320.01px;
   }
 }
 </style>
