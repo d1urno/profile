@@ -55,6 +55,13 @@ export default new VueI18n({
           text3: `in parallel with art department, I've built a complete`,
           text4: `with login and notifications, or APIs and database administration tasks. I did many job interviews with candidates to grow our team, among other team management tasks.`
         }
+      },
+      score: {
+        title: 'Notes',
+        text1: `The source code of this page can be found `,
+        text2: `here`,
+        text3: `, it was made using Vue, TailwindCSS, i18n and Parcel.`,
+        text4: `Lighthouse 6.0 score:`
       }
     },
     'es-AR': {
@@ -101,6 +108,13 @@ export default new VueI18n({
           text3: `en paralelo con el área de creación, desarrollé un completo`,
           text4: `con inicio de sesión y notificaciones, hice trabajos de API y administración de bases de datos. Realicé algunas entrevistas de trabajo con candidatos para hacer crecer nuestro equipo, entre otras tareas de gestión de equipo.`
         }
+      },
+      score: {
+        title: 'Notas',
+        text1: `El código fuente de esta página se encuentra `,
+        text2: `aquí`,
+        text3: `, fue desarrollada utilizando Vue, TailwindCSS, i18n y Parcel.`,
+        text4: `Puntuación Lighthouse 6.0:`
       }
     },
     'pt-BR': {
@@ -147,6 +161,13 @@ export default new VueI18n({
           text3: `em paralelo com a área de criação, desenvolvi um completo`,
           text4: `com login e notificações, fiz trabalhos em APIs e administração de banco de dados. Fiz algumas entrevistas de emprego com candidatos para aumentar nossa equipe, entre outras tarefas de gerenciamento de equipe.`
         }
+      },
+      score: {
+        title: 'Notas',
+        text1: `O código fonte desta página pode ser encontrado `,
+        text2: `aqui`,
+        text3: `, foi desenvolvida utilizando Vue, TailwindCSS, i18n e Parcel.`,
+        text4: `Puntuação Lighthouse 6.0:`
       }
     }
   }

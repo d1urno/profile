@@ -289,6 +289,48 @@
         </p>
       </section>
       <!-- End: Experiences -->
+
+      <!-- Score -->
+      <div class="flex items-end ml-auto text-2xl uppercase">
+        <h2 class="ml-auto text-teal-700">{{ $t('score.title') }}</h2>
+        <svg class="w-12 ml-2 text-teal-500" fill="currentColor" viewBox="0 0 20 20">
+          <path
+            fill-rule="evenodd"
+            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </div>
+      <hr class="my-4 -mx-6 border border-gray-500" />
+      <section>
+        {{ $t('score.text1') }}
+        <a href="https://github.com/d1urno/profile" target="_blank" rel="noopener">{{ $t('score.text2') }}</a
+        >{{ $t('score.text3') }}<br /><br />
+        {{ $t('score.text4') }}
+        <br /><br />
+        <picture>
+          <source
+            srcset="img/score_w_248.webp 1x, img/score_w_248@3x.webp 3x"
+            type="image/webp"
+            media="(max-width: 360px)"
+          />
+          <source
+            srcset="img/score_w_248.jpg 1x, img/score_w_248@3x.jpg 3x"
+            type="image/jpg"
+            media="(max-width: 360px)"
+          />
+
+          <source srcset="img/score_w_598.webp 1x, img/score_w_598@3x.webp 3x" type="image/webp" />
+          <source srcset="img/score_w_598.jpg 1x, img/score_w_598@3x.jpg 3x" type="image/jpg" />
+
+          <img
+            src="img/score_w_598.jpg"
+            srcset="img/score_w_598.jpg 1x, img/score_w_598@3x.jpg 3x"
+            alt="Lighthouse 6.0 score 100"
+          />
+        </picture>
+      </section>
+      <!-- End: Score -->
     </div>
   </div>
 </template>
