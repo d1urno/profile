@@ -1,7 +1,7 @@
 <template>
-  <div class="md:container mx-auto lg:grid lg:grid-cols-8">
-    <aside class="p-8 bg-gray-400 lg:col-span-3 flex flex-col items-center">
-      <div class="mb-4 -mt-4 ml-auto">
+  <div class="mx-auto md:container lg:grid lg:grid-cols-8">
+    <aside class="flex flex-col items-center py-8 bg-gray-400 lg:p-8 lg:col-span-3">
+      <div class="mb-4 ml-auto -mt-4 mr-8 lg:mr-5 xl:mr-8">
         <locale-switcher />
       </div>
       <div class="sm:flex sm:mt-3 lg:block lg:mt-0">
@@ -17,12 +17,12 @@
           </picture>
           <div class="px-6 text-center sm:text-left">
             <h1 class="text-4xl font-bold opacity-75">Pablo Miceli</h1>
-            <p class="mb-6 text-xl opacity-50">{{ $t('about.title') }}</p>
+            <p class="mb-6 text-xl text-gray-900 opacity-75">{{ $t('about.title') }}</p>
           </div>
         </div>
         <div class="px-6">
-          <div class="flex justify-center mb-6 lg:mb-0 space-x-5">
-            <a href="https://github.com/d1urno" target="_blank" rel="noopener">
+          <div class="flex justify-center mb-6 space-x-5 lg:mb-0">
+            <a href="https://github.com/d1urno" aria-label="GitHub" target="_blank" rel="noopener">
               <svg
                 class="w-10 transition-colors duration-300 opacity-75 fill-current hover:text-teal-500"
                 viewBox="0 0 1024 1024"
@@ -35,7 +35,7 @@
                 />
               </svg>
             </a>
-            <a href="https://www.linkedin.com/in/pmicel/" target="_blank" rel="noopener">
+            <a href="https://www.linkedin.com/in/pmicel/" aria-label="LinkedIn" target="_blank" rel="noopener">
               <svg
                 class="w-10 transition-colors duration-300 opacity-75 fill-current hover:text-teal-500"
                 enable-background="new 0 0 56.693 56.693"
@@ -54,7 +54,7 @@
                 </g>
               </svg>
             </a>
-            <a href="https://twitter.com/d1urno" target="_blank" rel="noopener">
+            <a href="https://twitter.com/d1urno" aria-label="Twitter" target="_blank" rel="noopener">
               <svg
                 class="w-10 transition-colors duration-300 opacity-75 fill-current hover:text-teal-500"
                 height="100%"
@@ -70,7 +70,7 @@
               </svg>
             </a>
           </div>
-          <hr class="mt-8 sm:hidden lg:block mb-6 -mx-6 border border-gray-500" />
+          <hr class="mt-8 mb-6 -mx-6 border border-gray-500 sm:hidden lg:block" />
           <table class="mb-6 lg:mb-12">
             <tbody>
               <tr>
@@ -110,9 +110,9 @@
     <div class="px-16 py-8 lg:col-span-5">
       <!-- Profile -->
       <section>
-        <div class="flex items-end ml-auto text-2xl text-teal-500 uppercase">
-          <h2 class="ml-auto">{{ $t('profile.title') }}</h2>
-          <svg class="w-12 ml-2" fill="currentColor" viewBox="0 0 20 20">
+        <div class="flex items-end ml-auto text-2xl uppercase">
+          <h2 class="ml-auto text-teal-700">{{ $t('profile.title') }}</h2>
+          <svg class="w-12 ml-2 text-teal-500" fill="currentColor" viewBox="0 0 20 20">
             <path
               fill-rule="evenodd"
               d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
@@ -127,9 +127,9 @@
 
       <!-- Skills -->
       <section>
-        <div class="flex items-end ml-auto text-2xl text-teal-500 uppercase">
-          <h2 class="ml-auto">{{ $t('skills.title') }}</h2>
-          <svg class="w-12 ml-2" fill="currentColor" viewBox="0 0 20 20">
+        <div class="flex items-end ml-auto text-2xl uppercase">
+          <h2 class="ml-auto text-teal-700">{{ $t('skills.title') }}</h2>
+          <svg class="w-12 ml-2 text-teal-500" fill="currentColor" viewBox="0 0 20 20">
             <path
               fill-rule="evenodd"
               d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
@@ -141,7 +141,7 @@
         <p class="mb-8">{{ $t('skills.text') }}</p>
         <div class="grid gap-6 row-gap-16 mb-10 sm:grid-cols-2">
           <div class="col-span-1">
-            <h4 class="mb-4 text-sm font-semibold opacity-75">{{ $t('skills.subtitle1') }}</h4>
+            <h3 class="mb-4 text-sm font-semibold opacity-75">{{ $t('skills.subtitle1') }}</h3>
             <svg
               v-for="(value, key) in $options.languages"
               :key="key"
@@ -154,7 +154,7 @@
             </svg>
           </div>
           <div class="col-span-1">
-            <h4 class="mb-4 text-sm font-semibold opacity-75">{{ $t('skills.subtitle2') }}</h4>
+            <h3 class="mb-4 text-sm font-semibold opacity-75">{{ $t('skills.subtitle2') }}</h3>
             <svg
               v-for="(value, key) in $options.libs"
               :key="key"
@@ -167,7 +167,7 @@
             </svg>
           </div>
           <div class="col-span-1">
-            <h4 class="mb-4 text-sm font-semibold opacity-75">{{ $t('skills.subtitle3') }}</h4>
+            <h3 class="mb-4 text-sm font-semibold opacity-75">{{ $t('skills.subtitle3') }}</h3>
             <svg
               v-for="(value, key) in $options.other"
               :key="key"
@@ -180,7 +180,7 @@
             </svg>
           </div>
           <div class="col-span-1">
-            <h4 class="mb-4 text-sm font-semibold opacity-75">{{ $t('skills.subtitle4') }}</h4>
+            <h3 class="mb-4 text-sm font-semibold opacity-75">{{ $t('skills.subtitle4') }}</h3>
             <svg
               v-for="(value, key) in $options.ops"
               :key="key"
@@ -198,9 +198,9 @@
 
       <!-- Experiences -->
       <section>
-        <div class="flex items-end ml-auto text-2xl text-teal-500 uppercase">
-          <h2 class="ml-auto">{{ $t('experience.title') }}</h2>
-          <svg class="w-12 ml-2" fill="currentColor" viewBox="0 0 20 20">
+        <div class="flex items-end ml-auto text-2xl uppercase">
+          <h2 class="ml-auto text-teal-700">{{ $t('experience.title') }}</h2>
+          <svg class="w-12 ml-2 text-teal-500" fill="currentColor" viewBox="0 0 20 20">
             <path
               fill-rule="evenodd"
               d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
@@ -217,22 +217,24 @@
         <a class="font-semibold" rel="noopener" href="https://matera-institucional.now.sh" target="_blank">
           https://matera-institucional.now.sh
         </a>
-        <p class="mb-8 text-gray-800 opacity-75">
+        <p class="mb-8 text-gray-900 text-opacity-75">
           {{ $t('experience.exp1.text') }}
-          <a href="https://www.npmjs.com/package/nuxt-image-extractor" target="_blank">nuxt-image-extractor</a>.
+          <a href="https://www.npmjs.com/package/nuxt-image-extractor" rel="noopener" target="_blank">
+            nuxt-image-extractor</a
+          >.
         </p>
         <span class="text-sm">2019</span>
         <h3 class="text-2xl font-bold opacity-75">{{ $t('experience.exp2.title') }}</h3>
         <a class="font-semibold" rel="noopener" href="https://paranabanco.com.br" target="_blank">
           https://paranabanco.com.br
         </a>
-        <p class="mb-8 text-gray-800 opacity-75">{{ $t('experience.exp2.text') }}</p>
+        <p class="mb-8 text-gray-900 text-opacity-75">{{ $t('experience.exp2.text') }}</p>
         <span class="text-sm">2019</span>
         <h3 class="text-2xl font-bold opacity-75">{{ $t('experience.exp3.title') }}</h3>
         <a class="font-semibold" rel="noopener" href="https://ctrl365.com.br" target="_blank">
           https://ctrl365.com.br
         </a>
-        <p class="mb-8 text-gray-800 opacity-75">
+        <p class="mb-8 text-gray-900 text-opacity-75">
           {{ $t('experience.exp3.text1') }}
           <a rel="noopener" href="https://dev.ctrl365.com.br/acer/predator-thronos/" target="_blank">Acer</a>,
           <a
@@ -251,7 +253,7 @@
             Nestle
           </a>
           {{ $t('experience.exp3.text3') }}
-          <a href="https://intranet-vue.now.sh" target="_blank" rel="noopener">intranet system</a>
+          <a href="https://intranet-vue.now.sh" target="_blank" rel="noopener">intranet</a>
           {{ $t('experience.exp3.text4') }}
         </p>
       </section>
@@ -339,7 +341,7 @@ html {
   }
 }
 a {
-  @apply font-semibold text-teal-700 transition-colors duration-300;
+  @apply text-teal-700 underline transition-colors duration-300;
   &:hover {
     @apply text-teal-400;
   }
