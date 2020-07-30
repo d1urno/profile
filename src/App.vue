@@ -34,9 +34,14 @@
               alt="Face picture"
             />
           </picture>
-          <div class="px-6 text-center sm:text-left">
-            <h1 class="text-4xl font-bold opacity-75">Pablo Miceli</h1>
-            <p class="mb-6 text-xl text-gray-900 opacity-75">{{ $t('about.title') }}</p>
+          <div class="px-6 my-6 text-center sm:text-left">
+            <h1 class="mb-6 opacity-75">
+              <span class="inline-block text-4xl font-bold">Pablo Miceli</span>
+              <br />
+              <span class="inline-block text-xl text-gray-900">
+                {{ $t('about.title') }}
+              </span>
+            </h1>
           </div>
         </div>
         <div class="px-6">
