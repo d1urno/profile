@@ -265,7 +265,7 @@
         <a class="font-semibold" rel="noopener" href="https://ctrl365.com.br" target="_blank">
           https://ctrl365.com.br
         </a>
-        <p class="print-space-bottom-2 mb-8 text-gray-900 text-opacity-75">
+        <p class="mb-8 text-gray-900 text-opacity-75 print-space-bottom-2">
           {{ $t('experience.exp3.text1') }}
           <a rel="noopener" href="https://dev.ctrl365.com.br/acer/predator-thronos/" target="_blank">Acer</a>,
           <a
@@ -353,6 +353,10 @@ export default {
       })
     }
   },
+
+  /**
+   * Static properties
+   */
   languages: {
     Go: 5,
     TypeScript: 7,
