@@ -1,8 +1,10 @@
 <template>
-  <div class="mx-auto md:container lg:grid lg:grid-cols-8">
+  <div id="app" class="mx-auto md:container lg:grid lg:grid-cols-8">
     <aside class="flex flex-col items-center py-8 bg-gray-400 lg:p-8 lg:col-span-3">
-      <div class="mb-4 ml-auto mr-8 -mt-4 lg:mr-5 xl:mr-8">
-        <locale-switcher />
+      <div class="flex mb-4 ml-auto mr-8 -mt-4 space-x-3 lg:mr-5 xl:mr-8">
+        <router-link v-for="locale in _availableLocales" :to="locale !== 'en-US' ? '/' + locale : '/'">
+          {{ $t(locale) }}
+        </router-link>
       </div>
       <div class="sm:flex sm:mt-3 lg:block lg:mt-0">
         <div>
@@ -337,10 +339,7 @@
 </template>
 
 <script>
-import LocaleSwitcher from './components/LocaleSwitcher'
-
 export default {
-  components: { LocaleSwitcher },
   data() {
     return { locale: 'en-US' }
   },
@@ -351,6 +350,11 @@ export default {
         month: 'numeric',
         day: 'numeric'
       })
+    }
+  },
+  computed: {
+    _availableLocales() {
+      return this.$i18n.availableLocales.filter((i) => i !== this.$i18n.locale)
     }
   },
 

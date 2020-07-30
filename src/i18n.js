@@ -12,6 +12,9 @@ export default new VueI18n({
   formatter,
   messages: {
     'en-US': {
+      'en-US': 'English',
+      es: 'Español',
+      pt: 'Português',
       about: {
         title: 'Full-stack Senior Developer',
         nationality: 'Nationality',
@@ -64,7 +67,10 @@ export default new VueI18n({
         text4: `Lighthouse 6.0 score:`
       }
     },
-    'es-AR': {
+    es: {
+      'en-US': 'English',
+      es: 'Español',
+      pt: 'Português',
       about: {
         title: 'Desarrollador Full-stack Senior',
         nationality: 'Nacionalidad',
@@ -117,7 +123,10 @@ export default new VueI18n({
         text4: `Puntuación Lighthouse 6.0:`
       }
     },
-    'pt-BR': {
+    pt: {
+      'en-US': 'English',
+      es: 'Español',
+      pt: 'Português',
       about: {
         title: 'Desenvolvedor Full-stack Senior',
         nationality: 'Nacionalidade',
