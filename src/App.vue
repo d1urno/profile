@@ -2,7 +2,11 @@
   <div id="app" class="mx-auto md:container lg:grid lg:grid-cols-8">
     <aside class="flex flex-col items-center py-8 bg-gray-400 lg:p-8 lg:col-span-3">
       <div class="flex mb-4 ml-auto mr-8 -mt-4 space-x-3 lg:mr-5 xl:mr-8">
-        <router-link class="text-teal-800" v-for="locale in _availableLocales" :to="locale !== 'en-US' ? '/' + locale : '/'">
+        <router-link
+          class="text-teal-800"
+          v-for="locale in _availableLocales"
+          :to="locale !== 'en-US' ? '/' + locale : '/'"
+        >
           {{ $t(locale) }}
         </router-link>
       </div>
