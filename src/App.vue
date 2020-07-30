@@ -366,6 +366,15 @@ export default {
       return this.$i18n.availableLocales.filter((i) => i !== this.$i18n.locale)
     }
   },
+  metaInfo() {
+    return {
+      htmlAttrs: {
+        lang: this.$i18n.locale
+      },
+      title: this.$t('title'),
+      meta: [{ name: 'description', content: this.$t('description') }]
+    }
+  },
 
   /**
    * Static properties

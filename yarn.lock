@@ -2175,6 +2175,11 @@ deep-is@^0.1.3, deep-is@~0.1.3:
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
   integrity sha1-s2nW+128E+7PUk+RsHD+7cNXzzQ=
 
+deepmerge@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.2.2.tgz#44d2ea3679b8f4d4ffba33f03d865fc1e7bf4955"
+  integrity sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==
+
 defaults@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/defaults/-/defaults-1.0.3.tgz#c656051e9817d9ff08ed881477f3fe4019f3ef7d"
@@ -6246,6 +6251,13 @@ vue-i18n@^8.19.0:
   version "8.19.0"
   resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.19.0.tgz#4326ade6cba7e18b22030ac1a14c59864b6dfc43"
   integrity sha512-jXPsvkmDMkwhjGQEDF6BgGsmJQLjIO1CXJQ1RjZRnU80kzRG+/+277ADFTulAPQSb0hUlrsp4VzEPdeO7lKcRA==
+
+vue-meta@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/vue-meta/-/vue-meta-2.4.0.tgz#a419fb4b4135ce965dab32ec641d1989c2ee4845"
+  integrity sha512-XEeZUmlVeODclAjCNpWDnjgw+t3WA6gdzs6ENoIAgwO1J1d5p1tezDhtteLUFwcaQaTtayRrsx7GL6oXp/m2Jw==
+  dependencies:
+    deepmerge "^4.2.2"
 
 vue-router@^3.3.4:
   version "3.3.4"
