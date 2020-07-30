@@ -1,7 +1,7 @@
 {
   "name": "profile",
   "version": "1.0.0",
-  "main": "src/index.html",
+  "main": "src/index.js",
   "author": "Pablo Miceli <d1urno@gmx.com>",
   "license": "MIT",
   "scripts": {
