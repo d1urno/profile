@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="mx-auto md:container lg:grid lg:grid-cols-8">
     <aside class="flex flex-col items-center py-8 bg-gray-400 lg:p-8 lg:col-span-3 dark:bg-gray-800">
-      <div class="flex mb-4 ml-auto mr-8 -mt-4 space-x-3 lg:mr-5 xl:mr-8">
+      <div class="flex mb-4 ml-auto mr-8 -mt-4 space-x-5 lg:mr-5 xl:mr-8">
         <button
           type="button"
           class="w-5 transform focus:outline-none focus-visible:shadow-outline hover:scale-125"
