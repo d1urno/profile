@@ -40,7 +40,7 @@ export default new VueI18n({
         subtitle1: 'Languages',
         subtitle2: 'Libraries/Frameworks',
         subtitle3: 'Other',
-        subtitle4: 'Ops',
+        subtitle4: 'Infrastructure',
         text: `Ordered from top to bottom, skills I'll be more likely to work with. The horizontal extension of each bar represents actual knowledge/experience I do have on such.`
       },
       experience: {
@@ -99,7 +99,7 @@ export default new VueI18n({
         subtitle1: 'Lenguajes',
         subtitle2: 'Librerías/Frameworks',
         subtitle3: 'Otros',
-        subtitle4: 'Ops',
+        subtitle4: 'Infraestructura',
         text: `Ordenadas de arriba a abajo, habilidades con las que estaría mas dispuesto a trabajar. La extensión horizontal de cada barra representa el conocimiento/experiencia que tengo al respecto.`
       },
       experience: {
@@ -158,7 +158,7 @@ export default new VueI18n({
         subtitle1: 'Línguas',
         subtitle2: 'Bibliotecas/Frameworks',
         subtitle3: 'Outros',
-        subtitle4: 'Ops',
+        subtitle4: 'Infraestrutura',
         text: `Ordenadas de cima para baixo, habilidades com as quais estou mais disposto a trabalhar. A extensão horizontal de cada barra representa o conhecimento/experiência que tenho naquele item.`
       },
       experience: {
