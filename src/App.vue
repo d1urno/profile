@@ -91,7 +91,7 @@
               href="https://github.com/d1urno"
               aria-label="GitHub"
               target="_blank"
-              rel="noopener"
+              rel="noopener nofollow"
             >
               <svg
                 class="w-10 fill-current hover:text-teal-500 dark:text-green-500 dark-hover:text-teal-400"
@@ -110,7 +110,7 @@
               href="https://www.linkedin.com/in/pmicel/"
               aria-label="LinkedIn"
               target="_blank"
-              rel="noopener"
+              rel="noopener nofollow"
             >
               <svg
                 class="w-10 fill-current hover:text-teal-500 dark:text-green-500 dark-hover:text-teal-400"
@@ -133,7 +133,7 @@
               href="https://twitter.com/d1urno"
               aria-label="Twitter"
               target="_blank"
-              rel="noopener"
+              rel="noopener nofollow"
             >
               <svg
                 class="w-10 fill-current hover:text-teal-500 dark:text-green-500 dark-hover:text-teal-400"
@@ -298,7 +298,7 @@
         </h3>
         <a
           class="font-semibold hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
-          rel="noopener"
+          rel="noopener nofollow"
           href="https://matera-institucional.now.sh"
           target="_blank"
         >
@@ -309,7 +309,7 @@
           <a
             class="hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
             href="https://www.npmjs.com/package/nuxt-image-extractor"
-            rel="noopener"
+            rel="noopener nofollow"
             target="_blank"
           >
             nuxt-image-extractor</a
@@ -321,7 +321,7 @@
         </h3>
         <a
           class="font-semibold hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
-          rel="noopener"
+          rel="noopener nofollow"
           href="https://paranabanco.com.br"
           target="_blank"
         >
@@ -334,7 +334,7 @@
         </h3>
         <a
           class="font-semibold hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
-          rel="noopener"
+          rel="noopener nofollow"
           href="https://ctrl365.com.br"
           target="_blank"
         >
@@ -344,14 +344,14 @@
           {{ $t('experience.exp3.text1') }}
           <a
             class="hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
-            rel="noopener"
+            rel="noopener nofollow"
             href="https://dev.ctrl365.com.br/acer/predator-thronos/"
             target="_blank"
             >Acer</a
           >,
           <a
             class="hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
-            rel="noopener"
+            rel="noopener nofollow"
             href="https://dev.ctrl365.com.br/whirlpool/consul/refrigeracao/geladeira/freezer-embaixo-inox/"
             target="_blank"
           >
@@ -360,7 +360,7 @@
           {{ $t('experience.exp3.text2') }}
           <a
             class="hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
-            rel="noopener"
+            rel="noopener nofollow"
             href="https://dev.ctrl365.com.br/nestle/mucilon/cereal-infantil/aveia-ameixa/"
             target="_blank"
           >
@@ -371,7 +371,7 @@
             class="hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
             href="https://intranet-vue.now.sh"
             target="_blank"
-            rel="noopener"
+            rel="noopener nofollow"
             >intranet</a
           >
           {{ $t('experience.exp3.text4') }}
@@ -398,7 +398,7 @@
             class="hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
             href="https://github.com/d1urno/profile"
             target="_blank"
-            rel="noopener"
+            rel="noopener nofollow"
             >{{ $t('score.text2') }}</a
           >{{ $t('score.text3') }}<br /><br />
           {{ $t('score.text4') }}
