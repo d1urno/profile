@@ -165,7 +165,7 @@
               </tr>
               <tr>
                 <td class="pr-5 text-gray-900 dark:text-gray-400">E-mail:</td>
-                <td class="text-gray-900 dark:text-gray-400">d1urno@gmx.com</td>
+                <td class="text-gray-900 dark:text-gray-400"><a class="hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400" href="mailto:d1urno@gmx.com">d1urno@gmx.com</a></td>
               </tr>
               <tr>
                 <td class="pr-5 text-gray-900 dark:text-gray-400">{{ $t('about.location') }}:</td>
