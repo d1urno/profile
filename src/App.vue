@@ -4,7 +4,7 @@
       <div class="flex mb-4 ml-auto mr-8 -mt-4 space-x-5 lg:mr-5 xl:mr-8">
         <button
           type="button"
-          class="w-5 transform focus:outline-none focus-visible:shadow-outline hover:scale-125"
+          class="w-5 transform focus:outline-none focus-visible:shadow-outline hover:scale-125 print:hidden"
           aria-label="Switch colors"
           @click="toggleDarkMode"
         >
@@ -74,8 +74,8 @@
               alt="Face picture"
             />
           </picture>
-          <div class="px-6 my-6 text-center sm:text-left">
-            <h1 class="mb-6 opacity-75 dark:opacity-100">
+          <div class="px-6 my-6 print:my-2 text-center sm:text-left">
+            <h1 class="opacity-75 dark:opacity-100">
               <span class="inline-block text-4xl font-bold dark:text-white">Pablo Miceli</span>
               <br />
               <span class="inline-block text-xl text-gray-900 dark:text-gray-500">
@@ -239,7 +239,7 @@
               Sorry, your browser does not support inline SVG.
             </svg>
           </div>
-          <div class="col-span-1 print-space-bottom">
+          <div class="col-span-1 print:pb-16">
             <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">{{ $t('skills.subtitle2') }}</h3>
             <svg
               v-for="(value, key) in $options.libs"
@@ -283,7 +283,7 @@
       <!-- End: Skills -->
 
       <!-- Experiences -->
-      <section>
+      <section class="print:pb-10">
         <div class="flex items-end ml-auto text-2xl uppercase">
           <h2 class="ml-auto text-teal-700 dark:text-white">{{ $t('experience.title') }}</h2>
           <svg class="w-12 ml-2 text-teal-500 dark:text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -346,7 +346,7 @@
         >
           https://ctrl365.com.br
         </a>
-        <p class="mb-8 text-gray-900 text-opacity-75 print-space-bottom-2 dark:text-gray-400">
+        <p class="mb-8 text-gray-900 text-opacity-75 print:pb-64 dark:text-gray-400">
           {{ $t('experience.exp3.text1') }}
           <a
             class="hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
@@ -562,14 +562,6 @@ svg {
   @page {
     size: 210mm 297mm;
     margin: 0;
-  }
-
-  .print-space-bottom {
-    @apply pb-16;
-  }
-
-  .print-space-bottom-2 {
-    @apply pb-64;
   }
 }
 

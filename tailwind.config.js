@@ -12,6 +12,11 @@ module.exports = {
   important: false,
   separator: ':',
   theme: {
+    extend: {
+      screens: {
+        print: { raw: 'print' }
+      }
+    },
     interFontFeatures: {
       default: ['calt', 'liga', 'kern'],
       numeric: ['tnum', 'salt', 'ss02']
