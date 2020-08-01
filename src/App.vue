@@ -74,7 +74,7 @@
               alt="Face picture"
             />
           </picture>
-          <div class="px-6 my-6 print:my-2 text-center sm:text-left">
+          <div class="px-6 my-6 text-center print:my-2 sm:text-left">
             <h1 class="opacity-75 dark:opacity-100">
               <span class="inline-block text-4xl font-bold dark:text-white">Pablo Miceli</span>
               <br />
@@ -189,6 +189,17 @@
               </tr>
             </tbody>
           </table>
+          <div class="text-center pt-10 print:hidden">
+            <hr class="mb-6 -mx-6 border border-gray-500 dark:border-gray-700" />
+            <a
+              class="px-4 py-1 font-bold hover:bg-teal-500 text-center text-white no-underline bg-teal-700 rounded-full shadow"
+              type="button"
+              :href="_fileName"
+              :download="_downloadName"
+            >
+              {{ $t('about.download') }}
+            </a>
+          </div>
         </div>
       </div>
     </aside>
@@ -439,6 +450,10 @@
 </template>
 
 <script>
+import enPdf from './assets/Pablo_Miceli_-_Fullstack_Senior_Developer_(English).pdf'
+import esPdf from './assets/Pablo_Miceli_-_Fullstack_Senior_Developer_(Spanish).pdf'
+import ptPdf from './assets/Pablo_Miceli_-_Fullstack_Senior_Developer_(Portuguese).pdf'
+
 export default {
   data() {
     return { locale: 'en-US', isDark: false }
@@ -467,6 +482,36 @@ export default {
   computed: {
     _availableLocales() {
       return this.$i18n.availableLocales.filter((i) => i !== this.$i18n.locale)
+    },
+
+    /**
+     * PDF file according to current locale
+     */
+    _fileName() {
+      switch (this.$i18n.locale) {
+        case 'en-US':
+          return enPdf
+        case 'es':
+          return esPdf
+        case 'pt':
+          return ptPdf
+      }
+    },
+
+    /**
+     * Download name suggestion with current date
+     */
+    _downloadName() {
+      return (
+        this.$t('about.link') +
+        '_' +
+        new Date().toLocaleString(this.$i18n.locale, {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric'
+        }) +
+        '.pdf'
+      )
     }
   },
   metaInfo() {

@@ -30,7 +30,9 @@ export default new VueI18n({
         german: 'German',
         native: 'Native',
         fluent: 'Fluent',
-        beginner: 'Beginner'
+        beginner: 'Beginner',
+        download: 'Download PDF',
+        link: 'Pablo_Miceli_-_Fullstack_Senior_Developer_(English)'
       },
       profile: {
         title: 'Profile',
@@ -89,7 +91,9 @@ export default new VueI18n({
         german: 'Alemán',
         native: 'Nativo',
         fluent: 'Fluente',
-        beginner: 'Principiante'
+        beginner: 'Principiante',
+        download: 'Descargar PDF',
+        link: 'Pablo_Miceli_-_Fullstack_Senior_Developer_(Spanish)'
       },
       profile: {
         title: 'Perfil',
@@ -148,7 +152,9 @@ export default new VueI18n({
         german: 'Alemão',
         native: 'Nativo',
         fluent: 'Fluente',
-        beginner: 'Principiante'
+        beginner: 'Principiante',
+        download: 'Baixar PDF',
+        link: 'Pablo_Miceli_-_Fullstack_Senior_Developer_(Portuguese)'
       },
       profile: {
         title: 'Perfil',
