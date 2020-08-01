@@ -93,7 +93,7 @@ export default new VueI18n({
         fluent: 'Fluente',
         beginner: 'Principiante',
         download: 'Descargar PDF',
-        link: 'Pablo_Miceli_-_Fullstack_Senior_Developer_(Spanish)'
+        link: 'Pablo_Miceli_-_Fullstack_Senior_Developer_(Español)'
       },
       profile: {
         title: 'Perfil',
@@ -154,7 +154,7 @@ export default new VueI18n({
         fluent: 'Fluente',
         beginner: 'Principiante',
         download: 'Baixar PDF',
-        link: 'Pablo_Miceli_-_Fullstack_Senior_Developer_(Portuguese)'
+        link: 'Pablo_Miceli_-_Fullstack_Senior_Developer_(Português)'
       },
       profile: {
         title: 'Perfil',

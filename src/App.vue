@@ -450,10 +450,6 @@
 </template>
 
 <script>
-import enPdf from './assets/Pablo_Miceli_-_Fullstack_Senior_Developer_(English).pdf'
-import esPdf from './assets/Pablo_Miceli_-_Fullstack_Senior_Developer_(Spanish).pdf'
-import ptPdf from './assets/Pablo_Miceli_-_Fullstack_Senior_Developer_(Portuguese).pdf'
-
 export default {
   data() {
     return { locale: 'en-US', isDark: false }
@@ -488,14 +484,7 @@ export default {
      * PDF file according to current locale
      */
     _fileName() {
-      switch (this.$i18n.locale) {
-        case 'en-US':
-          return enPdf
-        case 'es':
-          return esPdf
-        case 'pt':
-          return ptPdf
-      }
+      return this.$t('about.link') + '.pdf'
     },
 
     /**

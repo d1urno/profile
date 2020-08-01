@@ -19,6 +19,7 @@
     "messageformat": "^2.3.0",
     "parcel": "latest",
     "parcel-plugin-prerender": "^1.4.1",
+    "parcel-plugin-static-files-copy": "^2.4.3",
     "prettier": "latest",
     "sass": "^1.26.10",
     "tailwindcss": "latest",
