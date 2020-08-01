@@ -16,7 +16,8 @@ export default new VueI18n({
       es: 'Español',
       pt: 'Português',
       title: 'Pablo Miceli | Full-stack Senior Developer',
-      description: 'Resume of a full-stack software developer with +10 years of experience seeking for a remote job.',
+      description:
+        'Resume of a full-stack software developer with +10 years of experience looking for new remote job opportunities.',
       about: {
         title: 'Full-stack Senior Developer',
         nationality: 'Nationality',
@@ -75,7 +76,7 @@ export default new VueI18n({
       pt: 'Português',
       title: 'Pablo Miceli | Desarrollador Full-stack Senior',
       description:
-        'Curriculum de un desarrollador full-stack con +10 años de experiencia buscando un nuevo trabajo remoto.',
+        'Curriculum de un desarrollador full-stack con +10 años de experiencia buscando por nuevas oportunidades de trabajo remoto.',
       about: {
         title: 'Desarrollador Full-stack Senior',
         nationality: 'Nacionalidad',
@@ -134,7 +135,7 @@ export default new VueI18n({
       pt: 'Português',
       title: 'Pablo Miceli | Desenvolvedor Full-stack Senior',
       description:
-        'Currículo de um desenvolvedor full-stack com +10 anos de experiência procurando por um novo trabalho remoto.',
+        'Currículo de um desenvolvedor full-stack com +10 anos de experiência procurando por novas oportunidades de trabalho remoto.',
       about: {
         title: 'Desenvolvedor Full-stack Senior',
         nationality: 'Nacionalidade',
