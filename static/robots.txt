@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://www.pablomiceli.dev/sitemap.xml
+Sitemap: https://pablomiceli.dev/sitemap.xml
