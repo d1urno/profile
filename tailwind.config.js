@@ -4,7 +4,7 @@ module.exports = {
     mode: 'all',
     content: ['src/**/*.html', 'src/**/*.vue'],
     options: {
-      keyframes: true
+      whitelist: ['box-content']
     }
   },
   target: 'relaxed',

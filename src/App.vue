@@ -68,7 +68,7 @@
             <source srcset="img/pic_w_320.jpg 1x, img/pic_w_320@3x.jpg 3x" type="image/jpg" />
 
             <img
-              class="mx-auto mb-3 border-2 rounded shadow-md c-size"
+              class="box-content mx-auto mb-3 border-2 rounded shadow-md c-size"
               src="img/pic_w_320.jpg"
               srcset="img/pic_w_320.jpg 1x, img/pic_w_320@3x.jpg 3x"
               alt="Face picture"
@@ -600,19 +600,19 @@ svg {
 }
 
 .c-size {
-  height: calc(300px + 0.3rem);
-  width: calc(300px + 0.3rem);
+  height: 300px;
+  width: 300px;
   @screen sm {
-    height: calc(220px + 0.3rem);
-    width: calc(220px + 0.3rem);
+    height: 220px;
+    width: 220px;
   }
   @screen lg {
-    height: calc(260px + 0.3rem);
-    width: calc(260px + 0.3rem);
+    height: 260px;
+    width: 260px;
   }
   @screen xl {
-    height: calc(320px + 0.3rem);
-    width: calc(320px + 0.3rem);
+    height: 320px;
+    width: 320px;
   }
 }
 </style>
