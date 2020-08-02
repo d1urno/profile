@@ -189,10 +189,10 @@
               </tr>
             </tbody>
           </table>
-          <div class="text-center pt-10 print:hidden">
+          <div class="pt-10 text-center print:hidden">
             <hr class="mb-6 -mx-6 border border-gray-500 dark:border-gray-700" />
             <a
-              class="px-4 py-1 font-bold hover:bg-teal-500 text-center text-white no-underline bg-teal-700 rounded-full shadow"
+              class="px-4 py-1 font-bold text-center text-white no-underline bg-teal-700 rounded-full shadow hover:bg-teal-500"
               type="button"
               :href="_fileName"
               :download="_downloadName"
