@@ -66,7 +66,7 @@ export default new VueI18n({
         text1: `You can inspect the `,
         text2: `source code`,
         text3: ` of this page, it was made using Vue, TailwindCSS, i18n and Parcel.`,
-        text4: `Lighthouse 6.0 score:`
+        text4: `Lighthouse 6.0 desktop score:`
       }
     },
     es: {
@@ -127,7 +127,7 @@ export default new VueI18n({
         text1: `Puede revisar el `,
         text2: `código fuente`,
         text3: ` de esta página, fue desarrollada utilizando Vue, TailwindCSS, i18n y Parcel.`,
-        text4: `Puntuación Lighthouse 6.0:`
+        text4: `Puntuación desktop Lighthouse 6.0:`
       }
     },
     pt: {
@@ -188,7 +188,7 @@ export default new VueI18n({
         text1: `Pode revisar o `,
         text2: `código fonte`,
         text3: ` desta página, foi desenvolvida utilizando Vue, TailwindCSS, i18n e Parcel.`,
-        text4: `Puntuação Lighthouse 6.0:`
+        text4: `Puntuação desktop Lighthouse 6.0:`
       }
     }
   }
