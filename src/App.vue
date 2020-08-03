@@ -53,15 +53,24 @@
       <div class="sm:flex sm:mt-3 lg:block lg:mt-0">
         <div>
           <picture>
-            <source srcset="img/pic_w_300.webp" type="image/webp" media="(max-width: 360px)" />
-            <source srcset="img/pic_w_300.jpg" type="image/jpg" media="(max-width: 360px)" />
+            <source
+              srcset="img/pic_w_300.webp 1x, img/pic_w_300@3x.webp 3x"
+              type="image/webp"
+              media="(max-width: 360px)"
+            />
+            <source
+              srcset="img/pic_w_300.jpg 1x, img/pic_w_300@3x.jpg 3x"
+              type="image/jpg"
+              media="(max-width: 360px)"
+            />
 
-            <source srcset="img/pic_w_320.webp" type="image/webp" />
-            <source srcset="img/pic_w_320.jpg" type="image/jpg" />
+            <source srcset="img/pic_w_320.webp 1x, img/pic_w_320@3x.webp 3x" type="image/webp" />
+            <source srcset="img/pic_w_320.jpg 1x, img/pic_w_320@3x.jpg 3x" type="image/jpg" />
 
             <img
               class="box-content mx-auto mb-3 border-2 rounded shadow-md c-size"
               src="img/pic_w_320.jpg"
+              srcset="img/pic_w_320.jpg 1x, img/pic_w_320@3x.jpg 3x"
               alt="Face picture"
             />
           </picture>
@@ -413,16 +422,24 @@
           <br /><br />
         </p>
         <picture>
-          <source srcset="img/score_w_248.webp" type="image/webp" media="(max-width: 360px)" />
-          <source srcset="img/score_w_248.jpg" type="image/jpg" media="(max-width: 360px)" />
+          <source
+            srcset="img/score_w_248.webp 1x, img/score_w_248@3x.webp 3x"
+            type="image/webp"
+            media="(max-width: 360px)"
+          />
+          <source
+            srcset="img/score_w_248.jpg 1x, img/score_w_248@3x.jpg 3x"
+            type="image/jpg"
+            media="(max-width: 360px)"
+          />
 
-          <source srcset="img/score_w_598.webp" type="image/webp" />
-          <source srcset="img/score_w_598.jpg" type="image/jpg" />
+          <source srcset="img/score_w_598.webp 1x, img/score_w_598@3x.webp 3x" type="image/webp" />
+          <source srcset="img/score_w_598.jpg 1x, img/score_w_598@3x.jpg 3x" type="image/jpg" />
 
           <img
             class="mx-auto"
             src="img/score_w_598.jpg"
-            srcset="img/score_w_598.jpg"
+            srcset="img/score_w_598.jpg 1x, img/score_w_598@3x.jpg 3x"
             alt="Lighthouse 6.0 score 100"
             loading="lazy"
           />
