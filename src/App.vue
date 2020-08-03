@@ -520,7 +520,7 @@ export default {
     NuxtJS: 10,
     TailwindCSS: 10,
     FaunaDB: 7,
-    GraphQL: 8,
+    GraphQL: 9,
     Laravel: 7,
     Apollo: 7,
     'Android SDK': 5,
