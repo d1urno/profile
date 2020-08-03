@@ -419,7 +419,13 @@
           <source srcset="img/score_w_598.webp" type="image/webp" />
           <source srcset="img/score_w_598.jpg" type="image/jpg" />
 
-          <img class="mx-auto" src="img/score_w_598.jpg" srcset="img/score_w_598.jpg" alt="Lighthouse 6.0 score 100" />
+          <img
+            class="mx-auto"
+            src="img/score_w_598.jpg"
+            srcset="img/score_w_598.jpg"
+            alt="Lighthouse 6.0 score 100"
+            loading="lazy"
+          />
         </picture>
       </section>
       <!-- End: Score -->
