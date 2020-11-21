@@ -33,7 +33,7 @@ export default new VueI18n({
       },
       profile: {
         title: 'Profile',
-        text: `Argentine living in São Paulo since January 2019, passionate about design, programming, logic and new challenges. Started creating apps since I was a teenager, going from java game plugins to financial tools for personal use. Always based on continuous and self-taught learning of new technologies to better achieve my goals. Nowadays I'm focusing in websites/apps projects both as freelancer or employee.`
+        text: `Argentine living in São Paulo since January 2019, passionate about design, programming, logic and new challenges. Always based on continuous and self-taught learning of new technologies to better achieve my goals. Started creating apps since I was a teenager, going from Java game plugins to financial tools. Nowadays I find myself focusing in websites/apps involving TypeScript, Vue3/Nuxt, TailwindCSS, Graphql and serverless architectures as my main stack.`
       },
       skills: {
         title: 'Technical Skills',
@@ -46,8 +46,8 @@ export default new VueI18n({
       experience: {
         title: 'Recent experiences',
         exp1: {
-          title: 'Institutional Website - Matera Fintech (ongoing)',
-          text: `Project lead developer, code review, dedicated both on backend and frontend using Drupal Headless, GraphQL API. Frontend using NuxtJS with Vuex, i18n for internationalization, TailwindCSS, static generated configuration (JAMStack) and my own custom module`
+          title: 'Institutional Website - Matera Fintech',
+          text: `Project lead developer, code review, dedicated both on backend and frontend using Drupal Headless, GraphQL API. Frontend using NuxtJS with Vuex, i18n for internationalization, TailwindCSS, static generated configuration (JAMStack) and my own open-source module`
         },
         exp2: {
           title: 'Institutional Website - Paraná Banco',
@@ -94,7 +94,7 @@ export default new VueI18n({
       },
       profile: {
         title: 'Perfil',
-        text: `Argentino viviendo en São Paulo desde enero de 2019, apasionado por el diseño, la programación, la lógica y los nuevos desafíos. Comencé a crear aplicaciones desde que era adolescente, pasando de plugins para juegos en Java hasta herramientas financieras de uso personal. Siempre basado en el aprendizaje continuo y autodidacta de nuevas tecnologías para lograr mejor mis objetivos. Hoy en día me estoy centrando en proyectos de sitios web/aplicaciones tanto como freelance o empleado.`
+        text: `Argentino viviendo en São Paulo desde enero de 2019, apasionado por diseño, programación, lógica y nuevos desafíos. Siempre basado en el aprendizaje continuo y autodidacta de nuevas tecnologías para lograr mejor mis objetivos. Comencé a crear aplicaciones desde adolescente, pasando de plugins para juegos en Java hasta herramientas financieras. Actualmente estoy centrado en sitios web/aplicaciones envolviendo TypeScript, Vue3/Nuxt, TailwindCSS, Graphql y arquitecturas serverless como stack principal.`
       },
       skills: {
         title: 'Habilidades Técnicas',
@@ -107,8 +107,8 @@ export default new VueI18n({
       experience: {
         title: 'Experiencias recientes',
         exp1: {
-          title: 'Website Institucional - Matera Fintech (en proceso)',
-          text: `Desarrollador líder del proyecto, revisión de código, dedicado tanto en backend como en frontend usando Drupal Headless y API GraphQL. Frontend usando NuxtJS con Vuex, i18n para internacionalización, TailwindCSS, con una configuración de generación estatica (JAMStack) y mi propio módulo personalizado`
+          title: 'Website Institucional - Matera Fintech',
+          text: `Desarrollador líder del proyecto, revisión de código, dedicado tanto en backend como en frontend usando Drupal Headless y API GraphQL. Frontend usando NuxtJS con Vuex, i18n para internacionalización, TailwindCSS, con una configuración de generación estatica (JAMStack) y mi propio módulo open-source`
         },
         exp2: {
           title: 'Website Institucional - Paraná Banco',
@@ -155,7 +155,7 @@ export default new VueI18n({
       },
       profile: {
         title: 'Perfil',
-        text: `Argentino morando em São Paulo desde janeiro de 2019, apaixonado por design, programação, lógica e novos desafios. Comecei a criar aplicativos desde a adolescência, passando de plug-ins para jogos em java a ferramentas financeiras de uso pessoal. Sempre com base no aprendizado contínuo e autodidata de novas tecnologias para melhor alcançar meus objetivos. Atualmente, estou focando em projetos de sites/aplicativos, tanto como freelancer ou funcionário.`
+        text: `Argentino morando em São Paulo desde janeiro de 2019, apaixonado por design, programação, lógica e novos desafios. Sempre com base no aprendizado contínuo e autodidata de novas tecnologias para melhor alcançar meus objetivos. Comecei a criar aplicativos desde a adolescência, passando de plug-ins para jogos em Java até ferramentas financeiras. Atualmente, estou focando em websites/aplicativos, envolvendo TypeScript, Vue3/Nuxt, TailwindCSS, Graphql e arquiteturas serverless como stack principal.`
       },
       skills: {
         title: 'Habilidades técnicas',
@@ -168,8 +168,8 @@ export default new VueI18n({
       experience: {
         title: 'Experiências recentes',
         exp1: {
-          title: 'Site institucional - Matera Fintech (em andamento)',
-          text: `Desenvolvedor líder do projeto, revisão de código, dedicado no back-end e front-end usando uma API GraphQL no Drupal Headless. Frontend usando NuxtJS com Vuex, i18n para internacionalização, TailwindCSS, configurado para geração estatica (JAMStack) e meu próprio módulo personalizado`
+          title: 'Site institucional - Matera Fintech',
+          text: `Desenvolvedor líder do projeto, revisão de código, dedicado no back-end e front-end usando uma API GraphQL no Drupal Headless. Frontend usando NuxtJS com Vuex, i18n para internacionalização, TailwindCSS, configurado para geração estatica (JAMStack) e o meu próprio módulo open-source`
         },
         exp2: {
           title: 'Site institucional - Paraná Banco',

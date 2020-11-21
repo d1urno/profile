@@ -316,10 +316,10 @@
         <a
           class="font-semibold hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
           rel="noopener nofollow"
-          href="https://matera-institucional.now.sh"
+          href="https://matera.com"
           target="_blank"
         >
-          https://matera-institucional.now.sh
+          https://matera.com
         </a>
         <p class="mb-8 text-gray-400 text-gray-900 text-opacity-75 dark:text-gray-400">
           {{ $t('experience.exp1.text') }}
