@@ -522,10 +522,11 @@ export default {
    */
   languages: {
     Go: 5,
-    TypeScript: 7,
+    TypeScript: 9,
     JavaScript: 9,
     Kotlin: 3,
     Java: 8,
+    FQL: 7,
     PHP: 8,
     HTML5: 10,
     CSS3: 8,
@@ -533,12 +534,13 @@ export default {
     MySQL: 6
   },
   libs: {
-    Vue: 9,
+    Vue3: 9,
     NuxtJS: 10,
     TailwindCSS: 10,
-    FaunaDB: 7,
+    FaunaDB: 8,
     GraphQL: 9,
     Laravel: 7,
+    Vite: 8,
     Apollo: 7,
     'Android SDK': 5,
     React: 4,
@@ -559,7 +561,7 @@ export default {
     'Drupal (Headless)': 10,
     API: 9,
     Docker: 7,
-    GitHub: 7,
+    GitHub: 9,
     BitBucket: 8,
     Parcel: 5,
     Gulp: 8
