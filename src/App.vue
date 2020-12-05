@@ -226,11 +226,17 @@
       <section>
         <div class="flex items-end ml-auto text-2xl uppercase">
           <h2 class="ml-auto text-teal-700 dark:text-white">{{ $t('skills.title') }}</h2>
-          <svg class="w-12 ml-2 text-teal-500 dark:text-green-500" fill="currentColor" viewBox="0 0 20 20">
+          <svg
+            class="w-12 ml-2 text-teal-500 dark:text-green-500 -mb-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
             <path
-              fill-rule="evenodd"
-              d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
-              clip-rule="evenodd"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
             ></path>
           </svg>
         </div>
@@ -395,6 +401,97 @@
         </p>
       </section>
       <!-- End: Experiences -->
+
+      <!-- Tests -->
+      <section class="print:pb-10">
+        <div class="flex items-end ml-auto text-2xl uppercase">
+          <h2 class="ml-auto text-teal-700 dark:text-white">Tests</h2>
+          <svg class="w-12 ml-2 text-teal-500 dark:text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <hr class="my-4 -mx-6 border border-gray-500 dark:border-gray-700" />
+        <span class="text-sm dark:text-gray-400">2020</span>
+        <h3 class="text-2xl font-bold opacity-75 dark:opacity-100 dark:text-white">
+          Dryve frontend test
+        </h3>
+        <p class="mb-8 text-gray-900 text-opacity-75 dark:text-gray-400">
+          <a
+            class="font-semibold hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
+            rel="noopener nofollow"
+            href="https://dryve-frontend-test.netlify.app"
+            target="_blank"
+          >
+            Live deploy
+          </a>
+          -
+          <a
+            class="font-semibold hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400 inline-flex"
+            rel="noopener nofollow"
+            href="https://github.com/d1urno/dryve-frontend-test"
+            target="_blank"
+          >
+            Repository
+          </a>
+          <br />
+          Stack: Vue 3 - Vite - TypeScript - TailwindCSS - Jest
+        </p>
+        <span class="text-sm dark:text-gray-400">2020</span>
+        <h3 class="text-2xl font-bold opacity-75 dark:opacity-100 dark:text-white">
+          Dog & Pony Studios frontend test
+        </h3>
+        <p class="mb-8 text-gray-900 text-opacity-75 dark:text-gray-400">
+          <a
+            class="font-semibold hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
+            rel="noopener nofollow"
+            href="https://dps-senior-frontend-test.netlify.app"
+            target="_blank"
+          >
+            Live deploy
+          </a>
+          -
+          <a
+            class="font-semibold hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400 inline-flex"
+            rel="noopener nofollow"
+            href="https://github.com/d1urno/senior-frontend-test"
+            target="_blank"
+          >
+            Repository
+          </a>
+          <br />
+          Stack: Nuxt - TailwindCSS - Jest
+        </p>
+        <span class="text-sm dark:text-gray-400">2020</span>
+        <h3 class="text-2xl font-bold opacity-75 dark:opacity-100 dark:text-white">
+          Doc88 frontend challenge
+        </h3>
+        <p class="mb-8 text-gray-900 text-opacity-75 dark:text-gray-400">
+          <a
+            class="font-semibold hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
+            rel="noopener nofollow"
+            href="https://doc88-frontend-challenge.netlify.app"
+            target="_blank"
+          >
+            Live deploy
+          </a>
+          -
+          <a
+            class="font-semibold hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400 inline-flex"
+            rel="noopener nofollow"
+            href="https://github.com/d1urno/doc88-frontend-challenge"
+            target="_blank"
+          >
+            Repository
+          </a>
+          <br />
+          Stack: Vue 2.6 - TypeScript - TailwindCSS - Jest
+        </p>
+      </section>
+      <!-- End: Tests -->
 
       <!-- Score -->
       <div class="flex items-end ml-auto text-2xl uppercase">
