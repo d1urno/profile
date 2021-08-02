@@ -45,7 +45,7 @@ export default new VueI18n({
       },
       experience: {
         title: 'Recent experiences',
-        exp1: {
+        exp3: {
           title: 'Institutional Website - Matera Fintech',
           text: `Project lead developer, code review, dedicated both on backend and frontend using Drupal Headless, GraphQL API. Frontend using NuxtJS with Vuex, i18n for internationalization, TailwindCSS, static generated configuration (JAMStack) and my own open-source module`
         },
@@ -53,7 +53,7 @@ export default new VueI18n({
           title: 'Institutional Website - Paraná Banco',
           text: `Project lead developer, dedicated to backend using Drupal Headless exposing a GraphQL endpoint and DevOps tasks as CI/CD in cooperation with Bank's developer team. Collaborated on frontend with my team using React (Hooks, Styled components, Redux) and Apollo Client.`
         },
-        exp3: {
+        exp1: {
           title: 'Full-stack Developer - Ctrl365',
           text1: `During this period I've been responsibly for different tasks, such as responsive landing pages for brands like`,
           text2: `or`,
@@ -106,7 +106,7 @@ export default new VueI18n({
       },
       experience: {
         title: 'Experiencias recientes',
-        exp1: {
+        exp3: {
           title: 'Website Institucional - Matera Fintech',
           text: `Desarrollador líder del proyecto, revisión de código, dedicado tanto en backend como en frontend usando Drupal Headless y API GraphQL. Frontend usando NuxtJS con Vuex, i18n para internacionalización, TailwindCSS, con una configuración de generación estatica (JAMStack) y mi propio módulo open-source`
         },
@@ -114,7 +114,7 @@ export default new VueI18n({
           title: 'Website Institucional - Paraná Banco',
           text: `Desarrollador líder del proyecto, dedicado en backend usando Drupal Headless para contenido siendo servido a traves de GraphQL y tareas DevOps como CI/CD en cooperación con el equipo de desarrolladores del Banco. Colaboré en frontend con mi equipo usando React (Hooks, Styled components, Redux) y Apollo Client.`
         },
-        exp3: {
+        exp1: {
           title: 'Desarrollador Full-stack - Ctrl365',
           text1: `Durante este período, fui responsable por diferentes tareas, como crear landing pages responsivas para marcas como`,
           text2: `o`,
@@ -167,7 +167,7 @@ export default new VueI18n({
       },
       experience: {
         title: 'Experiências recentes',
-        exp1: {
+        exp3: {
           title: 'Site institucional - Matera Fintech',
           text: `Desenvolvedor líder do projeto, revisão de código, dedicado no back-end e front-end usando uma API GraphQL no Drupal Headless. Frontend usando NuxtJS com Vuex, i18n para internacionalização, TailwindCSS, configurado para geração estatica (JAMStack) e o meu próprio módulo open-source`
         },
@@ -175,7 +175,7 @@ export default new VueI18n({
           title: 'Site institucional - Paraná Banco',
           text: `Desenvolvedor líder do projeto, dedicado ao back-end usando o Drupal Headless, expondo uma api GraphQL e tarefas de DevOps como CI/CD em cooperação com a equipe de desenvolvedores do Banco. Colaborei no frontend com minha equipe usando React (Hooks, Styled components, Redux) e Apollo Client.`
         },
-        exp3: {
+        exp1: {
           title: 'Desenvolvedor Full-stack - Ctrl365',
           text1: `Durante esse período, fui responsável por diferentes tarefas, como a criação de landing pages responsivas para marcas como`,
           text2: `ou`,

@@ -316,7 +316,7 @@
         <hr class="my-4 -mx-6 bg-gray-500 dark:bg-gray-700 box-border border border-gray-500 dark:border-gray-700 opacity-75" />
         <span class="text-sm dark:text-gray-400">2020</span>
         <h3 class="text-2xl font-bold opacity-75 dark:opacity-100 dark:text-white">
-          {{ $t('experience.exp1.title') }}
+          {{ $t('experience.exp3.title') }}
         </h3>
         <a
           class="font-semibold hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
@@ -327,7 +327,7 @@
           https://matera.com
         </a>
         <p class="mb-8 text-gray-400 text-gray-900 text-opacity-75 dark:text-gray-400">
-          {{ $t('experience.exp1.text') }}
+          {{ $t('experience.exp3.text') }}
           <a
             class="hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
             href="https://www.npmjs.com/package/nuxt-image-extractor"
@@ -352,7 +352,7 @@
         <p class="mb-8 text-gray-900 text-opacity-75 dark:text-gray-400">{{ $t('experience.exp2.text') }}</p>
         <span class="text-sm dark:text-gray-400">2019</span>
         <h3 class="text-2xl font-bold opacity-75 dark:opacity-100 dark:text-white">
-          {{ $t('experience.exp3.title') }}
+          {{ $t('experience.exp1.title') }}
         </h3>
         <a
           class="font-semibold hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
@@ -363,7 +363,7 @@
           https://ctrl365.com.br
         </a>
         <p class="mb-8 text-gray-900 text-opacity-75 print:pb-64 dark:text-gray-400">
-          {{ $t('experience.exp3.text1') }}
+          {{ $t('experience.exp1.text1') }}
           <a
             class="hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
             rel="noopener nofollow"
@@ -379,7 +379,7 @@
           >
             Consul
           </a>
-          {{ $t('experience.exp3.text2') }}
+          {{ $t('experience.exp1.text2') }}
           <a
             class="hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
             rel="noopener nofollow"
@@ -388,7 +388,7 @@
           >
             Nestle
           </a>
-          {{ $t('experience.exp3.text3') }}
+          {{ $t('experience.exp1.text3') }}
           <a
             class="hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
             href="https://intranet-vue.now.sh"
@@ -396,7 +396,7 @@
             rel="noopener nofollow"
             >intranet</a
           >
-          {{ $t('experience.exp3.text4') }}
+          {{ $t('experience.exp1.text4') }}
         </p>
       </section>
       <!-- End: Experiences -->
