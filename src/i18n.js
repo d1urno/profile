@@ -45,6 +45,10 @@ export default new VueI18n({
       },
       experience: {
         title: 'Recent experiences',
+        exp4: {
+          title: 'Web app - Airbank',
+          text: `Full time tech lead developer, app architect using modular Apollo Server, FaunaDB, Open Banking API, Rollup and TypeScript on backend. And Vue 3 composition API (modular architecture), TypeScript, Apollo Client as local management system, TailwindCSS, and Vite.`
+        },
         exp3: {
           title: 'Institutional Website - Matera Fintech',
           text: `Project lead developer, code review, dedicated both on backend and frontend using Drupal Headless, GraphQL API. Frontend using NuxtJS with Vuex, i18n for internationalization, TailwindCSS, static generated configuration (JAMStack) and my own open-source module`
@@ -94,7 +98,7 @@ export default new VueI18n({
       },
       profile: {
         title: 'Perfil',
-        text: `Argentino viviendo en São Paulo desde enero de 2019, apasionado por diseño, programación, lógica y nuevos desafíos. Siempre basado en el aprendizaje continuo y autodidacta de nuevas tecnologías para lograr mejor mis objetivos. Comencé a crear aplicaciones desde adolescente, pasando de plugins para juegos en Java hasta herramientas financieras. Actualmente estoy centrado en sitios web/aplicaciones envolviendo TypeScript, Vue3/Nuxt, TailwindCSS, Graphql y arquitecturas serverless como stack principal.`
+        text: `Viviendo en São Paulo desde enero de 2019, apasionado por diseño, programación, lógica y nuevos desafíos. Basado en el aprendizaje continuo y autodidacta de nuevas tecnologías para lograr mejor mis objetivos. Comencé a crear aplicaciones desde adolescente, pasando de plugins para juegos en Java hasta herramientas financieras. Actualmente estoy centrado en aplicaciones web envolviendo TypeScript, Vue3/Nuxt, TailwindCSS, Graphql y arquitecturas serverless como stack principal.`
       },
       skills: {
         title: 'Habilidades Técnicas',
@@ -106,13 +110,17 @@ export default new VueI18n({
       },
       experience: {
         title: 'Experiencias recientes',
+        exp4: {
+          title: 'Web app - Airbank',
+          text: `Desarrollador tech lead de tiempo completo, arquitecto de la aplicación usando Apollo Server modular, FaunaDB, Open Banking API, Rollup y TypeScript en backend. Y Vue 3 composition API (arquitectura modular), TypeScript, Apollo Client como sistema de gerenciamiento de estados, TailwindCSS, y Vite.`
+        },
         exp3: {
           title: 'Website Institucional - Matera Fintech',
-          text: `Desarrollador líder del proyecto, revisión de código, dedicado tanto en backend como en frontend usando Drupal Headless y API GraphQL. Frontend usando NuxtJS con Vuex, i18n para internacionalización, TailwindCSS, con una configuración de generación estatica (JAMStack) y mi propio módulo open-source`
+          text: `Desarrollador tech lead, revisión de código, dedicado tanto en backend como en frontend usando Drupal Headless y API GraphQL. Frontend usando NuxtJS con Vuex, i18n para internacionalización, TailwindCSS, con una configuración de generación estatica (JAMStack) y mi propio módulo open-source`
         },
         exp2: {
           title: 'Website Institucional - Paraná Banco',
-          text: `Desarrollador líder del proyecto, dedicado en backend usando Drupal Headless para contenido siendo servido a traves de GraphQL y tareas DevOps como CI/CD en cooperación con el equipo de desarrolladores del Banco. Colaboré en frontend con mi equipo usando React (Hooks, Styled components, Redux) y Apollo Client.`
+          text: `Desarrollador líder del proyecto, dedicado en backend usando Drupal Headless para contenido siendo servido a traves de GraphQL y tareas DevOps como CI/CD en cooperación con el equipo de desarrolladores del Banco. Colaboré en frontend con mi equipo usando React y Apollo Client.`
         },
         exp1: {
           title: 'Desarrollador Full-stack - Ctrl365',
@@ -155,7 +163,7 @@ export default new VueI18n({
       },
       profile: {
         title: 'Perfil',
-        text: `Argentino morando em São Paulo desde janeiro de 2019, apaixonado por design, programação, lógica e novos desafios. Sempre com base no aprendizado contínuo e autodidata de novas tecnologias para melhor alcançar meus objetivos. Comecei a criar aplicativos desde a adolescência, passando de plug-ins para jogos em Java até ferramentas financeiras. Atualmente, estou focando em websites/aplicativos, envolvendo TypeScript, Vue3/Nuxt, TailwindCSS, Graphql e arquiteturas serverless como stack principal.`
+        text: `Morando em São Paulo desde janeiro de 2019, apaixonado por design, programação, lógica e novos desafios. Baseado no aprendizado contínuo e autodidata de novas tecnologias para melhor alcançar meus objetivos. Criei aplicativos desde a adolescência, passando de plug-ins para jogos em Java até ferramentas financeiras. Atualmente, estou focando em aplicativos web, envolvendo TypeScript, Vue3/Nuxt, TailwindCSS, Graphql e arquiteturas serverless como stack principal.`
       },
       skills: {
         title: 'Habilidades técnicas',
@@ -167,13 +175,17 @@ export default new VueI18n({
       },
       experience: {
         title: 'Experiências recentes',
+        exp4: {
+          title: 'Web app - Airbank',
+          text: `Desenvolvedor tech lead de tempo completo, arquiteto do aplicativo usando Apollo Server modular, FaunaDB, API Open Banking, Rollup e TypeScript no backend. E Vue 3 composition API (arquitetura modular), TypeScript, Apollo Client como sistema de gerenciamento de estado, TailwindCSS e Vite .`
+        },
         exp3: {
           title: 'Site institucional - Matera Fintech',
           text: `Desenvolvedor líder do projeto, revisão de código, dedicado no back-end e front-end usando uma API GraphQL no Drupal Headless. Frontend usando NuxtJS com Vuex, i18n para internacionalização, TailwindCSS, configurado para geração estatica (JAMStack) e o meu próprio módulo open-source`
         },
         exp2: {
           title: 'Site institucional - Paraná Banco',
-          text: `Desenvolvedor líder do projeto, dedicado ao back-end usando o Drupal Headless, expondo uma api GraphQL e tarefas de DevOps como CI/CD em cooperação com a equipe de desenvolvedores do Banco. Colaborei no frontend com minha equipe usando React (Hooks, Styled components, Redux) e Apollo Client.`
+          text: `Desenvolvedor líder do projeto, dedicado ao back-end usando o Drupal Headless, expondo uma api GraphQL e tarefas de DevOps como CI/CD em cooperação com a equipe de desenvolvedores do Banco. Colaborei no frontend com minha equipe usando React e Apollo Client.`
         },
         exp1: {
           title: 'Desenvolvedor Full-stack - Ctrl365',

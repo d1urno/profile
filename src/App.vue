@@ -255,7 +255,7 @@
               Sorry, your browser does not support inline SVG.
             </svg>
           </div>
-          <div class="col-span-1 print:pb-16">
+          <div class="col-span-1 print:pb-5">
             <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">{{ $t('skills.subtitle2') }}</h3>
             <svg
               v-for="(value, key) in $options.libs"
@@ -314,6 +314,21 @@
           </svg>
         </div>
         <hr class="my-4 -mx-6 bg-gray-500 dark:bg-gray-700 box-border border border-gray-500 dark:border-gray-700 opacity-75" />
+        <span class="text-sm dark:text-gray-400">2021</span>
+        <h3 class="text-2xl font-bold opacity-75 dark:opacity-100 dark:text-white">
+          {{ $t('experience.exp4.title') }}
+        </h3>
+        <a
+          class="font-semibold hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
+          rel="noopener nofollow"
+          href="https://joinairbank.com"
+          target="_blank"
+        >
+          https://joinairbank.com
+        </a>
+        <p class="mb-8 text-gray-400 text-gray-900 text-opacity-75 dark:text-gray-400">
+          {{ $t('experience.exp4.text') }}
+        </p>
         <span class="text-sm dark:text-gray-400">2020</span>
         <h3 class="text-2xl font-bold opacity-75 dark:opacity-100 dark:text-white">
           {{ $t('experience.exp3.title') }}
@@ -362,7 +377,7 @@
         >
           https://ctrl365.com.br
         </a>
-        <p class="mb-8 text-gray-900 text-opacity-75 print:pb-64 dark:text-gray-400">
+        <p class="mb-8 text-gray-900 text-opacity-75 print:pb-16 dark:text-gray-400">
           {{ $t('experience.exp1.text1') }}
           <a
             class="hover:text-teal-400 dark:text-green-500 dark-hover:text-teal-400"
