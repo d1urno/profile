@@ -175,7 +175,7 @@
               </tr>
               <tr>
                 <td class="pr-5 text-gray-900 dark:text-gray-400">{{ $t('about.location') }}:</td>
-                <td class="text-gray-900 dark:text-gray-400">São Paulo, Brazil</td>
+                <td class="text-gray-900 dark:text-gray-400">La Plata, Argentina</td>
               </tr>
             </tbody>
           </table>
@@ -618,48 +618,48 @@ export default {
    * Static properties
    */
   languages: {
-    Go: 5,
     TypeScript: 9,
-    JavaScript: 9,
+    JavaScript: 10,
+    Go: 5,
+    FQL: 9,
     Kotlin: 3,
     Java: 8,
-    FQL: 7,
-    PHP: 8,
     HTML5: 10,
-    CSS3: 8,
+    CSS3: 9,
+    PHP: 8,
     SCSS: 7,
-    MySQL: 6
+    SQL: 6
   },
   libs: {
-    Vue3: 9,
-    NuxtJS: 10,
+    'Vue 3 (composition API)': 9,
     TailwindCSS: 10,
-    FaunaDB: 8,
-    GraphQL: 9,
+    FaunaDB: 9,
+    GraphQL: 10,
+    Apollo: 8,
+    NuxtJS: 10,
+    ExpressJS: 8,
     Laravel: 7,
-    Vite: 8,
-    Apollo: 7,
     'Android SDK': 5,
     React: 4,
     Bootstrap: 8
   },
   ops: {
-    AWS: 3,
-    Netlify: 7,
-    Vercel: 9,
+    Netlify: 9,
+    Vercel: 8,
     GitFlow: 10,
     'CI/CD': 6,
-    Pipelines: 6,
+    GCP: 7,
+    AWS: 3,
     'Digital Ocean': 7,
     Heroku: 8
   },
   other: {
+    Vite: 9,
     JAMStack: 8,
     'Drupal (Headless)': 10,
-    API: 9,
-    Docker: 7,
     GitHub: 9,
-    BitBucket: 8,
+    Rollup: 7,
+    Docker: 7,
     Parcel: 5,
     Gulp: 8
   },
