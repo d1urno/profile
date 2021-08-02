@@ -150,7 +150,7 @@
               </svg>
             </a>
           </div>
-          <hr class="mt-8 mb-6 -mx-6 border border-gray-500 sm:hidden lg:block dark:border-gray-700" />
+          <hr class="mt-8 mb-6 -mx-6 bg-gray-500 dark:bg-gray-700 box-border border border-gray-500 dark:border-gray-700 opacity-75 sm:hidden lg:block" />
           <table class="mb-6 lg:mb-12">
             <tbody>
               <tr>
@@ -180,7 +180,7 @@
             </tbody>
           </table>
           <h2 class="text-xl font-bold opacity-75 dark:text-white">{{ $t('about.idioms') }}:</h2>
-          <hr class="my-2 -mx-6 border border-gray-500 dark:border-gray-700" />
+          <hr class="my-2 -mx-6 bg-gray-500 dark:bg-gray-700 box-border border border-gray-500 dark:border-gray-700 opacity-75" />
           <table class="mb-4 text-gray-900 dark:text-gray-400">
             <tbody>
               <tr v-for="(value, key) in $options.speaking" :key="key">
@@ -190,7 +190,6 @@
             </tbody>
           </table>
           <div class="pt-10 text-center print:hidden">
-            <hr class="mb-6 -mx-6 border border-gray-500 dark:border-gray-700" />
             <a
               class="px-4 py-1 font-bold text-center text-white no-underline bg-teal-700 rounded-full shadow hover:bg-teal-500"
               type="button"
@@ -217,7 +216,7 @@
             ></path>
           </svg>
         </div>
-        <hr class="my-4 -mx-6 border border-gray-500 dark:border-gray-700" />
+        <hr class="my-4 -mx-6 bg-gray-500 dark:bg-gray-700 box-border border border-gray-500 dark:border-gray-700 opacity-75" />
         <p class="mb-8 text-gray-900 dark:text-gray-400">{{ $t('profile.text') }}</p>
       </section>
       <!-- End: Profile -->
@@ -240,7 +239,7 @@
             ></path>
           </svg>
         </div>
-        <hr class="my-4 -mx-6 border border-gray-500 dark:border-gray-700" />
+        <hr class="my-4 -mx-6 bg-gray-500 dark:bg-gray-700 box-border border border-gray-500 dark:border-gray-700 opacity-75" />
         <p class="mb-8 text-gray-900 dark:text-gray-400">{{ $t('skills.text') }}</p>
         <div class="grid gap-6 mb-10 sm:grid-cols-2">
           <div class="col-span-1">
@@ -314,7 +313,7 @@
             ></path>
           </svg>
         </div>
-        <hr class="my-4 -mx-6 border border-gray-500 dark:border-gray-700" />
+        <hr class="my-4 -mx-6 bg-gray-500 dark:bg-gray-700 box-border border border-gray-500 dark:border-gray-700 opacity-75" />
         <span class="text-sm dark:text-gray-400">2020</span>
         <h3 class="text-2xl font-bold opacity-75 dark:opacity-100 dark:text-white">
           {{ $t('experience.exp1.title') }}
@@ -414,7 +413,7 @@
             ></path>
           </svg>
         </div>
-        <hr class="my-4 -mx-6 border border-gray-500 dark:border-gray-700" />
+        <hr class="my-4 -mx-6 bg-gray-500 dark:bg-gray-700 box-border border border-gray-500 dark:border-gray-700 opacity-75" />
         <span class="text-sm dark:text-gray-400">2020</span>
         <h3 class="text-2xl font-bold opacity-75 dark:opacity-100 dark:text-white">
           Dryve frontend test
@@ -504,7 +503,7 @@
           ></path>
         </svg>
       </div>
-      <hr class="my-4 -mx-6 border border-gray-500 dark:border-gray-700" />
+      <hr class="my-4 -mx-6 bg-gray-500 dark:bg-gray-700 box-border border border-gray-500 dark:border-gray-700 opacity-75" />
       <section>
         <p class="text-gray-900 dark:text-gray-400">
           {{ $t('score.text1') }}
