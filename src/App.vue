@@ -175,7 +175,7 @@
               </tr>
               <tr>
                 <td class="pr-5 text-gray-900 dark:text-gray-400">{{ $t('about.location') }}:</td>
-                <td class="text-gray-900 dark:text-gray-400">La Plata, Argentina</td>
+                <td class="text-gray-900 dark:text-gray-400">West Palm Beach, US</td>
               </tr>
             </tbody>
           </table>
