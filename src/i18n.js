@@ -33,7 +33,7 @@ export default new VueI18n({
       },
       profile: {
         title: 'Profile',
-        text: `Argentine living in São Paulo since January 2019, passionate about design, programming, logic and new challenges. Always based on continuous and self-taught learning of new technologies to better achieve my goals. Started creating apps since I was a teenager, going from Java game plugins to financial tools. Nowadays I find myself focusing in websites/apps involving TypeScript, Vue3/Nuxt, TailwindCSS, Graphql and serverless architectures as my main stack.`
+        text: `Argentine living in São Paulo since January 2019, passionate about design, programming, logic and new challenges. Always based on continuous and self-taught learning of new technologies to better achieve my goals. Started creating apps since I was a teenager, going from Java game plugins to financial tools. Nowadays I find myself focusing in APIs and large scale websites/apps involving TypeScript, Vue3/Nuxt, TailwindCSS, Graphql and serverless architectures as my main stack.`
       },
       skills: {
         title: 'Technical Skills',
@@ -98,7 +98,7 @@ export default new VueI18n({
       },
       profile: {
         title: 'Perfil',
-        text: `Viviendo en São Paulo desde enero de 2019, apasionado por diseño, programación, lógica y nuevos desafíos. Basado en el aprendizaje continuo y autodidacta de nuevas tecnologías para lograr mejor mis objetivos. Comencé a crear aplicaciones desde adolescente, pasando de plugins para juegos en Java hasta herramientas financieras. Actualmente estoy centrado en aplicaciones web envolviendo TypeScript, Vue3/Nuxt, TailwindCSS, Graphql y arquitecturas serverless como stack principal.`
+        text: `Viviendo en São Paulo desde enero de 2019, apasionado por diseño, programación, lógica y nuevos desafíos. Basado en el aprendizaje continuo y autodidacta de nuevas tecnologías para lograr mejor mis objetivos. Comencé a crear aplicaciones desde adolescente, pasando de plugins para juegos en Java hasta herramientas financieras. Actualmente estoy centrado en APIs y aplicaciones web de larga escala utilizando TypeScript, Vue3/Nuxt, TailwindCSS, Graphql y arquitecturas serverless como stack principal.`
       },
       skills: {
         title: 'Habilidades Técnicas',
@@ -163,7 +163,7 @@ export default new VueI18n({
       },
       profile: {
         title: 'Perfil',
-        text: `Morando em São Paulo desde janeiro de 2019, apaixonado por design, programação, lógica e novos desafios. Baseado no aprendizado contínuo e autodidata de novas tecnologias para melhor alcançar meus objetivos. Criei aplicativos desde a adolescência, passando de plug-ins para jogos em Java até ferramentas financeiras. Atualmente, estou focando em aplicativos web, envolvendo TypeScript, Vue3/Nuxt, TailwindCSS, Graphql e arquiteturas serverless como stack principal.`
+        text: `Morando em São Paulo desde janeiro de 2019, apaixonado por design, programação, lógica e novos desafios. Baseado no aprendizado contínuo e autodidata de novas tecnologias para melhor alcançar meus objetivos. Criei aplicativos desde a adolescência, passando de plug-ins para jogos em Java até ferramentas financeiras. Atualmente, estou focando em APIs e aplicativos web de grande escala, envolvendo TypeScript, Vue3/Nuxt, TailwindCSS, Graphql e arquiteturas serverless como stack principal.`
       },
       skills: {
         title: 'Habilidades técnicas',
