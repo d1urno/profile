@@ -1,0 +1,64 @@
+{
+  "en": "English",
+  "es": "Español",
+  "pt": "Português",
+  "title": "Desenvolvedor Fullstack Senior",
+  "description": "Currículo de um desenvolvedor fullstack com +10 anos de experiência procurando por novas oportunidades de trabalho remoto.",
+  "about": {
+    "title": "Desenvolvedor Fullstack Senior",
+    "nationality": "Nacionalidade",
+    "birth": "Nascimento",
+    "location": "Localização atual",
+    "idioms": "Idiomas",
+    "spanish": "Espanhol",
+    "english": "Inglês",
+    "portuguese": "Português",
+    "german": "Alemão",
+    "native": "Nativo",
+    "fluent": "Fluente",
+    "beginner": "Principiante",
+    "download": "Baixar PDF",
+    "link": "Pablo_Miceli_-_Fullstack_Senior_Developer_(Português)"
+  },
+  "profile": {
+    "title": "Perfil",
+    "text": "Morando em São Paulo desde janeiro de 2019, apaixonado por design, programação, lógica e novos desafios. Baseado no aprendizado contínuo e autodidata de novas tecnologias para melhor alcançar meus objetivos. Criei aplicativos desde a adolescência, passando de plug-ins para jogos em Java até ferramentas financeiras. Atualmente, estou focando em APIs e aplicativos web de grande escala, envolvendo TypeScript, Vue3/Nuxt, TailwindCSS, Graphql e arquiteturas serverless como stack principal."
+  },
+  "skills": {
+    "title": "Habilidades técnicas",
+    "subtitle1": "Línguas",
+    "subtitle2": "Bibliotecas/Frameworks",
+    "subtitle3": "Outros",
+    "subtitle4": "Infraestrutura",
+    "text": "Ordenadas de cima para baixo, habilidades com as quais estou mais disposto a trabalhar. A extensão horizontal de cada barra representa o conhecimento/experiência que tenho naquele item."
+  },
+  "experience": {
+    "title": "Experiências recentes",
+    "exp4": {
+      "title": "Web app - Airbank",
+      "text": "Desenvolvedor tech lead de tempo completo, arquiteto do aplicativo usando Apollo Server modular, FaunaDB, API Open Banking, Rollup e TypeScript no backend. E Vue 3 composition API (arquitetura modular), TypeScript, Apollo Client como sistema de gerenciamento de estado, TailwindCSS e Vite ."
+    },
+    "exp3": {
+      "title": "Site institucional - Matera Fintech",
+      "text": "Desenvolvedor líder do projeto, revisão de código, dedicado no back-end e front-end usando uma API GraphQL no Drupal Headless. Frontend usando NuxtJS com Vuex, i18n para internacionalização, TailwindCSS, configurado para geração estatica (JAMStack) e o meu próprio módulo open-source"
+    },
+    "exp2": {
+      "title": "Site institucional - Paraná Banco",
+      "text": "Desenvolvedor líder do projeto, dedicado ao back-end usando o Drupal Headless, expondo uma api GraphQL e tarefas de DevOps como CI/CD em cooperação com a equipe de desenvolvedores do Banco. Colaborei no frontend com minha equipe usando React e Apollo Client."
+    },
+    "exp1": {
+      "title": "Desenvolvedor Fullstack - Ctrl365",
+      "text1": "Durante esse período, fui responsável por diferentes tarefas, como a criação de landing pages responsivas para marcas como",
+      "text2": "ou",
+      "text3": "em paralelo com a área de criação, desenvolvi um completo",
+      "text4": "com login e notificações, fiz trabalhos em APIs e administração de banco de dados. Fiz algumas entrevistas de emprego com candidatos para aumentar nossa equipe, entre outras tarefas de gerenciamento de equipe."
+    }
+  },
+  "score": {
+    "title": "Notas",
+    "text1": "Pode revisar o ",
+    "text2": "código fonte",
+    "text3": ", desta página, foi desenvolvida utilizando Vue, TailwindCSS, i18n e Parcel.",
+    "text4": "Puntuação desktop Lighthouse 6.0:"
+  }
+}

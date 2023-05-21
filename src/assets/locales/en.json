@@ -1,0 +1,64 @@
+{
+  "en": "English",
+  "es": "Español",
+  "pt": "Português",
+  "title": "Fullstack Senior Developer",
+  "description": "Resume of a fullstack software developer with +10 years of experience looking for new remote job opportunities.",
+  "about": {
+    "title": "Fullstack Senior Developer",
+    "nationality": "Nationality",
+    "birth": "Birth",
+    "location": "Current location",
+    "idioms": "Idioms",
+    "spanish": "Spanish",
+    "english": "English",
+    "portuguese": "Portuguese",
+    "german": "German",
+    "native": "Native",
+    "fluent": "Fluent",
+    "beginner": "Beginner",
+    "download": "Download PDF",
+    "link": "Pablo_Miceli_-_Fullstack_Senior_Developer_(English)"
+  },
+  "profile": {
+    "title": "Profile",
+    "text": "Argentine living in São Paulo since January 2019, passionate about design, programming, logic and new challenges. Always based on continuous and self-taught learning of new technologies to better achieve my goals. Started creating apps since I was a teenager, going from Java game plugins to financial tools. Nowadays I find myself focusing in APIs and large scale websites/apps involving TypeScript, Vue3/Nuxt, TailwindCSS, Graphql and serverless architectures as my main stack."
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "subtitle1": "Languages",
+    "subtitle2": "Libraries/Frameworks",
+    "subtitle3": "Other",
+    "subtitle4": "Infrastructure",
+    "text": "Ordered from top to bottom, skills I'll be more likely to work with. The horizontal extension of each bar represents actual knowledge/experience I do have on such."
+  },
+  "experience": {
+    "title": "Recent experiences",
+    "exp4": {
+      "title": "Web app - Airbank",
+      "text": "Full time tech lead developer, app architect using modular Apollo Server, FaunaDB, Open Banking API, Rollup and TypeScript on backend. And Vue 3 composition API (modular architecture), TypeScript, Apollo Client as local management system, TailwindCSS, and Vite."
+    },
+    "exp3": {
+      "title": "Institutional Website - Matera Fintech",
+      "text": "Project lead developer, code review, dedicated both on backend and frontend using Drupal Headless, GraphQL API. Frontend using NuxtJS with Vuex, i18n for internationalization, TailwindCSS, static generated configuration (JAMStack) and my own open-source module"
+    },
+    "exp2": {
+      "title": "Institutional Website - Paraná Banco",
+      "text": "Project lead developer, dedicated to backend using Drupal Headless exposing a GraphQL endpoint and DevOps tasks as CI/CD in cooperation with Bank's developer team. Collaborated on frontend with my team using React (Hooks, Styled components, Redux) and Apollo Client."
+    },
+    "exp1": {
+      "title": "Fullstack Developer - Ctrl365",
+      "text1": "During this period I've been responsibly for different tasks, such as responsive landing pages for brands like",
+      "text2": "or",
+      "text3": "in parallel with art department, I've built a complete",
+      "text4": "with login and notifications, or APIs and database administration tasks. I did many job interviews with candidates to grow our team, among other team management tasks."
+    }
+  },
+  "score": {
+    "title": "Notes",
+    "text1": "You can inspect the ",
+    "text2": "source code",
+    "text3": ", of this page, it was made using Vue, TailwindCSS, i18n and Parcel.",
+    "text4": "Lighthouse 6.0 desktop score:"
+  }
+}
