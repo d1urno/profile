@@ -8,10 +8,13 @@ import type { Router } from 'vue-router'
 import { setupLayouts } from 'virtual:generated-layouts'
 // @ts-ignore
 import routes from 'virtual:generated-pages'
+import { createHead } from 'unhead'
 
 export type UserPlugin = (ctx: { app: AppType; router: Router }) => void
 
 const app = createApp(App)
+
+createHead()
 
 const router = createRouter({
   history: createWebHistory(),
