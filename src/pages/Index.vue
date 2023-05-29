@@ -11,6 +11,8 @@ import CodeIcon from '@/assets/svg/code.svg?component'
 import ComputerIcon from '@/assets/svg/computer.svg?component'
 import InfoIcon from '@/assets/svg/info.svg?component'
 import CaseIcon from '@/assets/svg/case.svg?component'
+import ValueBar from '@/components/ValueBar.vue'
+import BarList from '@/components/BarList.vue'
 
 const { t, locale, availableLocales } = useI18n()
 
@@ -312,98 +314,25 @@ const speaking = {
         />
         <p class="mb-8 text-gray-900 dark:text-gray-400">{{ $t('skills.text') }}</p>
         <div class="mb-10 grid gap-6 sm:grid-cols-2">
-          <div class="col-span-1">
-            <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">
-              {{ $t('skills.subtitle1') }}
-            </h3>
-            <svg
-              v-for="(value, key) in languages"
-              :key="key"
-              viewBox="0 0 90 8"
-              class="mb-2 h-6 flex-1 text-teal-500 lg:h-5 xl:h-6"
-            >
-              <rect
-                rx="3"
-                ry="5"
-                :width="value * 10 + '%'"
-                height="100%"
-                style="fill: currentColor"
-              />
-              <text x="4" y="5.6" fill="white" font-weight="bold" font-size=".33rem">
-                {{ key }}
-              </text>
-              Sorry, your browser does not support inline SVG.
-            </svg>
-          </div>
-          <div class="col-span-1 print:pb-5">
-            <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">
-              {{ $t('skills.subtitle2') }}
-            </h3>
-            <svg
-              v-for="(value, key) in libs"
-              :key="key"
-              viewBox="0 0 90 8"
-              class="mb-2 h-6 flex-1 text-teal-800 opacity-75 lg:h-5 xl:h-6"
-            >
-              <rect
-                rx="4"
-                ry="5"
-                :width="value * 10 + '%'"
-                height="100%"
-                style="fill: currentColor"
-              />
-              <text x="4" y="5.6" fill="white" font-weight="bold" font-size=".33rem">
-                {{ key }}
-              </text>
-              Sorry, your browser does not support inline SVG.
-            </svg>
-          </div>
-          <div class="col-span-1">
-            <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">
-              {{ $t('skills.subtitle3') }}
-            </h3>
-            <svg
-              v-for="(value, key) in other"
-              :key="key"
-              viewBox="0 0 90 8"
-              class="mb-2 h-6 flex-1 text-teal-800 opacity-75 lg:h-5 xl:h-6"
-            >
-              <rect
-                rx="3"
-                ry="5"
-                :width="value * 10 + '%'"
-                height="100%"
-                style="fill: currentColor"
-              />
-              <text x="4" y="5.6" fill="white" font-weight="bold" font-size=".33rem">
-                {{ key }}
-              </text>
-              Sorry, your browser does not support inline SVG.
-            </svg>
-          </div>
-          <div class="col-span-1">
-            <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">
-              {{ $t('skills.subtitle4') }}
-            </h3>
-            <svg
-              v-for="(value, key) in ops"
-              :key="key"
-              viewBox="0 0 90 8"
-              class="mb-2 h-6 flex-1 text-teal-800 opacity-75 lg:h-5 xl:h-6"
-            >
-              <rect
-                rx="3"
-                ry="5"
-                :width="value * 10 + '%'"
-                height="100%"
-                style="fill: currentColor"
-              />
-              <text x="4" y="5.6" fill="white" font-weight="bold" font-size=".33rem">
-                {{ key }}
-              </text>
-              Sorry, your browser does not support inline SVG.
-            </svg>
-          </div>
+          <BarList
+            class="col-span-1"
+            :title="$t('skills.subtitle1')"
+            color="light"
+            :values="languages"
+          />
+          <BarList
+            class="col-span-1 print:pb-5"
+            :title="$t('skills.subtitle2')"
+            color="light"
+            :values="libs"
+          />
+          <BarList
+            class="col-span-1"
+            :title="$t('skills.subtitle3')"
+            color="dark"
+            :values="other"
+          />
+          <BarList class="col-span-1" :title="$t('skills.subtitle4')" color="dark" :values="ops" />
         </div>
       </section>
       <!-- End: Skills -->
