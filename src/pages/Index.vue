@@ -151,36 +151,36 @@ const speaking = {
           :key="locale"
           :to="locale !== 'en' ? '?lang=' + locale : '/'"
         >
-          {{ $t(locale) }}
+          {{ t(locale) }}
         </router-link>
       </div>
       <div class="sm:mt-3 sm:flex lg:mt-0 lg:block">
         <div>
           <picture>
             <source
-              srcset="src/assets/img/pic_w_300.webp 1x, src/assets/img/pic_w_300@3x.webp 3x"
+              srcset="/src/assets/img/pic_w_300.webp 1x, /src/assets/img/pic_w_300@3x.webp 3x"
               type="image/webp"
               media="(max-width: 360px)"
             />
             <source
-              srcset="src/assets/img/pic_w_300.jpg 1x, src/assets/img/pic_w_300@3x.jpg 3x"
+              srcset="/src/assets/img/pic_w_300.jpg 1x, /src/assets/img/pic_w_300@3x.jpg 3x"
               type="image/jpg"
               media="(max-width: 360px)"
             />
 
             <source
-              srcset="src/assets/img/pic_w_320.webp 1x, src/assets/img/pic_w_320@3x.webp 3x"
+              srcset="/src/assets/img/pic_w_320.webp 1x, /src/assets/img/pic_w_320@3x.webp 3x"
               type="image/webp"
             />
             <source
-              srcset="src/assets/img/pic_w_320.jpg 1x, src/assets/img/pic_w_320@3x.jpg 3x"
+              srcset="/src/assets/img/pic_w_320.jpg 1x, /src/assets/img/pic_w_320@3x.jpg 3x"
               type="image/jpg"
             />
 
             <img
               class="c-size mx-auto mb-3 box-content rounded border-2 shadow-md"
-              src="src/assets/img/pic_w_320.jpg"
-              srcset="src/assets/img/pic_w_320.jpg 1x, src/assets/img/pic_w_320@3x.jpg 3x"
+              src="/src/assets/img/pic_w_320.jpg"
+              srcset="/src/assets/img/pic_w_320.jpg 1x, /src/assets/img/pic_w_320@3x.jpg 3x"
               alt="Face picture"
             />
           </picture>
@@ -189,7 +189,7 @@ const speaking = {
               <span class="inline-block text-4xl font-bold dark:text-white">Pablo Miceli</span>
               <br />
               <span class="inline-block text-xl text-gray-900 dark:text-gray-500">
-                {{ $t('about.title') }}
+                {{ t('about.title') }}
               </span>
             </h1>
           </div>
@@ -237,12 +237,12 @@ const speaking = {
             <tbody>
               <tr>
                 <td class="pr-5 text-gray-900 dark:text-gray-400">
-                  {{ $t('about.nationality') }}:
+                  {{ t('about.nationality') }}:
                 </td>
                 <td class="text-gray-900 dark:text-gray-400">Argentina</td>
               </tr>
               <tr>
-                <td class="pr-5 text-gray-900 dark:text-gray-400">{{ $t('about.birth') }}:</td>
+                <td class="pr-5 text-gray-900 dark:text-gray-400">{{ t('about.birth') }}:</td>
                 <td class="text-gray-900 dark:text-gray-400">
                   {{ getBirth() }}
                 </td>
@@ -258,20 +258,20 @@ const speaking = {
                 </td>
               </tr>
               <tr>
-                <td class="pr-5 text-gray-900 dark:text-gray-400">{{ $t('about.location') }}:</td>
+                <td class="pr-5 text-gray-900 dark:text-gray-400">{{ t('about.location') }}:</td>
                 <td class="text-gray-900 dark:text-gray-400">La Plata, Argentina</td>
               </tr>
             </tbody>
           </table>
-          <h2 class="text-xl font-bold opacity-75 dark:text-white">{{ $t('about.idioms') }}:</h2>
+          <h2 class="text-xl font-bold opacity-75 dark:text-white">{{ t('about.idioms') }}:</h2>
           <hr
             class="-mx-6 my-2 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-700 dark:bg-gray-700"
           />
           <table class="mb-4 text-gray-900 dark:text-gray-400">
             <tbody>
               <tr v-for="(value, key) in speaking" :key="key">
-                <td class="pr-5 text-gray-900 dark:text-gray-400">{{ $t('about.' + key) }}:</td>
-                <td class="text-gray-900 dark:text-gray-400">{{ $t('about.' + value) }}</td>
+                <td class="pr-5 text-gray-900 dark:text-gray-400">{{ t('about.' + key) }}:</td>
+                <td class="text-gray-900 dark:text-gray-400">{{ t('about.' + value) }}</td>
               </tr>
             </tbody>
           </table>
@@ -282,7 +282,7 @@ const speaking = {
               :href="_fileName"
               :download="_downloadName"
             >
-              {{ $t('about.download') }}
+              {{ t('about.download') }}
             </a>
           </div>
         </div>
@@ -293,46 +293,46 @@ const speaking = {
       <!-- Profile -->
       <section>
         <div class="ml-auto flex items-center text-2xl uppercase">
-          <h2 class="ml-auto text-teal-700 dark:text-white">{{ $t('profile.title') }}</h2>
+          <h2 class="ml-auto text-teal-700 dark:text-white">{{ t('profile.title') }}</h2>
           <ProfileIcon class="ml-2 w-12 text-teal-500 dark:text-green-500" />
         </div>
         <hr
           class="-mx-6 my-4 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-500 dark:bg-gray-300"
         />
-        <p class="mb-8 text-gray-900 dark:text-gray-400">{{ $t('profile.text') }}</p>
+        <p class="mb-8 text-gray-900 dark:text-gray-400">{{ t('profile.text') }}</p>
       </section>
       <!-- End: Profile -->
 
       <!-- Skills -->
       <section>
         <div class="ml-auto flex items-center text-2xl uppercase">
-          <h2 class="ml-auto text-teal-700 dark:text-white">{{ $t('skills.title') }}</h2>
+          <h2 class="ml-auto text-teal-700 dark:text-white">{{ t('skills.title') }}</h2>
           <CodeIcon class="-mb-1 ml-2 w-12 text-teal-500 dark:text-green-500" />
         </div>
         <hr
           class="-mx-6 my-4 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-500 dark:bg-gray-300"
         />
-        <p class="mb-8 text-gray-900 dark:text-gray-400">{{ $t('skills.text') }}</p>
+        <p class="mb-8 text-gray-900 dark:text-gray-400">{{ t('skills.text') }}</p>
         <div class="mb-10 grid gap-6 sm:grid-cols-2">
           <BarList
             class="col-span-1"
-            :title="$t('skills.subtitle1')"
+            :title="t('skills.subtitle1')"
             color="light"
             :values="languages"
           />
           <BarList
             class="col-span-1 print:pb-5"
-            :title="$t('skills.subtitle2')"
+            :title="t('skills.subtitle2')"
             color="light"
             :values="libs"
           />
           <BarList
             class="col-span-1"
-            :title="$t('skills.subtitle3')"
+            :title="t('skills.subtitle3')"
             color="dark"
             :values="other"
           />
-          <BarList class="col-span-1" :title="$t('skills.subtitle4')" color="dark" :values="ops" />
+          <BarList class="col-span-1" :title="t('skills.subtitle4')" color="dark" :values="ops" />
         </div>
       </section>
       <!-- End: Skills -->
@@ -340,7 +340,7 @@ const speaking = {
       <!-- Experiences -->
       <section class="print:pb-10">
         <div class="ml-auto flex items-center text-2xl uppercase">
-          <h2 class="ml-auto text-teal-700 dark:text-white">{{ $t('experience.title') }}</h2>
+          <h2 class="ml-auto text-teal-700 dark:text-white">{{ t('experience.title') }}</h2>
           <CaseIcon class="ml-2 w-12 text-teal-500 dark:text-green-500" />
         </div>
         <hr
@@ -348,7 +348,7 @@ const speaking = {
         />
         <span class="text-sm dark:text-gray-400">2021</span>
         <h3 class="text-2xl font-bold opacity-75 dark:text-white dark:opacity-100">
-          {{ $t('experience.exp4.title') }}
+          {{ t('experience.exp4.title') }}
         </h3>
         <a
           class="dark-hover:text-teal-400 font-semibold hover:text-teal-400 dark:text-green-500"
@@ -359,11 +359,11 @@ const speaking = {
           https://joinairbank.com
         </a>
         <p class="mb-8 text-gray-400 text-gray-900 text-opacity-75 dark:text-gray-400">
-          {{ $t('experience.exp4.text') }}
+          {{ t('experience.exp4.text') }}
         </p>
         <span class="text-sm dark:text-gray-400">2020</span>
         <h3 class="text-2xl font-bold opacity-75 dark:text-white dark:opacity-100">
-          {{ $t('experience.exp3.title') }}
+          {{ t('experience.exp3.title') }}
         </h3>
         <a
           class="dark-hover:text-teal-400 font-semibold hover:text-teal-400 dark:text-green-500"
@@ -374,7 +374,7 @@ const speaking = {
           https://matera.com
         </a>
         <p class="mb-8 text-gray-400 text-gray-900 text-opacity-75 dark:text-gray-400">
-          {{ $t('experience.exp3.text') }}
+          {{ t('experience.exp3.text') }}
           <a
             class="dark-hover:text-teal-400 hover:text-teal-400 dark:text-green-500"
             href="https://www.npmjs.com/package/nuxt-image-extractor"
@@ -386,7 +386,7 @@ const speaking = {
         </p>
         <span class="text-sm dark:text-gray-400">2019</span>
         <h3 class="text-2xl font-bold opacity-75 dark:text-white dark:opacity-100">
-          {{ $t('experience.exp2.title') }}
+          {{ t('experience.exp2.title') }}
         </h3>
         <a
           class="dark-hover:text-teal-400 font-semibold hover:text-teal-400 dark:text-green-500"
@@ -397,11 +397,11 @@ const speaking = {
           https://paranabanco.com.br
         </a>
         <p class="mb-8 text-gray-900 text-opacity-75 dark:text-gray-400">
-          {{ $t('experience.exp2.text') }}
+          {{ t('experience.exp2.text') }}
         </p>
         <span class="text-sm dark:text-gray-400">2019</span>
         <h3 class="text-2xl font-bold opacity-75 dark:text-white dark:opacity-100">
-          {{ $t('experience.exp1.title') }}
+          {{ t('experience.exp1.title') }}
         </h3>
         <a
           class="dark-hover:text-teal-400 font-semibold hover:text-teal-400 dark:text-green-500"
@@ -412,7 +412,7 @@ const speaking = {
           https://ctrl365.com.br
         </a>
         <p class="mb-8 text-gray-900 text-opacity-75 dark:text-gray-400 print:pb-16">
-          {{ $t('experience.exp1.text1') }}
+          {{ t('experience.exp1.text1') }}
           <a
             class="dark-hover:text-teal-400 hover:text-teal-400 dark:text-green-500"
             rel="noopener nofollow"
@@ -428,7 +428,7 @@ const speaking = {
           >
             Consul
           </a>
-          {{ $t('experience.exp1.text2') }}
+          {{ t('experience.exp1.text2') }}
           <a
             class="dark-hover:text-teal-400 hover:text-teal-400 dark:text-green-500"
             rel="noopener nofollow"
@@ -437,7 +437,7 @@ const speaking = {
           >
             Nestle
           </a>
-          {{ $t('experience.exp1.text3') }}
+          {{ t('experience.exp1.text3') }}
           <a
             class="dark-hover:text-teal-400 hover:text-teal-400 dark:text-green-500"
             href="https://intranet-vue.now.sh"
@@ -445,7 +445,7 @@ const speaking = {
             rel="noopener nofollow"
             >intranet</a
           >
-          {{ $t('experience.exp1.text4') }}
+          {{ t('experience.exp1.text4') }}
         </p>
       </section>
       <!-- End: Experiences -->
@@ -539,7 +539,7 @@ const speaking = {
 
       <!-- Score -->
       <div class="ml-auto flex items-center text-2xl uppercase">
-        <h2 class="ml-auto text-teal-700 dark:text-white">{{ $t('score.title') }}</h2>
+        <h2 class="ml-auto text-teal-700 dark:text-white">{{ t('score.title') }}</h2>
         <InfoIcon class="ml-2 w-12 text-teal-500 dark:text-green-500" />
       </div>
       <hr
@@ -547,42 +547,42 @@ const speaking = {
       />
       <section>
         <p class="text-gray-900 dark:text-gray-400">
-          {{ $t('score.text1') }}
+          {{ t('score.text1') }}
           <a
             class="dark-hover:text-teal-400 hover:text-teal-400 dark:text-green-500"
             href="https://github.com/d1urno/profile"
             target="_blank"
             rel="noopener nofollow"
-            >{{ $t('score.text2') }}</a
-          >{{ $t('score.text3') }}<br /><br />
-          {{ $t('score.text4') }}
+            >{{ t('score.text2') }}</a
+          >{{ t('score.text3') }}<br /><br />
+          {{ t('score.text4') }}
           <br /><br />
         </p>
         <picture>
           <source
-            srcset="src/assets/img/score_w_248.webp 1x, src/assets/img/score_w_248@3x.webp 3x"
+            srcset="/src/assets/img/score_w_248.webp 1x, /src/assets/img/score_w_248@3x.webp 3x"
             type="image/webp"
             media="(max-width: 360px)"
           />
           <source
-            srcset="src/assets/img/score_w_248.jpg 1x, src/assets/img/score_w_248@3x.jpg 3x"
+            srcset="/src/assets/img/score_w_248.jpg 1x, /src/assets/img/score_w_248@3x.jpg 3x"
             type="image/jpg"
             media="(max-width: 360px)"
           />
 
           <source
-            srcset="src/assets/img/score_w_598.webp 1x, src/assets/img/score_w_598@3x.webp 3x"
+            srcset="/src/assets/img/score_w_598.webp 1x, /src/assets/img/score_w_598@3x.webp 3x"
             type="image/webp"
           />
           <source
-            srcset="src/assets/img/score_w_598.jpg 1x, src/assets/img/score_w_598@3x.jpg 3x"
+            srcset="/src/assets/img/score_w_598.jpg 1x, /src/assets/img/score_w_598@3x.jpg 3x"
             type="image/jpg"
           />
 
           <img
             class="mx-auto"
-            src="src/assets/img/score_w_598.jpg"
-            srcset="src/assets/img/score_w_598.jpg 1x, src/assets/img/score_w_598@3x.jpg 3x"
+            src="/src/assets/img/score_w_598.jpg"
+            srcset="/src/assets/img/score_w_598.jpg 1x, /src/assets/img/score_w_598@3x.jpg 3x"
             alt="Lighthouse 6.0 score 100"
             loading="lazy"
           />
