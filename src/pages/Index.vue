@@ -86,7 +86,7 @@ const languages = {
 }
 
 const libs = {
-  'Vue 3 (composition API)': 9,
+  'Vue 3 (composition API)': 10,
   TailwindCSS: 10,
   FaunaDB: 9,
   GraphQL: 10,
@@ -111,10 +111,10 @@ const ops = {
 }
 
 const other = {
-  Vite: 9,
-  JAMStack: 8,
+  'GPT-API': 9,
+  Mapbox: 9,
+  Monorepo: 8,
   'Drupal (Headless)': 10,
-  GitHub: 9,
   Rollup: 7,
   Docker: 7,
   Parcel: 5,
@@ -338,6 +338,21 @@ const speaking = {
         <hr
           class="-mx-6 my-4 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-500 dark:bg-gray-300"
         />
+        <span class="text-sm dark:text-gray-400">2022 - 2023</span>
+        <h3 class="text-2xl font-bold opacity-75 dark:text-white dark:opacity-100">
+          {{ t('experience.exp5.title') }}
+        </h3>
+        <a
+          class="dark-hover:text-teal-400 font-semibold hover:text-teal-400 dark:text-green-500"
+          rel="noopener nofollow"
+          href="https://trooptravel.com"
+          target="_blank"
+        >
+          https://trooptravel.com
+        </a>
+        <p class="mb-8 text-gray-900 text-opacity-75 dark:text-gray-400">
+          {{ t('experience.exp4.text') }}
+        </p>
         <span class="text-sm dark:text-gray-400">2021</span>
         <h3 class="text-2xl font-bold opacity-75 dark:text-white dark:opacity-100">
           {{ t('experience.exp4.title') }}

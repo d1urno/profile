@@ -22,7 +22,7 @@
   },
   "profile": {
     "title": "Perfil",
-    "text": "Morando em São Paulo desde janeiro de 2019, apaixonado por design, programação, lógica e novos desafios. Baseado no aprendizado contínuo e autodidata de novas tecnologias para melhor alcançar meus objetivos. Criei aplicativos desde a adolescência, passando de plug-ins para jogos em Java até ferramentas financeiras. Atualmente, estou focando em APIs e aplicativos web de grande escala, envolvendo TypeScript, Vue3/Nuxt, TailwindCSS, Graphql e arquiteturas serverless como stack principal."
+    "text": "Morando em Cidade do Cabo desde Maio de 2023, apaixonado por design, programação, lógica e novos desafios. Baseado no aprendizado contínuo e autodidata de novas tecnologias para melhor alcançar meus objetivos. Criei aplicativos desde a adolescência, passando de plug-ins para jogos em Java até ferramentas financeiras. Atualmente, estou focando em APIs e aplicativos web de grande escala, envolvendo TypeScript, Vue3/Nuxt, TailwindCSS, Graphql e arquiteturas serverless como stack principal."
   },
   "skills": {
     "title": "Habilidades técnicas",
@@ -34,6 +34,10 @@
   },
   "experience": {
     "title": "Experiências recentes",
+    "exp5": {
+      "title": "Web app - Troop Travel",
+      "text": "Desenvolvedor frontend tech lead de tempo completo, arquiteto do aplicativo usando Apollo Graphql, Mapbox e TypeScript, Vue 3 composition API (arquitetura monorepo), TailwindCSS e Vite."
+    },
     "exp4": {
       "title": "Web app - Airbank",
       "text": "Desenvolvedor tech lead de tempo completo, arquiteto do aplicativo usando Apollo Server modular, FaunaDB, API Open Banking, Rollup e TypeScript no backend. E Vue 3 composition API (arquitetura modular), TypeScript, Apollo Client como sistema de gerenciamento de estado, TailwindCSS e Vite ."
