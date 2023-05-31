@@ -11,7 +11,6 @@ import CodeIcon from '@/assets/svg/code.svg?component'
 import ComputerIcon from '@/assets/svg/computer.svg?component'
 import InfoIcon from '@/assets/svg/info.svg?component'
 import CaseIcon from '@/assets/svg/case.svg?component'
-import ValueBar from '@/components/ValueBar.vue'
 import BarList from '@/components/BarList.vue'
 
 const { t, locale, availableLocales } = useI18n()
@@ -236,9 +235,7 @@ const speaking = {
           <table class="mb-6 lg:mb-12">
             <tbody>
               <tr>
-                <td class="pr-5 text-gray-900 dark:text-gray-400">
-                  {{ t('about.nationality') }}:
-                </td>
+                <td class="pr-5 text-gray-900 dark:text-gray-400">{{ t('about.nationality') }}:</td>
                 <td class="text-gray-900 dark:text-gray-400">Argentina</td>
               </tr>
               <tr>
@@ -326,12 +323,7 @@ const speaking = {
             color="light"
             :values="libs"
           />
-          <BarList
-            class="col-span-1"
-            :title="t('skills.subtitle3')"
-            color="dark"
-            :values="other"
-          />
+          <BarList class="col-span-1" :title="t('skills.subtitle3')" color="dark" :values="other" />
           <BarList class="col-span-1" :title="t('skills.subtitle4')" color="dark" :values="ops" />
         </div>
       </section>
@@ -358,7 +350,7 @@ const speaking = {
         >
           https://joinairbank.com
         </a>
-        <p class="mb-8 text-gray-400 text-gray-900 text-opacity-75 dark:text-gray-400">
+        <p class="mb-8 text-gray-900 text-opacity-75 dark:text-gray-400">
           {{ t('experience.exp4.text') }}
         </p>
         <span class="text-sm dark:text-gray-400">2020</span>
@@ -373,7 +365,7 @@ const speaking = {
         >
           https://matera.com
         </a>
-        <p class="mb-8 text-gray-400 text-gray-900 text-opacity-75 dark:text-gray-400">
+        <p class="mb-8 text-gray-900 text-opacity-75 dark:text-gray-400">
           {{ t('experience.exp3.text') }}
           <a
             class="dark-hover:text-teal-400 hover:text-teal-400 dark:text-green-500"
