@@ -351,7 +351,7 @@ const speaking = {
           https://trooptravel.com
         </a>
         <p class="mb-8 text-gray-900 text-opacity-75 dark:text-gray-400">
-          {{ t('experience.exp4.text') }}
+          {{ t('experience.exp5.text') }}
         </p>
         <span class="text-sm dark:text-gray-400">2021</span>
         <h3 class="text-2xl font-bold opacity-75 dark:text-white dark:opacity-100">
