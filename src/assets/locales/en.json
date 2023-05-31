@@ -62,7 +62,7 @@
     "title": "Notes",
     "text1": "You can inspect the ",
     "text2": "source code",
-    "text3": ", of this page, it was made using Vue, TailwindCSS, i18n and Parcel.",
+    "text3": ", of this page, it was made using Vue, TailwindCSS and i18n.",
     "text4": "Lighthouse 6.0 desktop score:"
   }
 }

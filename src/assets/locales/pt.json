@@ -62,7 +62,7 @@
     "title": "Notas",
     "text1": "Pode revisar o ",
     "text2": "código fonte",
-    "text3": ", desta página, foi desenvolvida utilizando Vue, TailwindCSS, i18n e Parcel.",
+    "text3": ", desta página, foi desenvolvida utilizando Vue, TailwindCSS e i18n.",
     "text4": "Puntuação desktop Lighthouse 6.0:"
   }
 }
