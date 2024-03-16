@@ -5,22 +5,22 @@ import InfoIcon from '@/assets/svg/info.svg?component'
 <template>
   <section>
     <div class="ml-auto flex items-center text-2xl uppercase">
-      <h2 class="ml-auto text-teal-700 dark:text-white">{{ $t('score.title') }}</h2>
+      <h2 class="ml-auto text-teal-700 dark:text-white">{{ $t('ScoreSection.title') }}</h2>
       <InfoIcon class="ml-2 w-12 text-teal-500 dark:text-green-500" />
     </div>
     <hr
       class="-mx-6 my-4 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-500 dark:bg-gray-300"
     />
     <p class="text-gray-900 dark:text-gray-400">
-      {{ $t('score.text1') }}
+      {{ $t('ScoreSection.text1') }}
       <a
         class="dark:hover:text-teal-400 hover:text-teal-400 dark:text-green-500"
         href="https://github.com/d1urno/profile"
         target="_blank"
         rel="noopener nofollow"
-        >{{ $t('score.text2') }}</a
-      >{{ $t('score.text3') }}<br /><br />
-      {{ $t('score.text4') }}
+        >{{ $t('ScoreSection.text2') }}</a
+      >{{ $t('ScoreSection.text3') }}<br /><br />
+      {{ $t('ScoreSection.text4') }}
       <br /><br />
     </p>
     <picture>

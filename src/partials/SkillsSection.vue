@@ -56,28 +56,38 @@ const OTHER = {
 <template>
   <section>
     <div class="ml-auto flex items-center text-2xl uppercase">
-      <h2 class="ml-auto text-teal-700 dark:text-white">{{ $t('skills.title') }}</h2>
+      <h2 class="ml-auto text-teal-700 dark:text-white">{{ $t('SkillsSection.title') }}</h2>
       <CodeIcon class="-mb-1 ml-2 w-12 text-teal-500 dark:text-green-500" />
     </div>
     <hr
       class="-mx-6 my-4 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-500 dark:bg-gray-300"
     />
-    <p class="mb-8 text-gray-900 dark:text-gray-400">{{ $t('skills.text') }}</p>
+    <p class="mb-8 text-gray-900 dark:text-gray-400">{{ $t('SkillsSection.text') }}</p>
     <div class="mb-10 grid gap-6 sm:grid-cols-2">
       <BarList
         class="col-span-1"
-        :title="$t('skills.subtitle1')"
+        :title="$t('SkillsSection.subtitle1')"
         color="light"
         :values="LANGUAGES"
       />
       <BarList
         class="col-span-1 print:pb-5"
-        :title="$t('skills.subtitle2')"
+        :title="$t('SkillsSection.subtitle2')"
         color="light"
         :values="LIBS"
       />
-      <BarList class="col-span-1" :title="$t('skills.subtitle3')" color="dark" :values="OTHER" />
-      <BarList class="col-span-1" :title="$t('skills.subtitle4')" color="dark" :values="OPS" />
+      <BarList
+        class="col-span-1"
+        :title="$t('SkillsSection.subtitle3')"
+        color="dark"
+        :values="OTHER"
+      />
+      <BarList
+        class="col-span-1"
+        :title="$t('SkillsSection.subtitle4')"
+        color="dark"
+        :values="OPS"
+      />
     </div>
   </section>
 </template>

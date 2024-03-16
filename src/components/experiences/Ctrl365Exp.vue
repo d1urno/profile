@@ -2,7 +2,7 @@
 
 <template>
   <p>
-    {{ $t('experience.exp1.text1') }}
+    {{ $t('ExperiencesSection.ctrl365.text1') }}
     <a
       class="dark:hover:text-teal-400 hover:text-teal-400 dark:text-green-500"
       rel="noopener nofollow"
@@ -18,7 +18,7 @@
     >
       Consul
     </a>
-    {{ $t('experience.exp1.text2') }}
+    {{ $t('ExperiencesSection.ctrl365.text2') }}
     <a
       class="dark:hover:text-teal-400 hover:text-teal-400 dark:text-green-500"
       rel="noopener nofollow"
@@ -27,7 +27,7 @@
     >
       Nestle
     </a>
-    {{ $t('experience.exp1.text3') }}
+    {{ $t('ExperiencesSection.ctrl365.text3') }}
     <a
       class="dark:hover:text-teal-400 hover:text-teal-400 dark:text-green-500"
       href="https://intranet-vue.now.sh"
@@ -35,6 +35,6 @@
       rel="noopener nofollow"
       >intranet</a
     >
-    {{ $t('experience.exp1.text4') }}
+    {{ $t('ExperiencesSection.ctrl365.text4') }}
   </p>
 </template>

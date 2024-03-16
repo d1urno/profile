@@ -2,6 +2,6 @@
 
 <template>
   <p>
-    {{ $t('experience.exp5.text') }}
+    {{ $t('ExperiencesSection.troop.text') }}
   </p>
 </template>

@@ -4,7 +4,7 @@
   "pt": "Português",
   "title": "Desarrollador Fullstack Senior",
   "description": "Curriculum de un desarrollador fullstack con +10 años de experiencia buscando por nuevas oportunidades de trabajo remoto.",
-  "about": {
+  "SideSection": {
     "title": "Desarrollador Fullstack Senior",
     "nationality": "Nacionalidad",
     "birth": "Nacimiento",
@@ -18,13 +18,15 @@
     "fluent": "Fluente",
     "beginner": "Principiante",
     "download": "Descargar PDF",
-    "link": "Pablo_Miceli_-_Fullstack_Senior_Developer_(Español)"
+    "link": "Pablo_Miceli_-_Fullstack_Senior_Developer_(Español)",
+    "switchColors": "Cambiar colores",
+    "facePicture": "Foto de perfil"
   },
-  "profile": {
+  "ProfileSection": {
     "title": "Perfil",
     "text": "Viviendo en Ciudad del Cabo desde Mayo de 2023, apasionado por diseño, programación, lógica y nuevos desafíos. Basado en el aprendizaje continuo y autodidacta de nuevas tecnologías para lograr mejor mis objetivos. Comencé a crear aplicaciones desde adolescente, pasando de plugins para juegos en Java hasta herramientas financieras. Actualmente estoy centrado en APIs y aplicaciones web de larga escala utilizando TypeScript, Vue3/Nuxt, TailwindCSS, Graphql y arquitecturas serverless como stack principal."
   },
-  "skills": {
+  "SkillsSection": {
     "title": "Habilidades Técnicas",
     "subtitle1": "Lenguajes",
     "subtitle2": "Librerías/Frameworks",
@@ -32,25 +34,25 @@
     "subtitle4": "Infraestructura",
     "text": "Ordenadas de arriba a abajo, habilidades con las que estaría mas dispuesto a trabajar. La extensión horizontal de cada barra representa el conocimiento/experiencia que tengo al respecto."
   },
-  "experience": {
+  "ExperiencesSection": {
     "title": "Experiencias recientes",
-    "exp5": {
+    "troop": {
       "title": "Web app - Troop Travel",
       "text": "Desarrollador frontend tech lead de tiempo completo, arquitecto de la aplicación usando Apollo Graphql, Mapbox y TypeScript, Vue 3 composition API (arquitectura monorepo), TailwindCSS y Vite."
     },
-    "exp4": {
+    "airbank": {
       "title": "Web app - Airbank",
       "text": "Desarrollador tech lead de tiempo completo, arquitecto de la aplicación usando Apollo Server modular, FaunaDB, Open Banking API, Rollup y TypeScript en backend. Y Vue 3 composition API (arquitectura modular), TypeScript, Apollo Client como sistema de gerenciamiento de estados, TailwindCSS, y Vite."
     },
-    "exp3": {
+    "matera": {
       "title": "Website Institucional - Matera Fintech",
       "text": "Desarrollador tech lead, revisión de código, dedicado tanto en backend como en frontend usando Drupal Headless y API GraphQL. Frontend usando NuxtJS con Vuex, i18n para internacionalización, TailwindCSS, con una configuración de generación estatica (JAMStack) y mi propio módulo open-source"
     },
-    "exp2": {
+    "parana": {
       "title": "Website Institucional - Paraná Banco",
       "text": "Desarrollador líder del proyecto, dedicado en backend usando Drupal Headless para contenido siendo servido a traves de GraphQL y tareas DevOps como CI/CD en cooperación con el equipo de desarrolladores del Banco. Colaboré en frontend con mi equipo usando React y Apollo Client."
     },
-    "exp1": {
+    "ctrl365": {
       "title": "Desarrollador Fullstack - Ctrl365",
       "text1": "Durante este período, fui responsable por diferentes tareas, como crear landing pages responsivas para marcas como",
       "text2": "o",
@@ -58,7 +60,7 @@
       "text4": "con inicio de sesión y notificaciones, hice trabajos de API y administración de bases de datos. Realicé algunas entrevistas de trabajo con candidatos para hacer crecer nuestro equipo, entre otras tareas de gestión de equipo."
     }
   },
-  "score": {
+  "ScoreSection": {
     "title": "Notas",
     "text1": "Puede revisar el ",
     "text2": "código fuente",

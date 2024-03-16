@@ -22,12 +22,12 @@ const SPEAKING = {
 const filteredAvailableLocales = computed(() => availableLocales.filter((i) => i !== locale.value))
 
 const fileName = computed(() => {
-  return t('about.link') + '.pdf'
+  return t('SideSection.link') + '.pdf'
 })
 
 const downloadName = computed(() => {
   return (
-    t('about.link') +
+    t('SideSection.link') +
     '_' +
     new Date().toLocaleString(locale.value, {
       year: 'numeric',
@@ -71,7 +71,7 @@ onMounted(() => {
       <button
         type="button"
         class="focus-visible:shadow-outline w-5 transform hover:scale-125 focus:outline-none print:hidden"
-        aria-label="Switch colors"
+        :aria-label="$t('SideSection.switchColors')"
         @click="toggleDarkMode"
       >
         <MoonIcon v-if="!isDark" class="fill-current text-teal-800 hover:text-teal-400" />
@@ -114,7 +114,7 @@ onMounted(() => {
             class="c-size mx-auto mb-3 box-content rounded border-2 shadow-md"
             src="/src/assets/img/pic_w_320.jpg"
             srcset="/src/assets/img/pic_w_320.jpg 1x, /src/assets/img/pic_w_320@3x.jpg 3x"
-            alt="Face picture"
+            :alt="$t('SideSection.facePicture')"
           />
         </picture>
         <div class="my-6 px-6 text-center print:my-2 sm:text-left">
@@ -122,7 +122,7 @@ onMounted(() => {
             <span class="inline-block text-4xl font-bold dark:text-white">Pablo Miceli</span>
             <br />
             <span class="inline-block text-xl text-gray-900 dark:text-gray-500">
-              {{ $t('about.title') }}
+              {{ $t('SideSection.title') }}
             </span>
           </h1>
         </div>
@@ -169,11 +169,13 @@ onMounted(() => {
         <table class="mb-6 lg:mb-12">
           <tbody>
             <tr>
-              <td class="pr-5 text-gray-900 dark:text-gray-400">{{ $t('about.nationality') }}:</td>
+              <td class="pr-5 text-gray-900 dark:text-gray-400">
+                {{ $t('SideSection.nationality') }}:
+              </td>
               <td class="text-gray-900 dark:text-gray-400">Argentina</td>
             </tr>
             <tr>
-              <td class="pr-5 text-gray-900 dark:text-gray-400">{{ $t('about.birth') }}:</td>
+              <td class="pr-5 text-gray-900 dark:text-gray-400">{{ $t('SideSection.birth') }}:</td>
               <td class="text-gray-900 dark:text-gray-400">
                 {{ getBirth() }}
               </td>
@@ -190,20 +192,24 @@ onMounted(() => {
               </td>
             </tr>
             <tr>
-              <td class="pr-5 text-gray-900 dark:text-gray-400">{{ $t('about.location') }}:</td>
+              <td class="pr-5 text-gray-900 dark:text-gray-400">
+                {{ $t('SideSection.location') }}:
+              </td>
               <td class="text-gray-900 dark:text-gray-400">Cape Town, South Africa</td>
             </tr>
           </tbody>
         </table>
-        <h2 class="text-xl font-bold opacity-75 dark:text-white">{{ $t('about.idioms') }}:</h2>
+        <h2 class="text-xl font-bold opacity-75 dark:text-white">
+          {{ $t('SideSection.idioms') }}:
+        </h2>
         <hr
           class="-mx-6 my-2 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-700 dark:bg-gray-700"
         />
         <table class="mb-4 text-gray-900 dark:text-gray-400">
           <tbody>
             <tr v-for="(value, key) in SPEAKING" :key="key">
-              <td class="pr-5 text-gray-900 dark:text-gray-400">{{ $t('about.' + key) }}:</td>
-              <td class="text-gray-900 dark:text-gray-400">{{ $t('about.' + value) }}</td>
+              <td class="pr-5 text-gray-900 dark:text-gray-400">{{ $t('SideSection.' + key) }}:</td>
+              <td class="text-gray-900 dark:text-gray-400">{{ $t('SideSection.' + value) }}</td>
             </tr>
           </tbody>
         </table>
@@ -214,7 +220,7 @@ onMounted(() => {
             :href="fileName"
             :download="downloadName"
           >
-            {{ $t('about.download') }}
+            {{ $t('SideSection.download') }}
           </a>
         </div>
       </div>

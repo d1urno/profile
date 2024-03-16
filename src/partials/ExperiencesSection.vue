@@ -12,31 +12,31 @@ const { t } = useI18n()
 const experiences = computed<Experience[]>(() => [
   {
     period: '2022 - 2024',
-    title: t('experience.exp5.title'),
+    title: t('ExperiencesSection.troop.title'),
     link: 'https://trooptravel.com',
     component: TroopExp
   },
   {
     period: '2021',
-    title: t('experience.exp4.title'),
+    title: t('ExperiencesSection.airbank.title'),
     link: 'https://techcrunch.com/2021/06/22/airbank-centralizes-all-your-business-bank-accounts-and-financial-data/',
-    component: defineComponent({ setup: () => () => t('experience.exp4.text') })
+    component: defineComponent({ setup: () => () => t('ExperiencesSection.airbank.text') })
   },
   {
     period: '2020',
-    title: t('experience.exp3.title'),
+    title: t('ExperiencesSection.matera.title'),
     link: 'https://matera.com',
     component: MateraExp
   },
   {
     period: '2019',
-    title: t('experience.exp2.title'),
+    title: t('ExperiencesSection.parana.title'),
     link: 'https://paranabanco.com.br',
-    component: defineComponent({ setup: () => () => t('experience.exp2.text') })
+    component: defineComponent({ setup: () => () => t('ExperiencesSection.parana.text') })
   },
   {
     period: '2019',
-    title: t('experience.exp1.title'),
+    title: t('ExperiencesSection.ctrl365.title'),
     link: 'https://ctrl365.com.br',
     component: Ctrl365Exp
   }
@@ -46,7 +46,7 @@ const experiences = computed<Experience[]>(() => [
 <template>
   <section class="print:pb-10">
     <div class="ml-auto flex items-center text-2xl uppercase">
-      <h2 class="ml-auto text-teal-700 dark:text-white">{{ $t('experience.title') }}</h2>
+      <h2 class="ml-auto text-teal-700 dark:text-white">{{ $t('ExperiencesSection.title') }}</h2>
       <CaseIcon class="ml-2 w-12 text-teal-500 dark:text-green-500" />
     </div>
     <hr
