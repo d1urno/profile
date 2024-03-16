@@ -1,0 +1,34 @@
+<script setup lang="ts">
+import type { Component } from 'vue'
+
+export interface Experience {
+  period: string
+  title: string
+  link: string
+  component: Component
+}
+
+defineProps<{
+  experience: Experience
+}>()
+</script>
+
+<template>
+  <article>
+    <span class="text-sm dark:text-gray-400">{{ experience.period }}</span>
+    <h3 class="text-2xl font-bold opacity-75 dark:text-white dark:opacity-100">
+      {{ experience.title }}
+    </h3>
+    <a
+      class="font-semibold hover:text-teal-400 dark:text-green-500 dark:hover:text-teal-400"
+      rel="noopener nofollow"
+      :href="experience.link"
+      target="_blank"
+    >
+      {{ experience.link }}
+    </a>
+    <section class="mb-8 text-gray-900 text-opacity-75 dark:text-gray-400">
+      <slot />
+    </section>
+  </article>
+</template>

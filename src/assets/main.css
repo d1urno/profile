@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  font-size: 14px;
+  min-width: 320px;
+  @screen lg {
+    font-size: 16px;
+  }
+}
+
+a {
+  @apply text-teal-700 underline;
+}
+
+svg {
+  transition: fill 0.3s;
+}
+
+* {
+  @apply transition duration-300;
+}
+
+@media print {
+  @page {
+    size: 210mm 297mm;
+    margin: 0;
+  }
+}

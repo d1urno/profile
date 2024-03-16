@@ -57,5 +57,3 @@ onMounted(() => {
     Sorry, your browser does not support inline SVG.
   </svg>
 </template>
-
-<style scoped></style>

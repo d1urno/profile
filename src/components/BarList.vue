@@ -40,5 +40,3 @@ function onTransitionStart(index: number) {
     />
   </div>
 </template>
-
-<style scoped></style>
