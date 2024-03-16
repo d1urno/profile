@@ -4,37 +4,35 @@ import BarList from '@/components/BarList.vue'
 
 const LANGUAGES = {
   TypeScript: 9,
-  JavaScript: 10,
-  Go: 5,
+  GraphQL: 10,
+  Go: 4,
   FQL: 9,
-  Kotlin: 3,
   Java: 8,
   HTML5: 10,
   CSS3: 9,
-  PHP: 8,
+  PHP: 7,
   SCSS: 7,
-  SQL: 6
+  SQL: 5
 }
 
 const LIBS = {
-  'Vue 3 (composition API)': 10,
+  'Vue 3': 10,
   TailwindCSS: 10,
+  'Apollo Client and Server': 9,
   FaunaDB: 9,
-  GraphQL: 10,
-  Apollo: 8,
+  Pinia: 10,
   NuxtJS: 10,
   ExpressJS: 8,
   Laravel: 7,
   'Android SDK': 5,
-  React: 4,
-  Bootstrap: 8
+  React: 3
 }
 
 const OPS = {
   Netlify: 9,
   Vercel: 8,
-  GitFlow: 10,
-  'CI/CD': 6,
+  Cloudflare: 6,
+  'CI/CD': 5,
   GCP: 7,
   AWS: 3,
   'Digital Ocean': 7,
@@ -42,7 +40,7 @@ const OPS = {
 }
 
 const OTHER = {
-  'GPT-API': 9,
+  'GPT-Api': 8,
   Mapbox: 9,
   Monorepo: 8,
   'Drupal (Headless)': 10,
