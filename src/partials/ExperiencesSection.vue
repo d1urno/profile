@@ -6,10 +6,17 @@ import ExperienceItem, { type Experience } from '@/components/ExperienceItem.vue
 import TroopExp from '@/components/experiences/TroopExp.vue'
 import MateraExp from '@/components/experiences/MateraExp.vue'
 import Ctrl365Exp from '@/components/experiences/Ctrl365Exp.vue'
+import PlottyExp from '@/components/experiences/PlottyExp.vue'
 
 const { t } = useI18n()
 
 const experiences = computed<Experience[]>(() => [
+  {
+    period: '2024',
+    title: t('ExperiencesSection.plotty.title'),
+    link: 'https://plotty-ai.netlify.app',
+    component: PlottyExp
+  },
   {
     period: '2022 - 2024',
     title: t('ExperiencesSection.troop.title'),

@@ -36,6 +36,10 @@
   },
   "ExperiencesSection": {
     "title": "Experiências recentes",
+    "plotty": {
+      "title": "SaaS - Plotty",
+      "text": "Projeto pessoal em andamento, a arquitetura do aplicativo usa Vue 3, Apollo Graphql, TypeScript, TailwindCSS, GPT-Api e Vite."
+    },
     "troop": {
       "title": "Web app - Troop Travel",
       "text": "Desenvolvedor frontend tech lead de tempo completo, arquiteto do aplicativo usando Apollo Graphql, Mapbox e TypeScript, Vue 3 composition API (arquitetura monorepo), TailwindCSS e Vite."

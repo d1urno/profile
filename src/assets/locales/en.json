@@ -36,12 +36,16 @@
   },
   "ExperiencesSection": {
     "title": "Recent experiences",
+    "plotty": {
+      "title": "SaaS - Plotty",
+      "text": "Personal ongoing project, app architecture uses Vue 3, Apollo Graphql, TypeScript, TailwindCSS, GPT-Api and Vite."
+    },
     "troop": {
-      "title": "Web app - Troop Travel",
+      "title": "SaaS - Troop Travel",
       "text": "Full time front-end lead developer, app architect using Apollo Graphql, Mapbox and TypeScript, Vue 3 composition API (monorepo architecture), TailwindCSS, and Vite."
     },
     "airbank": {
-      "title": "Web app - Airbank",
+      "title": "SaaS - Airbank",
       "text": "Full time tech lead developer, app architect using modular Apollo Server, FaunaDB, Open Banking API, Rollup and TypeScript on backend. And Vue 3 composition API (modular architecture), TypeScript, Apollo Client as local management system, TailwindCSS, and Vite."
     },
     "matera": {
