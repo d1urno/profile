@@ -4,10 +4,12 @@ import type { UserPlugin } from '@/main'
 // Import i18n resources
 // https://vitejs.dev/guide/features.html#glob-import
 const messages = Object.fromEntries(
-  Object.entries(import.meta.globEager('@/assets/locales/*.json')).map(([key, value]) => {
-    const json = key.endsWith('.json')
-    return [key.slice(20, json ? -5 : -4), (value as Record<string, string>).default]
-  })
+  Object.entries(import.meta.glob('@/assets/locales/*.json', { eager: true })).map(
+    ([key, value]) => {
+      const json = key.endsWith('.json')
+      return [key.slice(20, json ? -5 : -4), (value as Record<string, string>).default]
+    }
+  )
 )
 
 const getBrowserLocale = (options = {}) => {

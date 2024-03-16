@@ -21,7 +21,7 @@ const router = createRouter({
   routes: setupLayouts(routes)
 })
 
-Object.values(import.meta.globEager('./plugins/*.ts')).map((i) =>
+Object.values(import.meta.glob('./plugins/*.ts', { eager: true })).map((i) =>
   (i as { install?: UserPlugin }).install?.({ app, router })
 )
 
