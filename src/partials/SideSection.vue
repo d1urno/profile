@@ -6,10 +6,11 @@ import SunIcon from '@/assets/svg/sun.svg?component'
 import GithubIcon from '@/assets/svg/github.svg?component'
 import LinkedinIcon from '@/assets/svg/linkedin.svg?component'
 import TwitterIcon from '@/assets/svg/twitter.svg?component'
+import { availableLocales } from '@/plugins/i18n'
 
 const isDark = defineModel<boolean>('isDark')
 
-const { t, locale, availableLocales } = useI18n()
+const { t, locale } = useI18n()
 
 const SPEAKING = {
   spanish: 'native',

@@ -1,18 +1,50 @@
-import { createI18n } from 'vue-i18n'
+import { createI18n, type Locale } from 'vue-i18n'
 import type { UserPlugin } from '@/main'
+
+const i18n = createI18n({
+  legacy: false,
+  locale: '',
+  messages: {}
+})
 
 // Import i18n resources
 // https://vitejs.dev/guide/features.html#glob-import
-const messages = Object.fromEntries(
-  Object.entries(import.meta.glob('@/assets/locales/*.json', { eager: true })).map(
-    ([key, value]) => {
-      const json = key.endsWith('.json')
-      return [key.slice(20, json ? -5 : -4), (value as Record<string, string>).default]
-    }
-  )
-)
+const localesMap = Object.fromEntries(
+  Object.entries(import.meta.glob('@/assets/locales/*.json')).map(([path, loadLocale]) => [
+    path.match(/([\w-]*)\.json$/)?.[1],
+    loadLocale
+  ])
+) as Record<Locale, () => Promise<{ default: Record<string, string> }>>
 
-const getBrowserLocale = (options = {}) => {
+export const availableLocales = Object.keys(localesMap)
+
+const loadedLanguages: string[] = []
+
+function setI18nLanguage(lang: Locale) {
+  i18n.global.locale.value = lang as any
+  if (typeof document !== 'undefined') document.querySelector('html')?.setAttribute('lang', lang)
+  return lang
+}
+
+export async function loadLanguageAsync(lang: string): Promise<Locale> {
+  // If the same language
+  if (i18n.global.locale.value === lang) return setI18nLanguage(lang)
+
+  // If the language was already loaded
+  if (loadedLanguages.includes(lang)) return setI18nLanguage(lang)
+
+  // If the language hasn't been loaded yet
+  const messages = await localesMap[lang]()
+  i18n.global.setLocaleMessage(lang, messages.default)
+  loadedLanguages.push(lang)
+  return setI18nLanguage(lang)
+}
+
+function supportedLocalesInclude(locale: string) {
+  return availableLocales.includes(locale)
+}
+
+function getBrowserLocale(options = {}) {
   const defaultOptions = { countryCodeOnly: false }
 
   const opt = { ...defaultOptions, ...options }
@@ -23,18 +55,6 @@ const getBrowserLocale = (options = {}) => {
   if (!navigatorLocale) return undefined
 
   return opt.countryCodeOnly ? navigatorLocale.trim().split(/[-_]/)[0] : navigatorLocale.trim()
-}
-
-export function getSupportedLocales() {
-  const annotatedLocales = []
-  for (const code of Object.keys(messages)) {
-    annotatedLocales.push(code)
-  }
-  return annotatedLocales
-}
-
-function supportedLocalesInclude(locale: string) {
-  return getSupportedLocales().includes(locale)
 }
 
 function getStartingLocale() {
@@ -53,15 +73,6 @@ function getStartingLocale() {
 }
 
 export const install: UserPlugin = ({ app }) => {
-  const i18n = createI18n({
-    globalInjection: true,
-    legacy: false,
-    locale: getStartingLocale(),
-    messages
-  })
-
-  // Set initial lang meta
-  // document.documentElement.lang = i18n.global.locale.value
-
   app.use(i18n)
+  loadLanguageAsync(getStartingLocale())
 }
