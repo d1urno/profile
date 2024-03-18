@@ -33,7 +33,7 @@ import InfoIcon from '@/assets/svg/info.svg?component'
     </p>
     <a
       class="mx-auto mb-8 block text-center text-teal-700 dark:text-white"
-      href="https://pagespeed.web.dev/analysis/https-pablomiceli-dev/k68o40ae1w?form_factor=mobile"
+      href="https://pagespeed.web.dev/analysis/https-pablomiceli-dev/maxe81qq7x?form_factor=mobile"
       target="_blank"
       rel="noopener nofollow"
     >
