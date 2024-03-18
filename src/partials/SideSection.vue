@@ -113,7 +113,7 @@ onMounted(() => {
           <img
             class="c-size mx-auto mb-3 box-content rounded border-2 shadow-md"
             src="/src/assets/img/pic_w_320.jpg"
-            srcset="/src/assets/img/pic_w_320.jpg 1x, /src/assets/img/pic_w_320@3x.jpg 3x"
+            fetchpriority="high"
             :alt="$t('SideSection.facePicture')"
           />
         </picture>
