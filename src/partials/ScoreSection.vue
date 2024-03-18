@@ -39,28 +39,38 @@ import InfoIcon from '@/assets/svg/info.svg?component'
     >
       <picture>
         <source
-          srcset="/src/assets/img/score_w_248.webp 1x, /src/assets/img/score_w_248@3x.webp 3x"
+          :srcset="`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_300/v1710761790/pablomiceli/static/score.webp 1x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_600/v1710761790/pablomiceli/static/score.webp 2x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_900/v1710761790/pablomiceli/static/score.webp 3x`"
           type="image/webp"
-          media="(max-width: 360px)"
-        />
-        <source
-          srcset="/src/assets/img/score_w_248.png 1x, /src/assets/img/score_w_248@3x.png 3x"
-          type="image/jpg"
-          media="(max-width: 360px)"
+          media="(max-width: 412px)"
         />
 
         <source
-          srcset="/src/assets/img/score_w_832.webp 1x, /src/assets/img/score_w_832@3x.webp 3x"
+          :srcset="`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_300/v1710761790/pablomiceli/static/score.jpg 1x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_600/v1710761790/pablomiceli/static/score.jpg 2x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_900/v1710761790/pablomiceli/static/score.jpg 3x`"
+          type="image/jpg"
+          media="(max-width: 412px)"
+        />
+
+        <source
+          :srcset="`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_832/v1710761790/pablomiceli/static/score.webp  1x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_1664/v1710761790/pablomiceli/static/score.webp 2x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_2496/v1710761790/pablomiceli/static/score.webp 3x`"
           type="image/webp"
         />
+
         <source
-          srcset="/src/assets/img/score_w_832.png 1x, /src/assets/img/score_w_832@3x.png 3x"
+          :srcset="`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_832/v1710761790/pablomiceli/static/score.jpg  1x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_1664/v1710761790/pablomiceli/static/score.jpg 2x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_2496/v1710761790/pablomiceli/static/score.jpg 3x`"
           type="image/jpg"
         />
 
         <img
           class="c-size mx-auto object-contain"
-          src="/src/assets/img/score_w_832.png"
+          src="https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_832,f_auto/v1710761790/pablomiceli/static/score"
           :alt="$t('ScoreSection.score')"
           loading="lazy"
         />
@@ -71,7 +81,7 @@ import InfoIcon from '@/assets/svg/info.svg?component'
 
 <style scoped lang="postcss">
 .c-size {
-  height: 75px;
+  height: 71px;
   width: 300px;
   @screen sm {
     height: 133px;

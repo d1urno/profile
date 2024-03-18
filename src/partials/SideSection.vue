@@ -78,7 +78,7 @@ onMounted(() => {
         <SunIcon v-else class="fill-current text-green-500 hover:text-teal-400" />
       </button>
       <router-link
-        class="dark:hover:text-teal-400 text-teal-800 hover:text-teal-500 dark:text-green-500"
+        class="text-teal-800 hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
         v-for="locale in filteredAvailableLocales"
         :key="locale"
         :to="locale !== 'en' ? '?lang=' + locale : '/'"
@@ -91,28 +91,38 @@ onMounted(() => {
       <div>
         <picture>
           <source
-            srcset="/src/assets/img/pic_w_300.webp 1x, /src/assets/img/pic_w_300@3x.webp 3x"
+            :srcset="`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_300/v1710761790/pablomiceli/static/profile.webp 1x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_600/v1710761790/pablomiceli/static/profile.webp 2x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_900/v1710761790/pablomiceli/static/profile.webp 3x`"
             type="image/webp"
-            media="(max-width: 360px)"
-          />
-          <source
-            srcset="/src/assets/img/pic_w_300.jpg 1x, /src/assets/img/pic_w_300@3x.jpg 3x"
-            type="image/jpg"
-            media="(max-width: 360px)"
+            media="(max-width: 412px)"
           />
 
           <source
-            srcset="/src/assets/img/pic_w_320.webp 1x, /src/assets/img/pic_w_320@3x.webp 3x"
+            :srcset="`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_300/v1710761790/pablomiceli/static/profile.jpg 1x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_600/v1710761790/pablomiceli/static/profile.jpg 2x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_900/v1710761790/pablomiceli/static/profile.jpg 3x`"
+            type="image/jpg"
+            media="(max-width: 412px)"
+          />
+
+          <source
+            :srcset="`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320/v1710761790/pablomiceli/static/profile.webp  1x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_640/v1710761790/pablomiceli/static/profile.webp 2x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_1280/v1710761790/pablomiceli/static/profile.webp 3x`"
             type="image/webp"
           />
+
           <source
-            srcset="/src/assets/img/pic_w_320.jpg 1x, /src/assets/img/pic_w_320@3x.jpg 3x"
+            :srcset="`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320/v1710761790/pablomiceli/static/profile.jpg  1x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_640/v1710761790/pablomiceli/static/profile.jpg 2x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_1280/v1710761790/pablomiceli/static/profile.jpg 3x`"
             type="image/jpg"
           />
 
           <img
             class="c-size mx-auto mb-3 box-content rounded border-2 shadow-md"
-            src="/src/assets/img/pic_w_320.jpg"
+            src="https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_300,f_auto/v1710765181/pablomiceli/static/profile"
             fetchpriority="high"
             :alt="$t('SideSection.facePicture')"
           />
@@ -137,7 +147,7 @@ onMounted(() => {
             rel="noopener nofollow"
           >
             <GithubIcon
-              class="dark:hover:text-teal-400 w-10 fill-current hover:text-teal-500 dark:text-green-500"
+              class="w-10 fill-current hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
             />
           </a>
           <a
@@ -148,7 +158,7 @@ onMounted(() => {
             rel="noopener nofollow"
           >
             <LinkedinIcon
-              class="dark:hover:text-teal-400 w-10 fill-current hover:text-teal-500 dark:text-green-500"
+              class="w-10 fill-current hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
             />
           </a>
           <a
@@ -159,7 +169,7 @@ onMounted(() => {
             rel="noopener nofollow"
           >
             <TwitterIcon
-              class="dark:hover:text-teal-400 w-10 fill-current hover:text-teal-500 dark:text-green-500"
+              class="w-10 fill-current hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
             />
           </a>
         </div>
@@ -184,7 +194,7 @@ onMounted(() => {
               <td class="pr-5 text-gray-900 dark:text-gray-400">E-mail:</td>
               <td class="text-gray-900 dark:text-gray-400">
                 <a
-                  class="dark:hover:text-teal-400 text-teal-800 hover:text-teal-500 dark:text-green-500"
+                  class="text-teal-800 hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
                   href="mailto:d1urno@gmx.com"
                 >
                   d1urno@gmx.com
