@@ -14,43 +14,80 @@ import InfoIcon from '@/assets/svg/info.svg?component'
     <p class="text-gray-900 dark:text-gray-400">
       {{ $t('ScoreSection.text1') }}
       <a
-        class="dark:hover:text-teal-400 hover:text-teal-400 dark:text-green-500"
+        class="hover:text-teal-400 dark:text-green-500 dark:hover:text-teal-400"
         href="https://github.com/d1urno/profile"
         target="_blank"
         rel="noopener nofollow"
         >{{ $t('ScoreSection.text2') }}</a
       >{{ $t('ScoreSection.text3') }}<br /><br />
-      {{ $t('ScoreSection.text4') }}
+
+      <a
+        class="hover:text-teal-400 dark:text-green-500 dark:hover:text-teal-400"
+        href="https://pagespeed.web.dev/analysis/https-pablomiceli-dev/k68o40ae1w?form_factor=mobile"
+        target="_blank"
+        rel="noopener nofollow"
+      >
+        {{ $t('ScoreSection.score') }}
+      </a>
       <br /><br />
     </p>
-    <picture>
-      <source
-        srcset="/src/assets/img/score_w_248.webp 1x, /src/assets/img/score_w_248@3x.webp 3x"
-        type="image/webp"
-        media="(max-width: 360px)"
-      />
-      <source
-        srcset="/src/assets/img/score_w_248.jpg 1x, /src/assets/img/score_w_248@3x.jpg 3x"
-        type="image/jpg"
-        media="(max-width: 360px)"
-      />
+    <a
+      class="mx-auto mb-8 block text-center text-teal-700 dark:text-white"
+      href="https://pagespeed.web.dev/analysis/https-pablomiceli-dev/k68o40ae1w?form_factor=mobile"
+      target="_blank"
+      rel="noopener nofollow"
+    >
+      <picture>
+        <source
+          srcset="/src/assets/img/score_w_248.webp 1x, /src/assets/img/score_w_248@3x.webp 3x"
+          type="image/webp"
+          media="(max-width: 360px)"
+        />
+        <source
+          srcset="/src/assets/img/score_w_248.png 1x, /src/assets/img/score_w_248@3x.png 3x"
+          type="image/jpg"
+          media="(max-width: 360px)"
+        />
 
-      <source
-        srcset="/src/assets/img/score_w_598.webp 1x, /src/assets/img/score_w_598@3x.webp 3x"
-        type="image/webp"
-      />
-      <source
-        srcset="/src/assets/img/score_w_598.jpg 1x, /src/assets/img/score_w_598@3x.jpg 3x"
-        type="image/jpg"
-      />
+        <source
+          srcset="/src/assets/img/score_w_832.webp 1x, /src/assets/img/score_w_832@3x.webp 3x"
+          type="image/webp"
+        />
+        <source
+          srcset="/src/assets/img/score_w_832.png 1x, /src/assets/img/score_w_832@3x.png 3x"
+          type="image/jpg"
+        />
 
-      <img
-        class="mx-auto"
-        src="/src/assets/img/score_w_598.jpg"
-        srcset="/src/assets/img/score_w_598.jpg 1x, /src/assets/img/score_w_598@3x.jpg 3x"
-        alt="Lighthouse 6.0 score 100"
-        loading="lazy"
-      />
-    </picture>
+        <img
+          class="c-size mx-auto object-contain"
+          src="/src/assets/img/score_w_832.png"
+          :alt="$t('ScoreSection.score')"
+          loading="lazy"
+        />
+      </picture>
+    </a>
   </section>
 </template>
+
+<style scoped lang="postcss">
+.c-size {
+  height: 75px;
+  width: 300px;
+  @screen sm {
+    height: 133px;
+    width: 528px;
+  }
+  @screen lg {
+    height: 129px;
+    width: 512px;
+  }
+  @screen xl {
+    height: 169px;
+    width: 672px;
+  }
+  @screen 2xl {
+    height: 209px;
+    width: 832px;
+  }
+}
+</style>

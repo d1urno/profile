@@ -69,6 +69,6 @@
     "text1": "Puede revisar el ",
     "text2": "código fuente",
     "text3": ", de esta página, fue desarrollada utilizando Vue, TailwindCSS y i18n.",
-    "text4": "Puntuación desktop Lighthouse 6.0:"
+    "score": "Puntuación mobile PageSpeed Insights"
   }
 }
