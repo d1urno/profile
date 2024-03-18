@@ -72,7 +72,7 @@ function getStartingLocale() {
   return 'en'
 }
 
-export const install: UserPlugin = ({ app }) => {
+export const install: UserPlugin = async ({ app }) => {
   app.use(i18n)
-  loadLanguageAsync(getStartingLocale())
+  await loadLanguageAsync(getStartingLocale())
 }
