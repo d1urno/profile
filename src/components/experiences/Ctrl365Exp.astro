@@ -1,0 +1,42 @@
+---
+import useTranslations from '@/functions/useTranslations'
+import { getLocale } from 'astro-i18n-aut'
+
+const locale = getLocale(Astro.url)
+const { t } = useTranslations(locale)
+---
+
+<p>
+  {t('ExperiencesSection.ctrl365.text1')}
+  <a
+    class="hover:text-teal-400 dark:text-green-500 dark:hover:text-teal-400"
+    rel="noopener nofollow"
+    href="https://dev.ctrl365.com.br/acer/predator-thronos/"
+    target="_blank">Acer</a
+  >,
+  <a
+    class="hover:text-teal-400 dark:text-green-500 dark:hover:text-teal-400"
+    rel="noopener nofollow"
+    href="https://dev.ctrl365.com.br/whirlpool/consul/refrigeracao/geladeira/freezer-embaixo-inox/"
+    target="_blank"
+  >
+    Consul
+  </a>
+  {t('ExperiencesSection.ctrl365.text2')}
+  <a
+    class="hover:text-teal-400 dark:text-green-500 dark:hover:text-teal-400"
+    rel="noopener nofollow"
+    href="https://dev.ctrl365.com.br/nestle/mucilon/cereal-infantil/aveia-ameixa/"
+    target="_blank"
+  >
+    Nestle
+  </a>
+  {t('ExperiencesSection.ctrl365.text3')}
+  <a
+    class="hover:text-teal-400 dark:text-green-500 dark:hover:text-teal-400"
+    href="https://intranet-vue.now.sh"
+    target="_blank"
+    rel="noopener nofollow">intranet</a
+  >
+  {t('ExperiencesSection.ctrl365.text4')}
+</p>

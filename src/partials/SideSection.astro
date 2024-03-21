@@ -1,0 +1,223 @@
+---
+import { getLocale } from 'astro-i18n-aut'
+import useTranslations from '@/functions/useTranslations'
+import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
+import { Icon } from 'astro-icon/components'
+
+const SPEAKING = {
+  spanish: 'native',
+  english: 'fluent',
+  portuguese: 'fluent',
+  german: 'beginner'
+}
+
+const locale = getLocale(Astro.url)
+const { t, availableLocales } = useTranslations(locale)
+
+const filteredAvailableLocales = availableLocales.filter((i) => i !== locale)
+
+const fileName = t('SideSection.link') + '.pdf'
+
+const downloadName =
+  t('SideSection.link') +
+  '_' +
+  new Date().toLocaleString(locale, {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric'
+  }) +
+  '.pdf'
+
+function getBirth() {
+  return new Date(472964400000).toLocaleString(locale, {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric'
+  })
+}
+---
+
+<aside class="flex flex-col items-center bg-gray-300 py-4 dark:bg-gray-800 lg:col-span-3 lg:px-8">
+  <div class="mb-4 ml-auto mr-8 flex h-6 items-center gap-5 lg:mr-5 xl:mr-8">
+    <ThemeSwitcher client:load {locale}>
+      <Icon
+        name="sun"
+        slot="sun-icon"
+        class="h-5 w-5 fill-current text-green-500 hover:text-teal-400"
+      />
+      <Icon
+        name="moon"
+        slot="moon-icon"
+        class="h-5 w-5 fill-current text-teal-800 hover:text-teal-400"
+      />
+    </ThemeSwitcher>
+    {
+      filteredAvailableLocales.map((loc) => (
+        <a
+          class="text-teal-800 hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
+          href={loc !== 'en' ? `/${loc}/` : '/'}
+        >
+          {t(loc)}
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="sm:mt-4 sm:flex lg:mt-0 lg:block">
+    <div>
+      <picture>
+        <source
+          srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_300/v1710761790/pablomiceli/static/profile.webp 1x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_600/v1710761790/pablomiceli/static/profile.webp 2x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_900/v1710761790/pablomiceli/static/profile.webp 3x`}
+          type="image/webp"
+          media="(max-width: 412px)"
+        />
+
+        <source
+          srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_300/v1710761790/pablomiceli/static/profile.jpg 1x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_600/v1710761790/pablomiceli/static/profile.jpg 2x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_900/v1710761790/pablomiceli/static/profile.jpg 3x`}
+          type="image/jpg"
+          media="(max-width: 412px)"
+        />
+
+        <source
+          srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320/v1710761790/pablomiceli/static/profile.webp  1x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_640/v1710761790/pablomiceli/static/profile.webp 2x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_1280/v1710761790/pablomiceli/static/profile.webp 3x`}
+          type="image/webp"
+        />
+
+        <source
+          srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320/v1710761790/pablomiceli/static/profile.jpg  1x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_640/v1710761790/pablomiceli/static/profile.jpg 2x,
+            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_1280/v1710761790/pablomiceli/static/profile.jpg 3x`}
+          type="image/jpg"
+        />
+
+        <img
+          class="mx-auto mb-3 box-content rounded border-2 shadow-md"
+          height="300"
+          width="300"
+          src="https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_300,f_auto/v1710765181/pablomiceli/static/profile"
+          fetchpriority="high"
+          alt={t('SideSection.facePicture')}
+        />
+      </picture>
+      <div class="my-6 px-6 text-center print:my-2 sm:text-left">
+        <h1 class="opacity-75 dark:opacity-100">
+          <span class="inline-block text-4xl font-bold dark:text-white">Pablo Miceli</span>
+          <br />
+          <span class="inline-block text-xl text-gray-900 dark:text-gray-500">
+            {t('SideSection.title')}
+          </span>
+        </h1>
+      </div>
+    </div>
+    <div class="px-6">
+      <div class="mb-6 flex justify-center space-x-5 lg:mb-0">
+        <a
+          class="transform transition-transform hover:scale-125"
+          href="https://github.com/d1urno"
+          aria-label="GitHub"
+          target="_blank"
+          rel="noopener nofollow"
+        >
+          <Icon
+            name="github"
+            class="h-10 w-10 fill-current text-teal-700 hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
+          />
+        </a>
+        <a
+          class="transform transition-transform hover:scale-125"
+          href="https://www.linkedin.com/in/pmicel/"
+          aria-label="LinkedIn"
+          target="_blank"
+          rel="noopener nofollow"
+        >
+          <Icon
+            name="linkedin"
+            class="h-10 w-10 fill-current text-teal-700 hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
+          />
+        </a>
+        <a
+          class="transform transition-transform hover:scale-125"
+          href="https://twitter.com/d1urno"
+          aria-label="Twitter"
+          target="_blank"
+          rel="noopener nofollow"
+        >
+          <Icon
+            name="twitter"
+            class="h-10 w-10 fill-current text-teal-700 hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
+          />
+        </a>
+      </div>
+      <hr
+        class="-mx-6 mb-6 mt-8 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-700 dark:bg-gray-700 sm:hidden lg:block"
+      />
+      <table class="mb-6 lg:mb-12">
+        <tbody>
+          <tr>
+            <td class="pr-5 text-gray-900 dark:text-gray-400">
+              {t('SideSection.nationality')}:
+            </td>
+            <td class="text-gray-900 dark:text-gray-400">Argentina</td>
+          </tr>
+          <tr>
+            <td class="pr-5 text-gray-900 dark:text-gray-400">{t('SideSection.birth')}:</td>
+            <td class="text-gray-900 dark:text-gray-400">
+              {getBirth()}
+            </td>
+          </tr>
+          <tr>
+            <td class="pr-5 text-gray-900 dark:text-gray-400">E-mail:</td>
+            <td class="text-gray-900 dark:text-gray-400">
+              <a
+                class="text-teal-800 hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
+                href="mailto:d1urno@gmx.com"
+              >
+                d1urno@gmx.com
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="pr-5 text-gray-900 dark:text-gray-400">
+              {t('SideSection.location')}:
+            </td>
+            <td class="text-gray-900 dark:text-gray-400">Cape Town, South Africa</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 class="text-xl font-bold opacity-75 dark:text-white">
+        {t('SideSection.idioms')}:
+      </h2>
+      <hr
+        class="-mx-6 my-2 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-700 dark:bg-gray-700"
+      />
+      <table class="mb-4 text-gray-900 dark:text-gray-400">
+        <tbody>
+          {
+            Object.entries(SPEAKING).map(([key, value]) => (
+              <tr>
+                <td class="pr-5">{t('SideSection.' + key)}:</td>
+                <td>{t('SideSection.' + value)}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+      <div class="pt-10 text-center print:hidden">
+        <a
+          class="rounded-full bg-teal-700 px-4 py-1 text-center font-bold text-white no-underline shadow hover:bg-teal-500"
+          type="button"
+          href={fileName}
+          download={downloadName}
+        >
+          {t('SideSection.download')}
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>

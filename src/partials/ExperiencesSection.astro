@@ -1,0 +1,126 @@
+---
+import useTranslations from '@/functions/useTranslations'
+import { getLocale } from 'astro-i18n-aut'
+import { Icon } from 'astro-icon/components'
+import PlottyExp from '@/components/experiences/PlottyExp.astro'
+import TroopExp from '@/components/experiences/TroopExp.astro'
+import AirbankExp from '@/components/experiences/AirbankExp.astro'
+import MateraExp from '@/components/experiences/MateraExp.astro'
+import ParanaExp from '@/components/experiences/ParanaExp.astro'
+import Ctrl365Exp from '@/components/experiences/Ctrl365Exp.astro'
+import ExperienceItem from '@/components/ExperienceItem.astro'
+
+const locale = getLocale(Astro.url)
+const { t } = useTranslations(locale)
+
+const experiences = [
+  {
+    period: '2024',
+    title: t('ExperiencesSection.plotty.title'),
+    link: 'https://plotty-ai.netlify.app',
+    component: 'PlottyExp'
+  },
+  {
+    period: '2022 - 2024',
+    title: t('ExperiencesSection.troop.title'),
+    link: 'https://trooptravel.com',
+    component: TroopExp
+  },
+  {
+    period: '2021',
+    title: t('ExperiencesSection.airbank.title'),
+    link: 'https://techcrunch.com/2021/06/22/airbank-centralizes-all-your-business-bank-accounts-and-financial-data/',
+    component: AirbankExp
+  },
+  {
+    period: '2020',
+    title: t('ExperiencesSection.matera.title'),
+    link: 'https://matera.com',
+    component: MateraExp
+  },
+  {
+    period: '2019',
+    title: t('ExperiencesSection.parana.title'),
+    link: 'https://paranabanco.com.br',
+    component: ParanaExp
+  },
+  {
+    period: '2019',
+    title: t('ExperiencesSection.ctrl365.title'),
+    link: 'https://ctrl365.com.br',
+    component: Ctrl365Exp
+  }
+]
+---
+
+<section class="print:pb-10">
+  <div class="ml-auto flex items-center text-2xl uppercase">
+    <h2 class="ml-auto text-teal-700 dark:text-white">
+      {t('ExperiencesSection.title')}
+    </h2>
+    <Icon name="case" class="ml-2 h-12 w-12 text-teal-500 dark:text-green-500" />
+  </div>
+  <hr
+    class="-mx-6 my-4 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-500 dark:bg-gray-300"
+  />
+  {
+    (
+      <Fragment>
+        <ExperienceItem
+          experience={{
+            period: '2024',
+            title: t('ExperiencesSection.plotty.title'),
+            link: 'https://plotty-ai.netlify.app'
+          }}
+        >
+          <PlottyExp />
+        </ExperienceItem>
+        <ExperienceItem
+          experience={{
+            period: '2022 - 2024',
+            title: t('ExperiencesSection.troop.title'),
+            link: 'https://trooptravel.com'
+          }}
+        >
+          <TroopExp />
+        </ExperienceItem>
+        <ExperienceItem
+          experience={{
+            period: '2021',
+            title: t('ExperiencesSection.airbank.title'),
+            link: 'https://techcrunch.com/2021/06/22/airbank-centralizes-all-your-business-bank-accounts-and-financial-data/'
+          }}
+        >
+          <AirbankExp />
+        </ExperienceItem>
+        <ExperienceItem
+          experience={{
+            period: '2020',
+            title: t('ExperiencesSection.matera.title'),
+            link: 'https://matera.com'
+          }}
+        >
+          <MateraExp />
+        </ExperienceItem>
+        <ExperienceItem
+          experience={{
+            period: '2019',
+            title: t('ExperiencesSection.parana.title'),
+            link: 'https://paranabanco.com.br'
+          }}
+        >
+          <ParanaExp />
+        </ExperienceItem>
+        <ExperienceItem
+          experience={{
+            period: '2019',
+            title: t('ExperiencesSection.ctrl365.title'),
+            link: 'https://ctrl365.com.br'
+          }}
+        >
+          <Ctrl365Exp />
+        </ExperienceItem>
+      </Fragment>
+    )
+  }
+</section>

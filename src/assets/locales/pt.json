@@ -68,7 +68,10 @@
     "title": "Notas",
     "text1": "Pode revisar o ",
     "text2": "código fonte",
-    "text3": ", desta página, foi desenvolvida utilizando Vue, TailwindCSS e i18n.",
+    "text3": ", desta página, foi desenvolvida utilizando Astro, Vue, TailwindCSS e i18n.",
     "score": "Puntuação mobile PageSpeed Insights"
+  },
+  "ThemeSwitcher": {
+    "label": "Mudar modo de cores"
   }
 }
