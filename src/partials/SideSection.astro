@@ -16,7 +16,7 @@ const { t, availableLocales } = useTranslations(locale)
 
 const filteredAvailableLocales = availableLocales.filter((i) => i !== locale)
 
-const fileName = t('SideSection.link') + '.pdf'
+const fileName = `/${t('SideSection.link')}.pdf`
 
 const downloadName =
   t('SideSection.link') +
