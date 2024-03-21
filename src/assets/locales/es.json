@@ -69,6 +69,9 @@
     "text1": "Puede revisar el ",
     "text2": "código fuente",
     "text3": ", de esta página, fue desarrollada utilizando Astro, Vue, TailwindCSS y i18n.",
+    "text4": "Adicionalmente, puede revisar el ",
+    "text5": "código fuente",
+    "text6": " de la versión Vue (no Astro) de esta misma página.",
     "score": "Puntuación mobile PageSpeed Insights"
   },
   "ThemeSwitcher": {

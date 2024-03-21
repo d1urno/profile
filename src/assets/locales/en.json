@@ -69,6 +69,9 @@
     "text1": "You can inspect the ",
     "text2": "source code",
     "text3": ", of this page, it was made using Astro, Vue, TailwindCSS and i18n.",
+    "text4": "Additionally, you can check the Vue (Non Astro) ",
+    "text5": "source code",
+    "text6": " version of this same page.",
     "score": "PageSpeed Insights mobile score"
   },
   "ThemeSwitcher": {
