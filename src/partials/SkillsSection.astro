@@ -1,0 +1,98 @@
+---
+import useTranslations from '@/functions/useTranslations'
+import { getLocale } from 'astro-i18n-aut'
+import { Icon } from 'astro-icon/components'
+import BarList from '@/components/BarList.vue'
+
+const locale = getLocale(Astro.url)
+const { t } = useTranslations(locale)
+
+const LANGUAGES = {
+  TypeScript: 9,
+  GraphQL: 10,
+  Go: 4,
+  FQL: 9,
+  Java: 8,
+  HTML5: 10,
+  CSS3: 9,
+  PHP: 7,
+  SCSS: 7,
+  SQL: 5
+}
+
+const LIBS = {
+  'Vue 3': 10,
+  TailwindCSS: 10,
+  'Apollo Client and Server': 9,
+  FaunaDB: 9,
+  Pinia: 10,
+  Astro: 7,
+  NuxtJS: 10,
+  Laravel: 7,
+  'Android SDK': 5,
+  React: 3
+}
+
+const OPS = {
+  Netlify: 9,
+  Vercel: 8,
+  Cloudflare: 6,
+  'CI/CD': 5,
+  GCP: 7,
+  AWS: 3,
+  'Digital Ocean': 7,
+  Heroku: 8
+}
+
+const OTHER = {
+  'GPT-Api': 8,
+  Mapbox: 9,
+  Monorepo: 8,
+  'Drupal (Headless)': 10,
+  Rollup: 7,
+  Docker: 7,
+  Parcel: 5,
+  Gulp: 8
+}
+---
+
+<section>
+  <div class="ml-auto flex items-center text-2xl uppercase">
+    <h2 class="ml-auto text-teal-700 dark:text-white">
+      {t('SkillsSection.title')}
+    </h2>
+    <Icon name="code" class="-mb-1 ml-2 h-12 w-12 text-teal-500 dark:text-green-500" />
+  </div>
+  <hr
+    class="-mx-6 my-4 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-500 dark:bg-gray-300"
+  />
+  <p class="mb-8 text-gray-900 dark:text-gray-400">
+    {t('SkillsSection.text')}
+  </p>
+  <div class="mb-10 grid gap-6 sm:grid-cols-2">
+    <div>
+      <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">
+        {t('SkillsSection.subtitle1')}
+      </h3>
+      <BarList client:load color="light" values={LANGUAGES} />
+    </div>
+    <div>
+      <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">
+        {t('SkillsSection.subtitle2')}
+      </h3>
+      <BarList client:load class="print:pb-5" color="light" values={LIBS} />
+    </div>
+    <div>
+      <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">
+        {t('SkillsSection.subtitle3')}
+      </h3>
+      <BarList client:load color="dark" values={OTHER} />
+    </div>
+    <div>
+      <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">
+        {t('SkillsSection.subtitle4')}
+      </h3>
+      <BarList client:load color="dark" values={OPS} />
+    </div>
+  </div>
+</section>

@@ -68,7 +68,10 @@
     "title": "Notes",
     "text1": "You can inspect the ",
     "text2": "source code",
-    "text3": ", of this page, it was made using Vue, TailwindCSS and i18n.",
+    "text3": ", of this page, it was made using Astro, Vue, TailwindCSS and i18n.",
     "score": "PageSpeed Insights mobile score"
+  },
+  "ThemeSwitcher": {
+    "label": "Switch dark mode"
   }
 }

@@ -1,0 +1,55 @@
+---
+import Default from '@/layouts/Default.astro'
+import SideSection from '@/partials/SideSection.astro'
+import ScoreSection from '@/partials/ScoreSection.astro'
+import TestsSection from '@/partials/TestsSection.astro'
+import ExperiencesSection from '@/partials/ExperiencesSection.astro'
+import SkillsSection from '@/partials/SkillsSection.astro'
+import ProfileSection from '@/partials/ProfileSection.astro'
+---
+
+<Default>
+  <div class="mx-auto md:container lg:grid lg:grid-cols-8">
+    <SideSection />
+
+    <div class="px-16 py-8 lg:col-span-5">
+      <ProfileSection />
+      <SkillsSection />
+      <ExperiencesSection />
+      <TestsSection />
+      <ScoreSection />
+    </div>
+  </div>
+</Default>
+
+<script is:inline>
+  function checkDarkMode() {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme') === 'dark'
+    }
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  }
+
+  function watchDarkMode() {
+    if (!window.matchMedia) return
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', addDarkModeSelector)
+  }
+
+  function addDarkModeSelector(doc) {
+    if (checkDarkMode()) {
+      doc.documentElement.classList.add('dark')
+    } else {
+      doc.documentElement.classList.remove('dark')
+    }
+  }
+
+  document.addEventListener('astro:before-swap', (ev) => {
+    // Pass the incoming document to set the theme on it
+    addDarkModeSelector(ev.newDocument)
+  })
+
+  addDarkModeSelector(document)
+  watchDarkMode()
+</script>

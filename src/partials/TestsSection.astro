@@ -1,9 +1,13 @@
-<script setup lang="ts">
-import TestItem, { type Test } from '@/components/TestItem.vue'
-import ComputerIcon from '@/assets/svg/computer.svg?component'
-import { computed } from 'vue'
+---
+import useTranslations from '@/functions/useTranslations'
+import { getLocale } from 'astro-i18n-aut'
+import { Icon } from 'astro-icon/components'
+import TestItem from '@/components/TestItem.astro'
 
-const tests = computed<Test[]>(() => [
+const locale = getLocale(Astro.url)
+const { t } = useTranslations(locale)
+
+const tests = [
   {
     period: '2020',
     title: 'Drivy frontend test',
@@ -25,18 +29,16 @@ const tests = computed<Test[]>(() => [
     repositoryLink: 'https://github.com/d1urno/doc88-frontend-challenge',
     text: 'Stack: Vue 2.6 - TypeScript - TailwindCSS - Jest'
   }
-])
-</script>
+]
+---
 
-<template>
-  <section class="print:pb-10">
-    <div class="ml-auto flex items-center text-2xl uppercase">
-      <h2 class="ml-auto text-teal-700 dark:text-white">Tests</h2>
-      <ComputerIcon class="ml-2 w-12 text-teal-500 dark:text-green-500" />
-    </div>
-    <hr
-      class="-mx-6 my-4 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-500 dark:bg-gray-300"
-    />
-    <TestItem v-for="test in tests" :test="test" :key="test.title" />
-  </section>
-</template>
+<section class="print:pb-10">
+  <div class="ml-auto flex items-center text-2xl uppercase">
+    <h2 class="ml-auto text-teal-700 dark:text-white">Tests</h2>
+    <Icon name="computer" class="ml-2 h-12 w-12 text-teal-500 dark:text-green-500" />
+  </div>
+  <hr
+    class="-mx-6 my-4 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-500 dark:bg-gray-300"
+  />
+  {tests.map((test) => <TestItem test={test} />)}
+</section>

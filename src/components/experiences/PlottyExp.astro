@@ -1,0 +1,11 @@
+---
+import useTranslations from '@/functions/useTranslations'
+import { getLocale } from 'astro-i18n-aut'
+
+const locale = getLocale(Astro.url)
+const { t } = useTranslations(locale)
+---
+
+<p>
+  {t('ExperiencesSection.plotty.text')}
+</p>
