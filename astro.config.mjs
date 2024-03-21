@@ -4,6 +4,7 @@ import tailwind from '@astrojs/tailwind'
 import icon from 'astro-icon'
 import { i18n, filterSitemapByDefaultLocale } from 'astro-i18n-aut/integration'
 import sitemap from '@astrojs/sitemap'
+import partytown from '@astrojs/partytown'
 
 const defaultLocale = 'en'
 const locales = {
@@ -42,6 +43,7 @@ export default defineConfig({
     }),
     vue({ appEntrypoint: '/src/vue-main' }),
     tailwind({ applyBaseStyles: false }),
-    icon()
+    icon(),
+    partytown()
   ]
 })
