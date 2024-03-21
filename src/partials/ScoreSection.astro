@@ -74,7 +74,9 @@ const { t } = useTranslations(locale)
       />
 
       <img
-        class="c-size mx-auto object-contain"
+        class="mx-auto object-contain"
+        height="275"
+        width="832"
         src="https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_832,f_auto/v1710761790/pablomiceli/static/score"
         alt={t('ScoreSection.score')}
         loading="lazy"
@@ -82,26 +84,3 @@ const { t } = useTranslations(locale)
     </picture>
   </a>
 </section>
-
-<style lang="postcss">
-.c-size {
-  height: 71px;
-  width: 300px;
-  @screen sm {
-    height: 133px;
-    width: 528px;
-  }
-  @screen lg {
-    height: 129px;
-    width: 512px;
-  }
-  @screen xl {
-    height: 169px;
-    width: 672px;
-  }
-  @screen 2xl {
-    height: 209px;
-    width: 832px;
-  }
-}
-</style>
