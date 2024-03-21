@@ -37,8 +37,10 @@ function getBirth() {
 }
 ---
 
-<aside class="flex flex-col items-center bg-gray-300 py-4 dark:bg-gray-800 lg:col-span-3 lg:px-8">
-  <div class="mb-4 ml-auto mr-8 flex h-6 items-center gap-5 lg:mr-5 xl:mr-8">
+<aside
+  class="flex flex-col items-center bg-gray-300 p-8 pt-4 dark:bg-gray-800 sm:px-16 lg:col-span-3 lg:px-8 xl:px-20 2xl:px-32"
+>
+  <div class="mb-4 flex h-6 w-full items-center gap-5">
     <ThemeSwitcher client:load {locale}>
       <Icon
         name="sun"
@@ -63,25 +65,9 @@ function getBirth() {
     }
   </div>
 
-  <div class="sm:mt-4 sm:flex lg:mt-0 lg:block">
+  <div class="flex w-full flex-col sm:flex-row sm:gap-8 lg:flex-col lg:gap-0">
     <div>
       <picture>
-        <source
-          srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_300/v1710761790/pablomiceli/static/profile.webp 1x,
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_600/v1710761790/pablomiceli/static/profile.webp 2x,
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_900/v1710761790/pablomiceli/static/profile.webp 3x`}
-          type="image/webp"
-          media="(max-width: 412px)"
-        />
-
-        <source
-          srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_300/v1710761790/pablomiceli/static/profile.jpg 1x,
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_600/v1710761790/pablomiceli/static/profile.jpg 2x,
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_900/v1710761790/pablomiceli/static/profile.jpg 3x`}
-          type="image/jpg"
-          media="(max-width: 412px)"
-        />
-
         <source
           srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320/v1710761790/pablomiceli/static/profile.webp  1x,
             https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_640/v1710761790/pablomiceli/static/profile.webp 2x,
@@ -98,14 +84,14 @@ function getBirth() {
 
         <img
           class="mx-auto mb-3 box-content rounded border-2 shadow-md"
-          height="300"
-          width="300"
-          src="https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_300,f_auto/v1710765181/pablomiceli/static/profile"
+          height="320"
+          width="320"
+          src="https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320,f_auto/v1710765181/pablomiceli/static/profile"
           fetchpriority="high"
           alt={t('SideSection.facePicture')}
         />
       </picture>
-      <div class="my-6 px-6 text-center print:my-2 sm:text-left">
+      <div class="my-6 text-center print:my-2 sm:text-left">
         <h1 class="opacity-75 dark:opacity-100">
           <span class="inline-block text-4xl font-bold dark:text-white">Pablo Miceli</span>
           <br />
@@ -115,8 +101,8 @@ function getBirth() {
         </h1>
       </div>
     </div>
-    <div class="px-6">
-      <div class="mb-6 flex justify-center space-x-5 lg:mb-0">
+    <div class="flex-1">
+      <div class="*:h-10 *:w-10 mb-6 flex justify-center gap-5 lg:mb-0">
         <a
           class="transform transition-transform hover:scale-125"
           href="https://github.com/d1urno"
@@ -155,9 +141,9 @@ function getBirth() {
         </a>
       </div>
       <hr
-        class="-mx-6 mb-6 mt-8 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-700 dark:bg-gray-700 sm:hidden lg:block"
+        class="mb-6 mt-8 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-700 dark:bg-gray-700 sm:hidden lg:-mx-6 lg:block"
       />
-      <table class="mb-6 lg:mb-12">
+      <table class="mb-6 w-max lg:mb-12">
         <tbody>
           <tr>
             <td class="pr-5 text-gray-900 dark:text-gray-400">
@@ -194,9 +180,9 @@ function getBirth() {
         {t('SideSection.idioms')}:
       </h2>
       <hr
-        class="-mx-6 my-2 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-700 dark:bg-gray-700"
+        class="my-2 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-700 dark:bg-gray-700 lg:-mx-6"
       />
-      <table class="mb-4 text-gray-900 dark:text-gray-400">
+      <table class="mb-4 w-max text-gray-900 dark:text-gray-400">
         <tbody>
           {
             Object.entries(SPEAKING).map(([key, value]) => (
