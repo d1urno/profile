@@ -3,10 +3,7 @@ export default function useTranslations(locale: string) {
     Object.entries(import.meta.glob('/src/assets/locales/*.json', { eager: true })).map(
       ([key, value]) => {
         const json = key.endsWith('.json')
-        return [
-          key.slice(20, json ? -5 : -4),
-          (value as Record<string, any>).default
-        ]
+        return [key.slice(20, json ? -5 : -4), (value as Record<string, any>).default]
       }
     )
   )
