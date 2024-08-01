@@ -2,10 +2,10 @@
   "en": "English",
   "es": "Español",
   "pt": "Português",
-  "title": "Fullstack Senior Developer",
+  "title": "Senior Fullstack Developer",
   "description": "Resume of a fullstack software developer with +10 years of experience looking for new remote job opportunities.",
   "SideSection": {
-    "title": "Fullstack Senior Developer",
+    "title": "Senior Fullstack Developer",
     "nationality": "Nationality",
     "birth": "Birth",
     "location": "Current location",
@@ -24,7 +24,7 @@
   },
   "ProfileSection": {
     "title": "Profile",
-    "text": "Argentine living in Cape Town since May 2023, passionate about design, programming, logic and new challenges. Always based on continuous and self-taught learning of new technologies to better achieve my goals. Started creating apps since I was a teenager, going from Java game plugins to financial tools. Nowadays I find myself focusing in APIs and large scale websites/apps involving TypeScript, Vue3/Nuxt, AI, TailwindCSS, Graphql and serverless architectures as my main stack."
+    "text": "Argentine living in Cape Town since May 2023, passionate about design, programming, logic and new challenges. I strive towards continuous and self-taught learning of new technologies to better achieve my goals. I started creating apps since I was a teenager, going from Java game plugins to financial tools. Nowadays I find myself focusing on APIs and large scale websites/apps involving TypeScript, Vue3/Nuxt, AI integrations, TailwindCSS, Graphql and serverless architectures as my main stack."
   },
   "SkillsSection": {
     "title": "Technical Skills",
@@ -32,7 +32,7 @@
     "subtitle2": "Libraries/Frameworks",
     "subtitle3": "Other",
     "subtitle4": "Infrastructure",
-    "text": "Ordered from top to bottom, skills I'll be more likely to work with. The horizontal extension of each bar represents actual knowledge/experience I do have on such."
+    "text": "Ordered from top to bottom, skills I'll be more likely to work with. The horizontal extension of each bar represents actual knowledge/experience I have on it."
   },
   "ExperiencesSection": {
     "title": "Recent experiences",
@@ -58,7 +58,7 @@
     },
     "ctrl365": {
       "title": "Fullstack Developer - Ctrl365",
-      "text1": "During this period I've been responsibly for different tasks, such as responsive landing pages for brands like",
+      "text1": "During this period I've been responsible for different tasks, such as responsive landing pages for brands like",
       "text2": "or",
       "text3": "in parallel with art department, I've built a complete",
       "text4": "with login and notifications, or APIs and database administration tasks. I did many job interviews with candidates to grow our team, among other team management tasks."
