@@ -8,6 +8,15 @@ html {
   @screen lg {
     font-size: 16px;
   }
+  @media print {
+    font-size: 18px;
+    margin: 0;
+
+    #astro-toolbar, /* older versions */
+    astro-dev-toolbar {  /* newer versions */
+      display: none !important;
+    }
+  }
   @apply break-words antialiased;
 }
 
@@ -17,11 +26,4 @@ a {
 
 svg {
   transition: fill 0.3s;
-}
-
-@media print {
-  @page {
-    size: 210mm 297mm;
-    margin: 0;
-  }
 }

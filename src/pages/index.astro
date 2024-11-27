@@ -13,8 +13,12 @@ import ProfileSection from '@/partials/ProfileSection.astro'
     <SideSection />
 
     <div class="px-8 sm:px-16 py-8 lg:col-span-5">
-      <ProfileSection />
-      <SkillsSection />
+      <div style="page-break-after: always; page-break-before: always">
+        <ProfileSection />
+      </div>
+      <div style="page-break-after: always" class="print:mt-10">
+        <SkillsSection />
+      </div>
       <ExperiencesSection />
       <TestsSection />
       <ScoreSection />

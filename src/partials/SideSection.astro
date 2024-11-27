@@ -38,9 +38,9 @@ function getBirth() {
 ---
 
 <aside
-  class="flex flex-col items-center bg-gray-300 p-8 pt-4 dark:bg-gray-800 sm:px-16 lg:col-span-3 lg:px-8 xl:px-20 2xl:px-32"
+  class="flex flex-col items-center bg-gray-300 p-8 pt-4 dark:bg-gray-800 print:!bg-transparent print:mt-10 sm:px-16 lg:col-span-3 lg:px-8 xl:px-20 2xl:px-32"
 >
-  <div class="mb-4 flex h-6 w-full items-center gap-5">
+  <div class="mb-4 flex h-6 w-full items-center gap-5 print:hidden">
     <ThemeSwitcher client:load {locale}>
       <Icon
         name="sun"
@@ -65,7 +65,11 @@ function getBirth() {
     }
   </div>
 
-  <div class="flex w-full flex-col sm:flex-row sm:gap-8 lg:flex-col lg:gap-0">
+  <p class="hidden print:block text-center text-green-500 text-lg mb-5">https://pablomiceli.dev</p>
+
+  <div
+    class="flex w-full flex-col sm:flex-row print:!flex-col print:!gap-0 sm:gap-8 lg:flex-col lg:gap-0"
+  >
     <div>
       <picture>
         <source
@@ -91,7 +95,7 @@ function getBirth() {
           alt={t('SideSection.facePicture')}
         />
       </picture>
-      <div class="my-6 text-center print:my-2 sm:text-left">
+      <div class="my-6 text-center print:!text-center print:pb-10 lg:text-left">
         <h1 class="opacity-75 dark:opacity-100">
           <span class="inline-block text-4xl font-bold dark:text-white">Pablo Miceli</span>
           <br />

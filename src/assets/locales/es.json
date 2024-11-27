@@ -38,7 +38,7 @@
     "title": "Experiencias recientes",
     "plotty": {
       "title": "SaaS - Plotty",
-      "text": "Proyecto personal en construcción, la arquitectura de la aplicación usa Vue 3, Apollo Graphql, TypeScript, TailwindCSS, GPT-Api y Vite."
+      "text": "Proyecto personal en construcción, la arquitectura de la aplicación usa Vue 3, Apollo Graphql, TypeScript, TailwindCSS, OpenAI API y Vite."
     },
     "troop": {
       "title": "Web app - Troop Travel",
@@ -69,9 +69,6 @@
     "text1": "Puede revisar el ",
     "text2": "código fuente",
     "text3": ", de esta página, fue desarrollada utilizando Astro, Vue, TailwindCSS y i18n.",
-    "text4": "Adicionalmente, puede revisar el ",
-    "text5": "código fuente",
-    "text6": " de la versión Vue (no Astro) de esta misma página.",
     "score": "Puntuación mobile PageSpeed Insights"
   },
   "ThemeSwitcher": {

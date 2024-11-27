@@ -23,7 +23,7 @@ function onTransitionStart(index: number) {
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-col gap-x-2">
     <ValueBar
       v-for="(v, i) in delayedValues"
       :key="v.name"

@@ -17,7 +17,7 @@ const LANGUAGES = {
   CSS3: 9,
   PHP: 7,
   SCSS: 7,
-  SQL: 5
+  SQL: 7
 }
 
 const LIBS = {
@@ -30,13 +30,13 @@ const LIBS = {
   NuxtJS: 10,
   Laravel: 7,
   'Android SDK': 5,
-  React: 3
+  React: 7
 }
 
 const OPS = {
+  Cloudflare: 7,
   Netlify: 9,
   Vercel: 8,
-  Cloudflare: 6,
   'CI/CD': 5,
   GCP: 7,
   AWS: 3,
@@ -45,7 +45,7 @@ const OPS = {
 }
 
 const OTHER = {
-  'GPT-Api': 8,
+  'OpenAI API': 8,
   Mapbox: 9,
   Monorepo: 8,
   'Drupal (Headless)': 10,
@@ -80,7 +80,7 @@ const OTHER = {
       <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">
         {t('SkillsSection.subtitle2')}
       </h3>
-      <BarList client:load class="print:pb-5" color="light" values={LIBS} />
+      <BarList client:load color="light" values={LIBS} />
     </div>
     <div>
       <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">

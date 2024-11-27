@@ -17,7 +17,7 @@ const experiences = [
   {
     period: '2024',
     title: t('ExperiencesSection.plotty.title'),
-    link: 'https://plotty-ai.netlify.app',
+    link: 'https://plotty-ai.netlify.app/new',
     component: 'PlottyExp'
   },
   {
@@ -53,7 +53,7 @@ const experiences = [
 ]
 ---
 
-<section class="print:pb-10">
+<section class="print:mt-10">
   <div class="ml-auto flex items-center text-2xl uppercase">
     <h2 class="ml-auto text-teal-700 dark:text-white">
       {t('ExperiencesSection.title')}
@@ -66,60 +66,65 @@ const experiences = [
   {
     (
       <Fragment>
-        <ExperienceItem
-          experience={{
-            period: '2024',
-            title: t('ExperiencesSection.plotty.title'),
-            link: 'https://plotty-ai.netlify.app'
-          }}
-        >
-          <PlottyExp />
-        </ExperienceItem>
-        <ExperienceItem
-          experience={{
-            period: '2022 - 2024',
-            title: t('ExperiencesSection.troop.title'),
-            link: 'https://trooptravel.com'
-          }}
-        >
-          <TroopExp />
-        </ExperienceItem>
-        <ExperienceItem
-          experience={{
-            period: '2021',
-            title: t('ExperiencesSection.airbank.title'),
-            link: 'https://techcrunch.com/2021/06/22/airbank-centralizes-all-your-business-bank-accounts-and-financial-data/'
-          }}
-        >
-          <AirbankExp />
-        </ExperienceItem>
-        <ExperienceItem
-          experience={{
-            period: '2020',
-            title: t('ExperiencesSection.matera.title'),
-            link: 'https://matera.com'
-          }}
-        >
-          <MateraExp />
-        </ExperienceItem>
-        <ExperienceItem
-          experience={{
-            period: '2019',
-            title: t('ExperiencesSection.parana.title'),
-            link: 'https://paranabanco.com.br'
-          }}
-        >
-          <ParanaExp />
-        </ExperienceItem>
-        <ExperienceItem
-          experience={{
-            period: '2019',
-            title: t('ExperiencesSection.ctrl365.title'),
-            link: 'https://ctrl365.com.br'
-          }}
-        >
-          <Ctrl365Exp />
-        </ExperienceItem>
+        <div style="page-break-after: always" class="print:mt-10">
+          <ExperienceItem
+            experience={{
+              period: '2024',
+              title: t('ExperiencesSection.plotty.title'),
+              link: 'https://plotty-ai.netlify.app/new'
+            }}
+          >
+            <PlottyExp />
+          </ExperienceItem>
+          <ExperienceItem
+            experience={{
+              period: '2022 - 2024',
+              title: t('ExperiencesSection.troop.title'),
+              link: 'https://trooptravel.com'
+            }}
+          >
+            <TroopExp />
+          </ExperienceItem>
+          <ExperienceItem
+            experience={{
+              period: '2021',
+              title: t('ExperiencesSection.airbank.title'),
+              link: 'https://techcrunch.com/2021/06/22/airbank-centralizes-all-your-business-bank-accounts-and-financial-data/'
+            }}
+          >
+            <AirbankExp />
+          </ExperienceItem>
+        </div>
+        <div style="page-break-after: always" class="print:mt-10">
+          <ExperienceItem
+            experience={{
+              period: '2020',
+              title: t('ExperiencesSection.matera.title'),
+              link: 'https://matera.com'
+            }}
+          >
+            <MateraExp />
+          </ExperienceItem>
+
+          <ExperienceItem
+            experience={{
+              period: '2019',
+              title: t('ExperiencesSection.parana.title'),
+              link: 'https://paranabanco.com.br'
+            }}
+          >
+            <ParanaExp />
+          </ExperienceItem>
+          <ExperienceItem
+            experience={{
+              period: '2019',
+              title: t('ExperiencesSection.ctrl365.title'),
+              link: 'https://ctrl365.com.br'
+            }}
+          >
+            <Ctrl365Exp />
+          </ExperienceItem>
+        </div>
       </Fragment>
     )
   }
