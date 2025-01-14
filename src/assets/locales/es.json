@@ -24,7 +24,7 @@
   },
   "ProfileSection": {
     "title": "Perfil",
-    "text": "Viviendo en Ciudad del Cabo desde Mayo de 2023, apasionado por diseño, programación, lógica y nuevos desafíos. Basado en el aprendizaje continuo y autodidacta de nuevas tecnologías para lograr mejor mis objetivos. Comencé a crear aplicaciones desde adolescente, pasando de plugins para juegos en Java hasta herramientas financieras. Actualmente estoy centrado en APIs y aplicaciones web de larga escala utilizando TypeScript, Vue3/Nuxt, AI, TailwindCSS, Graphql y arquitecturas serverless como stack principal."
+    "text": "Viviendo en Ciudad del Cabo desde Mayo de 2023, apasionado por diseño, programación, lógica y nuevos desafíos. Basado en el aprendizaje continuo y autodidacta de nuevas tecnologías para lograr mejor mis objetivos. Comencé a crear aplicaciones desde adolescente, pasando de plugins para juegos en Java hasta herramientas financieras. Actualmente estoy centrado en APIs y aplicaciones web offline-first de gran escala utilizando TypeScript, Vue3/Nuxt, AI, TailwindCSS, Graphql y arquitecturas serverless como stack principal."
   },
   "SkillsSection": {
     "title": "Habilidades Técnicas",
