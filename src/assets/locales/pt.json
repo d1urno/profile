@@ -36,9 +36,13 @@
   },
   "ExperiencesSection": {
     "title": "Experiências recentes",
+    "defijn": {
+      "title": "Desenvolvedor Fullstack Senior - Defijn",
+      "text": "Desenvolvedor full-stack de tempo integral em um ambiente de agência dinâmica, trabalhando colaborativamente através do Github em vários projetos usando React, TailwindCSS, Tanstack, Shadcn, Firebase, AI Llama 3.3 e inpainting model de Stable Diffusion. Forte ênfase em colaboração de equipe, qualidade do código e felicidade do cliente."
+    },
     "plotty": {
       "title": "SaaS - Plotty",
-      "text": "Projeto pessoal em andamento, a arquitetura do aplicativo usa Vue 3, Apollo Graphql, TypeScript, TailwindCSS, OpenAI API e Vite."
+      "text": "Projeto explorativo pessoal, a arquitetura do aplicativo usa Vue 3, Apollo Graphql, TypeScript, TailwindCSS, OpenAI API e Vite."
     },
     "troop": {
       "title": "Web app - Troop Travel",

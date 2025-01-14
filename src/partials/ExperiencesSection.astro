@@ -2,6 +2,7 @@
 import useTranslations from '@/functions/useTranslations'
 import { getLocale } from 'astro-i18n-aut'
 import { Icon } from 'astro-icon/components'
+import DefijnExp from '@/components/experiences/DefijnExp.astro'
 import PlottyExp from '@/components/experiences/PlottyExp.astro'
 import TroopExp from '@/components/experiences/TroopExp.astro'
 import AirbankExp from '@/components/experiences/AirbankExp.astro'
@@ -16,9 +17,15 @@ const { t } = useTranslations(locale)
 const experiences = [
   {
     period: '2024',
+    title: t('ExperiencesSection.defijn.title'),
+    link: 'https://defijn.io',
+    component: DefijnExp
+  },
+  {
+    period: '2024',
     title: t('ExperiencesSection.plotty.title'),
     link: 'https://plotty-ai.netlify.app/new',
-    component: 'PlottyExp'
+    component: PlottyExp
   },
   {
     period: '2022 - 2024',
@@ -67,6 +74,15 @@ const experiences = [
     (
       <Fragment>
         <div style="page-break-after: always" class="print:mt-10">
+          <ExperienceItem
+            experience={{
+              period: '2024 - To date',
+              title: t('ExperiencesSection.defijn.title'),
+              link: 'https://defijn.io'
+            }}
+          >
+            <DefijnExp />
+          </ExperienceItem>
           <ExperienceItem
             experience={{
               period: '2024',

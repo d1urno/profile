@@ -24,7 +24,7 @@
   },
   "ProfileSection": {
     "title": "Profile",
-    "text": "Argentine living in Cape Town since May 2023, passionate about design, programming, logic and new challenges. I strive towards continuous and self-taught learning of new technologies to better achieve my goals. I started creating apps since I was a teenager, going from Java game plugins to financial tools. Nowadays I find myself focusing on APIs and large scale websites/apps involving TypeScript, Vue3/Nuxt, AI integrations, TailwindCSS, Graphql and serverless architectures as my main stack."
+    "text": "Argentine living in Cape Town since May 2023, passionate about design, programming, logic and new challenges. I strive towards continuous and self-taught learning of new technologies to better achieve my goals. I started creating apps since I was a teenager, going from Java game plugins to financial tools. Nowadays I find myself focusing on APIs and large scale offline-first websites/apps involving TypeScript, Vue3/Nuxt, AI integrations, TailwindCSS, Graphql and serverless architectures as my main stack."
   },
   "SkillsSection": {
     "title": "Technical Skills",
@@ -36,9 +36,13 @@
   },
   "ExperiencesSection": {
     "title": "Recent experiences",
+    "defijn": {
+      "title": "Senior Full-stack Developer - Defijn",
+      "text": "Full time employee in a dynamic agency environment, working collaboratively through Github across multiple projects using React, TailwindCSS, Tanstack, Shadcn, Firebase, Llama 3.3 AI model and Stable Diffusion inpainting model. Strong emphasis on team collaboration, code quality and client happiness."
+    },
     "plotty": {
       "title": "SaaS - Plotty",
-      "text": "Personal ongoing project, app architecture uses Vue 3, Apollo Graphql, TypeScript, TailwindCSS, OpenAI API and Vite."
+      "text": "Personal explorative project, app architecture uses Vue 3, Apollo Graphql, TypeScript, TailwindCSS, OpenAI API and Vite."
     },
     "troop": {
       "title": "SaaS - Troop Travel",
