@@ -113,11 +113,6 @@ function isActive(tabHref: string) {
                   href={getLocalizedPath(tab.href) || '/'}
                   data-active={isActive(tab.href)}
                   data-text={`\u00A0${tab.name}`}
-                  data-debug-pathname={pathname}
-                  data-debug-clean-pathname={cleanPathname}
-                  data-debug-locale={locale}
-                  data-debug-tab-href={tab.href}
-                  data-debug-localized-path={getLocalizedPath(tab.href)}
                   class="relative px-1 pt-4 pb-2 text-xl font-bold whitespace-nowrap !text-gray-300 uppercase !no-underline before:absolute before:w-0 before:overflow-hidden before:border-r-2 before:border-transparent before:!text-amber-600 before:!no-underline before:transition-all before:duration-1000 before:content-[attr(data-text)] hover:text-gray-700 hover:before:w-full hover:before:!border-amber-600 hover:before:![filter:drop-shadow(0_0_25px_#e17100)] data-[active=true]:pointer-events-none data-[active=true]:border-teal-500 data-[active=true]:!text-teal-500 data-[active=true]:before:-right-1 data-[active=true]:before:!border-teal-500 data-[active=true]:before:text-teal-500 dark:!text-gray-400/50 dark:before:!text-amber-400 dark:hover:text-gray-200 dark:hover:before:!border-amber-400 dark:hover:before:![filter:drop-shadow(0_0_25px_#ffba00)]"
                 >
                   &nbsp;{tab.name}
@@ -133,11 +128,6 @@ function isActive(tabHref: string) {
                 <a
                   href={getLocalizedPath(tab.href) || '/'}
                   data-active={isActive(tab.href)}
-                  data-debug-pathname={pathname}
-                  data-debug-clean-pathname={cleanPathname}
-                  data-debug-locale={locale}
-                  data-debug-tab-href={tab.href}
-                  data-debug-localized-path={getLocalizedPath(tab.href)}
                   class:list={[
                     'block rounded-md px-3 py-2 text-base font-medium',
                     {
