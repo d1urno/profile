@@ -15,6 +15,9 @@ const tabs = [
 const { pathname } = Astro.url
 const locale = getLocale(Astro.url)
 
+// Remove .html extension from pathname if present (due to format: 'file' in Astro config)
+const cleanPathname = pathname.replace(/\.html$/, '')
+
 function getLocalizedPath(path: string) {
   if (locale === 'en') {
     return path
@@ -34,7 +37,7 @@ function isActive(tabHref: string) {
   }
 
   const localizedPath = normalizePathForComparison(getLocalizedPath(tabHref))
-  const normalizedPathname = normalizePathForComparison(pathname)
+  const normalizedPathname = normalizePathForComparison(cleanPathname)
 
   // Special handling for root path
   if (tabHref === '/') {
@@ -111,6 +114,7 @@ function isActive(tabHref: string) {
                   data-active={isActive(tab.href)}
                   data-text={`\u00A0${tab.name}`}
                   data-debug-pathname={pathname}
+                  data-debug-clean-pathname={cleanPathname}
                   data-debug-locale={locale}
                   data-debug-tab-href={tab.href}
                   data-debug-localized-path={getLocalizedPath(tab.href)}
@@ -130,6 +134,7 @@ function isActive(tabHref: string) {
                   href={getLocalizedPath(tab.href) || '/'}
                   data-active={isActive(tab.href)}
                   data-debug-pathname={pathname}
+                  data-debug-clean-pathname={cleanPathname}
                   data-debug-locale={locale}
                   data-debug-tab-href={tab.href}
                   data-debug-localized-path={getLocalizedPath(tab.href)}
