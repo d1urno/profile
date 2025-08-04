@@ -43,11 +43,14 @@ function isActive(tabHref: string) {
     return normalizedPathname === rootPath || normalizedPathname === '/'
   }
 
-  // For other paths, check if the pathname starts with the localized path
-  // but also ensure it's not a partial match (e.g., /experience matching /exp)
-  return normalizedPathname === localizedPath || 
-         (normalizedPathname.startsWith(localizedPath) && 
-          normalizedPathname[localizedPath.length] === '/')
+  // For other paths, check for exact match or if it's a sub-path
+  if (normalizedPathname === localizedPath) {
+    return true
+  }
+  
+  // Check if it's a sub-path (e.g., /es/experience/something)
+  // Make sure it's not a partial match by checking for a slash after
+  return normalizedPathname.startsWith(localizedPath + '/')
 }
 ---
 
