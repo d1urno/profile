@@ -25,10 +25,14 @@ function getLocalizedPath(path: string) {
 
 function isActive(tabHref: string) {
   const localizedPath = getLocalizedPath(tabHref)
+  const normalizedPathname = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
+
   if (tabHref === '/') {
-    return pathname === localizedPath || pathname === `${localizedPath}/`
+    const rootPath = getLocalizedPath('/')
+    return normalizedPathname === rootPath
   }
-  return pathname.startsWith(localizedPath)
+
+  return normalizedPathname.startsWith(localizedPath)
 }
 ---
 
