@@ -1,10 +1,11 @@
 import { defineConfig } from 'astro/config'
 import vue from '@astrojs/vue'
-import tailwind from '@astrojs/tailwind'
+import tailwindcss from '@tailwindcss/vite'
 import icon from 'astro-icon'
 import { i18n, filterSitemapByDefaultLocale } from 'astro-i18n-aut/integration'
 import sitemap from '@astrojs/sitemap'
 import partytown from '@astrojs/partytown'
+import rehypeRewrite from 'rehype-rewrite'
 
 const defaultLocale = 'en'
 const locales = {
@@ -20,10 +21,11 @@ export default defineConfig({
       alias: {
         '@': '/src'
       }
-    }
+    },
+    plugins: [tailwindcss()]
   },
   site: 'https://pablomiceli.dev/',
-  trailingSlash: 'always',
+  trailingSlash: 'never',
   build: {
     format: 'directory',
     inlineStylesheets: 'always' // experimental
@@ -42,8 +44,22 @@ export default defineConfig({
       filter: filterSitemapByDefaultLocale({ defaultLocale })
     }),
     vue({ appEntrypoint: '/src/vue-main' }),
-    tailwind({ applyBaseStyles: false }),
     icon(),
     partytown()
-  ]
+  ],
+  markdown: {
+    rehypePlugins: [
+      [
+        rehypeRewrite,
+        {
+          rewrite: (node) => {
+            if (node.type === 'element' && node.tagName === 'a' && node.properties.title) {
+              node.properties['data-text'] = node.properties.title
+              delete node.properties.title
+            }
+          }
+        }
+      ]
+    ]
+  }
 })

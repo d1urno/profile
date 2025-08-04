@@ -1,11 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 html {
   font-size: 14px;
   min-width: 320px;
-  @screen lg {
+  @media (min-width: 1024px) {
     font-size: 16px;
   }
   @media print {
