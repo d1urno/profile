@@ -15,9 +15,10 @@ const { experience } = Astro.props as { experience: Experience }
     {experience.title}
   </h3>
   <a
-    class="font-semibold hover:text-teal-400 dark:text-green-500 dark:hover:text-teal-400"
+    class="font-semibold hover:text-teal-400 -ml-1 dark:text-green-500 dark:hover:text-teal-400"
     rel="noopener nofollow"
     href={experience.link}
+    data-text={experience.link}
     target="_blank"
   >
     {experience.link}

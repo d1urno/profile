@@ -1,11 +1,11 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 import { getLocale } from 'astro-i18n-aut'
 import useTranslations from '@/functions/useTranslations'
 import '@/styles/base.css'
 
 const locale = getLocale(Astro.url)
-const { t } = useTranslations(locale)
+const { t } = await useTranslations(locale)
 ---
 
 <html lang={locale}>
@@ -45,7 +45,7 @@ const { t } = useTranslations(locale)
       gtag('config', 'G-D3EWWPZ6D1')
     </script>
 
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body class="container mx-auto flex font-sans dark:bg-gray-700">
     <slot />

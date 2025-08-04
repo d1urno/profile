@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { useLocalStorage } from '@vueuse/core'
 import { onMounted, ref } from 'vue'
-import useTranslations from '@/functions/useTranslations.ts'
 
 const props = defineProps<{
   locale: string
+  label: string
 }>()
 
 const theme = useLocalStorage('theme', 'light')
-const { t } = useTranslations(props.locale)
 const isMounted = ref(false)
 
 function onThemeChange() {
@@ -30,7 +29,7 @@ onMounted(() => {
 <template>
   <button
     @click="onThemeChange"
-    :aria-label="t('ThemeSwitcher.label')"
+    :aria-label="label"
     class="focus-visible:shadow-outline w-5 transform transition-transform hover:scale-125 focus:outline-none print:hidden"
   >
     <span v-if="isMounted">

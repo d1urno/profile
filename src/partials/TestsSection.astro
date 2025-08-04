@@ -5,7 +5,7 @@ import { Icon } from 'astro-icon/components'
 import TestItem from '@/components/TestItem.astro'
 
 const locale = getLocale(Astro.url)
-const { t } = useTranslations(locale)
+const { t } = await useTranslations(locale)
 
 const tests = [
   {
@@ -32,10 +32,10 @@ const tests = [
 ]
 ---
 
-<section class="print:mt-10">
-  <div class="ml-auto flex items-center text-2xl uppercase">
-    <h2 class="ml-auto text-teal-700 dark:text-white">Tests</h2>
-    <Icon name="computer" class="ml-2 h-12 w-12 text-teal-500 dark:text-green-500" />
+<section class="print:mt-10" style="page-break-after: always">
+  <div class="ml-auto flex items-center text-2xl uppercase mb-8">
+    <h2 class="ml-auto text-teal-700 dark:text-white">{t('TestsSection.title')}</h2>
+    <Icon name="computer" class="ml-2 h-12 w-12 text-teal-500 dark:text-teal-500" />
   </div>
   <hr
     class="my-4 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-500 dark:bg-gray-300 lg:-mx-6"

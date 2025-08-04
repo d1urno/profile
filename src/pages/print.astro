@@ -1,0 +1,27 @@
+---
+import Default from '@/layouts/Default.astro'
+import SideSection from '@/partials/SideSection.astro'
+import ScoreSection from '@/partials/ScoreSection.astro'
+import TestsSection from '@/partials/TestsSection.astro'
+import ExperiencesSection from '@/partials/ExperiencesSection.astro'
+import SkillsSection from '@/partials/SkillsSection.astro'
+import ProfileSection from '@/partials/ProfileSection.astro'
+---
+
+<Default>
+  <div class="mx-auto h-full w-full md:container lg:grid lg:grid-cols-8">
+    <SideSection />
+
+    <div class="px-8 sm:px-16 py-8 lg:col-span-5">
+      <div style="page-break-after: always; page-break-before: always">
+        <ProfileSection />
+      </div>
+      <div style="page-break-after: always" class="print:mt-10">
+        <SkillsSection />
+      </div>
+      <ExperiencesSection />
+      <TestsSection />
+      <ScoreSection />
+    </div>
+  </div>
+</Default>

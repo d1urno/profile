@@ -1,18 +1,11 @@
-export default function useTranslations(locale: string) {
-  const messages = Object.fromEntries(
-    Object.entries(import.meta.glob('/src/assets/locales/*.json', { eager: true })).map(
-      ([key, value]) => {
-        const json = key.endsWith('.json')
-        return [key.slice(20, json ? -5 : -4), (value as Record<string, any>).default]
-      }
-    )
-  )
+import { getEntry } from 'astro:content'
 
-  const availableLocales = Object.keys(messages)
+export default async function useTranslations(locale: string) {
+  const common = await getEntry('locales', `${locale}/common`)
 
-  function t(key: string) {
-    return key.split('.').reduce((o, i) => o[i], messages[locale])
+  const t = (key: string) => {
+    return key.split('.').reduce((o, i) => o[i], common?.data)
   }
 
-  return { t, availableLocales }
+  return { t }
 }

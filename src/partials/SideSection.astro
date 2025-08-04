@@ -12,8 +12,9 @@ const SPEAKING = {
 }
 
 const locale = getLocale(Astro.url)
-const { t, availableLocales } = useTranslations(locale)
+const { t } = await useTranslations(locale)
 
+const availableLocales = ['en', 'es', 'pt']
 const filteredAvailableLocales = availableLocales.filter((i) => i !== locale)
 
 const fileName = `/${t('SideSection.link')}.pdf`
@@ -41,11 +42,11 @@ function getBirth() {
   class="flex flex-col items-center bg-gray-300 p-8 pt-4 dark:bg-gray-800 print:!bg-transparent print:mt-10 sm:px-16 lg:col-span-3 lg:px-8 xl:px-20 2xl:px-32"
 >
   <div class="mb-4 flex h-6 w-full items-center gap-5 print:hidden">
-    <ThemeSwitcher client:load {locale}>
+    <ThemeSwitcher client:load locale={locale} label={t('ThemeSwitcher.label')}>
       <Icon
         name="sun"
         slot="sun-icon"
-        class="h-5 w-5 fill-current text-green-500 hover:text-teal-400"
+        class="h-5 w-5 fill-current text-teal-500 hover:text-teal-400"
       />
       <Icon
         name="moon"
@@ -56,7 +57,7 @@ function getBirth() {
     {
       filteredAvailableLocales.map((loc) => (
         <a
-          class="text-teal-800 hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
+          data-text={`${t(loc)}`}
           href={loc !== 'en' ? `/${loc}/` : '/'}
         >
           {t(loc)}
@@ -99,13 +100,13 @@ function getBirth() {
         <h1 class="opacity-75 dark:opacity-100">
           <span class="inline-block text-4xl font-bold dark:text-white">Pablo Miceli</span>
           <br />
-          <span class="inline-block text-xl text-gray-900 dark:text-gray-500">
+          <span class="inline-block text-xl text-gray-900 dark:text-gray-400">
             {t('SideSection.title')}
           </span>
         </h1>
       </div>
     </div>
-    <div class="flex-1">
+    <div class="flex-1 xl:text-lg print:text-lg">
       <div class="*:h-10 *:w-10 mb-6 flex justify-center gap-5 lg:mb-0">
         <a
           class="transform transition-transform hover:scale-125"
@@ -116,7 +117,7 @@ function getBirth() {
         >
           <Icon
             name="github"
-            class="h-10 w-10 fill-current text-teal-700 hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
+            class="h-10 w-10 fill-current text-teal-700 hover:text-teal-500 dark:text-teal-500 dark:hover:text-teal-400"
           />
         </a>
         <a
@@ -128,7 +129,7 @@ function getBirth() {
         >
           <Icon
             name="linkedin"
-            class="h-10 w-10 fill-current text-teal-700 hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
+            class="h-10 w-10 fill-current text-teal-700 hover:text-teal-500 dark:text-teal-500 dark:hover:text-teal-400"
           />
         </a>
         <a
@@ -140,67 +141,71 @@ function getBirth() {
         >
           <Icon
             name="twitter"
-            class="h-10 w-10 fill-current text-teal-700 hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
+            class="h-10 w-10 fill-current text-teal-700 hover:text-teal-500 dark:text-teal-500 dark:hover:text-teal-400"
           />
         </a>
       </div>
       <hr
         class="mb-6 mt-8 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-700 dark:bg-gray-700 sm:hidden lg:-mx-6 lg:block"
       />
-      <table class="mb-6 w-max lg:mb-12">
-        <tbody>
-          <tr>
-            <td class="pr-5 text-gray-900 dark:text-gray-400">
-              {t('SideSection.nationality')}:
-            </td>
-            <td class="text-gray-900 dark:text-gray-400">Argentina</td>
-          </tr>
-          <tr>
-            <td class="pr-5 text-gray-900 dark:text-gray-400">{t('SideSection.birth')}:</td>
-            <td class="text-gray-900 dark:text-gray-400">
-              {getBirth()}
-            </td>
-          </tr>
-          <tr>
-            <td class="pr-5 text-gray-900 dark:text-gray-400">E-mail:</td>
-            <td class="text-gray-900 dark:text-gray-400">
-              <a
-                class="text-teal-800 hover:text-teal-500 dark:text-green-500 dark:hover:text-teal-400"
-                href="mailto:d1urno@gmx.com"
-              >
-                d1urno@gmx.com
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td class="pr-5 text-gray-900 dark:text-gray-400">
-              {t('SideSection.location')}:
-            </td>
-            <td class="text-gray-900 dark:text-gray-400">Cape Town, South Africa</td>
-          </tr>
-        </tbody>
-      </table>
-      <h2 class="text-xl font-bold opacity-75 dark:text-white">
-        {t('SideSection.idioms')}:
-      </h2>
-      <hr
-        class="my-2 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-700 dark:bg-gray-700 lg:-mx-6"
-      />
-      <table class="mb-4 w-max text-gray-900 dark:text-gray-400">
-        <tbody>
-          {
-            Object.entries(SPEAKING).map(([key, value]) => (
-              <tr>
-                <td class="pr-5">{t('SideSection.' + key)}:</td>
-                <td>{t('SideSection.' + value)}</td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
+
+      <div class="mx-auto w-max">
+        <table class="mb-6 w-max lg:mb-12">
+          <tbody>
+            <tr>
+              <td class="pr-5 text-gray-900 dark:text-gray-300/90">
+                {t('SideSection.nationality')}:
+              </td>
+              <td class="text-gray-900 dark:text-gray-300/90">Argentina</td>
+            </tr>
+            <tr>
+              <td class="pr-5 text-gray-900 dark:text-gray-300/90">{t('SideSection.birth')}:</td>
+              <td class="text-gray-900 dark:text-gray-300/90">
+                {getBirth()}
+              </td>
+            </tr>
+            <tr>
+              <td class="pr-5 text-gray-900 dark:text-gray-300/90">E-mail:</td>
+              <td class="text-gray-900 dark:text-gray-300/90">
+                <a
+                  class="-ml-1"
+                  href="mailto:d1urno@gmx.com"
+                  data-text="d1urno@gmx.com"
+                >
+                  d1urno@gmx.com
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td class="pr-5 text-gray-900 dark:text-gray-300/90">
+                {t('SideSection.location')}:
+              </td>
+              <td class="text-gray-900 dark:text-gray-300/90">Cape Town, South Africa</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 class="text-xl font-bold opacity-75 dark:text-white">
+          {t('SideSection.idioms')}:
+        </h2>
+        <hr
+          class="my-2 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-700 dark:bg-gray-700 lg:-mx-6"
+        />
+        <table class="mb-4 w-max text-gray-900 dark:text-gray-300/90">
+          <tbody>
+            {
+              Object.entries(SPEAKING).map(([key, value]) => (
+                <tr>
+                  <td class="pr-5">{t('SideSection.' + key)}:</td>
+                  <td>{t('SideSection.' + value)}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
       <div class="pt-10 text-center print:hidden">
         <a
-          class="rounded-full bg-teal-700 px-4 py-1 text-center font-bold text-white no-underline shadow hover:bg-teal-500"
+          class="rounded-full bg-teal-700 !px-4 py-1 text-center font-bold !text-white !no-underline shadow hover:bg-teal-500"
           type="button"
           href={fileName}
           download={downloadName}
