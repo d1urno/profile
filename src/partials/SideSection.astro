@@ -58,7 +58,7 @@ function getBirth() {
       filteredAvailableLocales.map((loc) => (
         <a
           data-text={`${t(loc)}`}
-          href={loc !== 'en' ? `/${loc}/` : '/'}
+          href={loc !== 'en' ? `/${loc}` : '/'}
         >
           {t(loc)}
         </a>

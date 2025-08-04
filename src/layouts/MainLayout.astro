@@ -1,4 +1,5 @@
 ---
+import { getLocale } from 'astro-i18n-aut'
 import Default from '@/layouts/Default.astro'
 import SideSection from '@/partials/SideSection.astro'
 import { ClientRouter } from 'astro:transitions'
@@ -12,14 +13,22 @@ const tabs = [
 ]
 
 const { pathname } = Astro.url
+const locale = getLocale(Astro.url)
+
+function getLocalizedPath(path: string) {
+  if (locale === 'en') {
+    return path
+  }
+  const localizedPath = `/${locale}${path}`
+  return localizedPath.endsWith('/') ? localizedPath.slice(0, -1) : localizedPath
+}
 
 function isActive(tabHref: string) {
-  // Handle the homepage separately to avoid matching all URLs
+  const localizedPath = getLocalizedPath(tabHref)
   if (tabHref === '/') {
-    return pathname === '/'
+    return pathname === localizedPath || pathname === `${localizedPath}/`
   }
-  // For other tabs, check if the pathname starts with the tab's href
-  return pathname.startsWith(tabHref)
+  return pathname.startsWith(localizedPath)
 }
 ---
 
@@ -76,7 +85,7 @@ function isActive(tabHref: string) {
             {
               tabs.map((tab) => (
                 <a
-                  href={tab.href}
+                  href={getLocalizedPath(tab.href) || '/'}
                   data-active={isActive(tab.href)}
                   data-text={`\u00A0${tab.name}`}
                   class="relative px-1 pt-4 pb-2 text-xl font-bold whitespace-nowrap !text-gray-300 uppercase !no-underline before:absolute before:w-0 before:overflow-hidden before:border-r-2 before:border-transparent before:!text-amber-600 before:!no-underline before:transition-all before:duration-1000 before:content-[attr(data-text)] hover:text-gray-700 hover:before:w-full hover:before:!border-amber-600 hover:before:![filter:drop-shadow(0_0_25px_#e17100)] data-[active=true]:pointer-events-none data-[active=true]:border-teal-500 data-[active=true]:!text-teal-500 data-[active=true]:before:-right-1 data-[active=true]:before:!border-teal-500 data-[active=true]:before:text-teal-500 dark:!text-gray-400/50 dark:before:!text-amber-400 dark:hover:text-gray-200 dark:hover:before:!border-amber-400 dark:hover:before:![filter:drop-shadow(0_0_25px_#ffba00)]"
@@ -92,7 +101,7 @@ function isActive(tabHref: string) {
             {
               tabs.map((tab) => (
                 <a
-                  href={tab.href}
+                  href={getLocalizedPath(tab.href) || '/'}
                   data-active={isActive(tab.href)}
                   class:list={[
                     'block rounded-md px-3 py-2 text-base font-medium',
