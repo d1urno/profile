@@ -27,14 +27,15 @@ export default defineConfig({
   site: 'https://pablomiceli.dev/',
   trailingSlash: 'never',
   build: {
-    format: 'directory',
+    format: 'file',
     inlineStylesheets: 'always' // experimental
   },
   prefetch: true,
   integrations: [
     i18n({
       defaultLocale,
-      locales
+      locales,
+      exclude: ['/robots.txt']
     }),
     sitemap({
       i18n: {
