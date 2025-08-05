@@ -67,7 +67,11 @@ function isActive(tabHref: string) {
     <main class="px-8 py-8 sm:px-16 lg:col-span-5">
       <div class="print:hidden">
         <div class="flex items-center justify-between">
-          <nav class="flex flex-col flex-wrap sm:flex-row sm:gap-x-8" aria-label="Tabs">
+          <nav
+            id="main-nav-tabs"
+            class="flex flex-col flex-wrap items-start sm:flex-row sm:gap-x-8"
+            aria-label="Tabs"
+          >
             {
               tabs.map((tab) => (
                 <a
@@ -112,6 +116,24 @@ function isActive(tabHref: string) {
 </Default>
 
 <script is:inline>
+  document.addEventListener('click', (event) => {
+      const target = event.target.closest('#main-nav-tabs a');
+      if (target) {
+        if (window.innerWidth < 1024) { // As per lg breakpoint in tailwind for this layout
+          sessionStorage.setItem('scroll-to-tabs', 'true');
+        }
+      }
+    });
+
+    document.addEventListener('astro:page-load', () => {
+      if (sessionStorage.getItem('scroll-to-tabs') === 'true') {
+        const navTabs = document.getElementById('main-nav-tabs');
+        if (navTabs) {
+          navTabs.scrollIntoView({ behavior: 'instant' });
+        }
+        sessionStorage.removeItem('scroll-to-tabs');
+      }
+    });
   function checkDarkMode() {
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
       return localStorage.getItem('theme') === 'dark'
