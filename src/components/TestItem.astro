@@ -20,24 +20,14 @@ const { test } = Astro.props as { test: Test }
   <span class="text-sm dark:text-gray-400">{test.period}</span>
   <h3 class="text-2xl font-bold opacity-75 dark:text-white dark:opacity-100">{test.title}</h3>
   <a
-    class="font-semibold hover:text-teal-400 -mx-1 dark:text-green-500 dark:hover:text-teal-400"
+    class="font-semibold"
     rel="noopener nofollow"
     href={test.deployLink}
-    data-text="Live deploy"
-    target="_blank"
-  >Live deploy</a>
-  <span class="text-gray-900 text-opacity-75 dark:text-gray-400">
-    -
-  </span>
-  <a
-    class="inline-flex font-semibold hover:text-teal-400 -mx-1 dark:text-green-500 dark:hover:text-teal-400"
-    rel="noopener nofollow"
-    href={test.repositoryLink}
-    data-text="Repository"
-    target="_blank"
-  >Repository</a>
+    data-text={t('TestsSection.preview')}
+    target="_blank">{t('TestsSection.preview')}</a
+  >
   <br />
-  <p class="prose dark:prose-invert prose-lg max-w-none print:prose-base mb-8">
+  <p class="prose dark:prose-invert prose-lg print:prose-base mb-8 max-w-none">
     {test.text}
   </p>
 </article>

@@ -37,6 +37,13 @@ ExperiencesSection:
   title: Recent experiences
 TestsSection:
   title: Frontend Tests
+  preview: Preview
 ThemeSwitcher:
   label: Switch dark mode
+Tabs:
+  profile: Profile
+  skills: Skills
+  experience: Experience
+  tests: Tests
+  score: Score
 ---

@@ -15,7 +15,7 @@ const { experience } = Astro.props as { experience: Experience }
     {experience.title}
   </h3>
   <a
-    class="font-semibold hover:text-teal-400 -ml-1 dark:text-green-500 dark:hover:text-teal-400"
+    class="font-semibold"
     rel="noopener nofollow"
     href={experience.link}
     data-text={experience.link}
@@ -23,7 +23,7 @@ const { experience } = Astro.props as { experience: Experience }
   >
     {experience.link}
   </a>
-  <section class="mb-8 text-gray-900 text-opacity-75 dark:text-gray-400">
+  <section class="text-opacity-75 mb-8 text-gray-900 dark:text-gray-400">
     <slot />
   </section>
 </article>

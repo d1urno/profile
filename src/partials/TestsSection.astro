@@ -33,12 +33,12 @@ const tests = [
 ---
 
 <section class="print:mt-10" style="page-break-after: always">
-  <div class="ml-auto flex items-center text-2xl uppercase mb-8">
+  <div class="mb-8 ml-auto flex items-center text-2xl uppercase">
     <h1 class="ml-auto text-teal-700 dark:text-white">{t('TestsSection.title')}</h1>
     <Icon name="computer" class="ml-2 h-12 w-12 text-teal-500 dark:text-teal-500" />
   </div>
   <hr
-    class="my-4 box-border border border-gray-500 bg-gray-500 opacity-75 dark:border-gray-500 dark:bg-gray-300 lg:-mx-6"
+    class="my-4 box-border border border-gray-500 bg-gray-500 opacity-75 lg:-mx-6 dark:border-gray-500 dark:bg-gray-300"
   />
   {tests.map((test) => <TestItem test={test} />)}
 </section>

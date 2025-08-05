@@ -37,6 +37,13 @@ ExperiencesSection:
   title: Experiencias recientes
 TestsSection:
   title: Pruebas
+  preview: Preview
 ThemeSwitcher:
   label: Cambiar modo de colores
+Tabs:
+  profile: Perfil
+  skills: Habilidades
+  experience: Experiencia
+  tests: Pruebas
+  score: Puntaje
 ---
