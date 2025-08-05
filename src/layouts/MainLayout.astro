@@ -3,17 +3,19 @@ import { getLocale } from 'astro-i18n-aut'
 import Default from '@/layouts/Default.astro'
 import SideSection from '@/partials/SideSection.astro'
 import { ClientRouter } from 'astro:transitions'
-
-const tabs = [
-  { href: '/', name: 'Profile' },
-  { href: '/skills', name: 'Skills' },
-  { href: '/experience', name: 'Experience' },
-  { href: '/tests', name: 'Tests' },
-  { href: '/score', name: 'Score' }
-]
+import useTranslations from '@/functions/useTranslations'
 
 const { pathname } = Astro.url
 const locale = getLocale(Astro.url)
+const { t } = await useTranslations(locale)
+
+const tabs = [
+  { href: '/', name: t('Tabs.profile') },
+  { href: '/skills', name: t('Tabs.skills') },
+  { href: '/experience', name: t('Tabs.experience') },
+  { href: '/tests', name: t('Tabs.tests') },
+  { href: '/score', name: t('Tabs.score') }
+]
 
 // Remove .html extension from pathname if present (due to format: 'file' in Astro config)
 const cleanPathname = pathname.replace(/\.html$/, '')
@@ -50,7 +52,7 @@ function isActive(tabHref: string) {
   if (normalizedPathname === localizedPath) {
     return true
   }
-  
+
   // Check if it's a sub-path (e.g., /es/experience/something)
   // Make sure it's not a partial match by checking for a slash after
   return normalizedPathname.startsWith(localizedPath + '/')
@@ -65,48 +67,7 @@ function isActive(tabHref: string) {
     <main class="px-8 py-8 sm:px-16 lg:col-span-5">
       <div class="print:hidden">
         <div class="flex items-center justify-between">
-          <div class="sm:hidden">
-            <button
-              id="mobile-menu-button"
-              type="button"
-              class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-none focus:ring-inset"
-              aria-controls="mobile-menu"
-              aria-expanded="false"
-            >
-              <span class="sr-only">Open main menu</span>
-              <svg
-                id="hamburger-icon"
-                class="block h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-              <svg
-                id="close-icon"
-                class="hidden h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-          </div>
-          <nav class="-mb-px hidden sm:flex sm:space-x-8" aria-label="Tabs">
+          <nav class="flex flex-col flex-wrap sm:flex-row sm:gap-x-8" aria-label="Tabs">
             {
               tabs.map((tab) => (
                 <a
