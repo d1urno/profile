@@ -10,4 +10,4 @@ Actualmente esse veículo está mudando rapidamente, então estou me aprofundand
 
 Então, o que me motiva agora? Transformar visões de produto em experiências polidas, micro-interações, movimento, características impulsionadas por IA, e depois enviá-las rapidamente com métricas que provam o sucesso.
 
-Se suas roadmaps precisam de alguém que possa ajudar a entregar qualidade desde um esquema de banco de dados até o toast final, ou seu time precisa de um líder que possa guiar o caminho para chegar lá, [vamos falar!](mailto:d1urno@gmx.com 'vamos falar!')
+Se suas roadmaps precisam de alguém que possa ajudar a entregar qualidade desde um esquema de banco de dados até o toast final, ou seu time precisa de um líder que possa guiar o caminho para chegar lá, [vamos conversar!](mailto:d1urno@gmx.com 'vamos conversar!')
