@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config'
 import vue from '@astrojs/vue'
 import tailwindcss from '@tailwindcss/vite'
 import icon from 'astro-icon'
-import { i18n, filterSitemapByDefaultLocale } from 'astro-i18n-aut/integration'
+import { i18n } from 'astro-i18n-aut/integration'
 import sitemap from '@astrojs/sitemap'
 import partytown from '@astrojs/partytown'
 import rehypeRewrite from 'rehype-rewrite'
@@ -42,7 +42,8 @@ export default defineConfig({
         locales,
         defaultLocale
       },
-      filter: filterSitemapByDefaultLocale({ defaultLocale })
+      // Include all locales, but exclude print pages from the sitemap
+      filter: (page) => !page.endsWith('/print') && !page.endsWith('/print.html')
     }),
     vue({ appEntrypoint: '/src/vue-main' }),
     icon(),
