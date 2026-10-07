@@ -8,6 +8,9 @@ import { unified } from '@astrojs/markdown-remark'
 import rehypeRewrite from 'rehype-rewrite'
 import { defaultLocale, locales } from './src/i18n/config.ts'
 
+const getTextContent = (node) =>
+  node.type === 'text' ? node.value : (node.children ?? []).map(getTextContent).join('')
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -45,9 +48,10 @@ export default defineConfig({
         [
           rehypeRewrite,
           {
+            selector: 'a',
             rewrite: (node) => {
-              if (node.type === 'element' && node.tagName === 'a' && node.properties.title) {
-                node.properties['data-text'] = node.properties.title
+              if (node.type === 'element' && node.tagName === 'a' && getTextContent(node).trim()) {
+                node.properties['data-text'] = getTextContent(node)
                 delete node.properties.title
               }
             }

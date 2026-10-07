@@ -18,14 +18,14 @@ const suffix = arrow ? (arrow === '↗' ? ' \u00a0' : ' ') + arrow : ''
   class:list={[
     'animated-link print:static print:inline print:w-auto print:max-w-none print:text-[#17212f] print:no-underline print:before:hidden dark:print:text-[#17212f]',
     variant === 'action' &&
-      'secondary-link inline-flex min-h-11 items-center before:inset-y-auto before:top-1/2 before:h-[1.5em] before:[transform:translateY(-50%)]',
+      'inline-flex min-h-11 items-center before:inset-y-auto before:top-1/2 before:h-[1.5em] before:[transform:translateY(-50%)]',
     variant === 'tab' &&
       'inline-flex min-h-11 items-center py-1 text-base leading-[1.25] font-bold text-slate-600 uppercase no-underline before:inset-y-auto before:top-1/2 before:h-[1.25em] before:[transform:translateY(-50%)] aria-[current=page]:border-b-[3px] aria-[current=page]:border-teal-700 aria-[current=page]:text-teal-900 dark:text-slate-300 dark:aria-[current=page]:border-teal-300 dark:aria-[current=page]:text-teal-200',
     className
   ]}
 >
   {arrow ? (
-    <span class="animated-link-label">
+    <span>
       {label}
       <span aria-hidden="true">{suffix}</span>
     </span>

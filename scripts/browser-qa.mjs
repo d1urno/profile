@@ -7,6 +7,11 @@ import path from 'node:path'
 
 const root = process.cwd()
 const output = path.join(root, '.qa')
+const experienceItemSelector = 'section[aria-labelledby="experience-heading"] > article'
+const projectCardSelector = 'article[data-project-id]'
+const experienceLinkSelector = `${experienceItemSelector} h3 a`
+const projectLinkSelector = `${projectCardSelector} a[data-text]`
+const overviewLinkSelector = 'a[data-text][href="/projects"]:has(span[aria-hidden="true"])'
 await mkdir(output, { recursive: true })
 const types = {
   '.html': 'text/html',
@@ -47,16 +52,23 @@ async function settleNavigation(page) {
   await page.waitForFunction(() => !document.documentElement.hasAttribute('data-astro-transition'))
 }
 async function readExperiences(page) {
-  return page.locator('.experience-item').evaluateAll((items) =>
+  return page.locator(experienceItemSelector).evaluateAll((items) =>
     items.map((item) => ({
       text: item.textContent.trim().replace(/\s+/g, ' '),
       links: Array.from(item.querySelectorAll('a')).map((link) => link.getAttribute('href'))
     }))
   )
 }
+async function checkAnimatedLabel(link, context) {
+  const { label, content } = await link.evaluate((element) => ({
+    label: element.dataset.text,
+    content: getComputedStyle(element, '::before').content
+  }))
+  assert.equal(content, `${JSON.stringify(label)} / ""`, context + ' decorative glow label')
+}
 async function checkArrowGeometry(link, context) {
   const geometry = await link.evaluate((element) => {
-    const arrow = element.querySelector('.animated-link-label [aria-hidden="true"]')
+    const arrow = element.querySelector('span[aria-hidden="true"]')
     const originalText = arrow.firstChild
     const originalRange = document.createRange()
     originalRange.setStart(originalText, originalText.length - 1)
@@ -180,7 +192,7 @@ try {
     await ctaPage.waitForURL(base + projects)
     await ctaPage.locator('nav a[aria-current="page"][href="' + projects + '"]').waitFor()
     await settleNavigation(ctaPage)
-    assert.equal(await ctaPage.locator('.project-item').count(), 4)
+    assert.equal(await ctaPage.locator(projectCardSelector).count(), 4)
     ctaChecks.push({ locale, emailLabel, email: 'mailto:d1urno@gmx.com', projectsLabel, projects })
   }
   await writeFile(path.join(output, 'cta-report.json'), JSON.stringify(ctaChecks, null, 2))
@@ -240,12 +252,14 @@ try {
             'full ordered experience content and links: ' + url
           )
           assert.equal(
-            await page.locator('.project-list').count(),
+            await page.locator('section[aria-labelledby="projects-heading"]').count(),
             0,
             'Selected work removed from Overview'
           )
           assert.equal(await page.locator('h2#experience-heading').count(), 1)
-          assert.equal(await page.locator('.experience-item h3').count(), 7)
+          assert.equal(await page.locator(`${experienceItemSelector} h3`).count(), 7)
+          const inlineLink = page.locator('.prose a[href="https://github.com/d1urno/nuxt-image-extractor"]')
+          assert.equal(await inlineLink.getAttribute('data-text'), await inlineLink.textContent())
         }
         if (route === '/projects') {
           const projects = await page.locator('[data-project-id]').evaluateAll((cards) =>
@@ -310,7 +324,7 @@ try {
           ['LinkedIn', 'https://www.linkedin.com/in/pmicel/'],
           ['Twitter', 'https://twitter.com/d1urno']
         ]) {
-          const link = page.locator('.social-links').getByRole('link', { name, exact: true })
+          const link = page.getByRole('complementary').getByRole('link', { name, exact: true })
           assert.equal(await link.getAttribute('href'), href)
           assert.equal(await link.locator('svg[aria-hidden=true]').count(), 1)
         }
@@ -327,11 +341,11 @@ try {
             'saved Score image loads'
           )
         }
-        for (const link of await page.locator('a:has(.animated-link-label)').all()) {
-          await checkArrowGeometry(
-            link,
-            url + ' at ' + width + ': ' + (await link.getAttribute('href'))
-          )
+        for (const link of await page.locator('a[data-text]').all()) {
+          const linkContext = url + ' at ' + width + ': ' + (await link.getAttribute('href'))
+          await checkAnimatedLabel(link, linkContext)
+          if (await link.locator('span[aria-hidden="true"]').count())
+            await checkArrowGeometry(link, linkContext)
         }
         const axe = await new AxeBuilder({ page })
           .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
@@ -490,6 +504,7 @@ try {
   await animatedPage.screenshot({ path: path.join(output, 'tabs-hover.png'), fullPage: true })
   const glowProof = []
   async function captureGlow(link, name) {
+    await checkAnimatedLabel(link, name)
     await link.hover()
     await animatedPage.waitForFunction(
       (element) => {
@@ -530,12 +545,12 @@ try {
     )
   }
   await captureGlow(animatedTab, 'tab-light')
-  await captureGlow(animatedPage.locator('.experience-title a').first(), 'link-light')
+  await captureGlow(animatedPage.locator(experienceLinkSelector).first(), 'link-light')
   for (const [selector, label, arrow] of [
-    ['a.secondary-link[href="/projects"]', 'View projects', '→'],
-    ['.project-list a.secondary-link', 'Source and documentation — Nuxt image extractor', '↗']
+    [overviewLinkSelector, 'View projects', '→'],
+    [projectLinkSelector, 'Source and documentation — Nuxt image extractor', '↗']
   ]) {
-    if (selector.startsWith('.project-list')) await animatedPage.goto(base + '/projects')
+    if (selector === projectLinkSelector) await animatedPage.goto(base + '/projects')
     const link = animatedPage.locator(selector).first()
     assert.equal(await animatedPage.getByRole('link', { name: label, exact: true }).count(), 1)
     assert.equal(await link.locator('[aria-hidden="true"]').count(), 1, 'one decorative arrow')
@@ -571,12 +586,12 @@ try {
   await animatedTab.focus()
   assert.equal(await animatedTab.evaluate((link) => link.matches(':focus-visible')), true)
   const social = animatedPage
-    .locator('.social-links')
+    .getByRole('complementary')
     .getByRole('link', { name: 'GitHub', exact: true })
   const socialIdleColor = await social.evaluate((link) => getComputedStyle(link).color)
   await social.hover()
   await animatedPage.waitForFunction(() =>
-    getComputedStyle(document.querySelector('.social-links a')).transform.includes('1.25')
+    getComputedStyle(document.querySelector('aside a[aria-label="GitHub"]')).transform.includes('1.25')
   )
   await social.focus()
   assert.equal(await social.evaluate((link) => link.matches(':focus-visible')), true)
@@ -585,20 +600,20 @@ try {
   await animatedPage.mouse.move(0, 0)
   await animatedPage.waitForFunction(
     (color) =>
-      getComputedStyle(document.querySelector('.social-links a')).color === color &&
-      getComputedStyle(document.querySelector('.social-links a')).transform === 'none',
+      getComputedStyle(document.querySelector('aside a[aria-label="GitHub"]')).color === color &&
+      getComputedStyle(document.querySelector('aside a[aria-label="GitHub"]')).transform === 'none',
     socialIdleColor
   )
   await animatedPage.getByRole('button', { name: 'Switch dark mode' }).click()
   await captureGlow(animatedTab, 'tab-dark')
-  await captureGlow(animatedPage.locator('.experience-title a').first(), 'link-dark')
+  await captureGlow(animatedPage.locator(experienceLinkSelector).first(), 'link-dark')
   await captureGlow(
-    animatedPage.locator('a.secondary-link[href="/projects"]'),
+    animatedPage.locator(overviewLinkSelector),
     'internal-arrow-dark'
   )
   await animatedPage.goto(base + '/projects')
   await captureGlow(
-    animatedPage.locator('.project-list a.secondary-link').first(),
+    animatedPage.locator(projectLinkSelector).first(),
     'external-arrow-dark'
   )
   await animatedTab.hover()
@@ -654,11 +669,11 @@ try {
     await animatedPage.setViewportSize({ width, height: 844 })
     for (const selector of [
       'nav a[href="/score"]',
-      '.experience-title a',
-      'a.secondary-link[href="/projects"]',
-      '.project-list a.secondary-link'
+      experienceLinkSelector,
+      overviewLinkSelector,
+      projectLinkSelector
     ]) {
-      await animatedPage.goto(base + (selector.startsWith('.project-list') ? '/projects' : '/'))
+      await animatedPage.goto(base + (selector === projectLinkSelector ? '/projects' : '/'))
       const link = animatedPage.locator(selector).first()
       const timing = await link.evaluate((element) => {
         const style = getComputedStyle(element, '::before')
@@ -712,7 +727,7 @@ try {
           (frame) => frame.width / frame.fullWidth > 0.2 && frame.width / frame.fullWidth < 0.8
         )
       )
-      if (await link.locator('.animated-link-label').count())
+      if (await link.locator('span[aria-hidden="true"]').count())
         await checkArrowGeometry(link, 'after reentry at ' + width + ': ' + selector)
       animationCycles.push({
         width,
@@ -787,7 +802,7 @@ try {
       assert.equal(await activeTab.count(), 1, 'one active tab on legacy Projects: ' + legacy)
       assert.equal(await activeTab.getAttribute('href'), projects)
       assert.equal(await activeTab.getAttribute('data-active'), 'true')
-      assert.equal(await page.locator('.project-item').count(), 4)
+      assert.equal(await page.locator(projectCardSelector).count(), 4)
     }
   }
   const redirectChecks = []
@@ -810,7 +825,7 @@ try {
           await redirectPage.locator('nav a[aria-current="page"]').getAttribute('href'),
           home
         )
-        assert.equal(await redirectPage.locator('.experience-item').count(), 7)
+        assert.equal(await redirectPage.locator(experienceItemSelector).count(), 7)
         await redirectPage.goBack()
         await redirectPage.waitForURL(base + '/projects')
         await settleNavigation(redirectPage)

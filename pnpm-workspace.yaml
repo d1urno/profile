@@ -1,0 +1,4 @@
+# Template Studio shows project controls only for pnpm workspaces.
+# This workspace contains the existing root application.
+packages:
+  - '.'

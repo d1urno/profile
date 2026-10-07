@@ -26,6 +26,8 @@ QA requires Chromium. Run `pnpm exec playwright install chromium`, or set `CV_BR
 
 `.dev-cli.jsonc` follows the supplied Spentier schema version 1, with a single `astro-app` service for `my-profile` at the repository root. Open this repository in that DevCLI and select **App: Pablo Miceli CV**. It uses the reference's `{{pnpm}}` placeholder, starts on `http://localhost:4321`, and allows 60 seconds for readiness. There are no service dependencies, setup tasks or template generators.
 
+`pnpm-workspace.yaml` declares the root application as a single-package workspace. The installed Template Studio app requires this file to show **Project controls**, including **Run Dev Servers**, even when the DevCLI configuration is valid. After adding or updating this file, click the target project's refresh button (or reopen the project) to refresh its detected settings.
+
 The same command can run directly:
 
 ```sh

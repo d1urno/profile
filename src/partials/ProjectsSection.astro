@@ -20,7 +20,7 @@ const thumbnailLabel = t('Projects.thumbnailLabel')
   <SectionHeading as={compact ? 'h2' : 'h1'} id="projects-heading" hidden>
     {t('projectTitle')}
   </SectionHeading>
-  <div class="project-list grid gap-6">
+  <div class="grid gap-6">
     {projects.map((project) => (
       <ProjectCard project={project} thumbnailLabel={thumbnailLabel} compact={compact} />
     ))}

@@ -18,21 +18,21 @@ const tabs = [
 
 <Default>
   <a
-    class="skip-link absolute top-[-100px] left-4 z-100 bg-white px-4 py-[0.7rem] text-teal-900 focus:top-4 print:hidden"
+    class="absolute top-[-100px] left-4 z-100 bg-white px-4 py-[0.7rem] text-teal-900 focus:top-4 print:hidden"
     href="#main-content"
   >
     {t('skip')}
   </a>
-  <div class="site-shell mx-auto max-w-[1440px] lg:grid lg:min-h-screen lg:grid-cols-[320px_minmax(0,1fr)] print:block">
+  <div class="mx-auto max-w-[1440px] lg:grid lg:min-h-screen lg:grid-cols-[320px_minmax(0,1fr)] print:block">
     <SideSection />
     <main
-      class="site-main min-w-0 px-6 pt-8 pb-16 lg:px-14 print:p-0"
+      class="min-w-0 px-6 pt-8 pb-16 lg:px-14 print:p-0"
       id="main-content"
       tabindex="-1"
     >
       <nav
         id="main-nav-tabs"
-        class="main-nav flex flex-wrap gap-x-6 gap-y-3 border-b border-stone-300 lg:gap-x-10 print:hidden dark:border-slate-700"
+        class="flex flex-wrap gap-x-6 gap-y-3 border-b border-stone-300 lg:gap-x-10 print:hidden dark:border-slate-700"
         aria-label={t('navigation')}
       >
         {tabs.map((tab) => (
@@ -45,7 +45,7 @@ const tabs = [
           />
         ))}
       </nav>
-      <div class="page-content pt-10">
+      <div class="pt-10">
         <slot />
       </div>
     </main>

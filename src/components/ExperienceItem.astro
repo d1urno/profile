@@ -12,14 +12,14 @@ const { experience, headingLevel: Heading = 'h2', variant = 'screen' } = Astro.p
 
 <article
   class:list={[
-    'experience-item mb-8 border-b border-stone-200 pb-8 print:break-inside-avoid dark:border-slate-400',
+    'mb-8 border-b border-stone-200 pb-8 print:break-inside-avoid dark:border-slate-400',
     variant === 'resume'
       ? 'print:mb-[0.6rem] print:pb-[0.5rem]'
       : 'print:mb-[0.8rem] print:pb-[0.7rem]'
   ]}
 >
-  <div class="experience-header mb-[0.6rem] flex flex-wrap justify-between gap-4">
-    <Heading class="experience-title text-xl leading-[1.5] font-bold tracking-[-0.02em] print:text-[11pt]">
+  <div class="mb-[0.6rem] flex flex-wrap justify-between gap-4">
+    <Heading class="text-xl leading-[1.5] font-bold tracking-[-0.02em] print:text-[11pt]">
       <AnimatedLink
         label={experience.title}
         href={experience.link}
@@ -27,13 +27,13 @@ const { experience, headingLevel: Heading = 'h2', variant = 'screen' } = Astro.p
         rel="noopener noreferrer"
       />
     </Heading>
-    <p class="experience-period text-[0.9rem] whitespace-nowrap text-slate-600 print:text-[9pt] print:text-[#374151] dark:text-slate-300 dark:print:text-[#374151]">
+    <p class="text-[0.9rem] whitespace-nowrap text-slate-600 print:text-[9pt] print:text-[#374151] dark:text-slate-300 dark:print:text-[#374151]">
       {experience.period}
     </p>
   </div>
   <Prose
     class:list={[
-      'experience-copy text-base leading-[1.65] print:text-[10pt] print:leading-[1.4] [&_p]:my-[0.6rem] [&_ul]:my-[0.6rem]',
+      'marker:text-slate-600 dark:marker:text-white text-base leading-[1.65] print:text-[10pt] print:leading-[1.4] [&_p]:my-[0.6rem] [&_ul]:my-[0.6rem]',
       variant === 'resume' &&
         'print:text-[#17212f] print:prose-strong:text-inherit print:[&_p]:my-[0.4rem] print:[&_ul]:my-[0.4rem] print:[&_li]:my-[0.25em] dark:print:text-[#17212f]'
     ]}

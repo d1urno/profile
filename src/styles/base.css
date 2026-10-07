@@ -47,7 +47,9 @@
 
   &::before {
     /* Reveal, cursor and glow share one layer and one transition clock. */
-    content: attr(data-text) / '';
+    /* Tailwind's before: variants read this variable when setting content. */
+    --tw-content: attr(data-text) / '';
+    content: var(--tw-content);
     position: absolute;
     inset-block: 0;
     inset-inline-start: 0;
