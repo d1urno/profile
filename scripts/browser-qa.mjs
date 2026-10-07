@@ -84,8 +84,8 @@ async function checkArrowGeometry(link, context) {
 try {
   const context = await browser.newContext({ reducedMotion: 'reduce' })
   const page = await context.newPage()
-  await page.route('https://www.googletagmanager.com/**', (route) => route.abort())
-  await page.route('https://www.google-analytics.com/**', (route) => route.abort())
+  await context.route('https://www.googletagmanager.com/**', (route) => route.abort())
+  await context.route('https://www.google-analytics.com/**', (route) => route.abort())
   page.on('pageerror', (error) =>
     errors.push({ message: error.message, url: page.url(), stack: error.stack })
   )
@@ -97,6 +97,43 @@ try {
     assert.equal(experienceByLocale[locale].length, 7, 'print contains each approved role once')
   }
   await referencePage.close()
+  const printPage = await context.newPage()
+  printPage.on('pageerror', (error) =>
+    errors.push({ message: error.message, url: printPage.url(), stack: error.stack })
+  )
+  await printPage.addInitScript(() => {
+    window.qaPrintCalls = 0
+    window.print = () => window.qaPrintCalls++
+  })
+  for (const locale of ['en', 'es', 'pt']) {
+    const home = locale === 'en' ? '/' : '/' + locale
+    const print = (locale === 'en' ? '' : '/' + locale) + '/print'
+    await printPage.goto(base + print)
+    await printPage.locator('#print-cv').focus()
+    await printPage.keyboard.press('Enter')
+    assert.equal(await printPage.evaluate(() => window.qaPrintCalls), 1)
+    // Match production's same-origin website link on the local QA server.
+    const website = printPage.getByRole('link', { name: 'pablomiceli.dev', exact: true })
+    await website.evaluate((link, href) => (link.href = href), base + home)
+    await website.click()
+    await printPage.waitForURL(base + home)
+    await settleNavigation(printPage)
+    for (const expectedCalls of [2, 3]) {
+      await printPage.goBack()
+      await printPage.waitForURL(base + print)
+      await settleNavigation(printPage)
+      await printPage.locator('#print-cv').click()
+      assert.equal(
+        await printPage.evaluate(() => window.qaPrintCalls),
+        expectedCalls,
+        'print button works once per click after returning: ' + locale
+      )
+      await printPage.goForward()
+      await printPage.waitForURL(base + home)
+      await settleNavigation(printPage)
+    }
+  }
+  await printPage.close()
   const ctaPage = await context.newPage()
   ctaPage.on('pageerror', (error) =>
     errors.push({ message: error.message, url: ctaPage.url(), stack: error.stack })

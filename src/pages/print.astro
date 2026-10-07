@@ -106,7 +106,11 @@ const technicalFocus = [
   </main>
 </Default>
 <script>
-  document.getElementById('print-cv')?.addEventListener('click', () => window.print())
+  document.addEventListener('click', (event) => {
+    if (event.target instanceof Element && event.target.closest('#print-cv')) {
+      window.print()
+    }
+  })
 </script>
 <style>
   @media print {
