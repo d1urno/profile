@@ -5,4 +5,9 @@ link: https://www.switch.org.za
 order: 0
 ---
 
-Contributed to prototyping, building and shipping an energy trading application, including diagnostic metrics and energy allocation forecasting. Maintained production meter data management (MDMS) dashboards across the full stack using React, Material UI, TypeScript and Recharts, with NestJS, MongoDB and AWS. Worked directly with new clients to provide technical support and gather product feedback.
+Contributed to building and shipping an energy trading application and maintaining production meter data management (MDMS) dashboards.
+- Prototyped and developed energy trading features, including diagnostic metrics and energy allocation forecasting
+- Maintained MDMS dashboards across the full stack
+- Worked directly with new clients to provide technical support and gather product feedback
+
+**Stack:** React, Material UI, TypeScript, Recharts, NestJS, MongoDB, Turborepo and AWS

@@ -29,7 +29,7 @@ SkillsSection:
   subtitle3: Other
   subtitle4: Infrastructure
   text: >-
-    Technologies used across my projects. Vue, TypeScript and Tailwind CSS are my preferred frontend stack; the experience section shows where I have applied them.
+    Technologies used across projects I worked on.
 ExperiencesSection:
   title: Recent experiences
 TestsSection:

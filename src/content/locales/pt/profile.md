@@ -2,10 +2,10 @@
 title: Engenheiro Full-Stack Sênior
 ---
 
-Desenvolvo produtos úteis do banco de dados à interface, com **mais de 15 anos em desenvolvimento de software** e foco em Vue, TypeScript e experiência do usuário.
+Criando experiências de usuário modernas e escaláveis.
 
-Meu trabalho abrange soluções financeiras, produtos de viagens, plataformas de energia e aplicativos com IA, do protótipo à manutenção em produção. Liderei desenvolvimento frontend e full-stack, defini arquiteturas, mentorei desenvolvedores e colaborei com equipes de produto e design.
+👋 Sou Pablo, argentino radicado na Cidade do Cabo. Comecei a desenvolver plugins de jogos em Java na adolescência, e meu interesse por UX, IA e arquiteturas eficientes continua moldando a forma como desenvolvo software.
 
-Meu stack frontend preferido é **Vue / Nuxt, TypeScript e Tailwind CSS**, com experiência full-stack em Node.js, GraphQL, PostgreSQL e MongoDB. Meu trabalho recente também inclui React, NestJS, AWS, Cloudflare e integrações de IA. Valorizo interfaces claras, sistemas de fácil manutenção e os detalhes da experiência.
+Com mais de **15 anos em desenvolvimento de software**, trabalhei com soluções financeiras, produtos de viagens, plataformas de energia e aplicações com IA, desde a prototipagem até as entregas contínuas em produção. Liderei o desenvolvimento frontend e full-stack, defini arquiteturas de aplicações e orientei desenvolvedores, trabalhando em parceria com CTOs e equipes de produto.
 
-Sou argentino e moro na Cidade do Cabo. Comecei desenvolvendo plugins de jogos em Java na adolescência. Meu interesse em UX, design e arquitetura continua orientando a maneira como desenvolvo software.
+Minha stack frontend preferida é **Vue / Nuxt, TypeScript e Tailwind CSS**, complementada por experiência full-stack com **APIs oRPC, Drizzle e bancos de dados PostgreSQL**. Meu trabalho recente também inclui React, Express, Hono, NestJS, AWS, Cloudflare e integrações de IA. Valorizo interfaces claras, sistemas fáceis de manter e os detalhes que tornam um produto agradável de usar.
