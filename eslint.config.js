@@ -4,7 +4,16 @@ import vue from 'eslint-plugin-vue'
 import vueParser from 'vue-eslint-parser'
 import globals from 'globals'
 export default [
-  { ignores: ['dist/**', '.astro/**', 'src/astro_tmp_pages_*/**', 'node_modules/**'] },
+  {
+    ignores: [
+      'dist/**',
+      '.astro/**',
+      '.qa/**',
+      '.dev-cli/**',
+      'src/astro_tmp_pages_*/**',
+      'node_modules/**'
+    ]
+  },
   ...tseslint.configs.recommended,
   ...astro.configs['flat/recommended'],
   ...vue.configs['flat/recommended'],
