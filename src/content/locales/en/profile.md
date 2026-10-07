@@ -2,7 +2,7 @@
 title: Senior Full-Stack Engineer
 ---
 
-Building modern and scalable user experiences.
+**Building modern and scalable user experiences.**
 
 👋 I’m Pablo, Argentine based in Cape Town. I started building Java game plugins as a teenager, and my interest in UX, AI and efficient architectures continues to shape how I build software.
 

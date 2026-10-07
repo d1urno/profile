@@ -2,7 +2,7 @@
 title: Engenheiro Full-Stack Sênior
 ---
 
-Criando experiências de usuário modernas e escaláveis.
+**Criando experiências de usuário modernas e escaláveis.**
 
 👋 Sou Pablo, argentino radicado na Cidade do Cabo. Comecei a desenvolver plugins de jogos em Java na adolescência, e meu interesse por UX, IA e arquiteturas eficientes continua moldando a forma como desenvolvo software.
 

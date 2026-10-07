@@ -12,7 +12,7 @@ html.dark {
 }
 body {
   margin: 0;
-  @apply bg-stone-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200;
+  @apply text-slate-800 dark:text-slate-200 dark:bg-gray-700;
 }
 a {
   @apply text-teal-800 underline decoration-teal-600/40 underline-offset-4 dark:text-teal-300;
@@ -70,7 +70,7 @@ a[data-text]:is(:hover, :focus-visible)::before {
 }
 .sidebar {
   padding: 0.5rem 1.5rem 1.5rem 1.5rem;
-  @apply bg-stone-100 dark:bg-slate-900;
+  @apply bg-gray-300 dark:bg-gray-800;
 }
 .sidebar-photo {
   width: 100%;
@@ -298,7 +298,7 @@ a[data-text]:is(:hover, :focus-visible)::before {
   padding: 0.4rem 0.7rem;
   border: 1px solid;
   border-radius: 0.3rem;
-  @apply border-stone-300 dark:border-slate-700;
+  @apply border-stone-300 dark:border-slate-400;
 }
 .skip-link {
   position: absolute;
