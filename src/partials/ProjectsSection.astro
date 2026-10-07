@@ -2,6 +2,7 @@
 import { getLocale } from '@/functions/getLocale'
 import useTranslations from '@/functions/useTranslations'
 import { Image } from 'astro:assets'
+import Icon from '@/components/Icon.astro'
 import traceCdrThumbnail from '@/assets/projects/trace-cdr.png'
 import dogAndPonyThumbnail from '@/assets/projects/dog-and-pony.png'
 import doc88Thumbnail from '@/assets/projects/doc88.png'
@@ -14,18 +15,18 @@ const { compact = false } = Astro.props
 const projects = {
   en: [
     [
+      'Public demo · 2025',
+      'Trace CDR',
+      'An interactive carbon emission data visualization app using React, d3.js and TanStack Query. Explore the interface in the public preview.',
+      'React 19 · TypeScript · Tailwind CSS · d3.js · TanStack Query',
+      'Open demo'
+    ],
+    [
       'Historical open source · 2020',
       'Nuxt image extractor',
       'Built a Nuxt module for statically generated sites. It downloads images from a CMS and rewrites page references to local assets. Created for the Matera website workflow; the repository is now archived.',
       'Nuxt · Node.js · Static generation',
       'Source and documentation'
-    ],
-    [
-      'Public demo · 2025',
-      'Trace CDR',
-      'An interactive data visualization demo using React, d3.js and TanStack Query. Explore the interface in the public preview.',
-      'React 19 · TypeScript · Tailwind CSS · d3.js · TanStack Query',
-      'Open demo'
     ],
     [
       'Frontend challenge · 2020',
@@ -44,18 +45,18 @@ const projects = {
   ],
   es: [
     [
+      'Demo pública · 2025',
+      'Trace CDR',
+      'Una aplicación interactiva de visualización de datos de emisiones de carbono con React, d3.js y TanStack Query. Explora la interfaz en la vista previa pública.',
+      'React 19 · TypeScript · Tailwind CSS · d3.js · TanStack Query',
+      'Abrir demo'
+    ],
+    [
       'Código abierto histórico · 2020',
       'Nuxt image extractor',
       'Desarrollé un módulo de Nuxt para sitios estáticos. Descarga imágenes de un CMS y actualiza las referencias de las páginas a archivos locales. Creado para el proyecto de Matera; el repositorio está archivado.',
       'Nuxt · Node.js · Generación estática',
       'Código y documentación'
-    ],
-    [
-      'Demo pública · 2025',
-      'Trace CDR',
-      'Demo interactiva de visualización de datos con React, d3.js y TanStack Query. Explora la interfaz en la vista previa pública.',
-      'React 19 · TypeScript · Tailwind CSS · d3.js · TanStack Query',
-      'Abrir demo'
     ],
     [
       'Desafío frontend · 2020',
@@ -74,18 +75,18 @@ const projects = {
   ],
   pt: [
     [
+      'Demo pública · 2025',
+      'Trace CDR',
+      'Um aplicativo interativo de visualização de dados de emissões de carbono com React, d3.js e TanStack Query. Explore a interface na prévia pública.',
+      'React 19 · TypeScript · Tailwind CSS · d3.js · TanStack Query',
+      'Abrir demo'
+    ],
+    [
       'Código aberto histórico · 2020',
       'Nuxt image extractor',
       'Desenvolvi um módulo Nuxt para sites estáticos. Ele baixa imagens de um CMS e atualiza as referências das páginas para arquivos locais. Criado para o projeto da Matera; o repositório está arquivado.',
       'Nuxt · Node.js · Geração estática',
       'Código e documentação'
-    ],
-    [
-      'Demo pública · 2025',
-      'Trace CDR',
-      'Demo interativa de visualização de dados com React, d3.js e TanStack Query. Explore a interface na prévia pública.',
-      'React 19 · TypeScript · Tailwind CSS · d3.js · TanStack Query',
-      'Abrir demo'
     ],
     [
       'Desafio frontend · 2020',
@@ -104,12 +105,12 @@ const projects = {
   ]
 }
 const links = [
-  'https://github.com/d1urno/nuxt-image-extractor',
   'https://preview.tracecdr-demo.pages.dev/',
+  'https://github.com/d1urno/nuxt-image-extractor',
   'https://dps-senior-frontend-test.netlify.app',
   'https://doc88-frontend-challenge.netlify.app'
 ]
-const thumbnails = [undefined, traceCdrThumbnail, dogAndPonyThumbnail, doc88Thumbnail]
+const thumbnails = [traceCdrThumbnail, undefined, dogAndPonyThumbnail, doc88Thumbnail]
 const thumbnailLabel = { en: 'Preview of', es: 'Vista previa de', pt: 'Prévia de' }[locale]
 const traceLiveSite = {
   href: 'https://www.tracecdr.org',
@@ -137,8 +138,8 @@ const traceLiveSite = {
       const actions = [{ href: links[index], label: project[4] }]
       if (project[1] === 'Trace CDR') actions.push(traceLiveSite)
       return (
-        <article class:list={['project-item', { 'project-item-with-thumbnail': thumbnail }]}>
-          {thumbnail && (
+        <article class="project-item project-item-with-thumbnail">
+          {thumbnail ? (
             <Image
               src={thumbnail}
               alt={`${thumbnailLabel} ${project[1]}`}
@@ -150,6 +151,10 @@ const traceLiveSite = {
               loading="lazy"
               decoding="async"
             />
+          ) : (
+            <div class="project-thumbnail project-thumbnail-placeholder" aria-hidden="true">
+              <Icon name="image" />
+            </div>
           )}
           <div class="project-content">
             <p class="eyebrow">{project[0]}</p>

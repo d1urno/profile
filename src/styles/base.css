@@ -287,7 +287,16 @@ a[data-text]:is(:hover, :focus-visible)::before {
   object-fit: cover;
   border: 1px solid;
   border-radius: 0.4rem;
-  @apply border-stone-300 bg-stone-100 dark:border-slate-700 dark:bg-slate-900;
+  @apply border-stone-300 bg-stone-100 dark:border-slate-700 dark:bg-gray-800;
+}
+.project-thumbnail-placeholder {
+  display: grid;
+  place-items: center;
+  @apply text-teal-700 dark:text-teal-300;
+}
+.project-thumbnail-placeholder svg {
+  width: 4rem;
+  height: 4rem;
 }
 .project-content {
   min-width: 0;
