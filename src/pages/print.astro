@@ -50,13 +50,13 @@ const technicalFocus = [
 ---
 
 <Default>
-  <main class="resume mx-auto max-w-4xl p-6 print:p-0">
+  <main class="resume mx-auto max-w-4xl p-6 print:max-w-none print:p-0">
     <Button as="button" class="mb-6 print:hidden" id="print-cv">
       {copy[6]}
     </Button>
     <header class="resume-header">
-      <h1 class="text-3xl font-bold">Pablo Miceli</h1>
-      <p class="mb-2 text-lg font-semibold">{t('SideSection.title')}</p>
+      <h1 class="text-3xl font-bold print:text-[24pt]">Pablo Miceli</h1>
+      <p class="mb-2 text-lg font-semibold print:text-[12pt]">{t('SideSection.title')}</p>
       <p>
         {t('locationValue')} · <a href="mailto:d1urno@gmx.com">d1urno@gmx.com</a> ·{' '}
         <a href="https://pablomiceli.dev">pablomiceli.dev</a>
@@ -67,8 +67,8 @@ const technicalFocus = [
       </p>
       <p class="my-4 leading-relaxed">{copy[0]}</p>
     </header>
-    <ExperiencesSection resume />
-    <section>
+    <ExperiencesSection variant="resume" />
+    <section class="print:break-inside-avoid">
       <SectionHeading>{copy[1]}</SectionHeading>
       <div class="space-y-1">
         {technicalFocus.map((technologies, index) => (
@@ -78,7 +78,7 @@ const technicalFocus = [
         ))}
       </div>
     </section>
-    <section>
+    <section class="print:break-inside-avoid">
       <SectionHeading>{copy[3]}</SectionHeading>
       <p>
         <strong>Trace CDR:</strong>
@@ -97,7 +97,7 @@ const technicalFocus = [
         </a>
       </p>
     </section>
-    <section>
+    <section class="print:break-inside-avoid">
       <SectionHeading>{copy[2]}</SectionHeading>
       <p>
         {t('SideSection.spanish')} · {t('SideSection.native')}; {t('SideSection.english')} /{' '}
@@ -114,44 +114,3 @@ const technicalFocus = [
     }
   })
 </script>
-<style>
-  @media print {
-    #print-cv {
-      display: none !important;
-    }
-    .resume {
-      max-width: none;
-    }
-    .resume-header h1 {
-      font-size: 24pt;
-    }
-    .resume-header > p:nth-child(2) {
-      font-size: 12pt;
-    }
-    .resume :global(#experience-heading) {
-      font-size: 15pt;
-    }
-    .resume :global(.experience-item) {
-      margin-bottom: 0.6rem;
-      padding-bottom: 0.5rem;
-    }
-    .resume :global(.experience-copy p),
-    .resume :global(.experience-copy ul) {
-      margin-top: 0.4rem;
-      margin-bottom: 0.4rem;
-    }
-    .resume :global(.experience-copy li) {
-      margin-top: 0.25em;
-      margin-bottom: 0.25em;
-    }
-    .resume > section:not(:first-of-type) {
-      break-inside: avoid;
-    }
-    .resume :global(.prose) {
-      color: #17212f;
-    }
-    .resume :global(.prose strong) {
-      color: inherit;
-    }
-  }
-</style>

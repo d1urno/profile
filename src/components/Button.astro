@@ -12,7 +12,7 @@ const { as: Tag = 'a', class: className, ...attributes } = Astro.props
   type={Tag === 'button' ? 'button' : undefined}
   {...attributes}
   class:list={[
-    'button inline-flex min-h-11 items-center justify-center rounded-[0.4rem] bg-teal-800 px-[1.1rem] py-[0.65rem] font-[650] text-white no-underline hover:bg-teal-900 dark:bg-teal-300 dark:text-slate-800 dark:hover:bg-teal-200',
+    'button inline-flex min-h-11 items-center justify-center rounded-[0.4rem] bg-teal-800 px-[1.1rem] py-[0.65rem] font-[650] text-white no-underline hover:bg-teal-900 print:text-[#17212f] dark:bg-teal-300 dark:text-slate-800 dark:hover:bg-teal-200 dark:print:text-[#17212f]',
     className
   ]}
 >

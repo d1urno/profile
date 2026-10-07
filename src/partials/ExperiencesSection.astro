@@ -6,11 +6,11 @@ import SectionHeading from '@/components/SectionHeading.astro'
 import useTranslations from '@/functions/useTranslations'
 const locale = getLocale(Astro.url)
 interface Props {
-  resume?: boolean
+  variant?: 'screen' | 'resume'
   embedded?: boolean
 }
-const { resume = false, embedded = false } = Astro.props
-const nested = resume || embedded
+const { variant = 'screen', embedded = false } = Astro.props
+const nested = variant === 'resume' || embedded
 const Heading = nested ? 'h2' : 'h1'
 const { t } = await useTranslations(locale)
 const experiences = (
@@ -25,7 +25,11 @@ const experiences = (
   {experiences.map(async (experience) => {
     const { Content } = await render(experience)
     return (
-      <ExperienceItem experience={experience.data} resume={nested}>
+      <ExperienceItem
+        experience={experience.data}
+        headingLevel={nested ? 'h3' : 'h2'}
+        variant={variant}
+      >
         <Content />
       </ExperienceItem>
     )

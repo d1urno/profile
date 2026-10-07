@@ -139,7 +139,7 @@ const traceLiveSite = {
       const actions = [{ href: links[index], label: project[4] }]
       if (project[1] === 'Trace CDR') actions.push(traceLiveSite)
       return (
-        <article class="project-item project-item-with-thumbnail grid items-start gap-6 border-t border-stone-300 py-6 first:border-t-0 first:pt-0 sm:grid-cols-[12rem_minmax(0,1fr)] dark:border-slate-700">
+        <article class="project-item project-item-with-thumbnail grid items-start gap-6 border-t border-stone-300 py-6 first:border-t-0 first:pt-0 sm:grid-cols-[12rem_minmax(0,1fr)] print:break-inside-avoid print:py-[0.6rem] first:print:pt-0 dark:border-slate-700">
           {thumbnail ? (
             <Image
               src={thumbnail}

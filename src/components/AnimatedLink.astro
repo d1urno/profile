@@ -16,7 +16,7 @@ const suffix = arrow ? (arrow === '↗' ? ' \u00a0' : ' ') + arrow : ''
   {...attributes}
   data-text={label + suffix}
   class:list={[
-    'animated-link',
+    'animated-link print:static print:inline print:w-auto print:max-w-none print:text-[#17212f] print:no-underline print:before:hidden dark:print:text-[#17212f]',
     variant === 'action' &&
       'secondary-link inline-flex min-h-11 items-center before:inset-y-auto before:top-1/2 before:h-[1.5em] before:[transform:translateY(-50%)]',
     variant === 'tab' &&
