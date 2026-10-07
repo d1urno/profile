@@ -7,7 +7,7 @@ const locale = getLocale(Astro.url) as 'en' | 'es' | 'pt'
 const { t } = await useTranslations(locale)
 const copy = {
   en: [
-    '15+ years in software development. Full-stack and frontend leadership across finance, travel and agency projects. Vue, TypeScript and Tailwind CSS, with Node.js, GraphQL and PostgreSQL. Experience in application architecture, developer mentoring and collaboration with product and design teams.',
+    'Building modern and scalable user experiences, with 15+ years in software development across finance, travel, energy and AI-powered applications, from prototyping through continuous production releases. I have led frontend and full-stack development, shaped application architectures and mentored developers, working closely with CTOs and product teams. My preferred stack is Vue / Nuxt, TypeScript and Tailwind CSS, backed by oRPC APIs, Drizzle and PostgreSQL. I focus on clear interfaces, maintainable systems and thoughtful user experiences.',
     'Technical focus',
     'Languages',
     'Selected work',
@@ -16,7 +16,7 @@ const copy = {
     'Print / save PDF'
   ],
   es: [
-    'Más de 15 años en desarrollo de software. Liderazgo full-stack y frontend en finanzas, viajes y proyectos de agencia. Vue, TypeScript y Tailwind CSS, con Node.js, GraphQL y PostgreSQL. Experiencia en arquitectura, mentoría y colaboración con equipos de producto y diseño.',
+    'Creo experiencias de usuario modernas y escalables, con más de 15 años en desarrollo de software en finanzas, viajes, energía y aplicaciones con IA, desde el prototipado hasta las entregas continuas en producción. He liderado el desarrollo frontend y full-stack, definido arquitecturas de aplicaciones y acompañado a otros desarrolladores, trabajando estrechamente con CTOs y equipos de producto. Mi stack preferido es Vue / Nuxt, TypeScript y Tailwind CSS, complementado por APIs oRPC, Drizzle y PostgreSQL. Me enfoco en interfaces claras, sistemas fáciles de mantener y una experiencia de usuario cuidada.',
     'Foco técnico',
     'Idiomas',
     'Proyectos seleccionados',
@@ -25,7 +25,7 @@ const copy = {
     'Imprimir / guardar PDF'
   ],
   pt: [
-    'Mais de 15 anos em desenvolvimento de software. Liderança full-stack e frontend em finanças, viagens e projetos de agência. Vue, TypeScript e Tailwind CSS, com Node.js, GraphQL e PostgreSQL. Experiência em arquitetura, mentoria e colaboração com equipes de produto e design.',
+    'Crio experiências de usuário modernas e escaláveis, com mais de 15 anos em desenvolvimento de software em finanças, viagens, energia e aplicações com IA, desde a prototipagem até as entregas contínuas em produção. Liderei o desenvolvimento frontend e full-stack, defini arquiteturas de aplicações e orientei desenvolvedores, trabalhando em parceria com CTOs e equipes de produto. Meu stack preferido é Vue / Nuxt, TypeScript e Tailwind CSS, complementado por APIs oRPC, Drizzle e PostgreSQL. Meu foco está em interfaces claras, sistemas fáceis de manter e uma experiência de usuário bem cuidada.',
     'Foco técnico',
     'Idiomas',
     'Projetos selecionados',
@@ -34,43 +34,56 @@ const copy = {
     'Imprimir / salvar PDF'
   ]
 }[locale]
+const focusLabels = {
+  en: ['Frontend', 'Backend and data', 'Tooling and integrations'],
+  es: ['Frontend', 'Backend y datos', 'Herramientas e integraciones'],
+  pt: ['Frontend', 'Backend e dados', 'Ferramentas e integrações']
+}[locale]
+const technicalFocus = [
+  'Vue / Nuxt · TypeScript · Tailwind CSS · React · Material UI · Recharts · TanStack',
+  'Node.js · oRPC / tRPC · Express · Hono · NestJS · GraphQL / Apollo · Drizzle · Prisma · PostgreSQL · SQLite · MongoDB',
+  'Vite · pnpm / Turborepo · AWS · Cloudflare · Docker · Firebase · CI/CD · ' +
+    { en: 'AI integrations', es: 'Integraciones de IA', pt: 'Integrações de IA' }[locale]
+]
 ---
 
 <Default>
   <main class="resume mx-auto max-w-4xl p-6 print:p-0">
-    <button class="button mb-6 print:hidden" type="button" id="print-cv">{copy[6]}</button>
+    <button class="button mb-6 print:hidden" type="button" id="print-cv">
+      {copy[6]}
+    </button>
     <header class="resume-header">
       <h1 class="text-3xl font-bold">Pablo Miceli</h1>
       <p class="mb-2 text-lg font-semibold">{t('SideSection.title')}</p>
       <p>
-        {t('locationValue')} · <a href="mailto:d1urno@gmx.com">d1urno@gmx.com</a> · <a
-          href="https://pablomiceli.dev">pablomiceli.dev</a
-        >
+        {t('locationValue')} · <a href="mailto:d1urno@gmx.com">d1urno@gmx.com</a> ·{' '}
+        <a href="https://pablomiceli.dev">pablomiceli.dev</a>
       </p>
       <p class="mt-1">
-        <a href="https://github.com/d1urno">github.com/d1urno</a> · <a
-          href="https://www.linkedin.com/in/pmicel/">linkedin.com/in/pmicel</a
-        >
+        <a href="https://github.com/d1urno">github.com/d1urno</a> ·{' '}
+        <a href="https://www.linkedin.com/in/pmicel/">linkedin.com/in/pmicel</a>
       </p>
       <p class="my-4 leading-relaxed">{copy[0]}</p>
     </header>
     <ExperiencesSection resume />
     <section>
       <h2 class="section-heading">{copy[1]}</h2>
-      <p>
-        Vue 3 / Nuxt · TypeScript · Tailwind CSS · React · Node.js · GraphQL / Apollo · PostgreSQL /
-        Prisma · MongoDB · NestJS · Material UI · Recharts · AWS · Cloudflare · Docker · Firebase ·
-        CI/CD · AI APIs
-      </p>
+      <div class="space-y-1">
+        {technicalFocus.map((technologies, index) => (
+          <p>
+            <strong>{focusLabels[index]}:</strong> {technologies}
+          </p>
+        ))}
+      </div>
     </section>
     <section>
       <h2 class="section-heading">{copy[3]}</h2>
       <p>
         <strong>Nuxt image extractor:</strong>
         {copy[4]}
-        <a href="https://github.com/d1urno/nuxt-image-extractor"
-          >github.com/d1urno/nuxt-image-extractor</a
-        >
+        <a href="https://github.com/d1urno/nuxt-image-extractor">
+          github.com/d1urno/nuxt-image-extractor
+        </a>
       </p>
       <p class="mt-2">
         <strong>Trace CDR:</strong>
@@ -81,9 +94,9 @@ const copy = {
     <section>
       <h2 class="section-heading">{copy[2]}</h2>
       <p>
-        {t('SideSection.spanish')} · {t('SideSection.native')}; {t('SideSection.english')} / {
-          t('SideSection.portuguese')
-        } · {t('SideSection.fluent')}; {t('SideSection.german')} · {t('SideSection.beginner')}
+        {t('SideSection.spanish')} · {t('SideSection.native')}; {t('SideSection.english')} /{' '}
+        {t('SideSection.portuguese')} · {t('SideSection.fluent')}; {t('SideSection.german')} ·{' '}
+        {t('SideSection.beginner')}
       </p>
     </section>
   </main>
@@ -107,6 +120,22 @@ const copy = {
     }
     .resume :global(#experience-heading) {
       font-size: 15pt;
+    }
+    .resume :global(.experience-item) {
+      margin-bottom: 0.6rem;
+      padding-bottom: 0.5rem;
+    }
+    .resume :global(.experience-copy p),
+    .resume :global(.experience-copy ul) {
+      margin-top: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .resume :global(.experience-copy li) {
+      margin-top: 0.25em;
+      margin-bottom: 0.25em;
+    }
+    .resume > section:not(:first-of-type) {
+      break-inside: avoid;
     }
     .resume :global(.prose) {
       color: #17212f;
