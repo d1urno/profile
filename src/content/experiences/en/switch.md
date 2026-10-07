@@ -5,8 +5,4 @@ link: https://www.linkedin.com/in/pmicel/
 order: 0
 ---
 
-Full-time role based in Cape Town, South Africa (hybrid), working across the full stack on energy dashboards.
-
-- Prototype and maintain production MDMS dashboards for energy forecasting and allocations.
-- Work with React, Material UI, TypeScript and Recharts on the frontend, and NestJS, MongoDB and AWS on the backend and infrastructure.
-- Work directly with the CEO on planning and with clients on technical support.
+Contributed to prototyping, building and shipping an energy trading application, including diagnostic metrics and energy allocation forecasting. Maintained production meter data management (MDMS) dashboards across the full stack using React, Material UI, TypeScript and Recharts, with NestJS, MongoDB and AWS. Worked directly with new clients to provide technical support and gather product feedback.

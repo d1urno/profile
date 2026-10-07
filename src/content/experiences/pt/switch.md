@@ -5,8 +5,4 @@ link: https://www.linkedin.com/in/pmicel/
 order: 0
 ---
 
-Cargo de tempo integral na Cidade do Cabo, África do Sul (modelo híbrido), trabalhando em todo o stack de dashboards de energia.
-
-- Desenvolvo protótipos e mantenho dashboards MDMS em produção para previsões e alocações de energia.
-- Trabalho com React, Material UI, TypeScript e Recharts no frontend, e NestJS, MongoDB e AWS no backend e na infraestrutura.
-- Trabalho diretamente com o CEO no planejamento e com clientes no suporte técnico.
+Contribuí para a prototipagem, o desenvolvimento e o lançamento de uma aplicação de comercialização de energia, incluindo métricas de diagnóstico e previsões de alocação de energia. Mantive dashboards de gestão de dados de medidores (MDMS) em produção em todo o stack, usando React, Material UI, TypeScript e Recharts, com NestJS, MongoDB e AWS. Trabalhei diretamente com novos clientes para fornecer suporte técnico e coletar feedback sobre o produto.
