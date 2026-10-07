@@ -28,59 +28,75 @@ const locales = ['en', 'es', 'pt'].filter((value) => value !== locale)
     ))}
   </div>
   <div class="identity">
-    <img
-      class="sidebar-photo"
-      src="/img/pic_w_320.jpg"
-      width="320"
-      height="320"
-      alt="Pablo Miceli"
-      fetchpriority="high"
-    />
-    <div>
+    <picture>
+      <source
+        srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320/v1710761790/pablomiceli/static/profile.webp  1x,
+          https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_640/v1710761790/pablomiceli/static/profile.webp 2x,
+          https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_1280/v1710761790/pablomiceli/static/profile.webp 3x`}
+        type="image/webp"
+      />
+
+      <source
+        srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320/v1710761790/pablomiceli/static/profile.jpg  1x,
+          https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_640/v1710761790/pablomiceli/static/profile.jpg 2x,
+          https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_1280/v1710761790/pablomiceli/static/profile.jpg 3x`}
+        type="image/jpg"
+      />
+
+      <img
+        class="sidebar-photo"
+        src="https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320,f_auto/v1710765181/pablomiceli/static/profile"
+        width="320"
+        height="320"
+        alt="Pablo Miceli"
+        fetchpriority="high"
+      />
+    </picture>
+    <div class="lg:mr-auto">
       <p class="identity-name">Pablo Miceli</p>
       <p class="identity-role">{t('SideSection.title')}</p>
     </div>
   </div>
-  <div class="contact-details">
-    <p>{t('locationValue')}</p>
-    <a href="mailto:d1urno@gmx.com" data-text="d1urno@gmx.com">
-      d1urno@gmx.com
+  <div class="flex flex-col justify-center my-5">
+    <div class="social-links">
+      <a
+        href="https://github.com/d1urno"
+        aria-label="GitHub"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="github" />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/pmicel/"
+        aria-label="LinkedIn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="linkedin" />
+      </a>
+      <a
+        href="https://twitter.com/d1urno"
+        aria-label="Twitter"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="twitter" />
+      </a>
+    </div>
+    <a
+      class="button"
+      href={'/' + t('SideSection.link') + '.pdf'}
+      download={`Pablo_Miceli_Senior_Full_Stack_Engineer_${locale.toUpperCase()}.pdf`}
+    >
+      {t('SideSection.download')}
     </a>
   </div>
-  <div class="social-links">
-    <a
-      href="https://github.com/d1urno"
-      aria-label="GitHub"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <Icon name="github" />
-    </a>
-    <a
-      href="https://www.linkedin.com/in/pmicel/"
-      aria-label="LinkedIn"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <Icon name="linkedin" />
-    </a>
-    <a
-      href="https://twitter.com/d1urno"
-      aria-label="Twitter"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <Icon name="twitter" />
-    </a>
-  </div>
-  <a
-    class="button"
-    href={'/' + t('SideSection.link') + '.pdf'}
-    download={`Pablo_Miceli_Senior_Full_Stack_Engineer_${locale.toUpperCase()}.pdf`}
-  >
-    {t('SideSection.download')}
-  </a>
-  <div class="mt-8">
+  <div class="mt-12">
+    <div class="contact-details mb-8">
+      <h2 class="font-semibold">{t('SideSection.location')}</h2>
+      <p>{t('locationValue')}</p>
+    </div>
     <h2 class="mb-3 font-semibold">{t('SideSection.idioms')}</h2>
     <ul class="language-list">
       {Object.entries(speaking).map(([language, level]) => (

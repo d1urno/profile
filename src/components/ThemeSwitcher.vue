@@ -20,7 +20,7 @@ function toggleTheme() {
     type="button"
     :aria-label="label"
     :aria-pressed="dark"
-    class="flex h-11 w-11 items-center justify-center rounded border border-current text-teal-800 dark:text-teal-300"
+    class="flex h-11 w-11 items-center justify-center rounded text-teal-800 dark:text-teal-300"
     @click="toggleTheme"
   >
     <slot v-if="dark" name="sun-icon" />
