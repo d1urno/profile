@@ -55,6 +55,14 @@ Locale codes and the default language are defined once in `src/i18n/config.ts`. 
 
 Layout and component styles use Tailwind classes in Astro templates. Shared buttons, animated links, headings, social links and prose live in `src/components`; the Vue theme switcher remains an interactive island. The global stylesheet contains Tailwind setup, link/focus defaults, the shared reveal animation, reduced-motion handling and print page settings. Print spacing belongs to each component through `print:` utilities; the experience `resume` variant controls its compact PDF spacing separately from heading levels. Web and PDF summaries can retain their distinct approved wording in the locale dictionaries.
 
+## AI discovery
+
+`public/llms.txt` follows the [llms.txt proposal](https://llmstxt.org/), with curated links to English, Spanish and Portuguese Markdown pages plus optional PDFs and site notes. The build generates `/index.md`, `/projects.md`, `/skills.md` and `/score.md` for each canonical locale from the existing content collections, translated project records and shared `src/data/skills.ts` lists. Edit those sources to keep both HTML and Markdown current.
+
+`public/ai-catalog.json` follows the [ARD specification](https://agenticresourcediscovery.org/spec/): three document entries with domain-anchored identifiers, Markdown media types and representative queries. The same catalog is generated at the current discovery path `/.well-known/ard.json` and the legacy `/.well-known/ai-catalog.json` path. HTML head links advertise the catalog, llms.txt and each page's Markdown version. These are static resources with no client-side scripts.
+
+`public/_headers` supplies UTF-8 media types and public CORS headers for these resources on hosts supporting this file, including Cloudflare Pages. Other static hosts need equivalent response-header configuration; Astro's development endpoint headers are not stored in built files.
+
 ## PDFs and QA
 
 Browser QA isolates all contexts from Google Analytics requests so navigation and animation checks do not send telemetry or depend on third-party worker callbacks. Application runtime errors still fail the suite.

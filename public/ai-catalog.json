@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ards-project/ard-spec/main/spec/schemas/ard-entry.schema.json#/$defs/ArdManifest",
+  "entries": [
+    {
+      "@context": "https://agenticresourcediscovery.org/context/v1",
+      "identifier": "urn:air:pablomiceli.dev:documents:profile",
+      "displayName": "Pablo Miceli — profile and professional experience",
+      "type": "text/markdown",
+      "url": "https://pablomiceli.dev/index.md",
+      "description": "Professional summary, complete employment timeline and public contact links for Pablo Miceli, a senior full-stack engineer based in Cape Town.",
+      "tags": ["cv", "profile", "professional-experience", "full-stack-engineering"],
+      "representativeQueries": [
+        "What is Pablo Miceli's professional background?",
+        "Which companies and roles appear in Pablo Miceli's employment history?",
+        "Where can I find Pablo Miceli's public contact links?"
+      ],
+      "metadata": { "language": "en" }
+    },
+    {
+      "@context": "https://agenticresourcediscovery.org/context/v1",
+      "identifier": "urn:air:pablomiceli.dev:documents:projects",
+      "displayName": "Pablo Miceli — selected work",
+      "type": "text/markdown",
+      "url": "https://pablomiceli.dev/projects.md",
+      "description": "Selected public work with project descriptions, technologies and links to demos, frontend challenges and archived open-source code.",
+      "tags": ["portfolio", "projects", "demos", "open-source"],
+      "representativeQueries": [
+        "What public projects has Pablo Miceli built?",
+        "Where can I explore the Trace CDR demo?",
+        "What does the archived Nuxt image extractor module do?"
+      ],
+      "metadata": { "language": "en" }
+    },
+    {
+      "@context": "https://agenticresourcediscovery.org/context/v1",
+      "identifier": "urn:air:pablomiceli.dev:documents:skills",
+      "displayName": "Pablo Miceli — technical skills",
+      "type": "text/markdown",
+      "url": "https://pablomiceli.dev/skills.md",
+      "description": "Programming languages, frameworks, data tools and infrastructure used across Pablo Miceli's projects.",
+      "tags": ["technical-skills", "typescript", "vue", "infrastructure"],
+      "representativeQueries": [
+        "Which programming languages and frameworks does Pablo Miceli use?",
+        "What database and infrastructure technologies are listed in Pablo Miceli's CV?"
+      ],
+      "metadata": { "language": "en" }
+    }
+  ]
+}

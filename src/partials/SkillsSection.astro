@@ -1,73 +1,12 @@
 ---
 import useTranslations from '@/functions/useTranslations'
 import { getLocale } from '@/functions/getLocale'
+import { skillGroups } from '@/data/skills'
 const { t } = await useTranslations(getLocale(Astro.url))
-const groups = [
-  {
-    title: t('SkillsSection.subtitle1'),
-    skills: [
-      'TypeScript',
-      'JavaScript',
-      'SQL',
-      'GraphQL',
-      'CSS / SCSS',
-      'Java',
-      'PHP',
-      'Python',
-      'Go'
-    ]
-  },
-  {
-    title: t('SkillsSection.subtitle2'),
-    skills: [
-      'Vue 3',
-      'Nuxt',
-      'Tailwind CSS',
-      'React',
-      'Material UI',
-      'Recharts',
-      'Node.js',
-      'NestJS',
-      'Apollo Client / Server',
-      'oRPC / tRPC',
-      'TanStack',
-      'Prisma',
-      'Drizzle',
-      'Astro',
-      'Laravel'
-    ]
-  },
-  {
-    title: t('SkillsSection.subtitle3'),
-    skills: [
-      'PostgreSQL',
-      'SQLite',
-      'MongoDB',
-      'Open Banking APIs',
-      'Local-first',
-      'Vite',
-      'Mapbox',
-      'pnpm monorepo',
-      'Turborepo',
-      'Headless Drupal',
-      'd3.js'
-    ]
-  },
-  {
-    title: t('SkillsSection.subtitle4'),
-    skills: [
-      'Cloudflare',
-      'Docker',
-      'Firebase',
-      'Netlify',
-      'DigitalOcean',
-      'GCP',
-      'AWS',
-      'Vercel',
-      'CI/CD'
-    ]
-  }
-]
+const groups = skillGroups.map(({ label, skills }) => ({
+  title: t(`SkillsSection.${label}`),
+  skills
+}))
 ---
 
 <section aria-labelledby="skills-heading">

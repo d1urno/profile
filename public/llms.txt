@@ -1,0 +1,31 @@
+# Pablo Miceli
+
+> Online CV and selected work of Pablo Miceli, a senior full-stack engineer based in Cape Town, South Africa, with 15+ years of software development experience.
+
+The site covers professional experience, technical skills, public demos and historical open-source work. English is the default language; Spanish and Portuguese versions are also available. The links below provide Markdown generated from the same content as the website. Project descriptions identify demos, archived repositories and frontend challenges. The Score page contains a historical PageSpeed snapshot.
+
+## English
+
+- [Profile and experience](https://pablomiceli.dev/index.md): Professional summary, complete employment timeline and public contact links.
+- [Selected work](https://pablomiceli.dev/projects.md): Project descriptions, technologies and links to public demos, previews and source code.
+- [Technical skills](https://pablomiceli.dev/skills.md): Languages, frameworks, data tools and infrastructure used across projects.
+
+## Español
+
+- [Perfil y experiencia](https://pablomiceli.dev/es/index.md): Resumen profesional, trayectoria laboral y enlaces de contacto.
+- [Proyectos seleccionados](https://pablomiceli.dev/es/projects.md): Descripciones, tecnologías y enlaces de los proyectos públicos.
+- [Habilidades técnicas](https://pablomiceli.dev/es/skills.md): Lenguajes, frameworks, herramientas e infraestructura.
+
+## Português
+
+- [Perfil e experiência](https://pablomiceli.dev/pt/index.md): Resumo profissional, histórico de trabalho e links de contato.
+- [Projetos selecionados](https://pablomiceli.dev/pt/projects.md): Descrições, tecnologias e links dos projetos públicos.
+- [Habilidades técnicas](https://pablomiceli.dev/pt/skills.md): Linguagens, frameworks, ferramentas e infraestrutura.
+
+## Optional
+
+- [Site notes and saved performance report](https://pablomiceli.dev/score.md): Source repository and historical PageSpeed snapshot.
+- [English CV PDF](https://pablomiceli.dev/Pablo_Miceli_-_Senior_Product_Engineer_%28English%29.pdf): Printable English CV.
+- [Spanish CV PDF](https://pablomiceli.dev/Pablo_Miceli_-_Senior_Product_Engineer_%28Espa%C3%B1ol%29.pdf): Printable Spanish CV.
+- [Portuguese CV PDF](https://pablomiceli.dev/Pablo_Miceli_-_Senior_Product_Engineer_%28Portugu%C3%AAs%29.pdf): Printable Portuguese CV.
+- [Resource discovery catalog](https://pablomiceli.dev/.well-known/ard.json): Structured ARD entries for the English profile, projects and skills documents.

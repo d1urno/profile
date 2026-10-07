@@ -12,6 +12,14 @@ const alternate = (language: Locale) =>
   new URL(localizePath(unlocalizedPath, language), Astro.site).href
 const canonical = alternate(locale)
 const printPage = unlocalizedPath === '/print'
+const markdownPages: Record<string, string> = {
+  '/': '/index.md',
+  '/projects': '/projects.md',
+  '/tests': '/projects.md',
+  '/skills': '/skills.md',
+  '/score': '/score.md'
+}
+const markdownPath = markdownPages[unlocalizedPath]
 ---
 
 <html lang={locale}>
@@ -27,6 +35,12 @@ const printPage = unlocalizedPath === '/print'
     <link rel="alternate" hreflang="x-default" href={alternate(defaultLocale)} />
     {printPage && <meta name="robots" content="noindex, follow" />}
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="describedby" href="/llms.txt" type="text/plain" />
+    <link rel="ard" href="/.well-known/ard.json" type="application/json" />
+    <link rel="ai-catalog" href="/ai-catalog.json" type="application/json" />
+    {markdownPath && (
+      <link rel="alternate" type="text/markdown" href={localizePath(markdownPath, locale)} />
+    )}
     <meta name="description" content={t('description')} />
     <meta name="og:type" property="og:type" content="website" />
     <meta name="og:title" property="og:title" content={`Pablo Miceli | ${t('title')}`} />
