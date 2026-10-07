@@ -7,7 +7,8 @@ const locale = getLocale(Astro.url)
 const { t } = await useTranslations(locale)
 const localized = (path: string) =>
   locale === 'en' ? path : '/' + locale + (path === '/' ? '' : path)
-const pathname = localized(getPagePath(Astro.url))
+const pagePath = getPagePath(Astro.url)
+const pathname = localized(pagePath === '/tests' ? '/projects' : pagePath)
 const tabs = [
   { href: '/', name: t('Tabs.profile') },
   { href: '/projects', name: t('Tabs.projects') },

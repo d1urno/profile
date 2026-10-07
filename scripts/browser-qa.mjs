@@ -703,6 +703,18 @@ try {
       assert.equal(await page.locator('html').getAttribute('lang'), locale)
     }
   }
+  for (const prefix of ['', '/en', '/es', '/pt']) {
+    const projects = prefix === '/es' || prefix === '/pt' ? prefix + '/projects' : '/projects'
+    for (const suffix of ['', '.html']) {
+      const legacy = prefix + '/tests' + suffix
+      await page.goto(base + legacy)
+      const activeTab = page.locator('nav a[aria-current="page"]')
+      assert.equal(await activeTab.count(), 1, 'one active tab on legacy Projects: ' + legacy)
+      assert.equal(await activeTab.getAttribute('href'), projects)
+      assert.equal(await activeTab.getAttribute('data-active'), 'true')
+      assert.equal(await page.locator('.project-item').count(), 4)
+    }
+  }
   const redirectChecks = []
   for (const javaScriptEnabled of [true, false]) {
     const redirectContext = await browser.newContext({ javaScriptEnabled, reducedMotion: 'reduce' })
@@ -757,7 +769,7 @@ try {
     'accessibility violations; inspect .qa/browser-report.json'
   )
   console.log(
-    'Passed: 60 route/viewport checks, Overview experience content, legacy redirects with/without JavaScript and stable history, repeated and back/forward navigation, social icons, Score image, keyboard skip link, theme persistence, print metadata and WCAG automated checks.'
+    'Passed: 60 route/viewport checks, Overview experience content, legacy Projects aliases, legacy redirects with/without JavaScript and stable history, repeated and back/forward navigation, print keyboard activation and history, social icons, Score image, keyboard skip link, theme persistence, print metadata and WCAG automated checks.'
   )
 } finally {
   await browser.close()
