@@ -6,9 +6,11 @@ import useTranslations from '@/functions/useTranslations'
 const locale = getLocale(Astro.url)
 interface Props {
   resume?: boolean
+  embedded?: boolean
 }
-const { resume = false } = Astro.props
-const Heading = resume ? 'h2' : 'h1'
+const { resume = false, embedded = false } = Astro.props
+const nested = resume || embedded
+const Heading = nested ? 'h2' : 'h1'
 const { t } = await useTranslations(locale)
 const experiences = (
   await getCollection('experiences', ({ id }) => id.startsWith(locale + '/'))
@@ -16,15 +18,15 @@ const experiences = (
 ---
 
 <section aria-labelledby="experience-heading">
-  <Heading id="experience-heading" class="section-heading">{t('ExperiencesSection.title')}</Heading>
-  {
-    experiences.map(async (experience) => {
-      const { Content } = await render(experience)
-      return (
-        <ExperienceItem experience={experience.data} resume={resume}>
-          <Content />
-        </ExperienceItem>
-      )
-    })
-  }
+  <Heading id="experience-heading" class="section-heading">
+    {t('ExperiencesSection.title')}
+  </Heading>
+  {experiences.map(async (experience) => {
+    const { Content } = await render(experience)
+    return (
+      <ExperienceItem experience={experience.data} resume={nested}>
+        <Content />
+      </ExperienceItem>
+    )
+  })}
 </section>

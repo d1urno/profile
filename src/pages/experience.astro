@@ -1,8 +1,6 @@
 ---
-import MainLayout from '@/layouts/MainLayout.astro'
-import ExperiencesSection from '@/partials/ExperiencesSection.astro'
+import { getLocale } from '@/functions/getLocale'
+const locale = getLocale(Astro.url)
+const overview = locale === 'en' ? '/' : '/' + locale
+return Astro.redirect(overview + '#experience-heading', 301)
 ---
-
-<MainLayout>
-  <ExperiencesSection />
-</MainLayout>

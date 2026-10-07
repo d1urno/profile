@@ -20,6 +20,19 @@ Baseline: c0ad855, master; original checkout was clean.
 - Trace CDR and two frontend challenges were already linked publicly in the CV. Keep their scope clearly labeled as demos/challenges.
 - LinkedIn browser access was unavailable (supported laptop browser inventory returned no browsers). The user's LinkedIn screenshot supplies the visible titles/dates that supersede the stale site timeline.
 
+## Overview consolidation and actions — 7 October 2026
+
+- Replaced Overview's Selected work section with the entire approved experience timeline. All seven roles, descriptions, dates, order and links match the pre-change Experience page in each language. The intro and other Overview content remain. Nested headings retain one page h1.
+- Removed the Experience tab. Navigation now contains Overview, Projects, Skills and Score with the accepted compact sizing and animations.
+- English actions are exactly “Email me” and “View projects”; Spanish is “Envíame un email” / “Ver proyectos”; Portuguese is “Envie-me um email” / “Ver projetos”. Email retains mailto:d1urno@gmx.com. Projects opens /projects, /es/projects or /pt/projects, with the accepted decorative arrow animation.
+- Legacy /experience and localized /en, /es, /pt Experience URLs redirect to the matching Overview's #experience-heading. Development returns HTTP 301; Astro's static output supplies an instant meta refresh, canonical and fallback link. All eight plain/.html legacy routes passed with JavaScript enabled and disabled, including back/forward without loops. Redirects are excluded from the sitemap.
+- Print composition was not changed: Experience remains included once. All three generated PDF candidates still have two pages with identical extracted text/order and raster rendering; delivered public and Library PDFs were preserved.
+- Live localhost:4321 checks confirmed exact prior content/links in all three Overview languages, native 301 destinations, CTA labels/hrefs and keyboard focus/activation. Email activation was intercepted in the test to avoid opening a mail application; Projects navigated to all four work samples in each locale.
+- Lint, Astro check, Vue type checking and build passed. The already-running aggregate browser checks completed successfully: 60 route/viewport cases plus dark accessibility, 16 redirect/history cases, localized keyboard CTAs, no observed runtime errors or automated WCAG violations. A first test run raced a pending Astro transition; the check now waits for Astro's transition-completion attribute before the next navigation, and subsequent runs passed.
+- Existing unrelated sidebar/photo/style and theme-button edits were preserved outside this commit. No server stop, push, PR or deployment.
+
+Evidence: ignored .qa/experience-before.json, overview-live-report.json, cta-live-report.json, cta-report.json, redirect-report.json and refreshed browser/screenshots/PDF comparison reports. Further user-review iterations should use focused checks; broad regressions belong at the end of review.
+
 ## Compact-tab follow-up — verified in the running preview
 
 The first padding reduction reached the existing localhost:4321 server: computed padding was 8px vertically, label font remained 20px, and widths were unchanged. Desktop tabs measured 49px high because flex rows stretched the unselected tabs to the selected tab's height. No stale output or competing size rule was found.

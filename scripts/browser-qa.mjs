@@ -36,6 +36,17 @@ const browser = await chromium.launch({ executablePath: process.env.CV_BROWSER_P
 const reports = []
 const errors = []
 const arrowGeometry = []
+async function settleNavigation(page) {
+  await page.waitForFunction(() => !document.documentElement.hasAttribute('data-astro-transition'))
+}
+async function readExperiences(page) {
+  return page.locator('.experience-item').evaluateAll((items) =>
+    items.map((item) => ({
+      text: item.textContent.trim().replace(/\s+/g, ' '),
+      links: Array.from(item.querySelectorAll('a')).map((link) => link.getAttribute('href'))
+    }))
+  )
+}
 async function checkArrowGeometry(link, context) {
   const geometry = await link.evaluate((element) => {
     const arrow = element.querySelector('.animated-link-label [aria-hidden="true"]')
@@ -75,7 +86,63 @@ try {
   const page = await context.newPage()
   await page.route('https://www.googletagmanager.com/**', (route) => route.abort())
   await page.route('https://www.google-analytics.com/**', (route) => route.abort())
-  page.on('pageerror', (error) => errors.push(error.message))
+  page.on('pageerror', (error) =>
+    errors.push({ message: error.message, url: page.url(), stack: error.stack })
+  )
+  const experienceByLocale = {}
+  const referencePage = await context.newPage()
+  for (const locale of ['en', 'es', 'pt']) {
+    await referencePage.goto(base + (locale === 'en' ? '/print' : '/' + locale + '/print'))
+    experienceByLocale[locale] = await readExperiences(referencePage)
+    assert.equal(experienceByLocale[locale].length, 7, 'print contains each approved role once')
+  }
+  await referencePage.close()
+  const ctaPage = await context.newPage()
+  ctaPage.on('pageerror', (error) =>
+    errors.push({ message: error.message, url: ctaPage.url(), stack: error.stack })
+  )
+  const ctaChecks = []
+  for (const [locale, emailLabel, projectsLabel] of [
+    ['en', 'Email me', 'View projects'],
+    ['es', 'Envíame un email', 'Ver proyectos'],
+    ['pt', 'Envie-me um email', 'Ver projetos']
+  ]) {
+    const home = locale === 'en' ? '/' : '/' + locale
+    const projects = locale === 'en' ? '/projects' : '/' + locale + '/projects'
+    await ctaPage.goto(base + home)
+    const email = ctaPage.getByRole('link', { name: emailLabel, exact: true })
+    assert.equal(await email.getAttribute('href'), 'mailto:d1urno@gmx.com')
+    await email.focus()
+    assert.equal(await email.evaluate((link) => link.matches(':focus-visible')), true)
+    await email.evaluate((link) =>
+      link.addEventListener(
+        'click',
+        (event) => {
+          event.preventDefault()
+          link.dataset.keyboardActivated = String(event.isTrusted)
+        },
+        { once: true }
+      )
+    )
+    await ctaPage.keyboard.press('Enter')
+    assert.equal(
+      await email.getAttribute('data-keyboard-activated'),
+      'true',
+      'Email CTA responds to keyboard activation'
+    )
+    const projectLink = ctaPage.getByRole('link', { name: projectsLabel, exact: true })
+    assert.equal(await projectLink.getAttribute('href'), projects)
+    await projectLink.focus()
+    assert.equal(await projectLink.evaluate((link) => link.matches(':focus-visible')), true)
+    await ctaPage.keyboard.press('Enter')
+    await ctaPage.waitForURL(base + projects)
+    await ctaPage.locator('nav a[aria-current="page"][href="' + projects + '"]').waitFor()
+    await settleNavigation(ctaPage)
+    assert.equal(await ctaPage.locator('.project-item').count(), 4)
+    ctaChecks.push({ locale, emailLabel, email: 'mailto:d1urno@gmx.com', projectsLabel, projects })
+  }
+  await writeFile(path.join(output, 'cta-report.json'), JSON.stringify(ctaChecks, null, 2))
+  await ctaPage.close()
   for (const width of [320, 390, 768, 1440]) {
     await page.setViewportSize({ width, height: 1000 })
     for (const locale of ['en', 'es', 'pt']) {
@@ -83,6 +150,10 @@ try {
         const url = locale === 'en' ? route : '/' + locale + (route === '/' ? '' : route)
         const response = await page.goto(base + url)
         assert.equal(response.status(), 200, url)
+        if (route === '/experience')
+          await page.waitForURL(
+            base + (locale === 'en' ? '/' : '/' + locale) + '#experience-heading'
+          )
         assert.equal(await page.locator('html').getAttribute('lang'), locale, 'locale: ' + url)
         await page.locator('astro-island[ssr]').count() // Static content is available immediately.
         assert.equal(await page.locator('h1').count(), 1, 'one main heading: ' + url)
@@ -91,6 +162,26 @@ try {
           1,
           'active navigation: ' + url
         )
+        assert.equal(await page.locator('nav a').count(), 4, 'four navigation tabs')
+        assert.equal(
+          await page.locator('nav a[href*="/experience"]').count(),
+          0,
+          'Experience is no longer a tab'
+        )
+        if (route === '/' || route === '/experience') {
+          assert.deepEqual(
+            await readExperiences(page),
+            experienceByLocale[locale],
+            'full ordered experience content and links: ' + url
+          )
+          assert.equal(
+            await page.locator('.project-list').count(),
+            0,
+            'Selected work removed from Overview'
+          )
+          assert.equal(await page.locator('h2#experience-heading').count(), 1)
+          assert.equal(await page.locator('.experience-item h3').count(), 7)
+        }
         for (const tab of await page.locator('nav a').all()) {
           const bounds = await tab.boundingBox()
           assert.ok(
@@ -159,8 +250,9 @@ try {
     theme: 'dark',
     violations: darkAxe.violations.map((v) => ({ id: v.id, nodes: v.nodes.map((n) => n.target) }))
   })
-  await page.getByRole('link', { name: 'Experience', exact: true }).click()
-  await page.waitForURL(base + '/experience')
+  await page.getByRole('link', { name: 'Projects', exact: true }).click()
+  await page.waitForURL(base + '/projects')
+  await settleNavigation(page)
   assert.equal(
     await page.locator('html').getAttribute('class'),
     'dark',
@@ -178,14 +270,17 @@ try {
   await page.keyboard.press('Enter')
   assert.equal(await page.evaluate(() => document.activeElement?.id), 'main-content')
   const interactionPage = await context.newPage()
-  interactionPage.on('pageerror', (error) => errors.push(error.message))
+  interactionPage.on('pageerror', (error) =>
+    errors.push({ message: error.message, url: interactionPage.url(), stack: error.stack })
+  )
   for (const width of [390, 1440]) {
     await interactionPage.setViewportSize({ width, height: 844 })
     for (const locale of ['en', 'es', 'pt']) {
       const home = locale === 'en' ? '/' : '/' + locale
-      const route = (section) => (locale === 'en' ? '' : '/' + locale) + '/' + section
+      const route = (section) =>
+        section ? (locale === 'en' ? '' : '/' + locale) + '/' + section : home
       await interactionPage.goto(base + home)
-      for (const section of ['experience', 'score', 'projects', 'skills', 'score']) {
+      for (const section of ['projects', 'score', 'skills', '', 'score']) {
         await interactionPage.locator('nav a[href="' + route(section) + '"]').click()
         await interactionPage.waitForURL(base + route(section))
         await interactionPage
@@ -195,6 +290,7 @@ try {
           await interactionPage.locator('nav a[aria-current="page"]').getAttribute('href'),
           route(section)
         )
+        await settleNavigation(interactionPage)
         if (width === 390) {
           await interactionPage.waitForFunction(() => {
             const nav = document.querySelector('#main-nav-tabs').getBoundingClientRect()
@@ -203,14 +299,13 @@ try {
         }
       }
       await interactionPage.goBack()
-      await interactionPage.waitForURL(base + route('skills'))
-      await interactionPage
-        .locator('nav a[aria-current="page"][href="' + route('skills') + '"]')
-        .waitFor()
+      await interactionPage.waitForURL(base + home)
+      await interactionPage.locator('nav a[aria-current="page"][href="' + home + '"]').waitFor()
       assert.equal(
         await interactionPage.locator('nav a[aria-current="page"]').getAttribute('href'),
-        route('skills')
+        home
       )
+      await settleNavigation(interactionPage)
       await interactionPage.goForward()
       await interactionPage.waitForURL(base + route('score'))
       await interactionPage
@@ -220,14 +315,18 @@ try {
         await interactionPage.locator('nav a[aria-current="page"]').getAttribute('href'),
         route('score')
       )
+      await settleNavigation(interactionPage)
       await interactionPage.locator('nav a[aria-current="page"]').click()
+      await settleNavigation(interactionPage)
       assert.equal(await interactionPage.locator('html').getAttribute('lang'), locale)
     }
   }
   await interactionPage.close()
   const animatedContext = await browser.newContext({ reducedMotion: 'no-preference' })
   const animatedPage = await animatedContext.newPage()
-  animatedPage.on('pageerror', (error) => errors.push(error.message))
+  animatedPage.on('pageerror', (error) =>
+    errors.push({ message: error.message, url: animatedPage.url(), stack: error.stack })
+  )
   await animatedPage.setViewportSize({ width: 1440, height: 1000 })
   await animatedPage.goto(base)
   const animatedTab = animatedPage.getByRole('link', { name: 'Score', exact: true })
@@ -319,11 +418,12 @@ try {
     )
   }
   await captureGlow(animatedTab, 'tab-light')
-  await captureGlow(animatedPage.locator('.contact-details a'), 'link-light')
+  await captureGlow(animatedPage.locator('.experience-title a').first(), 'link-light')
   for (const [selector, label, arrow] of [
-    ['a.secondary-link[href="/experience"]', 'View experience', '→'],
+    ['a.secondary-link[href="/projects"]', 'View projects', '→'],
     ['.project-list a.secondary-link', 'Source and documentation — Nuxt image extractor', '↗']
   ]) {
+    if (selector.startsWith('.project-list')) await animatedPage.goto(base + '/projects')
     const link = animatedPage.locator(selector).first()
     assert.equal(await animatedPage.getByRole('link', { name: label, exact: true }).count(), 1)
     assert.equal(await link.locator('[aria-hidden="true"]').count(), 1, 'one decorative arrow')
@@ -355,6 +455,7 @@ try {
       'arrow resets with label'
     )
   }
+  await animatedPage.goto(base)
   await animatedTab.focus()
   assert.equal(await animatedTab.evaluate((link) => link.matches(':focus-visible')), true)
   const social = animatedPage
@@ -378,11 +479,12 @@ try {
   )
   await animatedPage.getByRole('button', { name: 'Switch dark mode' }).click()
   await captureGlow(animatedTab, 'tab-dark')
-  await captureGlow(animatedPage.locator('.contact-details a'), 'link-dark')
+  await captureGlow(animatedPage.locator('.experience-title a').first(), 'link-dark')
   await captureGlow(
-    animatedPage.locator('a.secondary-link[href="/experience"]'),
+    animatedPage.locator('a.secondary-link[href="/projects"]'),
     'internal-arrow-dark'
   )
+  await animatedPage.goto(base + '/projects')
   await captureGlow(
     animatedPage.locator('.project-list a.secondary-link').first(),
     'external-arrow-dark'
@@ -440,10 +542,11 @@ try {
     await animatedPage.setViewportSize({ width, height: 844 })
     for (const selector of [
       'nav a[href="/score"]',
-      '.contact-details a',
-      'a.secondary-link[href="/experience"]',
+      '.experience-title a',
+      'a.secondary-link[href="/projects"]',
       '.project-list a.secondary-link'
     ]) {
+      await animatedPage.goto(base + (selector.startsWith('.project-list') ? '/projects' : '/'))
       const link = animatedPage.locator(selector).first()
       const timing = await link.evaluate((element) => {
         const style = getComputedStyle(element, '::before')
@@ -558,9 +661,52 @@ try {
     for (const route of ['', '/experience', '/projects', '/skills', '/print', '/tests', '/score']) {
       const response = await page.goto(base + '/' + locale + route)
       assert.equal(response.status(), 200, 'localized alias: /' + locale + route)
+      if (route === '/experience')
+        await page.waitForURL(base + (locale === 'en' ? '/' : '/' + locale) + '#experience-heading')
       assert.equal(await page.locator('html').getAttribute('lang'), locale)
     }
   }
+  const redirectChecks = []
+  for (const javaScriptEnabled of [true, false]) {
+    const redirectContext = await browser.newContext({ javaScriptEnabled, reducedMotion: 'reduce' })
+    const redirectPage = await redirectContext.newPage()
+    redirectPage.on('pageerror', (error) =>
+      errors.push({ message: error.message, url: redirectPage.url(), stack: error.stack })
+    )
+    for (const prefix of ['', '/en', '/es', '/pt']) {
+      const home = prefix === '/es' || prefix === '/pt' ? prefix : '/'
+      for (const suffix of ['', '.html']) {
+        const legacy = prefix + '/experience' + suffix
+        const destination = base + home + '#experience-heading'
+        await redirectPage.goto(base + '/projects')
+        await redirectPage.goto(base + legacy)
+        await redirectPage.waitForURL(destination)
+        await settleNavigation(redirectPage)
+        assert.equal(
+          await redirectPage.locator('nav a[aria-current="page"]').getAttribute('href'),
+          home
+        )
+        assert.equal(await redirectPage.locator('.experience-item').count(), 7)
+        await redirectPage.goBack()
+        await redirectPage.waitForURL(base + '/projects')
+        await settleNavigation(redirectPage)
+        await redirectPage.goForward()
+        await redirectPage.waitForURL(destination)
+        await redirectPage.goBack()
+        await redirectPage.waitForURL(base + '/projects')
+        redirectChecks.push({
+          legacy,
+          destination: home + '#experience-heading',
+          javaScriptEnabled
+        })
+      }
+    }
+    await redirectContext.close()
+  }
+  await writeFile(
+    path.join(output, 'redirect-report.json'),
+    JSON.stringify(redirectChecks, null, 2)
+  )
   assert.equal((await context.request.get(base + '/robots.txt')).status(), 200)
   assert.equal((await context.request.get(base + '/sitemap-index.xml')).status(), 200)
   await writeFile(
@@ -574,7 +720,7 @@ try {
     'accessibility violations; inspect .qa/browser-report.json'
   )
   console.log(
-    'Passed: 60 route/viewport checks, repeated and back/forward navigation, social icons, Score image, keyboard skip link, theme persistence, print metadata and WCAG automated checks.'
+    'Passed: 60 route/viewport checks, Overview experience content, legacy redirects with/without JavaScript and stable history, repeated and back/forward navigation, social icons, Score image, keyboard skip link, theme persistence, print metadata and WCAG automated checks.'
   )
 } finally {
   await browser.close()

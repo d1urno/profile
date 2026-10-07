@@ -1,14 +1,14 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro'
 import ProfileSection from '@/partials/ProfileSection.astro'
-import ProjectsSection from '@/partials/ProjectsSection.astro'
+import ExperiencesSection from '@/partials/ExperiencesSection.astro'
 import { getLocale } from '@/functions/getLocale'
 const locale = getLocale(Astro.url)
-const path = locale === 'en' ? '/experience' : '/' + locale + '/experience'
+const path = locale === 'en' ? '/projects' : '/' + locale + '/projects'
 const labels = {
-  en: ['Email Pablo', 'View experience'],
-  es: ['Escribir a Pablo', 'Ver experiencia'],
-  pt: ['Enviar email a Pablo', 'Ver experiência']
+  en: ['Email me', 'View projects'],
+  es: ['Envíame un email', 'Ver proyectos'],
+  pt: ['Envie-me um email', 'Ver projetos']
 }
 const label = labels[locale as keyof typeof labels]
 ---
@@ -26,5 +26,7 @@ const label = labels[locale as keyof typeof labels]
       </span>
     </a>
   </div>
-  <ProjectsSection compact />
+  <div class="mt-10">
+    <ExperiencesSection embedded />
+  </div>
 </MainLayout>

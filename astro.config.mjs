@@ -39,8 +39,8 @@ export default defineConfig({
         locales,
         defaultLocale
       },
-      // Include all locales, but exclude print pages from the sitemap
-      filter: (page) => !page.endsWith('/print') && !page.endsWith('/print.html')
+      // Exclude print pages and legacy Experience redirects from the sitemap.
+      filter: (page) => !/\/(?:print|experience)(?:\.html)?$/.test(new URL(page).pathname)
     }),
     vue({ appEntrypoint: '/src/vue-main' }),
     partytown()
