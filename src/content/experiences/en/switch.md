@@ -1,7 +1,7 @@
 ---
 title: Senior Full-Stack Developer - Switch Energy
 period: 'Oct 2025 - Present'
-link: https://www.linkedin.com/in/pmicel/
+link: https://www.switch.org.za
 order: 0
 ---
 

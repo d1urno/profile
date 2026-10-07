@@ -20,6 +20,12 @@ Baseline: c0ad855, master; original checkout was clean.
 - Trace CDR and two frontend challenges were already linked publicly in the CV. Keep their scope clearly labeled as demos/challenges.
 - LinkedIn browser access was unavailable (supported laptop browser inventory returned no browsers). The user's LinkedIn screenshot supplies the visible titles/dates that supersede the stale site timeline.
 
+## Switch employer link — live review
+
+Changed only the Switch employer/title link field to the exact user-provided https://www.switch.org.za in English, Spanish and Portuguese. Six focused live Overview/print checks passed for href, unchanged animated label, new-tab protections and visible keyboard focus. Dates, titles and approved descriptions were unchanged; concurrent user edits were preserved.
+
+The printable HTML shares these entries and has the updated link. Existing PDF exports were not regenerated during this focused iteration; their embedded Switch link needs refreshing in the final PDF export pass. Evidence: ignored .qa/switch-link-report.json. No push or deployment.
+
 ## Skills update — live review
 
 Added Drizzle and oRPC / tRPC to frameworks/libraries, and SQLite to databases, in the shared Skills component used by English, Spanish and Portuguese. Removed FaunaDB and OpenAI API from Skills only. Historical experience descriptions remain unchanged, including Airbank's FaunaDB migration.

@@ -1,7 +1,7 @@
 ---
 title: Desenvolvedor Full-Stack Sênior - Switch Energy
 period: 'Out 2025 - Atual'
-link: https://www.linkedin.com/in/pmicel/
+link: https://www.switch.org.za
 order: 0
 ---
 
