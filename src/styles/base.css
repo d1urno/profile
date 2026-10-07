@@ -15,7 +15,7 @@ body {
   @apply text-slate-800 dark:text-slate-200 dark:bg-gray-700;
 }
 a {
-  @apply text-teal-800 underline decoration-teal-600/40 underline-offset-4 dark:text-teal-300;
+  @apply text-teal-800 underline underline-offset-4 dark:text-teal-300;
   overflow-wrap: anywhere;
 }
 a:hover {
@@ -149,7 +149,7 @@ a[data-text]:is(:hover, :focus-visible)::before {
   border-radius: 0.4rem;
   font-weight: 650;
   text-decoration: none;
-  @apply bg-teal-800 text-white dark:bg-teal-300 dark:text-slate-950;
+  @apply bg-teal-800 text-white dark:bg-teal-300 dark:text-slate-800;
 }
 .button:hover {
   @apply bg-teal-900 dark:bg-teal-200;
@@ -239,7 +239,7 @@ a[data-text]:is(:hover, :focus-visible)::before {
   margin-bottom: 2rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid;
-  @apply border-stone-200 dark:border-slate-800;
+  @apply border-stone-200 dark:border-slate-400;
 }
 .experience-header {
   display: flex;
