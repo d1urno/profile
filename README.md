@@ -61,6 +61,8 @@ Layout and component styles use Tailwind classes in Astro templates. Shared butt
 
 `public/ai-catalog.json` follows the [ARD specification](https://agenticresourcediscovery.org/spec/): three document entries with domain-anchored identifiers, Markdown media types and representative queries. The same catalog is generated at the current discovery path `/.well-known/ard.json` and the legacy `/.well-known/ai-catalog.json` path. HTML head links advertise the catalog, llms.txt and each page's Markdown version. These are static resources with no client-side scripts.
 
+The root `specVersion: "1.0"` preserves compatibility with Lighthouse 13.5's predecessor catalog schema; that validator also rejects a root `$schema` property. Validate against both its bundled `ai-catalog.schema.json` and the current ARD schema's `$defs.ArdManifest`. Lighthouse labels the schema valid with a score of 0.9, retaining low-severity warnings for ordinary `text/markdown` documents because its recognized media-type list focuses on agent/tool artifacts. Keep document types accurate; see [the upstream compatibility issue](https://github.com/GoogleChrome/lighthouse/issues/17251).
+
 `public/_headers` supplies UTF-8 media types and public CORS headers for these resources on hosts supporting this file, including Cloudflare Pages. Other static hosts need equivalent response-header configuration; Astro's development endpoint headers are not stored in built files.
 
 ## PDFs and QA
