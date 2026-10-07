@@ -10,7 +10,7 @@ Baseline: c0ad855, master; original checkout was clean.
 - Confirm concrete outcomes and scope (team sizes, user/customer impact, delivery or reliability improvements) for Troop, Airbank and recent work before adding metrics.
 - Confirm which recent projects can be described publicly, and personal ownership of the Trace CDR demo.
 - Confirm practical remote-working constraints and preferred employment/contract arrangement. Salary target belongs in the private search, not the public CV.
-- MongoDB is now verified through the user's Switch description. SQLite remains a target preference and is not listed as professional experience.
+- MongoDB is now verified through the user's Switch description. SQLite is now listed as a skill following the user's explicit instruction; no historical professional use is inferred or added.
 - The user confirms 15+ years of development, work from prototypes through production maintenance, and finance/energy/AI applications. Detailed earlier roles before 2019 remain missing.
 
 ## Evidence
@@ -19,6 +19,14 @@ Baseline: c0ad855, master; original checkout was clean.
 - https://github.com/d1urno/nuxt-image-extractor is public and archived. README documents downloading CMS images into generated Nuxt sites and rewriting their references. Present as historical open source, not an actively maintained module.
 - Trace CDR and two frontend challenges were already linked publicly in the CV. Keep their scope clearly labeled as demos/challenges.
 - LinkedIn browser access was unavailable (supported laptop browser inventory returned no browsers). The user's LinkedIn screenshot supplies the visible titles/dates that supersede the stale site timeline.
+
+## Skills update — live review
+
+Added Drizzle and oRPC / tRPC to frameworks/libraries, and SQLite to databases, in the shared Skills component used by English, Spanish and Portuguese. Removed FaunaDB and OpenAI API from Skills only. Historical experience descriptions remain unchanged, including Airbank's FaunaDB migration.
+
+Focused ESLint and six live Skills checks (three locales, mobile/desktop) passed: exact additions/removals, correct categories, no horizontal overflow or runtime errors. The downloadable CV uses a separate compact technical-focus list, not this shared component; print source, public PDFs and existing Library file IDs/versions were unchanged. No PDF regeneration was needed. Concurrent user edits were preserved outside this commit.
+
+Evidence: ignored .qa/skills-update-report.json. No push or deployment.
 
 ## Section header simplification — live review
 
