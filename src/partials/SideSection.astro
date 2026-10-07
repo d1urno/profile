@@ -3,216 +3,72 @@ import { getLocale } from 'astro-i18n-aut'
 import useTranslations from '@/functions/useTranslations'
 import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
 import { Icon } from 'astro-icon/components'
-
-const SPEAKING = {
-  spanish: 'native',
-  english: 'fluent',
-  portuguese: 'fluent',
-  german: 'beginner'
-}
-
 const locale = getLocale(Astro.url)
 const { t } = await useTranslations(locale)
-
-const availableLocales = ['en', 'es', 'pt']
-const filteredAvailableLocales = availableLocales.filter((i) => i !== locale)
-
-const fileName = `/${t('SideSection.link')}.pdf`
-
-const downloadName =
-  t('SideSection.link') +
-  '_' +
-  new Date().toLocaleString(locale, {
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric'
-  }) +
-  '.pdf'
-
-function getBirth() {
-  return new Date(472964400000).toLocaleString(locale, {
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric'
-  })
-}
+const speaking = { spanish: 'native', english: 'fluent', portuguese: 'fluent', german: 'beginner' }
+const currentPath =
+  Astro.url.pathname.replace(/\.html$/, '').replace(/^\/(en|es|pt)(?=\/|$)/, '') || '/'
+const locales = ['en', 'es', 'pt'].filter((value) => value !== locale)
 ---
 
-<aside
-  class="flex flex-col items-center bg-gray-300 p-8 pt-4 sm:px-16 lg:col-span-3 lg:px-8 xl:px-20 2xl:px-32 dark:bg-gray-800 print:mt-10 print:!bg-transparent"
->
-  <div class="mb-4 flex h-6 w-full items-center gap-5 print:hidden">
-    <ThemeSwitcher client:load locale={locale} label={t('ThemeSwitcher.label')}>
-      <Icon
-        name="sun"
-        slot="sun-icon"
-        class="h-5 w-5 fill-current text-teal-500 hover:text-teal-400"
-      />
-      <Icon
-        name="moon"
-        slot="moon-icon"
-        class="h-5 w-5 fill-current text-teal-800 hover:text-teal-400"
-      />
+<aside class="sidebar" aria-label={t('contact')}>
+  <div class="toolbar">
+    <ThemeSwitcher client:load label={t('ThemeSwitcher.label')}>
+      <Icon name="sun" slot="sun-icon" class="h-5 w-5" />
+      <Icon name="moon" slot="moon-icon" class="h-5 w-5" />
     </ThemeSwitcher>
     {
-      filteredAvailableLocales.map((loc) => (
-        <a data-text={`${t(loc)}`} href={loc !== 'en' ? `/${loc}` : '/'}>
+      locales.map((loc) => (
+        <a
+          lang={loc}
+          hreflang={loc}
+          href={loc === 'en' ? currentPath : '/' + loc + (currentPath === '/' ? '' : currentPath)}
+        >
           {t(loc)}
         </a>
       ))
     }
   </div>
-
-  <a
-    class="mb-5 hidden text-center text-lg text-green-500 print:block"
-    href="https://pablomiceli.dev?utm_source=resume"
-    target="_blank"
-    rel="noopener nofollow"
-  >
-    https://pablomiceli.dev
-  </a>
-
-  <div
-    class="flex w-full flex-col sm:flex-row sm:gap-8 lg:flex-col lg:gap-0 print:!flex-col print:!gap-0"
-  >
+  <div class="identity">
+    <img
+      class="sidebar-photo"
+      src="/img/pic_w_320.jpg"
+      width="320"
+      height="320"
+      alt="Pablo Miceli"
+      fetchpriority="high"
+    />
     <div>
-      <picture>
-        <source
-          srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320/v1710761790/pablomiceli/static/profile.webp  1x,
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_640/v1710761790/pablomiceli/static/profile.webp 2x,
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_1280/v1710761790/pablomiceli/static/profile.webp 3x`}
-          type="image/webp"
-        />
-
-        <source
-          srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320/v1710761790/pablomiceli/static/profile.jpg  1x,
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_640/v1710761790/pablomiceli/static/profile.jpg 2x,
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_1280/v1710761790/pablomiceli/static/profile.jpg 3x`}
-          type="image/jpg"
-        />
-
-        <img
-          class="mx-auto mb-3 box-content rounded border-2 shadow-md"
-          height="320"
-          width="320"
-          src="https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320,f_auto/v1710765181/pablomiceli/static/profile"
-          fetchpriority="high"
-          alt={t('SideSection.facePicture')}
-        />
-      </picture>
-      <div class="my-6 text-center lg:text-left print:pb-10 print:!text-center">
-        <div class="opacity-75 dark:opacity-100">
-          <span class="inline-block text-4xl font-bold dark:text-white">Pablo Miceli</span>
-          <br />
-          <span class="inline-block text-xl text-gray-900 dark:text-gray-400">
-            {t('SideSection.title')}
-          </span>
-        </div>
-      </div>
+      <p class="identity-name">Pablo Miceli</p>
+      <p class="identity-role">{t('SideSection.title')}</p>
     </div>
-    <div class="flex-1 xl:text-lg print:text-lg">
-      <div class="mb-6 flex justify-center gap-5 *:h-10 *:w-10 lg:mb-0">
-        <a
-          class="transform transition-transform hover:scale-125"
-          href="https://github.com/d1urno"
-          aria-label="GitHub"
-          target="_blank"
-          rel="noopener nofollow"
-        >
-          <Icon
-            name="github"
-            class="h-10 w-10 fill-current text-teal-700 hover:text-teal-500 dark:text-teal-500 dark:hover:text-teal-400"
-          />
-        </a>
-        <a
-          class="transform transition-transform hover:scale-125"
-          href="https://www.linkedin.com/in/pmicel/"
-          aria-label="LinkedIn"
-          target="_blank"
-          rel="noopener nofollow"
-        >
-          <Icon
-            name="linkedin"
-            class="h-10 w-10 fill-current text-teal-700 hover:text-teal-500 dark:text-teal-500 dark:hover:text-teal-400"
-          />
-        </a>
-        <a
-          class="transform transition-transform hover:scale-125"
-          href="https://twitter.com/d1urno"
-          aria-label="Twitter"
-          target="_blank"
-          rel="noopener nofollow"
-        >
-          <Icon
-            name="twitter"
-            class="h-10 w-10 fill-current text-teal-700 hover:text-teal-500 dark:text-teal-500 dark:hover:text-teal-400"
-          />
-        </a>
-      </div>
-      <hr
-        class="mt-8 mb-6 box-border border border-gray-500 bg-gray-500 opacity-75 sm:hidden lg:-mx-6 lg:block dark:border-gray-700 dark:bg-gray-700"
-      />
-
-      <div class="mx-auto w-max">
-        <table class="mb-6 w-max lg:mb-12">
-          <tbody>
-            <tr>
-              <td class="pr-5 text-gray-900 dark:text-gray-300/90">
-                {t('SideSection.nationality')}:
-              </td>
-              <td class="text-gray-900 dark:text-gray-300/90">Argentina</td>
-            </tr>
-            <tr>
-              <td class="pr-5 text-gray-900 dark:text-gray-300/90">{t('SideSection.birth')}:</td>
-              <td class="text-gray-900 dark:text-gray-300/90">
-                {getBirth()}
-              </td>
-            </tr>
-            <tr>
-              <td class="pr-5 text-gray-900 dark:text-gray-300/90">E-mail:</td>
-              <td class="text-gray-900 dark:text-gray-300/90">
-                <a href="mailto:d1urno@gmx.com" data-text="d1urno@gmx.com">
-                  d1urno@gmx.com
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td class="pr-5 text-gray-900 dark:text-gray-300/90">
-                {t('SideSection.location')}:
-              </td>
-              <td class="text-gray-900 dark:text-gray-300/90">Cape Town, South Africa</td>
-            </tr>
-          </tbody>
-        </table>
-        <h2 class="text-xl font-bold opacity-75 dark:text-white">
-          {t('SideSection.idioms')}:
-        </h2>
-        <hr
-          class="my-2 box-border border border-gray-500 bg-gray-500 opacity-75 lg:-mx-6 dark:border-gray-700 dark:bg-gray-700"
-        />
-        <table class="mb-4 w-max text-gray-900 dark:text-gray-300/90">
-          <tbody>
-            {
-              Object.entries(SPEAKING).map(([key, value]) => (
-                <tr>
-                  <td class="pr-5">{t('SideSection.' + key)}:</td>
-                  <td>{t('SideSection.' + value)}</td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </table>
-      </div>
-      <div class="pt-10 text-center print:hidden">
-        <a
-          class="rounded-full bg-teal-700 !px-4 py-1 text-center font-bold !text-white !no-underline shadow hover:bg-teal-500"
-          type="button"
-          href={fileName}
-          download={downloadName}
-        >
-          {t('SideSection.download')}
-        </a>
-      </div>
-    </div>
+  </div>
+  <div class="contact-details">
+    <p>{t('locationValue')}</p>
+    <a href="mailto:d1urno@gmx.com">d1urno@gmx.com</a>
+  </div>
+  <div class="social-links">
+    <a href="https://github.com/d1urno" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://www.linkedin.com/in/pmicel/" target="_blank" rel="noopener noreferrer"
+      >LinkedIn</a
+    >
+  </div>
+  <a
+    class="button"
+    href={'/' + t('SideSection.link') + '.pdf'}
+    download={`Pablo_Miceli_Senior_Full_Stack_Engineer_${locale.toUpperCase()}.pdf`}
+    >{t('SideSection.download')}</a
+  >
+  <div class="mt-8">
+    <h2 class="mb-3 font-semibold">{t('SideSection.idioms')}</h2>
+    <ul class="language-list">
+      {
+        Object.entries(speaking).map(([language, level]) => (
+          <li>
+            {t('SideSection.' + language)} · {t('SideSection.' + level)}
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </aside>

@@ -1,8 +1,14 @@
 ---
-title: Desarrollador Fullstack Lead - Airbank
-period: '2021'
+title: Ingeniero Full-Stack Senior - Airbank
+period: 'Feb 2021 - Ago 2021'
 link: https://techcrunch.com/2021/06/22/airbank-centralizes-all-your-business-bank-accounts-and-financial-data/
 order: 4
 ---
 
-Startup alemana remota, arquitecto de la aplicación usando Apollo Server modular, FaunaDB (migración a Postgres con Prisma), Open Banking API, Rollup y TypeScript en el backend. Y Vue 3, TypeScript, Apollo Client como sistema de gerenciamiento de estados local, TailwindCSS, y Vite en el frontend.
+Lideré el desarrollo full-stack y la arquitectura en una startup financiera alemana completamente remota.
+
+- Diseñé un backend modular con Apollo Server, TypeScript e integraciones de Open Banking.
+- Trabajé en una migración de FaunaDB a PostgreSQL con Prisma.
+- Desarrollé el frontend con Vue 3, Apollo Client, TypeScript y Tailwind CSS.
+
+**Stack:** Vue 3, TypeScript, Node.js, GraphQL, PostgreSQL, Prisma, Vite.

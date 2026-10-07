@@ -1,48 +1,29 @@
 ---
 import { getLocale } from 'astro-i18n-aut'
 import { getCollection } from 'astro:content'
-import { Icon } from 'astro-icon/components'
 import ExperienceItem from '@/components/ExperienceItem.astro'
 import useTranslations from '@/functions/useTranslations'
-
 const locale = getLocale(Astro.url)
-const { t } = await useTranslations(locale)
-
-const experiences = (await getCollection('experiences', ({ id }) => id.startsWith(locale))).sort(
-  (a, b) => a.data.order - b.data.order
-)
-
-function pageBreak(index: number) {
-  if ((index + 1) % 3 === 0) {
-    return 'page-break-after: always'
-  } else {
-    return 'page-break-after: avoid'
-  }
+interface Props {
+  resume?: boolean
 }
+const { resume = false } = Astro.props
+const Heading = resume ? 'h2' : 'h1'
+const { t } = await useTranslations(locale)
+const experiences = (
+  await getCollection('experiences', ({ id }) => id.startsWith(locale + '/'))
+).sort((a, b) => a.data.order - b.data.order)
 ---
 
-<section class="print:mt-10">
-  <div class="mb-8 ml-auto flex items-center text-2xl uppercase">
-    <h1 class="ml-auto text-teal-700 dark:text-white">
-      {t('ExperiencesSection.title')}
-    </h1>
-    <Icon name="case" class="ml-2 h-12 w-12 text-teal-500 dark:text-teal-500" />
-  </div>
-  <hr
-    class="my-4 box-border border border-gray-500 bg-gray-500 opacity-75 lg:-mx-6 dark:border-gray-500 dark:bg-gray-300"
-  />
+<section aria-labelledby="experience-heading">
+  <Heading id="experience-heading" class="section-heading">{t('ExperiencesSection.title')}</Heading>
   {
-    experiences.map(async (experience, idx) => {
+    experiences.map(async (experience) => {
       const { Content } = await experience.render()
-
       return (
-        <div class="print:mt-10" style={pageBreak(idx)}>
-          <ExperienceItem experience={experience.data}>
-            <div class="prose dark:prose-invert prose-lg print:prose-base max-w-none">
-              <Content />
-            </div>
-          </ExperienceItem>
-        </div>
+        <ExperienceItem experience={experience.data} resume={resume}>
+          <Content />
+        </ExperienceItem>
       )
     })
   }

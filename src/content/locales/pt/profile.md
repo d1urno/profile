@@ -1,13 +1,11 @@
 ---
-title: Sobre mim
+title: Engenheiro Full-Stack Sênior
 ---
 
-Passaram-me mais de uma década dominando tecnologias como Typescript, Java, NodeJs, Vue/Nuxt, React, GraphQL, REST, TanStack, Tailwind, Docker, Prisma, Cloudflare, Gitflow, dados offline-first e mono-repos. Recentemente percebi que a minha verdadeira paixão não é sobre a própria tecnologia, mas **como as pessoas se sentem quando usam o que eu crio**, a engajamento, a inspiração, a experiência.
+Desenvolvo produtos úteis do banco de dados à interface, com **mais de 15 anos em desenvolvimento de software** e foco em Vue, TypeScript e experiência do usuário.
 
-Seja ajustando servidores de Minecraft como adolescente, ou produzindo música eletrónica para dar forma a um estado de ánimo, ou enquanto construía software na minha carreira de engenharia, o objetivo nunca foi apenas lógica elegante; era proporcionar experiências únicas. Escrever código de qualidade é simplesmente o veículo para que isso acontecesse.
+Meu trabalho abrange soluções financeiras, produtos de viagens, plataformas de energia e aplicativos com IA, do protótipo à manutenção em produção. Liderei desenvolvimento frontend e full-stack, defini arquiteturas, mentorei desenvolvedores e colaborei com equipes de produto e design.
 
-Actualmente esse veículo está mudando rapidamente, então estou me aprofundando mais no meu mesmo propósito passando de ser _Desenvolvedor Full-stack_ para _Engenheiro de Produtos_, abraçando o exponencial do impacto da IA, com regras de linting de código especiais, fluxos de trabalho de agentes, geradores de regras, servidores MCP, gerenciamento de prompt e contexto, plantillas de características e sistemas RAG. Este kit de ferramentas, junto com minha ampla experiência no campo, me permite guiar a IA de forma eficiente enquanto itero através de bases de código de aplicativos de grande escala. Finalmente, transformar grandes ideias em interações confiáveis de classe mundial a grande velocidade e escala.
+Meu stack frontend preferido é **Vue / Nuxt, TypeScript e Tailwind CSS**, com experiência full-stack em Node.js, GraphQL, PostgreSQL e MongoDB. Meu trabalho recente também inclui React, NestJS, AWS, Cloudflare e integrações de IA. Valorizo interfaces claras, sistemas de fácil manutenção e os detalhes da experiência.
 
-Então, o que me motiva agora? Transformar uma visão de produto em uma experiência polida, com micro-interações, movimento, características impulsionadas por IA, e depois lançar rapidamente com métricas que provem o sucesso.
-
-Se suas roadmaps precisam de alguém que possa ajudar a entregar qualidade desde um esquema de banco de dados até o toast final, ou seu time precisa de um líder que possa guiar o caminho para chegar lá, [vamos conversar!](mailto:d1urno@gmx.com 'vamos conversar!')
+Sou argentino e moro na Cidade do Cabo. Comecei desenvolvendo plugins de jogos em Java na adolescência. Meu interesse em UX, design e arquitetura continua orientando a maneira como desenvolvo software.

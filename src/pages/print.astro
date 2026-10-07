@@ -1,27 +1,118 @@
 ---
 import Default from '@/layouts/Default.astro'
-import SideSection from '@/partials/SideSection.astro'
-import ScoreSection from '@/partials/ScoreSection.astro'
-import TestsSection from '@/partials/TestsSection.astro'
 import ExperiencesSection from '@/partials/ExperiencesSection.astro'
-import SkillsSection from '@/partials/SkillsSection.astro'
-import ProfileSection from '@/partials/ProfileSection.astro'
+import { getLocale } from 'astro-i18n-aut'
+import useTranslations from '@/functions/useTranslations'
+const locale = getLocale(Astro.url) as 'en' | 'es' | 'pt'
+const { t } = await useTranslations(locale)
+const copy = {
+  en: [
+    '15+ years in software development. Full-stack and frontend leadership across finance, travel and agency projects. Vue, TypeScript and Tailwind CSS, with Node.js, GraphQL and PostgreSQL. Experience in application architecture, developer mentoring and collaboration with product and design teams.',
+    'Technical focus',
+    'Languages',
+    'Selected work',
+    'Historical open-source Nuxt module for downloading CMS images into generated static sites.',
+    'Public data visualization demo: React, TypeScript, Tailwind CSS, d3.js and TanStack Query.',
+    'Print / save PDF'
+  ],
+  es: [
+    'Más de 15 años en desarrollo de software. Liderazgo full-stack y frontend en finanzas, viajes y proyectos de agencia. Vue, TypeScript y Tailwind CSS, con Node.js, GraphQL y PostgreSQL. Experiencia en arquitectura, mentoría y colaboración con equipos de producto y diseño.',
+    'Foco técnico',
+    'Idiomas',
+    'Proyectos seleccionados',
+    'Módulo histórico de código abierto Nuxt para descargar imágenes de CMS en sitios estáticos.',
+    'Demo pública de visualización de datos: React, TypeScript, Tailwind CSS, d3.js y TanStack Query.',
+    'Imprimir / guardar PDF'
+  ],
+  pt: [
+    'Mais de 15 anos em desenvolvimento de software. Liderança full-stack e frontend em finanças, viagens e projetos de agência. Vue, TypeScript e Tailwind CSS, com Node.js, GraphQL e PostgreSQL. Experiência em arquitetura, mentoria e colaboração com equipes de produto e design.',
+    'Foco técnico',
+    'Idiomas',
+    'Projetos selecionados',
+    'Módulo histórico de código aberto Nuxt para baixar imagens de CMS em sites estáticos.',
+    'Demo pública de visualização de dados: React, TypeScript, Tailwind CSS, d3.js e TanStack Query.',
+    'Imprimir / salvar PDF'
+  ]
+}[locale]
 ---
 
 <Default>
-  <div class="mx-auto h-full w-full md:container lg:grid lg:grid-cols-8">
-    <SideSection />
-
-    <div class="px-8 py-8 sm:px-16 lg:col-span-5">
-      <div style="page-break-after: always; page-break-before: always">
-        <ProfileSection />
-      </div>
-      <div style="page-break-after: always" class="print:mt-10">
-        <SkillsSection />
-      </div>
-      <ExperiencesSection />
-      <TestsSection />
-      <ScoreSection />
-    </div>
-  </div>
+  <main class="resume mx-auto max-w-4xl p-6 print:p-0">
+    <button class="button mb-6 print:hidden" type="button" id="print-cv">{copy[6]}</button>
+    <header class="resume-header">
+      <h1 class="text-3xl font-bold">Pablo Miceli</h1>
+      <p class="mb-2 text-lg font-semibold">{t('SideSection.title')}</p>
+      <p>
+        {t('locationValue')} · <a href="mailto:d1urno@gmx.com">d1urno@gmx.com</a> · <a
+          href="https://pablomiceli.dev">pablomiceli.dev</a
+        >
+      </p>
+      <p class="mt-1">
+        <a href="https://github.com/d1urno">github.com/d1urno</a> · <a
+          href="https://www.linkedin.com/in/pmicel/">linkedin.com/in/pmicel</a
+        >
+      </p>
+      <p class="my-4 leading-relaxed">{copy[0]}</p>
+    </header>
+    <ExperiencesSection resume />
+    <section>
+      <h2 class="section-heading">{copy[1]}</h2>
+      <p>
+        Vue 3 / Nuxt · TypeScript · Tailwind CSS · React · Node.js · GraphQL / Apollo · PostgreSQL /
+        Prisma · MongoDB · NestJS · Material UI · Recharts · AWS · Cloudflare · Docker · Firebase ·
+        CI/CD · AI APIs
+      </p>
+    </section>
+    <section>
+      <h2 class="section-heading">{copy[3]}</h2>
+      <p>
+        <strong>Nuxt image extractor:</strong>
+        {copy[4]}
+        <a href="https://github.com/d1urno/nuxt-image-extractor"
+          >github.com/d1urno/nuxt-image-extractor</a
+        >
+      </p>
+      <p class="mt-2">
+        <strong>Trace CDR:</strong>
+        {copy[5]}
+        <a href="https://preview.tracecdr-demo.pages.dev/">preview.tracecdr-demo.pages.dev</a>
+      </p>
+    </section>
+    <section>
+      <h2 class="section-heading">{copy[2]}</h2>
+      <p>
+        {t('SideSection.spanish')} · {t('SideSection.native')}; {t('SideSection.english')} / {
+          t('SideSection.portuguese')
+        } · {t('SideSection.fluent')}; {t('SideSection.german')} · {t('SideSection.beginner')}
+      </p>
+    </section>
+  </main>
 </Default>
+<script>
+  document.getElementById('print-cv')?.addEventListener('click', () => window.print())
+</script>
+<style>
+  @media print {
+    #print-cv {
+      display: none !important;
+    }
+    .resume {
+      max-width: none;
+    }
+    .resume-header h1 {
+      font-size: 24pt;
+    }
+    .resume-header > p:nth-child(2) {
+      font-size: 12pt;
+    }
+    .resume :global(#experience-heading) {
+      font-size: 15pt;
+    }
+    .resume :global(.prose) {
+      color: #17212f;
+    }
+    .resume :global(.prose strong) {
+      color: inherit;
+    }
+  }
+</style>

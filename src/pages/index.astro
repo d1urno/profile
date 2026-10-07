@@ -1,8 +1,25 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro'
 import ProfileSection from '@/partials/ProfileSection.astro'
+import ProjectsSection from '@/partials/ProjectsSection.astro'
+import { getLocale } from 'astro-i18n-aut'
+const locale = getLocale(Astro.url)
+const path = locale === 'en' ? '/experience' : '/' + locale + '/experience'
+const labels = {
+  en: ['Email Pablo', 'View experience'],
+  es: ['Escribir a Pablo', 'Ver experiencia'],
+  pt: ['Enviar email a Pablo', 'Ver experiência']
+}
+const label = labels[locale as keyof typeof labels]
 ---
 
 <MainLayout>
   <ProfileSection />
+  <div class="mt-6 flex flex-wrap items-center gap-6">
+    <a class="button" href="mailto:d1urno@gmx.com">{label[0]}</a><a
+      class="secondary-link"
+      href={path}>{label[1]} →</a
+    >
+  </div>
+  <ProjectsSection compact />
 </MainLayout>

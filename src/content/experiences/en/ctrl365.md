@@ -1,8 +1,12 @@
 ---
-title: Fullstack Developer - Ctrl365
-period: '2019'
+title: Senior Lead Developer - CTRL.365
+period: 'Jan 2019 - Feb 2020'
 link: https://www.linkedin.com/company/ctrl-365
 order: 7
 ---
 
-Onsite agency in São Paulo, Brazil. During this period I was responsible for many different tasks, such as responsive landing pages for brands like Acer, Consul or Nestle in parallel with design department. I've built a complete Intranet with authentication and push notifications, and APIs with database administration panels. I did many job interviews with candidates to grow our team, among other team management responsibilities.
+Worked onsite at an agency in São Paulo, Brazil, delivering web projects alongside the design team.
+
+- Built responsive landing pages for brands including Acer, Consul and Nestlé.
+- Developed an intranet with authentication and push notifications, plus APIs and database administration panels.
+- Interviewed candidates and contributed to team management.

@@ -1,8 +1,11 @@
 ---
-title: Senior Fullstack Developer - Defijn
-period: '2024 - 2025'
+title: Senior Full-Stack Developer - Defijn
+period: 'Sep 2024 - Aug 2025'
 link: https://defijn.io/
 order: 1
 ---
 
-This was a dynamic agency environment fully remote, working collaboratively across multiple projects using tech like React, TailwindCSS, Tanstack, Shadcn, Firebase, Llama and Gemini AI models, Stable Diffusion inpainting models, d3.js, Docker, Cloudflare Workers and Durable Objects, and more. Strong emphasis on team collaboration, code quality and client happiness.
+Worked across multiple client projects in a fully remote agency, collaborating with teammates on implementation and code quality.
+
+- Built interfaces with React, Tailwind CSS, TanStack, shadcn/ui and d3.js.
+- Worked with Firebase, Docker, Cloudflare Workers and Durable Objects, and AI integrations using Llama, Gemini and Stable Diffusion inpainting models.

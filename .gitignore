@@ -33,3 +33,4 @@ coverage
 # Astro temp files
 .astro
 astro_tmp_pages_*
+.qa/

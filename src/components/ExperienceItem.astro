@@ -1,29 +1,18 @@
 ---
-export interface Experience {
-  period: string
-  title: string
-  link: string
-  component: string
+interface Props {
+  experience: { period: string; title: string; link: string }
+  resume?: boolean
 }
-
-const { experience } = Astro.props as { experience: Experience }
+const { experience, resume = false } = Astro.props
+const Heading = resume ? 'h3' : 'h2'
 ---
 
-<article>
-  <span class="text-sm dark:text-gray-400">{experience.period}</span>
-  <h3 class="text-2xl font-bold opacity-75 dark:text-white dark:opacity-100">
-    {experience.title}
-  </h3>
-  <a
-    class="font-semibold"
-    rel="noopener nofollow"
-    href={experience.link}
-    data-text={experience.link}
-    target="_blank"
-  >
-    {experience.link}
-  </a>
-  <section class="text-opacity-75 mb-8 text-gray-900 dark:text-gray-400">
-    <slot />
-  </section>
+<article class="experience-item">
+  <div class="experience-header">
+    <Heading class="experience-title">
+      <a href={experience.link} target="_blank" rel="noopener noreferrer">{experience.title}</a>
+    </Heading>
+    <p class="experience-period">{experience.period}</p>
+  </div>
+  <div class="experience-copy prose dark:prose-invert max-w-none"><slot /></div>
 </article>

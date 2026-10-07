@@ -2,177 +2,42 @@
 import { getLocale } from 'astro-i18n-aut'
 import Default from '@/layouts/Default.astro'
 import SideSection from '@/partials/SideSection.astro'
-import { ClientRouter } from 'astro:transitions'
 import useTranslations from '@/functions/useTranslations'
-
-const { pathname } = Astro.url
 const locale = getLocale(Astro.url)
 const { t } = await useTranslations(locale)
-
+const localized = (path: string) =>
+  locale === 'en' ? path : '/' + locale + (path === '/' ? '' : path)
+const pathname =
+  Astro.url.pathname
+    .replace(/\.html$/, '')
+    .replace(/^\/en(?=\/|$)/, '')
+    .replace(/\/$/, '') || '/'
 const tabs = [
   { href: '/', name: t('Tabs.profile') },
-  { href: '/skills', name: t('Tabs.skills') },
   { href: '/experience', name: t('Tabs.experience') },
-  { href: '/tests', name: t('Tabs.tests') },
-  { href: '/score', name: t('Tabs.score') }
+  { href: '/projects', name: t('Tabs.projects') },
+  { href: '/skills', name: t('Tabs.skills') }
 ]
-
-// Remove .html extension from pathname if present (due to format: 'file' in Astro config)
-const cleanPathname = pathname.replace(/\.html$/, '')
-
-function getLocalizedPath(path: string) {
-  if (locale === 'en') {
-    return path
-  }
-  const localizedPath = `/${locale}${path}`
-  return localizedPath.endsWith('/') ? localizedPath.slice(0, -1) : localizedPath
-}
-
-function isActive(tabHref: string) {
-  // Normalize both paths to ensure consistent comparison
-  const normalizePathForComparison = (path: string) => {
-    // Remove trailing slash if present
-    path = path.endsWith('/') && path !== '/' ? path.slice(0, -1) : path
-    // Ensure path starts with /
-    path = path.startsWith('/') ? path : '/' + path
-    return path
-  }
-
-  const localizedPath = normalizePathForComparison(getLocalizedPath(tabHref))
-  const normalizedPathname = normalizePathForComparison(cleanPathname)
-
-  // Special handling for root path
-  if (tabHref === '/') {
-    const rootPath = normalizePathForComparison(getLocalizedPath('/'))
-    // Exact match for root path
-    return normalizedPathname === rootPath || normalizedPathname === '/'
-  }
-
-  // For other paths, check for exact match or if it's a sub-path
-  if (normalizedPathname === localizedPath) {
-    return true
-  }
-
-  // Check if it's a sub-path (e.g., /es/experience/something)
-  // Make sure it's not a partial match by checking for a slash after
-  return normalizedPathname.startsWith(localizedPath + '/')
-}
 ---
 
 <Default>
-  <ClientRouter />
-  <div class="mx-auto h-full w-full md:container lg:grid lg:grid-cols-8">
+  <a class="skip-link" href="#main-content">{t('skip')}</a>
+  <div class="site-shell">
     <SideSection />
-
-    <main class="px-8 py-8 sm:px-16 lg:col-span-5">
-      <div class="print:hidden">
-        <div class="flex items-center justify-between">
-          <nav
-            id="main-nav-tabs"
-            class="flex flex-col flex-wrap items-start sm:flex-row sm:gap-x-8"
-            aria-label="Tabs"
-          >
-            {
-              tabs.map((tab) => (
-                <a
-                  href={getLocalizedPath(tab.href) || '/'}
-                  data-active={isActive(tab.href)}
-                  data-text={`\u00A0${tab.name}`}
-                  class="relative px-1 pt-4 pb-2 text-xl font-bold whitespace-nowrap !text-gray-300 uppercase !no-underline before:absolute before:w-0 before:overflow-hidden before:border-r-2 before:border-transparent before:!text-amber-600 before:!no-underline before:transition-all before:duration-1000 before:content-[attr(data-text)] hover:text-gray-700 hover:before:w-full hover:before:!border-amber-600 hover:before:![filter:drop-shadow(0_0_25px_#e17100)] data-[active=true]:pointer-events-none data-[active=true]:border-teal-500 data-[active=true]:!text-teal-500 data-[active=true]:before:-right-1 data-[active=true]:before:!border-teal-500 data-[active=true]:before:text-teal-500 dark:!text-gray-400/50 dark:before:!text-amber-400 dark:hover:text-gray-200 dark:hover:before:!border-amber-400 dark:hover:before:![filter:drop-shadow(0_0_25px_#ffba00)]"
-                >
-                  &nbsp;{tab.name}
-                </a>
-              ))
-            }
-          </nav>
-        </div>
-        <div class="hidden" id="mobile-menu">
-          <div class="space-y-1 pt-2 pb-3">
-            {
-              tabs.map((tab) => (
-                <a
-                  href={getLocalizedPath(tab.href) || '/'}
-                  data-active={isActive(tab.href)}
-                  class:list={[
-                    'block rounded-md px-3 py-2 text-base font-medium',
-                    {
-                      'bg-gray-900 text-white': isActive(tab.href),
-                      'text-gray-300 hover:bg-gray-700 hover:text-white': !isActive(tab.href)
-                    }
-                  ]}
-                >
-                  {tab.name}
-                </a>
-              ))
-            }
-          </div>
-        </div>
-        <div class="py-8">
-          <slot />
-        </div>
-      </div>
+    <main class="site-main" id="main-content" tabindex="-1">
+      <nav class="main-nav" aria-label={t('navigation')}>
+        {
+          tabs.map((tab) => (
+            <a
+              href={localized(tab.href)}
+              aria-current={pathname === localized(tab.href) ? 'page' : undefined}
+            >
+              {tab.name}
+            </a>
+          ))
+        }
+      </nav>
+      <div class="page-content"><slot /></div>
     </main>
   </div>
 </Default>
-
-<script is:inline>
-  document.addEventListener('click', (event) => {
-      const target = event.target.closest('#main-nav-tabs a');
-      if (target) {
-        if (window.innerWidth < 1024) { // As per lg breakpoint in tailwind for this layout
-          sessionStorage.setItem('scroll-to-tabs', 'true');
-        }
-      }
-    });
-
-    document.addEventListener('astro:page-load', () => {
-      if (sessionStorage.getItem('scroll-to-tabs') === 'true') {
-        const navTabs = document.getElementById('main-nav-tabs');
-        if (navTabs) {
-          navTabs.scrollIntoView({ behavior: 'instant' });
-        }
-        sessionStorage.removeItem('scroll-to-tabs');
-      }
-    });
-  function checkDarkMode() {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme') === 'dark'
-    }
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-  }
-
-  function watchDarkMode() {
-    if (!window.matchMedia) return
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', addDarkModeSelector)
-  }
-
-  function addDarkModeSelector(doc) {
-    if (checkDarkMode()) {
-      doc.documentElement.classList.add('dark')
-    } else {
-      doc.documentElement.classList.remove('dark')
-    }
-  }
-
-  document.addEventListener('astro:before-swap', (ev) => {
-    addDarkModeSelector(ev.newDocument)
-  })
-
-  addDarkModeSelector(document)
-  watchDarkMode()
-
-  const mobileMenuButton = document.getElementById('mobile-menu-button')
-  const mobileMenu = document.getElementById('mobile-menu')
-  const hamburgerIcon = document.getElementById('hamburger-icon')
-  const closeIcon = document.getElementById('close-icon')
-
-  mobileMenuButton.addEventListener('click', () => {
-    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true'
-    mobileMenuButton.setAttribute('aria-expanded', !isExpanded)
-    mobileMenu.classList.toggle('hidden')
-    hamburgerIcon.classList.toggle('hidden')
-    closeIcon.classList.toggle('hidden')
-  })
-</script>

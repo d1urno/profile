@@ -1,54 +1,41 @@
-# My Profile
+# Pablo Miceli — online CV
 
-This is a personal portfolio website built with [Astro](https://astro.build/).
+CV built with Astro, Vue, TypeScript and Tailwind CSS. Repository: https://github.com/d1urno/profile. Production URL: https://pablomiceli.dev.
 
-## ✨ Features
+## Development
 
-- ✅ **Astro 5.0:** Fast, modern static site generator.
-- ✅ **Vue 3:** For interactive components.
-- ✅ **TypeScript:** For type safety.
-- ✅ **Tailwind CSS 4:** For styling.
-- ✅ **Internationalization (i18n):** Support for multiple languages.
-- ✅ **Sitemap generation:** For better SEO.
-- ✅ **Partytown:** To offload third-party scripts to a web worker.
+Requires Node.js 22+ and pnpm.
 
-## 🚀 Project Structure
+| Command                          | Purpose                                       |
+| -------------------------------- | --------------------------------------------- |
+| `pnpm install --frozen-lockfile` | Install locked dependencies                   |
+| `pnpm dev`                       | Start development server                      |
+| `pnpm build`                     | Type-check and build static pages into dist   |
+| `pnpm check`                     | Check Astro templates and content types       |
+| `pnpm lint`                      | Run ESLint without changing files             |
+| `pnpm lint:fix`                  | Apply automatic ESLint fixes                  |
+| `pnpm format`                    | Format source files                           |
+| `pnpm preview`                   | Preview the production build                  |
+| `pnpm qa`                        | Run browser/accessibility checks against dist |
+| `pnpm cv:pdf`                    | Run QA and regenerate all three CV PDFs       |
 
-Inside of your Astro project, you'll see the following folders and files:
+QA requires Chromium. Run `pnpm exec playwright install chromium`, or set `CV_BROWSER_PATH` to an existing executable. On this laptop, QA used `C:\Users\Pablo\AppData\Local\ms-playwright\chromium-1223\chrome-win64\chrome.exe`. The script starts and closes its own local server; it does not deploy.
 
-```
-/
-├── public/
-│   └── ...
-├── src/
-│   ├── components/
-│   │   └── ...
-│   ├── content/
-│   │   └── ...
-│   ├── layouts/
-│   │   └── ...
-│   └── pages/
-│       └── ...
-└── package.json
-```
+## Content
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- `src/content/locales/{en,es,pt}`: profiles and shared labels.
+- `src/content/experiences/{en,es,pt}`: employment titles, dates and descriptions; lower order values appear first.
+- `src/partials/ProjectsSection.astro`: public work samples. Label demos and challenges accurately.
+- `src/pages/print.astro`: compact CV source for PDFs.
+- `/projects`: work samples; `/tests` still renders these samples for existing links.
+- `/score` remains as a legacy route outside the main recruiter navigation.
 
-## 🧞 Commands
+The i18n integration generates English, Spanish and Portuguese pages. Language links retain the current section. Canonical and alternate metadata refer to the same section; print pages are excluded from indexing and the sitemap.
 
-All commands are run from the root of the project, from a terminal:
+## PDFs and QA
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:4321`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run lint`         | Run ESLint                                       |
-| `npm run format`       | Run Prettier                                     |
+Run `pnpm build`, then `pnpm cv:pdf`, and visually review the PDF pages. Run `pnpm build` again to copy regenerated public PDFs into dist. Existing public filenames containing `Senior_Product_Engineer` preserve download URLs; PDF contents and browser download names use Full-Stack Engineer positioning.
 
-## 👀 Want to learn more?
+QA writes ignored screenshots and a JSON report under `.qa/`. It checks 48 combinations of locale, route and viewport (320, 390, 768 and 1440px), plus dark theme, the keyboard skip link, navigation persistence, runtime errors and print output. Automated accessibility checks complement visual and keyboard review; they do not establish complete conformance.
 
-Read the [Astro documentation](https://docs.astro.build) or jump into the [Astro Discord server](https://astro.build/chat).
-
----
+See `review-notes.md` for evidence, verification and remaining content decisions. Keep salary expectations and unpublished client work out of public content. Local changes do not authorize a push or deployment.

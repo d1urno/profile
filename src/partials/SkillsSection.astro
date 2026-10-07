@@ -1,98 +1,89 @@
 ---
 import useTranslations from '@/functions/useTranslations'
 import { getLocale } from 'astro-i18n-aut'
-import { Icon } from 'astro-icon/components'
-import BarList from '@/components/BarList.vue'
-
-const locale = getLocale(Astro.url)
-const { t } = await useTranslations(locale)
-
-const LANGUAGES = {
-  TypeScript: 9,
-  SQL: 7,
-  GraphQL: 10,
-  Python: 3,
-  Go: 4,
-  Java: 8,
-  CSS3: 8,
-  PHP: 7,
-  SCSS: 7,
-  FQL: 9
-}
-
-const LIBS = {
-  'Vue 3': 10,
-  TailwindCSS: 10,
-  'Apollo Client and Server': 9,
-  React: 7,
-  Tanstack: 9,
-  Prisma: 8,
-  NuxtJS: 9,
-  Docker: 4,
-  Astro: 6,
-  Laravel: 6
-}
-
-const OPS = {
-  Cloudflare: 8,
-  Netlify: 9,
-  'Digital Ocean': 7,
-  Firebase: 6,
-  GCP: 7,
-  AWS: 3,
-  Vercel: 8,
-  Heroku: 8
-}
-
-const OTHER = {
-  'OpenAI API': 8,
-  'Local-first': 8,
-  Mapbox: 9,
-  'PNPM Monorepo': 8,
-  'Drupal (Headless)': 10,
-  'd3.js': 5,
-  Parcel: 5,
-  Gulp: 5
-}
+const { t } = await useTranslations(getLocale(Astro.url))
+const groups = [
+  {
+    title: t('SkillsSection.subtitle1'),
+    skills: [
+      'TypeScript',
+      'JavaScript',
+      'SQL',
+      'GraphQL',
+      'CSS / SCSS',
+      'Java',
+      'PHP',
+      'Python',
+      'Go'
+    ]
+  },
+  {
+    title: t('SkillsSection.subtitle2'),
+    skills: [
+      'Vue 3',
+      'Nuxt',
+      'Tailwind CSS',
+      'React',
+      'Material UI',
+      'Recharts',
+      'Node.js',
+      'NestJS',
+      'Apollo Client / Server',
+      'TanStack',
+      'Prisma',
+      'Astro',
+      'Laravel'
+    ]
+  },
+  {
+    title: t('SkillsSection.subtitle3'),
+    skills: [
+      'PostgreSQL',
+      'MongoDB',
+      'FaunaDB',
+      'Open Banking APIs',
+      'OpenAI API',
+      'Local-first',
+      'Mapbox',
+      'pnpm monorepos',
+      'Headless Drupal',
+      'd3.js'
+    ]
+  },
+  {
+    title: t('SkillsSection.subtitle4'),
+    skills: [
+      'Cloudflare',
+      'Docker',
+      'Firebase',
+      'Netlify',
+      'DigitalOcean',
+      'GCP',
+      'AWS',
+      'Vercel',
+      'CI/CD'
+    ]
+  }
+]
 ---
 
-<section>
-  <div class="mb-8 ml-auto flex items-center text-2xl uppercase">
-    <h1 class="ml-auto text-teal-700 dark:text-white">
-      {t('SkillsSection.title')}
-    </h1>
-    <Icon name="code" class="ml-2 h-12 w-12 text-teal-500 dark:text-teal-500" />
-  </div>
-  <hr
-    class="my-4 box-border border border-gray-500 bg-gray-500 opacity-75 lg:-mx-6 dark:border-gray-500 dark:bg-gray-300"
-  />
-  <p class="mb-8 text-lg text-gray-900 dark:text-gray-300/90">
-    {t('SkillsSection.text')}
-  </p>
-  <div class="mb-10 grid gap-6 sm:grid-cols-2">
-    <div>
-      <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">
-        {t('SkillsSection.subtitle1')}
-      </h3>
-      <BarList client:load color="light" values={LANGUAGES} />
-    </div>
-    <div>
-      <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">
-        {t('SkillsSection.subtitle2')}
-      </h3>
-      <BarList client:load color="light" values={LIBS} />
-    </div>
-    <div>
-      <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">
-        {t('SkillsSection.subtitle3')}
-      </h3>
-      <BarList client:load color="dark" values={OTHER} />
-    </div>
-    <div>
-      <h3 class="mb-4 text-sm font-semibold opacity-75 dark:text-white">
-        {t('SkillsSection.subtitle4')}
-      </h3>
-      <BarList client:load color="dark" values={OPS} />
-    </div>
+<section aria-labelledby="skills-heading">
+  <h1 class="section-heading" id="skills-heading">{t('SkillsSection.title')}</h1>
+  <p class="mb-8 leading-7">{t('SkillsSection.text')}</p>
+  <div class="grid gap-8 sm:grid-cols-2">
+    {
+      groups.map((group) => (
+        <section>
+          <>
+            <h2 class="mb-3 font-semibold">{group.title}</h2>
+            <ul class="skill-list">
+              {group.skills.map((skill) => (
+                <li>{skill}</li>
+              ))}
+            </ul>
+          </>
+        </section>
+      ))
+    }
   </div>
 </section>

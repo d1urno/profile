@@ -2,16 +2,15 @@
 en: English
 es: Español
 pt: Português
-title: Senior Product Engineer
+title: Senior Full-Stack Engineer
 description: >-
-  Resume of a product engineer with +15 years of experience looking
-  for new remote job opportunities.
+  Pablo Miceli, senior full-stack engineer based in Cape Town. 15+ years building software, with Vue, TypeScript, Tailwind CSS and product-focused engineering.
 SideSection:
-  title: Senior Product Engineer
+  title: Senior Full-Stack Engineer
   nationality: Nationality
   birth: Birth
   location: Current location
-  idioms: Idioms
+  idioms: Languages
   spanish: Spanish
   english: English
   portuguese: Portuguese
@@ -30,9 +29,7 @@ SkillsSection:
   subtitle3: Other
   subtitle4: Infrastructure
   text: >-
-    Ordered from top to bottom, technologies I'd prefer to work with. The
-    horizontal extension of each bar represents actual knowledge/experience I
-    have with it.
+    Technologies used across my projects. Vue, TypeScript and Tailwind CSS are my preferred frontend stack; the experience section shows where I have applied them.
 ExperiencesSection:
   title: Recent experiences
 TestsSection:
@@ -41,9 +38,15 @@ TestsSection:
 ThemeSwitcher:
   label: Switch dark mode
 Tabs:
-  profile: Profile
+  projects: Projects
+  profile: Overview
   skills: Skills
   experience: Experience
   tests: Tests
   score: Score
+projectTitle: Selected work
+navigation: Main navigation
+skip: Skip to content
+locationValue: Cape Town, South Africa
+contact: Contact and profile
 ---

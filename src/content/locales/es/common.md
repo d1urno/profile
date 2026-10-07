@@ -2,12 +2,11 @@
 en: English
 es: Español
 pt: Português
-title: Desarrollador de Productos Senior
+title: Ingeniero Full-Stack Senior
 description: >-
-  Curriculum de un desarrollador de productos con +15 años de experiencia buscando
-  por nuevas oportunidades de trabajo remoto.
+  Pablo Miceli, ingeniero full-stack en Ciudad del Cabo. Más de 15 años desarrollando software con Vue, TypeScript, Tailwind CSS y foco en producto.
 SideSection:
-  title: Desarrollador de Productos Senior
+  title: Ingeniero Full-Stack Senior
   nationality: Nacionalidad
   birth: Nacimiento
   location: Ubicación actual
@@ -30,9 +29,7 @@ SkillsSection:
   subtitle3: Otros
   subtitle4: Infraestructura
   text: >-
-    Ordenadas de arriba a abajo, tecnologías con las que estaría mas dispuesto
-    a trabajar. La extensión horizontal de cada barra representa el
-    conocimiento/experiencia que tengo al respecto.
+    Tecnologías usadas en mis proyectos. Vue, TypeScript y Tailwind CSS son mi stack frontend preferido; la sección de experiencia muestra su aplicación.
 ExperiencesSection:
   title: Experiencias recientes
 TestsSection:
@@ -41,9 +38,15 @@ TestsSection:
 ThemeSwitcher:
   label: Cambiar modo de colores
 Tabs:
+  projects: Proyectos
   profile: Perfil
   skills: Habilidades
   experience: Experiencia
   tests: Pruebas
   score: Puntaje
+projectTitle: Proyectos seleccionados
+navigation: Navegación principal
+skip: Ir al contenido
+locationValue: Ciudad del Cabo, Sudáfrica
+contact: Contacto y perfil
 ---

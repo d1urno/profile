@@ -5,4 +5,7 @@ link: https://paranabanco.com.br/
 order: 6
 ---
 
-Este foi um projeto remoto envolvendo o site institucional do banco, com um breve período onsite em Curitiba, Brasil. Fui líder do projeto enquanto também me concentrava no backend usando Drupal Headless exponendo endpoints GraphQL e tarefas DevOps como CI/CD em cooperação com a equipe de desenvolvedores do Banco. Colaborei no frontend com minha equipe usando React e Apollo Client.
+Liderei o projeto do site institucional do banco, trabalhando remotamente com um breve período presencial em Curitiba, Brasil.
+
+- Foquei em Drupal headless, endpoints GraphQL e CI/CD junto à equipe de desenvolvimento do banco.
+- Coordenei com a equipe frontend que usava React e Apollo Client, com contribuições diretas limitadas ao frontend.

@@ -6,6 +6,15 @@ import '@/styles/base.css'
 
 const locale = getLocale(Astro.url)
 const { t } = await useTranslations(locale)
+const unlocalizedPath =
+  Astro.url.pathname.replace(/\.html$/, '').replace(/^\/(en|es|pt)(?=\/|$)/, '') || '/'
+const alternate = (language: string) =>
+  'https://pablomiceli.dev' +
+  (language === 'en'
+    ? unlocalizedPath
+    : '/' + language + (unlocalizedPath === '/' ? '' : unlocalizedPath))
+const canonical = alternate(locale)
+const printPage = unlocalizedPath === '/print'
 ---
 
 <html lang={locale}>
@@ -14,27 +23,27 @@ const { t } = await useTranslations(locale)
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pablo Miceli | {t('title')}</title>
-    <link rel="canonical" href={`https://pablomiceli.dev/${locale === 'en' ? '' : locale + '/'}`} />
-    <link rel="alternate" hreflang="en" href="https://pablomiceli.dev/" />
-    <link rel="alternate" hreflang="en-US" href="https://pablomiceli.dev/" />
-    <link rel="alternate" hreflang="es" href="https://pablomiceli.dev/es/" />
-    <link rel="alternate" hreflang="es-AR" href="https://pablomiceli.dev/es/" />
-    <link rel="alternate" hreflang="pt" href="https://pablomiceli.dev/pt/" />
-    <link rel="alternate" hreflang="pt-BR" href="https://pablomiceli.dev/pt/" />
-    <link rel="alternate" hreflang="x-default" href="https://pablomiceli.dev/" />
+    <link rel="canonical" href={canonical} />
+    {
+      ['en', 'es', 'pt'].map((language) => (
+        <link rel="alternate" hreflang={language} href={alternate(language)} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={alternate('en')} />
+    {printPage && <meta name="robots" content="noindex, follow" />}
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="description" content={t('description')} />
     <meta name="og:type" property="og:type" content="website" />
     <meta name="og:title" property="og:title" content={`Pablo Miceli | ${t('title')}`} />
     <meta name="og:site_name" property="og:site_name" content={`Pablo Miceli | ${t('title')}`} />
     <meta name="og:description" property="og:description" content={t('description')} />
-    <meta name="og:url" property="og:url" content="https://pablomiceli.dev/" />
-    <meta name="og:image" property="og:image" content="/img/pic_w_320.jpg" />
+    <meta name="og:url" property="og:url" content={canonical} />
+    <meta name="og:image" property="og:image" content="https://pablomiceli.dev/img/pic_w_320.jpg" />
     <meta name="og:image:width" property="og:image:width" content="320" />
     <meta name="og:image:height" property="og:image:height" content="320" />
-    <meta name="og:image:type" property="og:image:type" content="image/jpg" />
+    <meta name="og:image:type" property="og:image:type" content="image/jpeg" />
 
-    <script type="application/ld+json">
+    <script is:inline type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
@@ -45,24 +54,42 @@ const { t } = await useTranslations(locale)
           "https://www.linkedin.com/in/pmicel/",
           "https://twitter.com/d1urno"
         ],
-        "jobTitle": "Senior Product Engineer"
+        "jobTitle": "Senior Full-Stack Engineer"
       }
     </script>
 
-    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-D3EWWPZ6D1"
-    ></script>
-    <script type="text/partytown">
+    <script
+      is:inline
+      type="text/partytown"
+      src="https://www.googletagmanager.com/gtag/js?id=G-D3EWWPZ6D1"></script>
+    <script is:inline type="text/partytown">
       window.dataLayer = window.dataLayer || []
-      function gtag() {
-        window.dataLayer.push(arguments)
+      function gtag(...args) {
+        window.dataLayer.push(args)
       }
       gtag('js', new Date())
       gtag('config', 'G-D3EWWPZ6D1')
     </script>
 
+    <script is:inline>
+      function applyTheme(doc) {
+        let theme
+        try {
+          theme = localStorage.getItem('theme')
+        } catch {
+          /* Use system preference. */
+        }
+        doc.documentElement.classList.toggle(
+          'dark',
+          theme ? theme === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches
+        )
+      }
+      applyTheme(document)
+      document.addEventListener('astro:before-swap', (event) => applyTheme(event.newDocument))
+    </script>
     <ClientRouter />
   </head>
-  <body class="container mx-auto flex font-sans dark:bg-gray-700">
+  <body class="font-sans">
     <slot />
   </body>
 </html>

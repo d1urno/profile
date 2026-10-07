@@ -1,30 +1,13 @@
 ---
 import { getLocale } from 'astro-i18n-aut'
 import { getEntry } from 'astro:content'
-import { Icon } from 'astro-icon/components'
-
 const locale = getLocale(Astro.url)
-const profile = await getEntry('locales', `${locale}/profile`)
-
-if (!profile) {
-  throw new Error(`Profile content not found for locale "${locale}"`)
-}
-
-const { data, render } = profile
-const { Content } = await render()
+const profile = await getEntry('locales', locale + '/profile')
+if (!profile) throw new Error('Missing profile: ' + locale)
+const { Content } = await profile.render()
 ---
 
-<section>
-  <div class="mb-8 ml-auto flex items-center text-2xl uppercase">
-    <h1 class="ml-auto text-teal-700 dark:text-white">
-      {data.title}
-    </h1>
-    <Icon name="profile" class="ml-2 h-12 w-12 text-teal-500 dark:text-teal-500" />
-  </div>
-  <hr
-    class="my-4 box-border border border-gray-500 bg-gray-500 opacity-75 lg:-mx-6 dark:border-gray-500 dark:bg-gray-300"
-  />
-  <div class="prose dark:prose-invert prose-lg print:prose-base mb-10 max-w-none">
-    <Content />
-  </div>
+<section aria-labelledby="profile-heading">
+  <h1 id="profile-heading" class="eyebrow mb-4">{profile.data.title}</h1>
+  <div class="profile-copy prose dark:prose-invert max-w-none"><Content /></div>
 </section>

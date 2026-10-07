@@ -1,8 +1,12 @@
 ---
-title: Desenvolvedor Fullstack - Ctrl365
-period: '2019'
+title: Desenvolvedor Líder Sênior - CTRL.365
+period: 'Jan 2019 - Fev 2020'
 link: https://www.linkedin.com/company/ctrl-365
 order: 7
 ---
 
-Agência com escritório em São Paulo, Brasil. Durante esse período, fui responsável por diferentes tarefas, como a criação de landing pages responsivas para marcas como Acer, Consul ou Nestle em paralelo com a área de design. Desenvolvi um completo Intranet com autenticação e notificações push, e APIs com painéis de administração de banco de dados. Fiz muitas entrevistas de emprego com candidatos para aumentar nossa equipe, entre outras tarefas de gerenciamento de equipe.
+Trabalhei presencialmente em uma agência em São Paulo, Brasil, desenvolvendo projetos web junto à equipe de design.
+
+- Desenvolvi landing pages responsivas para marcas como Acer, Consul e Nestlé.
+- Criei uma intranet com autenticação e notificações push, além de APIs e painéis de administração de bancos de dados.
+- Entrevistei candidatos e contribuí para a gestão da equipe.

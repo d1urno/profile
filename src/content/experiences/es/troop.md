@@ -1,8 +1,14 @@
 ---
-title: Desarrollador Frontend Lead - Troop Travel
-period: '2022 - 2024'
+title: Líder Frontend Senior - TROOP
+period: 'Dic 2021 - Feb 2024'
 link: https://trooptravel.com/
 order: 3
 ---
 
-Un startup remoto, fui arquitecto de la aplicación usando Apollo Graphql, Mapbox y TypeScript, Vue 3 composition API (arquitectura monorepo pnpm), TailwindCSS, y Vite. Durante este período, he mentoreado a otros desarrolladores, diseñado principios y convenciones de código para mejorar nuestra eficiencia, y colaborado activamente con los equipos de producto y diseño para encontrar las mejores experiencias de usuario posibles.
+Lideré el desarrollo frontend y la arquitectura de la aplicación en una startup de viajes completamente remota.
+
+- Desarrollé la aplicación con Vue 3 Composition API, TypeScript, Apollo GraphQL y Mapbox en un monorepo con pnpm.
+- Acompañé a otros desarrolladores y establecí principios y convenciones de código.
+- Colaboré con los equipos de producto y diseño en la experiencia de usuario y su implementación.
+
+**Stack:** Vue 3, TypeScript, GraphQL, Mapbox, Tailwind CSS, Vite.

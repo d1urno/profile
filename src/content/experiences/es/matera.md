@@ -5,4 +5,8 @@ link: https://matera.com/
 order: 5
 ---
 
-Este fue un proyecto remoto donde construimos un sitio web institucional completo. Me enfoqué tanto en backend como en frontend usando Drupal Headless y API GraphQL. Frontend usando NuxtJS con Vuex, i18n para internacionalización, TailwindCSS, con una configuración de generación estatica (JAMStack) y mi propio [módulo NuxtJS open-source](https://github.com/d1urno/nuxt-image-extractor "módulo NuxtJS open-source") que fue estrellado por Sebastien Chopin.
+Lideré el desarrollo full-stack de un sitio institucional para una empresa fintech en un proyecto remoto.
+
+- Conecté Drupal headless y una API GraphQL con un frontend Nuxt de generación estática.
+- Implementé internacionalización con i18n y estilos con Tailwind CSS.
+- Desarrollé un [módulo de extracción de imágenes para Nuxt](https://github.com/d1urno/nuxt-image-extractor) de código abierto para el flujo de generación estática.
