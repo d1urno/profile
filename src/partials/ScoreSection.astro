@@ -1,5 +1,6 @@
 ---
 import { getLocale } from '@/functions/getLocale'
+import Prose from '@/components/Prose.astro'
 import { getEntry, render } from 'astro:content'
 
 const locale = getLocale(Astro.url)
@@ -22,11 +23,11 @@ const snapshotNote = {
   <h1 id="score-heading" class="sr-only">
     {data.title}
   </h1>
-  <div class="prose dark:prose-invert prose-lg print:prose-base mb-4 max-w-none">
+  <Prose class="prose-lg mb-4 print:prose-base">
     <Content />
-  </div>
+  </Prose>
   <a
-    class="mx-auto mb-8 block text-center text-teal-700 dark:text-white"
+    class="mx-auto mb-8 block text-center text-teal-800 dark:text-teal-300"
     href="https://pagespeed.web.dev/analysis/https-pablomiceli-dev/c0fimw1u0t?form_factor=mobile"
     target="_blank"
     rel="noopener nofollow"

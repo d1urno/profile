@@ -23,11 +23,9 @@ const printPage = unlocalizedPath === '/print'
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pablo Miceli | {t('title')}</title>
     <link rel="canonical" href={canonical} />
-    {
-      ['en', 'es', 'pt'].map((language) => (
-        <link rel="alternate" hreflang={language} href={alternate(language)} />
-      ))
-    }
+    {['en', 'es', 'pt'].map((language) => (
+      <link rel="alternate" hreflang={language} href={alternate(language)} />
+    ))}
     <link rel="alternate" hreflang="x-default" href={alternate('en')} />
     {printPage && <meta name="robots" content="noindex, follow" />}
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -56,11 +54,11 @@ const printPage = unlocalizedPath === '/print'
         "jobTitle": "Senior Full-Stack Engineer"
       }
     </script>
-
     <script
       is:inline
       type="text/partytown"
-      src="https://www.googletagmanager.com/gtag/js?id=G-D3EWWPZ6D1"></script>
+      src="https://www.googletagmanager.com/gtag/js?id=G-D3EWWPZ6D1"
+    ></script>
     <script is:inline type="text/partytown">
       window.dataLayer = window.dataLayer || []
       function gtag(...args) {
@@ -69,7 +67,6 @@ const printPage = unlocalizedPath === '/print'
       gtag('js', new Date())
       gtag('config', 'G-D3EWWPZ6D1')
     </script>
-
     <script is:inline>
       function applyTheme(doc) {
         let theme
@@ -88,7 +85,7 @@ const printPage = unlocalizedPath === '/print'
     </script>
     <ClientRouter />
   </head>
-  <body class="font-sans">
+  <body class="m-0 font-sans text-slate-800 antialiased dark:bg-gray-700 dark:text-slate-200">
     <slot />
   </body>
 </html>

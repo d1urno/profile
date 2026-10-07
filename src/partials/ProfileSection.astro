@@ -1,5 +1,6 @@
 ---
 import { getLocale } from '@/functions/getLocale'
+import Prose from '@/components/Prose.astro'
 import { getEntry, render } from 'astro:content'
 const locale = getLocale(Astro.url)
 const profile = await getEntry('locales', locale + '/profile')
@@ -11,7 +12,7 @@ const { Content } = await render(profile)
   <h1 id="profile-heading" class="sr-only">
     {profile.data.title}
   </h1>
-  <div class="profile-copy prose dark:prose-invert max-w-none">
+  <Prose class="profile-copy text-lg leading-[1.75] [&>p:first-child]:text-[clamp(1.5rem,3vw,2.15rem)] [&>p:first-child]:leading-[1.4] [&>p:first-child]:font-[550] [&>p:first-child]:tracking-[-0.025em]">
     <Content />
-  </div>
+  </Prose>
 </section>

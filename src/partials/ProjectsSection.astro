@@ -3,6 +3,7 @@ import { getLocale } from '@/functions/getLocale'
 import useTranslations from '@/functions/useTranslations'
 import { Image } from 'astro:assets'
 import Icon from '@/components/Icon.astro'
+import AnimatedLink from '@/components/AnimatedLink.astro'
 import traceCdrThumbnail from '@/assets/projects/trace-cdr.png'
 import dogAndPonyThumbnail from '@/assets/projects/dog-and-pony.png'
 import doc88Thumbnail from '@/assets/projects/doc88.png'
@@ -132,18 +133,18 @@ const traceLiveSite = {
       {t('projectTitle')}
     </h1>
   )}
-  <div class="project-list">
+  <div class="project-list grid gap-6">
     {projects[locale].slice(0, compact ? 2 : undefined).map((project, index) => {
       const thumbnail = thumbnails[index]
       const actions = [{ href: links[index], label: project[4] }]
       if (project[1] === 'Trace CDR') actions.push(traceLiveSite)
       return (
-        <article class="project-item project-item-with-thumbnail">
+        <article class="project-item project-item-with-thumbnail grid items-start gap-6 border-t border-stone-300 py-6 first:border-t-0 first:pt-0 sm:grid-cols-[12rem_minmax(0,1fr)] dark:border-slate-700">
           {thumbnail ? (
             <Image
               src={thumbnail}
               alt={`${thumbnailLabel} ${project[1]}`}
-              class="project-thumbnail"
+              class="project-thumbnail aspect-[4/3] w-full rounded-[0.4rem] border border-stone-300 bg-stone-100 object-cover dark:border-slate-700 dark:bg-gray-800"
               width={640}
               widths={[192, 384, 640, 1280]}
               sizes="(min-width: 640px) 192px, calc(100vw - 3rem)"
@@ -152,30 +153,37 @@ const traceLiveSite = {
               decoding="async"
             />
           ) : (
-            <div class="project-thumbnail project-thumbnail-placeholder" aria-hidden="true">
-              <Icon name="image" />
+            <div
+              class="project-thumbnail project-thumbnail-placeholder grid aspect-[4/3] w-full place-items-center rounded-[0.4rem] border border-stone-300 bg-stone-100 text-teal-700 dark:border-slate-700 dark:bg-gray-800 dark:text-teal-300"
+              aria-hidden="true"
+            >
+              <Icon name="image" class="h-16 w-16" />
             </div>
           )}
-          <div class="project-content">
-            <p class="eyebrow">{project[0]}</p>
-            {compact ? <h3 class="text-xl font-bold">{project[1]}</h3> : <h2>{project[1]}</h2>}
-            <p>{project[2]}</p>
-            <p class="project-stack">{project[3]}</p>
+          <div class="project-content min-w-0">
+            <p class="eyebrow my-3 text-[0.8rem] leading-[1.65] font-[650] tracking-[0.08em] text-teal-800 uppercase dark:text-teal-300">
+              {project[0]}
+            </p>
+            {compact ? (
+              <h3 class="text-xl font-bold">{project[1]}</h3>
+            ) : (
+              <h2 class="my-2 text-[1.2rem] font-bold">{project[1]}</h2>
+            )}
+            <p class="my-3 leading-[1.65]">{project[2]}</p>
+            <p class="project-stack my-3 text-sm leading-[1.65] text-slate-600 dark:text-slate-300">
+              {project[3]}
+            </p>
             <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
               {actions.map((action) => (
-                <a
-                  class="secondary-link"
-                  data-text={`${action.label} \u00a0↗`}
+                <AnimatedLink
+                  variant="action"
+                  label={action.label}
+                  arrow="↗"
+                  context={project[1]}
                   href={action.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                >
-                  <span class="animated-link-label">
-                    {action.label}
-                    <span aria-hidden="true">{' \u00a0↗'}</span>
-                  </span>
-                  <span class="sr-only"> — {project[1]}</span>
-                </a>
+                />
               ))}
             </div>
           </div>
@@ -184,10 +192,3 @@ const traceLiveSite = {
     })}
   </div>
 </section>
-
-<style>
-  .project-list > .project-item:first-child {
-    border-top: 0;
-    padding-top: 0;
-  }
-</style>

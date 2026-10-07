@@ -1,6 +1,7 @@
 ---
 import { getLocale, getPagePath } from '@/functions/getLocale'
 import Default from '@/layouts/Default.astro'
+import AnimatedLink from '@/components/AnimatedLink.astro'
 import SideSection from '@/partials/SideSection.astro'
 import useTranslations from '@/functions/useTranslations'
 const locale = getLocale(Astro.url)
@@ -18,25 +19,31 @@ const tabs = [
 ---
 
 <Default>
-  <a class="skip-link" href="#main-content">
+  <a
+    class="skip-link absolute top-[-100px] left-4 z-100 bg-white px-4 py-[0.7rem] text-teal-900 focus:top-4"
+    href="#main-content"
+  >
     {t('skip')}
   </a>
-  <div class="site-shell">
+  <div class="site-shell mx-auto max-w-[1440px] lg:grid lg:min-h-screen lg:grid-cols-[320px_minmax(0,1fr)]">
     <SideSection />
-    <main class="site-main" id="main-content" tabindex="-1">
-      <nav id="main-nav-tabs" class="main-nav" aria-label={t('navigation')}>
+    <main class="site-main min-w-0 px-6 pt-8 pb-16 lg:px-14" id="main-content" tabindex="-1">
+      <nav
+        id="main-nav-tabs"
+        class="main-nav flex flex-wrap gap-x-6 gap-y-3 border-b border-stone-300 lg:gap-x-10 dark:border-slate-700"
+        aria-label={t('navigation')}
+      >
         {tabs.map((tab) => (
-          <a
+          <AnimatedLink
+            variant="tab"
+            label={tab.name}
             href={localized(tab.href)}
-            data-text={tab.name}
             data-active={pathname === localized(tab.href)}
             aria-current={pathname === localized(tab.href) ? 'page' : undefined}
-          >
-            {tab.name}
-          </a>
+          />
         ))}
       </nav>
-      <div class="page-content">
+      <div class="page-content pt-10">
         <slot />
       </div>
     </main>

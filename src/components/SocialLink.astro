@@ -1,0 +1,21 @@
+---
+import Icon from '@/components/Icon.astro'
+
+interface Props {
+  href: string
+  label: string
+  icon: string
+}
+
+const { href, label, icon } = Astro.props
+---
+
+<a
+  href={href}
+  aria-label={label}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="inline-flex h-11 w-11 items-center justify-center text-teal-700 transition-[transform,color] duration-300 ease-[ease] hover:text-teal-800 hover:[transform:scale(1.25)] focus-visible:text-teal-800 focus-visible:[transform:scale(1.25)] motion-reduce:hover:transform-none motion-reduce:focus-visible:transform-none dark:text-teal-300 dark:hover:text-teal-200 dark:focus-visible:text-teal-200"
+>
+  <Icon name={icon} class="h-10 w-10 fill-current" />
+</a>

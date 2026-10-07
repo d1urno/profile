@@ -1,4 +1,7 @@
 ---
+import AnimatedLink from '@/components/AnimatedLink.astro'
+import Prose from '@/components/Prose.astro'
+
 interface Props {
   experience: { period: string; title: string; link: string }
   resume?: boolean
@@ -7,21 +10,21 @@ const { experience, resume = false } = Astro.props
 const Heading = resume ? 'h3' : 'h2'
 ---
 
-<article class="experience-item">
-  <div class="experience-header">
-    <Heading class="experience-title">
-      <a
+<article class="experience-item mb-8 border-b border-stone-200 pb-8 dark:border-slate-400">
+  <div class="experience-header mb-[0.6rem] flex flex-wrap justify-between gap-4">
+    <Heading class="experience-title text-xl leading-[1.5] font-bold tracking-[-0.02em]">
+      <AnimatedLink
+        label={experience.title}
         href={experience.link}
-        data-text={experience.title}
         target="_blank"
         rel="noopener noreferrer"
-      >
-        {experience.title}
-      </a>
+      />
     </Heading>
-    <p class="experience-period">{experience.period}</p>
+    <p class="experience-period text-[0.9rem] whitespace-nowrap text-slate-600 dark:text-slate-300">
+      {experience.period}
+    </p>
   </div>
-  <div class="experience-copy prose dark:prose-invert max-w-none">
+  <Prose class="experience-copy text-base leading-[1.65] [&_p]:my-[0.6rem] [&_ul]:my-[0.6rem]">
     <slot />
-  </div>
+  </Prose>
 </article>

@@ -3,6 +3,9 @@ import { getLocale, getPagePath } from '@/functions/getLocale'
 import useTranslations from '@/functions/useTranslations'
 import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
 import Icon from '@/components/Icon.astro'
+import AnimatedLink from '@/components/AnimatedLink.astro'
+import Button from '@/components/Button.astro'
+import SocialLink from '@/components/SocialLink.astro'
 const locale = getLocale(Astro.url)
 const { t } = await useTranslations(locale)
 const speaking = { spanish: 'native', english: 'fluent', portuguese: 'fluent', german: 'beginner' }
@@ -10,24 +13,25 @@ const currentPath = getPagePath(Astro.url)
 const locales = ['en', 'es', 'pt'].filter((value) => value !== locale)
 ---
 
-<aside class="sidebar" aria-label={t('contact')}>
-  <div class="toolbar">
+<aside
+  class="sidebar bg-gray-300 px-6 pt-2 pb-6 lg:pt-4 lg:pr-10 lg:pb-10 lg:pl-8 dark:bg-gray-800"
+  aria-label={t('contact')}
+>
+  <div class="toolbar mb-4 flex flex-wrap items-center gap-4 text-sm leading-[1.5]">
     <ThemeSwitcher client:load label={t('ThemeSwitcher.label')}>
       <Icon name="sun" slot="sun-icon" class="h-5 w-5" />
       <Icon name="moon" slot="moon-icon" class="h-5 w-5" />
     </ThemeSwitcher>
     {locales.map((loc) => (
-      <a
+      <AnimatedLink
+        label={t(loc)}
         lang={loc}
         hreflang={loc}
-        data-text={t(loc)}
         href={loc === 'en' ? currentPath : '/' + loc + (currentPath === '/' ? '' : currentPath)}
-      >
-        {t(loc)}
-      </a>
+      />
     ))}
   </div>
-  <div class="identity">
+  <div class="identity flex flex-col items-center gap-4">
     <picture>
       <source
         srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320/v1710761790/pablomiceli/static/profile.webp  1x,
@@ -44,7 +48,7 @@ const locales = ['en', 'es', 'pt'].filter((value) => value !== locale)
       />
 
       <img
-        class="sidebar-photo"
+        class="sidebar-photo h-full w-full rounded-full object-cover lg:mb-6 lg:rounded-[0.6rem]"
         src="https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320,f_auto/v1710765181/pablomiceli/static/profile"
         width="320"
         height="320"
@@ -53,52 +57,32 @@ const locales = ['en', 'es', 'pt'].filter((value) => value !== locale)
       />
     </picture>
     <div class="lg:mr-auto">
-      <p class="identity-name">Pablo Miceli</p>
-      <p class="identity-role">{t('SideSection.title')}</p>
+      <p class="identity-name text-[1.8rem] leading-[0.7] font-[750] tracking-[-0.04em]">
+        Pablo Miceli
+      </p>
+      <p class="identity-role mt-2 text-slate-600 dark:text-slate-300">{t('SideSection.title')}</p>
     </div>
   </div>
   <div class="flex flex-col justify-center my-5">
-    <div class="social-links">
-      <a
-        href="https://github.com/d1urno"
-        aria-label="GitHub"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon name="github" />
-      </a>
-      <a
-        href="https://www.linkedin.com/in/pmicel/"
-        aria-label="LinkedIn"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon name="linkedin" />
-      </a>
-      <a
-        href="https://twitter.com/d1urno"
-        aria-label="Twitter"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon name="twitter" />
-      </a>
+    <div class="social-links mx-auto my-5 flex gap-5">
+      <SocialLink href="https://github.com/d1urno" label="GitHub" icon="github" />
+      <SocialLink href="https://www.linkedin.com/in/pmicel/" label="LinkedIn" icon="linkedin" />
+      <SocialLink href="https://twitter.com/d1urno" label="Twitter" icon="twitter" />
     </div>
-    <a
-      class="button"
+    <Button
       href={'/' + t('SideSection.link') + '.pdf'}
       download={`Pablo_Miceli_Senior_Full_Stack_Engineer_${locale.toUpperCase()}.pdf`}
     >
       {t('SideSection.download')}
-    </a>
+    </Button>
   </div>
   <div class="mt-12">
-    <div class="contact-details mb-8">
+    <div class="contact-details mt-6 mb-8 flex flex-col gap-x-6 gap-y-[0.6rem] text-[0.95rem] lg:grid">
       <h2 class="font-semibold">{t('SideSection.location')}</h2>
       <p>{t('locationValue')}</p>
     </div>
     <h2 class="mb-3 font-semibold">{t('SideSection.idioms')}</h2>
-    <ul class="language-list">
+    <ul class="language-list flex flex-wrap gap-x-4 gap-y-2 text-sm leading-[1.5]">
       {Object.entries(speaking).map(([language, level]) => (
         <li>
           {t('SideSection.' + language)} · {t('SideSection.' + level)}

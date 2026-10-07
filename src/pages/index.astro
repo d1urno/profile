@@ -1,5 +1,7 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro'
+import Button from '@/components/Button.astro'
+import AnimatedLink from '@/components/AnimatedLink.astro'
 import ProfileSection from '@/partials/ProfileSection.astro'
 import ExperiencesSection from '@/partials/ExperiencesSection.astro'
 import { getLocale } from '@/functions/getLocale'
@@ -16,15 +18,8 @@ const label = labels[locale as keyof typeof labels]
 <MainLayout>
   <ProfileSection />
   <div class="mt-11 flex flex-wrap items-center gap-6">
-    <a class="button" href="mailto:d1urno@gmx.com">
-      {label[0]}
-    </a>
-    <a class="secondary-link" data-text={`${label[1]} →`} href={path}>
-      <span class="animated-link-label">
-        {label[1]}
-        <span aria-hidden="true">{' →'}</span>
-      </span>
-    </a>
+    <Button href="mailto:d1urno@gmx.com">{label[0]}</Button>
+    <AnimatedLink variant="action" label={label[1]} arrow="→" href={path} />
   </div>
   <div class="mt-16 lg:mt-20">
     <ExperiencesSection embedded />

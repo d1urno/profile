@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'h2'> {
+  as?: 'h1' | 'h2' | 'h3'
+  hidden?: boolean
+}
+
+const { as: Heading = 'h2', hidden = false, class: className, ...attributes } = Astro.props
+---
+
+<Heading
+  {...attributes}
+  class:list={[
+    hidden
+      ? 'sr-only'
+      : 'section-heading mb-5 text-[1.6rem] font-[750] tracking-[-0.03em] text-slate-900 dark:text-white',
+    className
+  ]}
+>
+  <slot />
+</Heading>

@@ -2,6 +2,7 @@
 import { getLocale } from '@/functions/getLocale'
 import { getCollection, render } from 'astro:content'
 import ExperienceItem from '@/components/ExperienceItem.astro'
+import SectionHeading from '@/components/SectionHeading.astro'
 import useTranslations from '@/functions/useTranslations'
 const locale = getLocale(Astro.url)
 interface Props {
@@ -18,9 +19,9 @@ const experiences = (
 ---
 
 <section aria-labelledby="experience-heading">
-  <Heading id="experience-heading" class="section-heading">
+  <SectionHeading as={Heading} id="experience-heading">
     {t('ExperiencesSection.title')}
-  </Heading>
+  </SectionHeading>
   {experiences.map(async (experience) => {
     const { Content } = await render(experience)
     return (
