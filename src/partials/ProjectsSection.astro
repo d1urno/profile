@@ -1,6 +1,10 @@
 ---
 import { getLocale } from '@/functions/getLocale'
 import useTranslations from '@/functions/useTranslations'
+import { Image } from 'astro:assets'
+import traceCdrThumbnail from '@/assets/projects/trace-cdr.png'
+import dogAndPonyThumbnail from '@/assets/projects/dog-and-pony.png'
+import doc88Thumbnail from '@/assets/projects/doc88.png'
 const locale = getLocale(Astro.url) as 'en' | 'es' | 'pt'
 const { t } = await useTranslations(locale)
 interface Props {
@@ -105,6 +109,8 @@ const links = [
   'https://dps-senior-frontend-test.netlify.app',
   'https://doc88-frontend-challenge.netlify.app'
 ]
+const thumbnails = [undefined, traceCdrThumbnail, dogAndPonyThumbnail, doc88Thumbnail]
+const thumbnailLabel = { en: 'Preview of', es: 'Vista previa de', pt: 'Prévia de' }[locale]
 ---
 
 <section aria-labelledby="projects-heading">
@@ -118,27 +124,45 @@ const links = [
     </h1>
   )}
   <div class="project-list">
-    {projects[locale].slice(0, compact ? 2 : undefined).map((project, index) => (
-      <article class="project-item">
-        <p class="eyebrow">{project[0]}</p>
-        {compact ? <h3 class="text-xl font-bold">{project[1]}</h3> : <h2>{project[1]}</h2>}
-        <p>{project[2]}</p>
-        <p class="project-stack">{project[3]}</p>
-        <a
-          class="secondary-link"
-          data-text={`${project[4]} \u00a0↗`}
-          href={links[index]}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="animated-link-label">
-            {project[4]}
-            <span aria-hidden="true">{' \u00a0↗'}</span>
-          </span>
-          <span class="sr-only"> — {project[1]}</span>
-        </a>
-      </article>
-    ))}
+    {projects[locale].slice(0, compact ? 2 : undefined).map((project, index) => {
+      const thumbnail = thumbnails[index]
+      return (
+        <article class:list={['project-item', { 'project-item-with-thumbnail': thumbnail }]}>
+          {thumbnail && (
+            <Image
+              src={thumbnail}
+              alt={`${thumbnailLabel} ${project[1]}`}
+              class="project-thumbnail"
+              width={640}
+              widths={[192, 384, 640, 1280]}
+              sizes="(min-width: 640px) 192px, calc(100vw - 3rem)"
+              format="webp"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+          <div class="project-content">
+            <p class="eyebrow">{project[0]}</p>
+            {compact ? <h3 class="text-xl font-bold">{project[1]}</h3> : <h2>{project[1]}</h2>}
+            <p>{project[2]}</p>
+            <p class="project-stack">{project[3]}</p>
+            <a
+              class="secondary-link"
+              data-text={`${project[4]} \u00a0↗`}
+              href={links[index]}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="animated-link-label">
+                {project[4]}
+                <span aria-hidden="true">{' \u00a0↗'}</span>
+              </span>
+              <span class="sr-only"> — {project[1]}</span>
+            </a>
+          </div>
+        </article>
+      )
+    })}
   </div>
 </section>
 

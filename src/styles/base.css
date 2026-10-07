@@ -276,6 +276,27 @@ a[data-text]:is(:hover, :focus-visible)::before {
   border-top: 1px solid;
   @apply border-stone-300 dark:border-slate-700;
 }
+.project-item-with-thumbnail {
+  display: grid;
+  align-items: start;
+  gap: 1.5rem;
+}
+.project-thumbnail {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid;
+  border-radius: 0.4rem;
+  @apply border-stone-300 bg-stone-100 dark:border-slate-700 dark:bg-slate-900;
+}
+.project-content {
+  min-width: 0;
+}
+@media (min-width: 640px) {
+  .project-item-with-thumbnail {
+    grid-template-columns: 12rem minmax(0, 1fr);
+  }
+}
 .project-item h2 {
   font-size: 1.2rem;
   font-weight: 700;
