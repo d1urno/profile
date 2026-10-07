@@ -88,7 +88,7 @@ export const GET: APIRoute<Props> = async ({ props: { locale, page }, site }) =>
     sections.push(
       score.body.trim(),
       t('Score.snapshotNote'),
-      `[![${score.data.score}](${new URL('/img/score-2024.jpg', site).href})](https://pagespeed.web.dev/analysis/https-pablomiceli-dev/c0fimw1u0t?form_factor=mobile)`
+      `[![${score.data.score}](${new URL('/img/score-2026.jpg', site).href})](https://pagespeed.web.dev/analysis/https-pablomiceli-dev/z6qf14gcxb?form_factor=mobile)`
     )
   }
 

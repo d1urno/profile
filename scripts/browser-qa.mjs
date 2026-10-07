@@ -395,13 +395,13 @@ try {
           assert.equal(await link.locator('svg[aria-hidden=true]').count(), 1)
         }
         if (route === '/score') {
-          await page.locator('img[src="/img/score-2024.jpg"]').scrollIntoViewIfNeeded()
+          await page.locator('img[src="/img/score-2026.jpg"]').scrollIntoViewIfNeeded()
           await page.waitForFunction(
-            () => document.querySelector('img[src="/img/score-2024.jpg"]').naturalWidth > 0
+            () => document.querySelector('img[src="/img/score-2026.jpg"]').naturalWidth > 0
           )
           assert.equal(
             await page
-              .locator('img[src="/img/score-2024.jpg"]')
+              .locator('img[src="/img/score-2026.jpg"]')
               .evaluate((img) => img.naturalWidth > 0),
             true,
             'saved Score image loads'
@@ -688,7 +688,7 @@ try {
     .analyze()
   assert.equal(animatedDarkAxe.violations.length, 0, 'dark hover accessibility')
   await animatedPage.goto(base + '/score')
-  await animatedPage.locator('img[src="/img/score-2024.jpg"]').scrollIntoViewIfNeeded()
+  await animatedPage.locator('img[src="/img/score-2026.jpg"]').scrollIntoViewIfNeeded()
   await animatedPage.screenshot({
     path: path.join(output, 'score-desktop-dark.png'),
     animations: 'disabled',
