@@ -21,6 +21,20 @@ Use Node.js 24.15.0 (`.nvmrc`) and pnpm 10.17.0. Supported Node versions are 22.
 
 QA requires Chromium. Run `pnpm exec playwright install chromium`, or set `CV_BROWSER_PATH` to an existing executable. On this laptop, QA used `C:\Users\Pablo\AppData\Local\ms-playwright\chromium-1223\chrome-win64\chrome.exe`. The script starts and closes its own local server; it does not deploy.
 
+## DevCLI
+
+`.dev-cli.jsonc` follows the supplied Spentier schema version 1, with a single `astro-app` service for `my-profile` at the repository root. Open this repository in that DevCLI and select **App: Pablo Miceli CV**. It uses the reference's `{{pnpm}}` placeholder, starts on `http://localhost:4321`, and allows 60 seconds for readiness. There are no service dependencies, setup tasks or template generators.
+
+The same command can run directly:
+
+```sh
+pnpm exec astro dev --host localhost --port 4321 --strictPort
+```
+
+Stop a direct run with Ctrl+C. `--strictPort` fails if another application owns 4321; stop or reconfigure that application deliberately. DevCLI state/logs under `.dev-cli/` are ignored by Git.
+
+Validated on 7 October 2026: strict JSON parsing, package/target references, exact command startup on an available 4321, readiness in about eight seconds, English/Spanish/Portuguese responses, and shutdown of only the created process. The generic DevCLI executable matching the supplied Spentier configuration was not found on this laptop; its own schema validation and orchestration run remain unverified. The older Switch-specific CLI found locally uses a different interface and was not invoked.
+
 ## Content
 
 - `src/content/locales/{en,es,pt}`: profiles and shared labels.

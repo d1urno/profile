@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "name": "my-profile",
+  "setupTasks": [],
+  "services": [
+    {
+      "name": "profile",
+      "label": "Pablo Miceli CV",
+      "type": "astro-app",
+      "packageName": "my-profile",
+      "path": ".",
+      "command": [
+        "{{pnpm}}",
+        "exec",
+        "astro",
+        "dev",
+        "--host",
+        "localhost",
+        "--port",
+        "4321",
+        "--strictPort"
+      ],
+      "dependencies": [],
+      "usedBy": [],
+      "autoStart": true,
+      "autoStartDependencies": false,
+      "host": "localhost",
+      "port": 4321,
+      "readyTimeoutMs": 60000,
+      "url": "http://localhost:4321",
+      "manualCommand": "pnpm exec astro dev --host localhost --port 4321 --strictPort"
+    }
+  ],
+  "targets": [
+    {
+      "name": "profile",
+      "label": "App: Pablo Miceli CV",
+      "description": "Runs the multilingual Astro CV for local development.",
+      "requestedServices": ["profile"]
+    }
+  ]
+}
