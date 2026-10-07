@@ -254,7 +254,7 @@ a[data-text]:is(:hover, :focus-visible)::before {
   letter-spacing: -0.02em;
 }
 .experience-period {
-  @apply text-slate-600 dark:text-slate-400;
+  @apply text-slate-600 dark:text-slate-300;
   white-space: nowrap;
   font-size: 0.9rem;
 }
@@ -317,7 +317,7 @@ a[data-text]:is(:hover, :focus-visible)::before {
 }
 .project-stack {
   font-size: 0.875rem;
-  @apply text-slate-600 dark:text-slate-400;
+  @apply text-slate-600 dark:text-slate-300;
 }
 .skill-list {
   display: flex;
