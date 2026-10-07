@@ -176,19 +176,22 @@ a[data-text]:is(:hover, :focus-visible)::before {
   @apply border-stone-300 dark:border-slate-700;
 }
 .main-nav a {
-  padding: 0.5rem 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0;
   min-height: 44px;
   text-decoration: none;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.25;
   font-weight: 700;
   text-transform: uppercase;
   @apply text-slate-600 dark:text-slate-300;
 }
 .main-nav a::before {
-  inset-block: 0.5rem;
-}
-.main-nav a::after {
-  inset-block: 0.5rem;
+  inset-block: auto;
+  top: 50%;
+  height: 1.25em;
+  transform: translateY(-50%);
 }
 .main-nav a[aria-current='page'] {
   border-bottom: 3px solid;

@@ -20,6 +20,18 @@ Baseline: c0ad855, master; original checkout was clean.
 - Trace CDR and two frontend challenges were already linked publicly in the CV. Keep their scope clearly labeled as demos/challenges.
 - LinkedIn browser access was unavailable (supported laptop browser inventory returned no browsers). The user's LinkedIn screenshot supplies the visible titles/dates that supersede the stale site timeline.
 
+## Compact-tab follow-up — verified in the running preview
+
+The first padding reduction reached the existing localhost:4321 server: computed padding was 8px vertically, label font remained 20px, and widths were unchanged. Desktop tabs measured 49px high because flex rows stretched the unselected tabs to the selected tab's height. No stale output or competing size rule was found.
+
+The correction uses 16px labels, a 20px line height, 4px vertical padding and vertically centered text within 44px targets. Gaps, weight, uppercase labels, selected bottom highlight, 1s reveal, 25px glow and trailing cursor gap are preserved. The animation layer shares the centered text geometry.
+
+Measured directly at http://localhost:4321 across 320/390/768/1440px and English/Spanish/Portuguese: all tab widths reduced by 20%; all heights are 44px; smallest width is 49.75px. At 390px and 1440px, English Overview changed from 103.03 × 49px to 82.42 × 44px, and Experience from 116.05 × 49px to 92.84 × 44px. Spanish/Portuguese Experiencia/Experiência changed from 125.81 × 49px to 100.64 × 44px. Thirty live-preview tab glyph comparisons across mobile/desktop and locales had zero base/animated position or size deviation. Before/after crops were visually reviewed.
+
+Lint, Astro check, Vue type checking/build and full browser/PDF QA passed again: 60 route/viewport cases plus dark accessibility, no runtime errors or automated WCAG violations; all targets are at least 44px wide and exactly 44px high. Hover/leave/re-entry, keyboard focus, reduced motion, arrow alignment and exterior glow checks passed. All three PDFs retain identical text, two-page count and raster rendering; public/Library PDFs were preserved. No dependency changes; the previous zero-vulnerability audit remains applicable.
+
+Evidence: ignored `.qa/live-tabs-before.json`, `live-tabs-after.json`, `live-tabs-comparison.json`, `live-tab-alignment.json`, before/after screenshot crops, and the refreshed browser/animation/glow/PDF reports. Existing server was not stopped or reconfigured. The unrelated local photo-sizing edit remains outside this commit.
+
 ## Visual restoration and final verification — 7 October 2026
 
 - Restored the Score navigation tab in all three languages, its site notes and original saved PageSpeed image. The local image's caption identifies it as a saved snapshot rather than a fresh performance claim.

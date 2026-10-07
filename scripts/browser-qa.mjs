@@ -93,7 +93,10 @@ try {
         )
         for (const tab of await page.locator('nav a').all()) {
           const bounds = await tab.boundingBox()
-          assert.ok(bounds.height >= 44 && bounds.height <= 50, 'compact usable tab: ' + url)
+          assert.ok(
+            Math.abs(bounds.height - 44) < 0.1 && bounds.width >= 44,
+            'compact usable tab: ' + url
+          )
         }
         const overflow = await page.evaluate(
           () => document.documentElement.scrollWidth > window.innerWidth
