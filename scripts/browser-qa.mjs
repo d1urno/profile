@@ -100,7 +100,73 @@ async function checkArrowGeometry(link, context) {
   }
   arrowGeometry.push({ context, ...geometry })
 }
+async function checkProfilePhotoLayout() {
+  const photoLayouts = []
+  for (const width of [320, 390, 412, 768, 1440]) {
+    const context = await createQaContext({
+      viewport: { width, height: 823 },
+      deviceScaleFactor: 2,
+      reducedMotion: 'reduce'
+    })
+    const page = await context.newPage()
+    let releasePhoto
+    const photoGate = new Promise((resolve) => (releasePhoto = resolve))
+    await context.route('https://res.cloudinary.com/**/pablomiceli/static/profile*', async (route) => {
+      await photoGate
+      await route.continue()
+    })
+    await page.addInitScript(() => {
+      window.qaPhotoCLS = 0
+      new PerformanceObserver((list) => {
+        for (const entry of list.getEntries())
+          if (!entry.hadRecentInput) window.qaPhotoCLS += entry.value
+      }).observe({ type: 'layout-shift', buffered: true })
+    })
+    async function readLayout() {
+      return page.evaluate(async () => {
+        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))
+        const photo = document.querySelector('aside img[alt="Pablo Miceli"]')
+        const rect = photo.getBoundingClientRect()
+        return {
+          loaded: photo.complete && photo.naturalWidth > 0,
+          cls: window.qaPhotoCLS,
+          geometry: {
+            photoWidth: rect.width,
+            photoHeight: rect.height,
+            photoTop: rect.top,
+            contactTop: document.querySelector('aside > div:last-child').getBoundingClientRect().top,
+            mainTop: document.querySelector('#main-content').getBoundingClientRect().top
+          }
+        }
+      })
+    }
+    try {
+      await page.goto(base, { waitUntil: 'domcontentloaded' })
+      const before = await readLayout()
+      assert.equal(before.loaded, false, 'profile photo request is held at ' + width)
+      assert.ok(before.geometry.photoHeight > 0, 'profile photo space is reserved at ' + width)
+      releasePhoto()
+      await page.waitForFunction(() => {
+        const photo = document.querySelector('aside img[alt="Pablo Miceli"]')
+        return photo.complete && photo.naturalWidth > 0
+      })
+      const after = await readLayout()
+      for (const [property, value] of Object.entries(before.geometry))
+        assert.ok(
+          Math.abs(value - after.geometry[property]) < 0.25,
+          'delayed profile photo keeps ' + property + ' stable at ' + width
+        )
+      assert.ok(after.cls < 0.001, 'no load layout shift at ' + width + ': ' + after.cls)
+      photoLayouts.push({ width, before, after })
+    } finally {
+      releasePhoto()
+      await context.close()
+    }
+  }
+  await writeFile(path.join(output, 'photo-layout-report.json'), JSON.stringify(photoLayouts, null, 2))
+}
 try {
+  await checkProfilePhotoLayout()
   const context = await createQaContext({ reducedMotion: 'reduce' })
   const page = await context.newPage()
   page.on('pageerror', (error) =>
@@ -859,7 +925,7 @@ try {
     'accessibility violations; inspect .qa/browser-report.json'
   )
   console.log(
-    'Passed: 60 route/viewport checks, Overview experience content, legacy Projects aliases, legacy redirects with/without JavaScript and stable history, repeated and back/forward navigation, print keyboard activation and history, social icons, Score image, keyboard skip link, theme persistence, print metadata and WCAG automated checks.'
+    'Passed: reserved profile photo layout during delayed loading at five widths, 60 route/viewport checks, Overview experience content, legacy Projects aliases, legacy redirects with/without JavaScript and stable history, repeated and back/forward navigation, print keyboard activation and history, social icons, Score image, keyboard skip link, theme persistence, print metadata and WCAG automated checks.'
   )
 } finally {
   await browser.close()

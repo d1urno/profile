@@ -38,7 +38,7 @@ const locales = localeCodes.filter((value) => value !== locale)
     ))}
   </div>
   <div class="flex flex-col items-center gap-4">
-    <picture>
+    <picture class="block w-80 max-w-full">
       <source
         srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320/v1710761790/pablomiceli/static/profile.webp  1x,
           https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_640/v1710761790/pablomiceli/static/profile.webp 2x,
@@ -54,7 +54,7 @@ const locales = localeCodes.filter((value) => value !== locale)
       />
 
       <img
-        class="h-full w-full rounded-full object-cover lg:mb-6 lg:rounded-[0.6rem]"
+        class="block aspect-square h-auto w-full rounded-full object-cover lg:mb-6 lg:rounded-[0.6rem]"
         src="https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_320,f_auto/v1710765181/pablomiceli/static/profile"
         width="320"
         height="320"
