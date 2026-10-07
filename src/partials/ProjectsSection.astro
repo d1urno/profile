@@ -107,13 +107,13 @@ const links = [
 ]
 ---
 
-<section class="mt-10" aria-labelledby="projects-heading">
+<section aria-labelledby="projects-heading">
   {compact ? (
-    <h2 class="section-heading" id="projects-heading">
+    <h2 class="sr-only" id="projects-heading">
       {t('projectTitle')}
     </h2>
   ) : (
-    <h1 class="section-heading" id="projects-heading">
+    <h1 class="sr-only" id="projects-heading">
       {t('projectTitle')}
     </h1>
   )}
@@ -141,3 +141,10 @@ const links = [
     ))}
   </div>
 </section>
+
+<style>
+  .project-list > .project-item:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+</style>

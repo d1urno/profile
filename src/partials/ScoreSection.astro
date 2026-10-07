@@ -1,7 +1,6 @@
 ---
 import { getLocale } from '@/functions/getLocale'
 import { getEntry, render } from 'astro:content'
-import Icon from '@/components/Icon.astro'
 
 const locale = getLocale(Astro.url)
 const score = await getEntry('locales', `${locale}/score`)
@@ -19,12 +18,10 @@ const snapshotNote = {
 }[locale]
 ---
 
-<section class="print:mt-10">
-  <div class="mb-8 ml-auto flex items-center text-2xl uppercase">
-    <h1 class="ml-auto text-teal-700 dark:text-white">{data.title}</h1>
-    <Icon name="info" class="ml-2 h-12 w-12 fill-current text-teal-700 dark:text-teal-300" />
-  </div>
-  <hr class="my-4 box-border border border-gray-500 bg-gray-500 opacity-75 lg:-mx-6 dark:border-gray-500 dark:bg-gray-300" />
+<section class="print:mt-10" aria-labelledby="score-heading">
+  <h1 id="score-heading" class="sr-only">
+    {data.title}
+  </h1>
   <div class="prose dark:prose-invert prose-lg print:prose-base mb-4 max-w-none">
     <Content />
   </div>

@@ -20,6 +20,17 @@ Baseline: c0ad855, master; original checkout was clean.
 - Trace CDR and two frontend challenges were already linked publicly in the CV. Keep their scope clearly labeled as demos/challenges.
 - LinkedIn browser access was unavailable (supported laptop browser inventory returned no browsers). The user's LinkedIn screenshot supplies the visible titles/dates that supersede the stale site timeline.
 
+## Section header simplification — live review
+
+- Removed the visible Score title, info icon and divider; retained notes, report link, snapshot and caption.
+- Removed the visible Projects section title and divider above the first project, retaining the four work samples and separators between them.
+- Removed the visible Skills page title, retaining its intro and four skill groups. Removed the Overview's visible role eyebrow, preserving the sidebar role and print/PDF title.
+- Localized headings remain visually hidden for assistive structure and section labels. Recent experiences now has 64px separation from the Overview actions on mobile and 80px on desktop.
+- Focused ESLint on the five changed components/pages passed. Twenty-four live checks covered the four affected pages, two viewports and all three locales: headings visually hidden, expected content retained, divider/icon removal, measured spacing, four navigation tabs and no browser runtime errors. The print page still contains its original name/role title.
+- Existing Overview experience consolidation and Email me / View projects actions remain complete. Concurrent profile-copy, sidebar/photo/style and theme-button edits were preserved outside this commit. Broader build/accessibility/PDF suites were deferred during active visual review; no print source or delivered PDF changed in this iteration.
+
+Evidence: ignored .qa/section-simplification-report.json and overview-simplified-390/1440.png.
+
 ## Overview consolidation and actions — 7 October 2026
 
 - Replaced Overview's Selected work section with the entire approved experience timeline. All seven roles, descriptions, dates, order and links match the pre-change Experience page in each language. The intro and other Overview content remain. Nested headings retain one page h1.
