@@ -111,6 +111,14 @@ const links = [
 ]
 const thumbnails = [undefined, traceCdrThumbnail, dogAndPonyThumbnail, doc88Thumbnail]
 const thumbnailLabel = { en: 'Preview of', es: 'Vista previa de', pt: 'Prévia de' }[locale]
+const traceLiveSite = {
+  href: 'https://www.tracecdr.org',
+  label: {
+    en: 'Visit live site',
+    es: 'Visitar sitio publicado',
+    pt: 'Visitar site publicado'
+  }[locale]
+}
 ---
 
 <section aria-labelledby="projects-heading">
@@ -126,6 +134,8 @@ const thumbnailLabel = { en: 'Preview of', es: 'Vista previa de', pt: 'Prévia d
   <div class="project-list">
     {projects[locale].slice(0, compact ? 2 : undefined).map((project, index) => {
       const thumbnail = thumbnails[index]
+      const actions = [{ href: links[index], label: project[4] }]
+      if (project[1] === 'Trace CDR') actions.push(traceLiveSite)
       return (
         <article class:list={['project-item', { 'project-item-with-thumbnail': thumbnail }]}>
           {thumbnail && (
@@ -146,19 +156,23 @@ const thumbnailLabel = { en: 'Preview of', es: 'Vista previa de', pt: 'Prévia d
             {compact ? <h3 class="text-xl font-bold">{project[1]}</h3> : <h2>{project[1]}</h2>}
             <p>{project[2]}</p>
             <p class="project-stack">{project[3]}</p>
-            <a
-              class="secondary-link"
-              data-text={`${project[4]} \u00a0↗`}
-              href={links[index]}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="animated-link-label">
-                {project[4]}
-                <span aria-hidden="true">{' \u00a0↗'}</span>
-              </span>
-              <span class="sr-only"> — {project[1]}</span>
-            </a>
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+              {actions.map((action) => (
+                <a
+                  class="secondary-link"
+                  data-text={`${action.label} \u00a0↗`}
+                  href={action.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="animated-link-label">
+                    {action.label}
+                    <span aria-hidden="true">{' \u00a0↗'}</span>
+                  </span>
+                  <span class="sr-only"> — {project[1]}</span>
+                </a>
+              ))}
+            </div>
           </div>
         </article>
       )
