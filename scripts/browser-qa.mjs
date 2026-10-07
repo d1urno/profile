@@ -35,6 +35,41 @@ const base = 'http://127.0.0.1:' + server.address().port
 const browser = await chromium.launch({ executablePath: process.env.CV_BROWSER_PATH || undefined })
 const reports = []
 const errors = []
+const arrowGeometry = []
+async function checkArrowGeometry(link, context) {
+  const geometry = await link.evaluate((element) => {
+    const arrow = element.querySelector('.animated-link-label [aria-hidden="true"]')
+    const originalText = arrow.firstChild
+    const originalRange = document.createRange()
+    originalRange.setStart(originalText, originalText.length - 1)
+    originalRange.setEnd(originalText, originalText.length)
+    const original = originalRange.getBoundingClientRect().toJSON()
+    const reveal = getComputedStyle(element, '::before')
+    // A measurable text layer with the pseudo-element's exact computed typography/layout.
+    const probe = document.createElement('span')
+    for (const property of reveal)
+      probe.style.setProperty(property, reveal.getPropertyValue(property))
+    probe.style.width = 'max-content'
+    probe.style.border = 'none'
+    probe.style.filter = 'none'
+    probe.style.transition = 'none'
+    probe.textContent = element.dataset.text
+    element.append(probe)
+    const animatedRange = document.createRange()
+    animatedRange.setStart(probe.firstChild, probe.firstChild.length - 1)
+    animatedRange.setEnd(probe.firstChild, probe.firstChild.length)
+    const animated = animatedRange.getBoundingClientRect().toJSON()
+    probe.remove()
+    return { original, animated }
+  })
+  for (const dimension of ['x', 'y', 'width', 'height']) {
+    assert.ok(
+      Math.abs(geometry.original[dimension] - geometry.animated[dimension]) < 0.25,
+      context + ' aligned arrow ' + dimension + ': ' + JSON.stringify(geometry)
+    )
+  }
+  arrowGeometry.push({ context, ...geometry })
+}
 try {
   const context = await browser.newContext({ reducedMotion: 'reduce' })
   const page = await context.newPage()
@@ -44,7 +79,7 @@ try {
   for (const width of [320, 390, 768, 1440]) {
     await page.setViewportSize({ width, height: 1000 })
     for (const locale of ['en', 'es', 'pt']) {
-      for (const route of ['/', '/experience', '/projects', '/skills']) {
+      for (const route of ['/', '/experience', '/projects', '/skills', '/score']) {
         const url = locale === 'en' ? route : '/' + locale + (route === '/' ? '' : route)
         const response = await page.goto(base + url)
         assert.equal(response.status(), 200, url)
@@ -56,10 +91,42 @@ try {
           1,
           'active navigation: ' + url
         )
+        for (const tab of await page.locator('nav a').all()) {
+          const bounds = await tab.boundingBox()
+          assert.ok(bounds.height >= 44 && bounds.height <= 50, 'compact usable tab: ' + url)
+        }
         const overflow = await page.evaluate(
           () => document.documentElement.scrollWidth > window.innerWidth
         )
         assert.equal(overflow, false, 'horizontal overflow: ' + url + ' at ' + width)
+        for (const [name, href] of [
+          ['GitHub', 'https://github.com/d1urno'],
+          ['LinkedIn', 'https://www.linkedin.com/in/pmicel/'],
+          ['Twitter', 'https://twitter.com/d1urno']
+        ]) {
+          const link = page.locator('.social-links').getByRole('link', { name, exact: true })
+          assert.equal(await link.getAttribute('href'), href)
+          assert.equal(await link.locator('svg[aria-hidden=true]').count(), 1)
+        }
+        if (route === '/score') {
+          await page.locator('img[src="/img/score-2024.jpg"]').scrollIntoViewIfNeeded()
+          await page.waitForFunction(
+            () => document.querySelector('img[src="/img/score-2024.jpg"]').naturalWidth > 0
+          )
+          assert.equal(
+            await page
+              .locator('img[src="/img/score-2024.jpg"]')
+              .evaluate((img) => img.naturalWidth > 0),
+            true,
+            'saved Score image loads'
+          )
+        }
+        for (const link of await page.locator('a:has(.animated-link-label)').all()) {
+          await checkArrowGeometry(
+            link,
+            url + ' at ' + width + ': ' + (await link.getAttribute('href'))
+          )
+        }
         const axe = await new AxeBuilder({ page })
           .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
           .analyze()
@@ -101,9 +168,360 @@ try {
   await page.goto(base)
   await page.screenshot({ path: path.join(output, 'mobile.png'), fullPage: true })
   await page.keyboard.press('Tab')
-  assert.equal(await page.evaluate(() => document.activeElement?.textContent), 'Skip to content')
+  assert.equal(
+    await page.evaluate(() => document.activeElement?.textContent.trim()),
+    'Skip to content'
+  )
   await page.keyboard.press('Enter')
   assert.equal(await page.evaluate(() => document.activeElement?.id), 'main-content')
+  const interactionPage = await context.newPage()
+  interactionPage.on('pageerror', (error) => errors.push(error.message))
+  for (const width of [390, 1440]) {
+    await interactionPage.setViewportSize({ width, height: 844 })
+    for (const locale of ['en', 'es', 'pt']) {
+      const home = locale === 'en' ? '/' : '/' + locale
+      const route = (section) => (locale === 'en' ? '' : '/' + locale) + '/' + section
+      await interactionPage.goto(base + home)
+      for (const section of ['experience', 'score', 'projects', 'skills', 'score']) {
+        await interactionPage.locator('nav a[href="' + route(section) + '"]').click()
+        await interactionPage.waitForURL(base + route(section))
+        await interactionPage
+          .locator('nav a[aria-current="page"][href="' + route(section) + '"]')
+          .waitFor()
+        assert.equal(
+          await interactionPage.locator('nav a[aria-current="page"]').getAttribute('href'),
+          route(section)
+        )
+        if (width === 390) {
+          await interactionPage.waitForFunction(() => {
+            const nav = document.querySelector('#main-nav-tabs').getBoundingClientRect()
+            return nav.top >= -1 && nav.bottom <= window.innerHeight
+          })
+        }
+      }
+      await interactionPage.goBack()
+      await interactionPage.waitForURL(base + route('skills'))
+      await interactionPage
+        .locator('nav a[aria-current="page"][href="' + route('skills') + '"]')
+        .waitFor()
+      assert.equal(
+        await interactionPage.locator('nav a[aria-current="page"]').getAttribute('href'),
+        route('skills')
+      )
+      await interactionPage.goForward()
+      await interactionPage.waitForURL(base + route('score'))
+      await interactionPage
+        .locator('nav a[aria-current="page"][href="' + route('score') + '"]')
+        .waitFor()
+      assert.equal(
+        await interactionPage.locator('nav a[aria-current="page"]').getAttribute('href'),
+        route('score')
+      )
+      await interactionPage.locator('nav a[aria-current="page"]').click()
+      assert.equal(await interactionPage.locator('html').getAttribute('lang'), locale)
+    }
+  }
+  await interactionPage.close()
+  const animatedContext = await browser.newContext({ reducedMotion: 'no-preference' })
+  const animatedPage = await animatedContext.newPage()
+  animatedPage.on('pageerror', (error) => errors.push(error.message))
+  await animatedPage.setViewportSize({ width: 1440, height: 1000 })
+  await animatedPage.goto(base)
+  const animatedTab = animatedPage.getByRole('link', { name: 'Score', exact: true })
+  const selectedTab = animatedPage.locator('nav a[aria-current="page"]')
+  const selectedBounds = await selectedTab.boundingBox()
+  const selectedIdle = await selectedTab.evaluate((link) => ({
+    cursor: getComputedStyle(link, '::before').borderInlineEndColor,
+    after: getComputedStyle(link, '::after').content,
+    highlight: getComputedStyle(link).borderBottomWidth
+  }))
+  assert.equal(selectedIdle.cursor, 'rgba(0, 0, 0, 0)')
+  assert.equal(selectedIdle.after, 'none')
+  assert.equal(selectedIdle.highlight, '3px')
+  await selectedTab.hover()
+  await animatedPage.waitForFunction(() => {
+    const link = document.querySelector('nav a[aria-current="page"]')
+    return (
+      parseFloat(getComputedStyle(link, '::before').width) >= link.getBoundingClientRect().width + 5
+    )
+  })
+  assert.ok(
+    Math.abs(
+      (await selectedTab.evaluate((link) => {
+        const style = getComputedStyle(link, '::before')
+        return (
+          parseFloat(style.width) -
+          parseFloat(style.borderInlineEndWidth) -
+          link.getBoundingClientRect().width
+        )
+      })) - 3.2
+    ) < 0.3,
+    'selected hover cursor has trailing gap'
+  )
+  assert.deepEqual(await selectedTab.boundingBox(), selectedBounds, 'hover causes no layout shift')
+  await animatedPage.mouse.move(0, 0)
+  assert.equal(await animatedTab.getAttribute('data-text'), 'Score')
+  assert.equal(
+    await animatedTab.evaluate((link) => getComputedStyle(link, '::before').transitionDuration),
+    '1s'
+  )
+  await animatedTab.hover()
+  await animatedPage.waitForFunction(() => {
+    const reveal = getComputedStyle(document.querySelector('nav a[href="/score"]'), '::before')
+    return (
+      parseFloat(reveal.width) >=
+      document.querySelector('nav a[href="/score"]').getBoundingClientRect().width + 5
+    )
+  })
+  await animatedPage.screenshot({ path: path.join(output, 'tabs-hover.png'), fullPage: true })
+  const glowProof = []
+  async function captureGlow(link, name) {
+    await link.hover()
+    await animatedPage.waitForFunction(
+      (element) => {
+        const reveal = getComputedStyle(element, '::before')
+        return parseFloat(reveal.width) >= element.getBoundingClientRect().width + 5
+      },
+      await link.elementHandle()
+    )
+    const bounds = await link.boundingBox()
+    const clip = {
+      x: Math.floor(bounds.x - 30),
+      y: Math.max(0, Math.floor(bounds.y - 30)),
+      width: Math.ceil(bounds.width + 60),
+      height: Math.ceil(bounds.height + 60)
+    }
+    await animatedPage.screenshot({ path: path.join(output, name + '-glow.png'), clip })
+    await animatedPage.addStyleTag({
+      content:
+        '[data-glow-proof="off"]::before { filter: none !important; transition: none !important; }'
+    })
+    await link.evaluate((element) => element.setAttribute('data-glow-proof', 'off'))
+    await animatedPage.screenshot({ path: path.join(output, name + '-plain.png'), clip })
+    await link.evaluate((element) => element.removeAttribute('data-glow-proof'))
+    glowProof.push({ name, bounds, clip })
+    const gap = await link.evaluate((element) => {
+      const style = getComputedStyle(element, '::before')
+      return (
+        parseFloat(style.width) -
+        parseFloat(style.borderInlineEndWidth) -
+        element.getBoundingClientRect().width
+      )
+    })
+    assert.ok(Math.abs(gap - 3.2) < 0.3, name + ' trailing cursor gap')
+    assert.equal(await link.evaluate((element) => getComputedStyle(element).overflow), 'visible')
+    assert.equal(
+      await animatedPage.evaluate(() => document.documentElement.scrollWidth > innerWidth),
+      false
+    )
+  }
+  await captureGlow(animatedTab, 'tab-light')
+  await captureGlow(animatedPage.locator('.contact-details a'), 'link-light')
+  for (const [selector, label, arrow] of [
+    ['a.secondary-link[href="/experience"]', 'View experience', '→'],
+    ['.project-list a.secondary-link', 'Source and documentation — Nuxt image extractor', '↗']
+  ]) {
+    const link = animatedPage.locator(selector).first()
+    assert.equal(await animatedPage.getByRole('link', { name: label, exact: true }).count(), 1)
+    assert.equal(await link.locator('[aria-hidden="true"]').count(), 1, 'one decorative arrow')
+    const visibleLabel = await link.evaluate((element) => {
+      const copy = element.cloneNode(true)
+      copy.querySelectorAll('.sr-only').forEach((node) => node.remove())
+      return copy.textContent.trim().replace(/[ \t\r\n\f]+/g, ' ')
+    })
+    assert.equal(
+      await link.getAttribute('data-text'),
+      visibleLabel,
+      'animation covers complete label'
+    )
+    assert.ok(visibleLabel.endsWith(arrow))
+    await checkArrowGeometry(link, 'keyboard focus: ' + selector)
+    await link.focus()
+    assert.equal(await link.evaluate((element) => element.matches(':focus-visible')), true)
+    await captureGlow(link, arrow === '→' ? 'internal-arrow-light' : 'external-arrow-light')
+    await link.evaluate((element) => element.blur())
+    await animatedPage.mouse.move(0, 0)
+    await animatedPage.waitForFunction((selector) => {
+      const element = document.querySelector(selector)
+      const reveal = getComputedStyle(element, '::before')
+      return parseFloat(reveal.width) <= 2.1 && reveal.filter === 'none'
+    }, selector)
+    assert.equal(
+      await link.locator('[aria-hidden="true"]').evaluate((arrow) => getComputedStyle(arrow).color),
+      await link.evaluate((element) => getComputedStyle(element).color),
+      'arrow resets with label'
+    )
+  }
+  await animatedTab.focus()
+  assert.equal(await animatedTab.evaluate((link) => link.matches(':focus-visible')), true)
+  const social = animatedPage
+    .locator('.social-links')
+    .getByRole('link', { name: 'GitHub', exact: true })
+  const socialIdleColor = await social.evaluate((link) => getComputedStyle(link).color)
+  await social.hover()
+  await animatedPage.waitForFunction(() =>
+    getComputedStyle(document.querySelector('.social-links a')).transform.includes('1.25')
+  )
+  await social.focus()
+  assert.equal(await social.evaluate((link) => link.matches(':focus-visible')), true)
+  await animatedPage.screenshot({ path: path.join(output, 'social-focus.png'), fullPage: true })
+  await social.evaluate((link) => link.blur())
+  await animatedPage.mouse.move(0, 0)
+  await animatedPage.waitForFunction(
+    (color) =>
+      getComputedStyle(document.querySelector('.social-links a')).color === color &&
+      getComputedStyle(document.querySelector('.social-links a')).transform === 'none',
+    socialIdleColor
+  )
+  await animatedPage.getByRole('button', { name: 'Switch dark mode' }).click()
+  await captureGlow(animatedTab, 'tab-dark')
+  await captureGlow(animatedPage.locator('.contact-details a'), 'link-dark')
+  await captureGlow(
+    animatedPage.locator('a.secondary-link[href="/experience"]'),
+    'internal-arrow-dark'
+  )
+  await captureGlow(
+    animatedPage.locator('.project-list a.secondary-link').first(),
+    'external-arrow-dark'
+  )
+  await animatedTab.hover()
+  const animatedDarkAxe = await new AxeBuilder({ page: animatedPage })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+    .analyze()
+  assert.equal(animatedDarkAxe.violations.length, 0, 'dark hover accessibility')
+  await animatedPage.goto(base + '/score')
+  await animatedPage.locator('img[src="/img/score-2024.jpg"]').scrollIntoViewIfNeeded()
+  await animatedPage.screenshot({
+    path: path.join(output, 'score-desktop-dark.png'),
+    animations: 'disabled',
+    fullPage: true
+  })
+  await animatedPage.getByRole('button', { name: 'Switch dark mode' }).click()
+  await animatedPage.setViewportSize({ width: 390, height: 844 })
+  await animatedPage.screenshot({
+    path: path.join(output, 'score-mobile.png'),
+    fullPage: true,
+    animations: 'disabled'
+  })
+  await animatedPage.goto(base)
+  await animatedPage.setViewportSize({ width: 1440, height: 1000 })
+  const animationCycles = []
+  async function sampleAnimation(link, duration) {
+    return link.evaluate(
+      (element, duration) =>
+        new Promise((resolve) => {
+          const frames = []
+          const start = performance.now()
+          const sample = () => {
+            const style = getComputedStyle(element, '::before')
+            frames.push({
+              time: performance.now() - start,
+              width: parseFloat(style.width),
+              fullWidth:
+                element.getBoundingClientRect().width +
+                parseFloat(getComputedStyle(document.documentElement).fontSize) * 0.2 +
+                2,
+              filter: style.filter,
+              borderColor: style.borderInlineEndColor,
+              borderWidth: style.borderInlineEndWidth
+            })
+            if (performance.now() - start < duration) requestAnimationFrame(sample)
+            else resolve(frames)
+          }
+          requestAnimationFrame(sample)
+        }),
+      duration
+    )
+  }
+  for (const width of [390, 1440]) {
+    await animatedPage.setViewportSize({ width, height: 844 })
+    for (const selector of [
+      'nav a[href="/score"]',
+      '.contact-details a',
+      'a.secondary-link[href="/experience"]',
+      '.project-list a.secondary-link'
+    ]) {
+      const link = animatedPage.locator(selector).first()
+      const timing = await link.evaluate((element) => {
+        const style = getComputedStyle(element, '::before')
+        return {
+          property: style.transitionProperty,
+          duration: style.transitionDuration,
+          delay: style.transitionDelay,
+          easing: style.transitionTimingFunction
+        }
+      })
+      assert.deepEqual(timing, {
+        property: 'all',
+        duration: '1s',
+        delay: '0s',
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+      })
+      await animatedPage.mouse.move(0, 0)
+      await link.evaluate((element) => element.blur())
+      await animatedPage.waitForFunction(
+        (selector) =>
+          parseFloat(getComputedStyle(document.querySelector(selector), '::before').width) <= 2.1,
+        selector
+      )
+      await link.hover()
+      const enter = await sampleAnimation(link, 1100)
+      await animatedPage.mouse.move(0, 0)
+      const leave = await sampleAnimation(link, 1100)
+      await link.hover()
+      const partialEnter = await sampleAnimation(link, 250)
+      await animatedPage.mouse.move(0, 0)
+      const partialLeave = await sampleAnimation(link, 200)
+      await link.hover()
+      const reenter = await sampleAnimation(link, 1100)
+      for (const frames of [enter, leave, partialEnter, partialLeave, reenter]) {
+        for (const frame of frames) {
+          const blur = Number(
+            (frame.filter.match(/([\d.]+)px/g) || ['0px']).at(-1).replace('px', '')
+          )
+          assert.ok(
+            Math.abs(frame.width / frame.fullWidth - blur / 25) < 0.045,
+            'glow and cursor share progress'
+          )
+          assert.equal(frame.borderWidth, '2px')
+        }
+      }
+      assert.ok(enter.at(-1).width >= enter.at(-1).fullWidth - 1)
+      assert.ok(leave.at(-1).width <= 2.1)
+      assert.ok(reenter.at(-1).width >= reenter.at(-1).fullWidth - 1)
+      assert.ok(
+        enter.some(
+          (frame) => frame.width / frame.fullWidth > 0.2 && frame.width / frame.fullWidth < 0.8
+        )
+      )
+      if (await link.locator('.animated-link-label').count())
+        await checkArrowGeometry(link, 'after reentry at ' + width + ': ' + selector)
+      animationCycles.push({
+        width,
+        selector,
+        timing,
+        enter,
+        leave,
+        partialEnter,
+        partialLeave,
+        reenter
+      })
+    }
+  }
+  await writeFile(
+    path.join(output, 'animation-cycles.json'),
+    JSON.stringify(animationCycles, null, 2)
+  )
+  await writeFile(path.join(output, 'arrow-geometry.json'), JSON.stringify(arrowGeometry, null, 2))
+  await animatedPage.emulateMedia({ reducedMotion: 'reduce' })
+  await social.hover()
+  assert.equal(await social.evaluate((link) => getComputedStyle(link).transform), 'none')
+  assert.equal(
+    await animatedTab.evaluate((link) => getComputedStyle(link, '::before').transitionDuration),
+    '1e-05s'
+  )
+  await animatedContext.close()
+  await writeFile(path.join(output, 'glow-proof.json'), JSON.stringify(glowProof, null, 2))
   for (const locale of ['en', 'es', 'pt']) {
     await page.goto(base + (locale === 'en' ? '/print' : '/' + locale + '/print'))
     assert.equal(await page.locator('meta[name=robots]').getAttribute('content'), 'noindex, follow')
@@ -153,7 +571,7 @@ try {
     'accessibility violations; inspect .qa/browser-report.json'
   )
   console.log(
-    'Passed: 48 route/viewport checks, keyboard skip link, theme/navigation persistence, print metadata and WCAG automated checks.'
+    'Passed: 60 route/viewport checks, repeated and back/forward navigation, social icons, Score image, keyboard skip link, theme persistence, print metadata and WCAG automated checks.'
   )
 } finally {
   await browser.close()

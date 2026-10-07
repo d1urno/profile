@@ -16,17 +16,16 @@ const locales = ['en', 'es', 'pt'].filter((value) => value !== locale)
       <Icon name="sun" slot="sun-icon" class="h-5 w-5" />
       <Icon name="moon" slot="moon-icon" class="h-5 w-5" />
     </ThemeSwitcher>
-    {
-      locales.map((loc) => (
-        <a
-          lang={loc}
-          hreflang={loc}
-          href={loc === 'en' ? currentPath : '/' + loc + (currentPath === '/' ? '' : currentPath)}
-        >
-          {t(loc)}
-        </a>
-      ))
-    }
+    {locales.map((loc) => (
+      <a
+        lang={loc}
+        hreflang={loc}
+        data-text={t(loc)}
+        href={loc === 'en' ? currentPath : '/' + loc + (currentPath === '/' ? '' : currentPath)}
+      >
+        {t(loc)}
+      </a>
+    ))}
   </div>
   <div class="identity">
     <img
@@ -44,30 +43,51 @@ const locales = ['en', 'es', 'pt'].filter((value) => value !== locale)
   </div>
   <div class="contact-details">
     <p>{t('locationValue')}</p>
-    <a href="mailto:d1urno@gmx.com">d1urno@gmx.com</a>
+    <a href="mailto:d1urno@gmx.com" data-text="d1urno@gmx.com">
+      d1urno@gmx.com
+    </a>
   </div>
   <div class="social-links">
-    <a href="https://github.com/d1urno" target="_blank" rel="noopener noreferrer">GitHub</a>
-    <a href="https://www.linkedin.com/in/pmicel/" target="_blank" rel="noopener noreferrer"
-      >LinkedIn</a
+    <a
+      href="https://github.com/d1urno"
+      aria-label="GitHub"
+      target="_blank"
+      rel="noopener noreferrer"
     >
+      <Icon name="github" />
+    </a>
+    <a
+      href="https://www.linkedin.com/in/pmicel/"
+      aria-label="LinkedIn"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Icon name="linkedin" />
+    </a>
+    <a
+      href="https://twitter.com/d1urno"
+      aria-label="Twitter"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Icon name="twitter" />
+    </a>
   </div>
   <a
     class="button"
     href={'/' + t('SideSection.link') + '.pdf'}
     download={`Pablo_Miceli_Senior_Full_Stack_Engineer_${locale.toUpperCase()}.pdf`}
-    >{t('SideSection.download')}</a
   >
+    {t('SideSection.download')}
+  </a>
   <div class="mt-8">
     <h2 class="mb-3 font-semibold">{t('SideSection.idioms')}</h2>
     <ul class="language-list">
-      {
-        Object.entries(speaking).map(([language, level]) => (
-          <li>
-            {t('SideSection.' + language)} · {t('SideSection.' + level)}
-          </li>
-        ))
-      }
+      {Object.entries(speaking).map(([language, level]) => (
+        <li>
+          {t('SideSection.' + language)} · {t('SideSection.' + level)}
+        </li>
+      ))}
     </ul>
   </div>
 </aside>

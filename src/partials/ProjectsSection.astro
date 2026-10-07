@@ -108,34 +108,36 @@ const links = [
 ---
 
 <section class="mt-10" aria-labelledby="projects-heading">
-  {
-    compact ? (
-      <h2 class="section-heading" id="projects-heading">
-        {t('projectTitle')}
-      </h2>
-    ) : (
-      <h1 class="section-heading" id="projects-heading">
-        {t('projectTitle')}
-      </h1>
-    )
-  }
+  {compact ? (
+    <h2 class="section-heading" id="projects-heading">
+      {t('projectTitle')}
+    </h2>
+  ) : (
+    <h1 class="section-heading" id="projects-heading">
+      {t('projectTitle')}
+    </h1>
+  )}
   <div class="project-list">
-    {
-      projects[locale].slice(0, compact ? 2 : undefined).map((project, index) => (
-        <article class="project-item">
-          <p class="eyebrow">{project[0]}</p>
-          {compact ? <h3 class="text-xl font-bold">{project[1]}</h3> : <h2>{project[1]}</h2>}
-          <p>{project[2]}</p>
-          <p class="project-stack">{project[3]}</p>
-          <a class="secondary-link" href={links[index]} target="_blank" rel="noopener noreferrer">
-            {project[4]}{' '}
-            <>
-              <span class="sr-only"> — {project[1]}</span>
-              <span aria-hidden="true">&nbsp;↗</span>
-            </>
-          </a>
-        </article>
-      ))
-    }
+    {projects[locale].slice(0, compact ? 2 : undefined).map((project, index) => (
+      <article class="project-item">
+        <p class="eyebrow">{project[0]}</p>
+        {compact ? <h3 class="text-xl font-bold">{project[1]}</h3> : <h2>{project[1]}</h2>}
+        <p>{project[2]}</p>
+        <p class="project-stack">{project[3]}</p>
+        <a
+          class="secondary-link"
+          data-text={`${project[4]} \u00a0↗`}
+          href={links[index]}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="animated-link-label">
+            {project[4]}
+            <span aria-hidden="true">{' \u00a0↗'}</span>
+          </span>
+          <span class="sr-only"> — {project[1]}</span>
+        </a>
+      </article>
+    ))}
   </div>
 </section>

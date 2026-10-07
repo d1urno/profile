@@ -12,18 +12,19 @@ if (!score) {
 
 const { data } = score
 const { Content } = await render(score)
+const snapshotNote = {
+  en: 'Saved PageSpeed snapshot. Open the report for details.',
+  es: 'Captura guardada de PageSpeed. Abre el informe para ver los detalles.',
+  pt: 'Captura salva do PageSpeed. Abra o relatório para ver os detalhes.'
+}[locale]
 ---
 
 <section class="print:mt-10">
   <div class="mb-8 ml-auto flex items-center text-2xl uppercase">
-    <h1 class="ml-auto text-teal-700 dark:text-white">
-      {data.title}
-    </h1>
-    <Icon name="info" class="ml-2 h-12 w-12 text-teal-500 dark:text-teal-500" />
+    <h1 class="ml-auto text-teal-700 dark:text-white">{data.title}</h1>
+    <Icon name="info" class="ml-2 h-12 w-12 fill-current text-teal-700 dark:text-teal-300" />
   </div>
-  <hr
-    class="my-4 box-border border border-gray-500 bg-gray-500 opacity-75 lg:-mx-6 dark:border-gray-500 dark:bg-gray-300"
-  />
+  <hr class="my-4 box-border border border-gray-500 bg-gray-500 opacity-75 lg:-mx-6 dark:border-gray-500 dark:bg-gray-300" />
   <div class="prose dark:prose-invert prose-lg print:prose-base mb-4 max-w-none">
     <Content />
   </div>
@@ -33,45 +34,14 @@ const { Content } = await render(score)
     target="_blank"
     rel="noopener nofollow"
   >
-    <picture>
-      <source
-        srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_300/v1710761790/pablomiceli/static/score.webp 1x,
-            
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_900/v1710761790/pablomiceli/static/score.webp 3x`}
-        type="image/webp"
-        media="(max-width: 412px)"
-      />
-
-      <source
-        srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_300/v1710761790/pablomiceli/static/score.jpg 1x,
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_600/v1710761790/pablomiceli/static/score.jpg 2x,
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_900/v1710761790/pablomiceli/static/score.jpg 3x`}
-        type="image/jpg"
-        media="(max-width: 412px)"
-      />
-
-      <source
-        srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_832/v1710761790/pablmiceli/static/score.webp  1x,
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_1664/v1710761790/pablomiceli/static/score.webp 2x,
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_2496/v1710761790/pablomiceli/static/score.webp 3x`}
-        type="image/webp"
-      />
-
-      <source
-        srcset={`https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_832/v1710761790/pablomiceli/static/score.jpg  1x,
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_1664/v1710761790/pablomiceli/static/score.jpg 2x,
-            https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_2496/v1710761790/pablomiceli/static/score.jpg 3x`}
-        type="image/jpg"
-      />
-
-      <img
-        class="mx-auto object-contain"
-        height="275"
-        width="832"
-        src="https://res.cloudinary.com/cosmic-devs/image/upload/q_auto,w_832,f_auto/v1710761790/pablomiceli/static/score"
-        alt={data.score}
-        loading="lazy"
-      />
-    </picture>
+    <img
+      class="mx-auto h-auto max-w-full object-contain"
+      height="275"
+      width="832"
+      src="/img/score-2024.jpg"
+      alt={data.score}
+      loading="lazy"
+    />
   </a>
+  <p class="text-sm text-slate-600 dark:text-slate-300">{snapshotNote}</p>
 </section>

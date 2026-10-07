@@ -10,9 +10,18 @@ const Heading = resume ? 'h3' : 'h2'
 <article class="experience-item">
   <div class="experience-header">
     <Heading class="experience-title">
-      <a href={experience.link} target="_blank" rel="noopener noreferrer">{experience.title}</a>
+      <a
+        href={experience.link}
+        data-text={experience.title}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {experience.title}
+      </a>
     </Heading>
     <p class="experience-period">{experience.period}</p>
   </div>
-  <div class="experience-copy prose dark:prose-invert max-w-none"><slot /></div>
+  <div class="experience-copy prose dark:prose-invert max-w-none">
+    <slot />
+  </div>
 </article>

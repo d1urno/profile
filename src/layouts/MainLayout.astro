@@ -12,28 +12,61 @@ const tabs = [
   { href: '/', name: t('Tabs.profile') },
   { href: '/experience', name: t('Tabs.experience') },
   { href: '/projects', name: t('Tabs.projects') },
-  { href: '/skills', name: t('Tabs.skills') }
+  { href: '/skills', name: t('Tabs.skills') },
+  { href: '/score', name: t('Tabs.score') }
 ]
 ---
 
 <Default>
-  <a class="skip-link" href="#main-content">{t('skip')}</a>
+  <a class="skip-link" href="#main-content">
+    {t('skip')}
+  </a>
   <div class="site-shell">
     <SideSection />
     <main class="site-main" id="main-content" tabindex="-1">
-      <nav class="main-nav" aria-label={t('navigation')}>
-        {
-          tabs.map((tab) => (
-            <a
-              href={localized(tab.href)}
-              aria-current={pathname === localized(tab.href) ? 'page' : undefined}
-            >
-              {tab.name}
-            </a>
-          ))
-        }
+      <nav id="main-nav-tabs" class="main-nav" aria-label={t('navigation')}>
+        {tabs.map((tab) => (
+          <a
+            href={localized(tab.href)}
+            data-text={tab.name}
+            data-active={pathname === localized(tab.href)}
+            aria-current={pathname === localized(tab.href) ? 'page' : undefined}
+          >
+            {tab.name}
+          </a>
+        ))}
       </nav>
-      <div class="page-content"><slot /></div>
+      <div class="page-content">
+        <slot />
+      </div>
     </main>
   </div>
 </Default>
+
+<script>
+  // Astro runs this module once. Delegation keeps it working after every page swap.
+  document.addEventListener('click', (event) => {
+    const target = event.target
+    if (
+      target instanceof Element &&
+      target.closest('#main-nav-tabs a') &&
+      window.innerWidth < 1024
+    ) {
+      try {
+        sessionStorage.setItem('scroll-to-tabs', 'true')
+      } catch {
+        /* Navigation still works when storage is unavailable. */
+      }
+    }
+  })
+  document.addEventListener('astro:page-load', () => {
+    try {
+      if (sessionStorage.getItem('scroll-to-tabs') === 'true') {
+        document.getElementById('main-nav-tabs')?.scrollIntoView({ behavior: 'instant' })
+        sessionStorage.removeItem('scroll-to-tabs')
+      }
+    } catch {
+      /* Storage is optional. */
+    }
+  })
+</script>

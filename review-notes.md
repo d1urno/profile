@@ -20,7 +20,31 @@ Baseline: c0ad855, master; original checkout was clean.
 - Trace CDR and two frontend challenges were already linked publicly in the CV. Keep their scope clearly labeled as demos/challenges.
 - LinkedIn browser access was unavailable (supported laptop browser inventory returned no browsers). The user's LinkedIn screenshot supplies the visible titles/dates that supersede the stale site timeline.
 
-## Final checks
+## Visual restoration and final verification — 7 October 2026
+
+- Restored the Score navigation tab in all three languages, its site notes and original saved PageSpeed image. The local image's caption identifies it as a saved snapshot rather than a fresh performance claim.
+- Restored GitHub, LinkedIn and Twitter/X icons using the checked-in SVG component. Links retain their destinations, accessible names and 44px targets, with hover/focus scaling and reduced-motion support.
+- Tabs and ordinary links use the original shared reveal/cursor/glow layer: a one-second transition, cubic-bezier(0.4, 0, 0.2, 1), zero delay and 25px drop shadow. Glow remains visible beyond the link bounds. Accessible light-theme colors and keyboard focus treatment complement the original behavior.
+- Preserved the approved inter-tab gaps, uppercase typography and selected bottom highlight. Selected tabs have no idle vertical line; they animate on hover/focus like other tabs. Final tab padding is 0.5rem vertically and zero horizontally, with measured 46–49px heights.
+- The animated line ends 0.2rem (3.2px at the site's base font size) after the complete label, including trailing arrows. Text and arrow share one inline layout inside the flex link; this fixes the offset caused by separate flex items trimming the base text's trailing whitespace. Decorative arrows and the animated copy are excluded from accessible names.
+- Restored mobile tab scrolling after navigation; repeated clicks, page swaps and back/forward navigation retain the correct active tab and locale.
+- Preserved verified CV facts, role positioning, dependency versions, DevCLI configuration and public PDF files. The real DevCLI validator and target plan accepted the configuration; the user confirmed project startup. The existing development server/port was left running.
+
+Final checks:
+
+- `pnpm lint`: passed.
+- `pnpm check`: 28 files, zero errors/warnings/hints.
+- `pnpm build`: passed, including Vue type checking; 28 static pages.
+- `pnpm audit`: zero known vulnerabilities.
+- `pnpm cv:pdf` with `CV_PDF_DIR=.qa`: passed. 60 route/locale/viewport combinations plus dark home accessibility; zero browser runtime errors and zero automated WCAG A/AA violations. Keyboard skip link, theme persistence, navigation, touch targets, local Score image, social icons, aliases and print metadata passed.
+- 90 base/animated arrow geometry comparisons across locales, viewports, focus and re-entry: maximum deviation 0.015625px. Eight animation cycle sets sampled 1,641 frames; reveal width and glow remained synchronized through entry, exit and interrupted re-entry. Timing/blur and trailing-gap assertions passed.
+- Eight light/dark tab, ordinary-link and arrow-link screenshot comparisons proved the glow renders outside the bounds (7,152–14,698 changed exterior pixels per comparison). Desktop/mobile, idle selection, hover/focus and Score screenshots visually reviewed.
+- All three PDF candidates: two pages, identical extracted text/order and identical rasterized page rendering to the delivered PDFs. Candidate bytes differ because of generation metadata; existing public downloads and Library copies were preserved.
+- `git diff --check`: passed. No push, PR, deployment or fresh production performance audit performed.
+
+Evidence is in ignored `.qa/browser-report.json`, `arrow-geometry.json`, `animation-cycles.json`, `glow-proof.json`, `glow-exterior-results.json` and `pdf-dependency-comparison.json`, alongside screenshots and temporary PDF candidates.
+
+## Initial CV checks (before dependency modernization and visual restoration)
 
 - `pnpm run lint`: passed, no warnings after flat-config repair.
 - `pnpm run check`: passed, no errors/warnings/hints.

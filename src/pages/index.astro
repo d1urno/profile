@@ -16,10 +16,15 @@ const label = labels[locale as keyof typeof labels]
 <MainLayout>
   <ProfileSection />
   <div class="mt-6 flex flex-wrap items-center gap-6">
-    <a class="button" href="mailto:d1urno@gmx.com">{label[0]}</a><a
-      class="secondary-link"
-      href={path}>{label[1]} →</a
-    >
+    <a class="button" href="mailto:d1urno@gmx.com">
+      {label[0]}
+    </a>
+    <a class="secondary-link" data-text={`${label[1]} →`} href={path}>
+      <span class="animated-link-label">
+        {label[1]}
+        <span aria-hidden="true">{' →'}</span>
+      </span>
+    </a>
   </div>
   <ProjectsSection compact />
 </MainLayout>

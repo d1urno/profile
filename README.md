@@ -33,7 +33,7 @@ pnpm exec astro dev --host localhost --port 4321 --strictPort
 
 Stop a direct run with Ctrl+C. `--strictPort` fails if another application owns 4321; stop or reconfigure that application deliberately. DevCLI state/logs under `.dev-cli/` are ignored by Git.
 
-Validated on 7 October 2026: strict JSON parsing, package/target references, exact command startup on an available 4321, readiness in about eight seconds, English/Spanish/Portuguese responses, and shutdown of only the created process. The generic DevCLI executable matching the supplied Spentier configuration was not found on this laptop; its own schema validation and orchestration run remain unverified. The older Switch-specific CLI found locally uses a different interface and was not invoked.
+Validated on 7 October 2026: strict JSON parsing, package/target references, exact command startup on an available 4321, readiness in about eight seconds, English/Spanish/Portuguese responses, and shutdown of only the created process. The generic Project Framework DevCLI was subsequently located; its real config validator and target plan accepted this file and resolved `{{pnpm}}` to `pnpm.cmd`. The user confirmed successful project startup in their DevCLI.
 
 ## Content
 
@@ -42,7 +42,7 @@ Validated on 7 October 2026: strict JSON parsing, package/target references, exa
 - `src/partials/ProjectsSection.astro`: public work samples. Label demos and challenges accurately.
 - `src/pages/print.astro`: compact CV source for PDFs.
 - `/projects`: work samples; `/tests` still renders these samples for existing links.
-- `/score` remains as a legacy route outside the main recruiter navigation.
+- `/score`: restored navigation tab, site notes and the original saved PageSpeed screenshot. The image is historical, not a fresh performance measurement.
 
 `scripts/localized-routes.mjs` explicitly registers English, Spanish and Portuguese pages, including legacy `/en` aliases. Add new translated page names to its route list. Language links retain the current section. Canonical and alternate metadata refer to the same section; print pages are excluded from indexing and the sitemap.
 
@@ -50,7 +50,7 @@ Validated on 7 October 2026: strict JSON parsing, package/target references, exa
 
 Run `pnpm build`, then `pnpm cv:pdf`, and visually review the PDF pages. Run `pnpm build` again to copy regenerated public PDFs into dist. Existing public filenames containing `Senior_Product_Engineer` preserve download URLs; PDF contents and browser download names use Full-Stack Engineer positioning.
 
-QA writes ignored screenshots and a JSON report under `.qa/`. It checks 48 combinations of locale, route and viewport (320, 390, 768 and 1440px), plus dark theme, the keyboard skip link, navigation persistence, runtime errors, print output, 21 localized aliases and robots/sitemap responses. Set `CV_PDF_DIR` to write temporary PDF candidates without replacing the public downloads. Automated accessibility checks complement visual and keyboard review; they do not establish complete conformance.
+QA writes ignored screenshots and a JSON report under `.qa/`. It checks 60 combinations of locale, route and viewport (320, 390, 768 and 1440px), including Score, plus dark theme, the keyboard skip link, repeated and back/forward navigation, social icons, hover/focus animations, base/animated arrow geometry in every locale, compact tab touch targets, reduced motion, runtime errors, print output, 21 localized aliases and robots/sitemap responses. Animation samples, arrow geometry, and glow proof screenshots are also saved in `.qa/`. Set `CV_PDF_DIR` to write temporary PDF candidates without replacing the public downloads. Automated accessibility checks complement visual and keyboard review; they do not establish complete conformance.
 
 See `review-notes.md` for evidence, verification and remaining content decisions. Keep salary expectations and unpublished client work out of public content. Local changes do not authorize a push or deployment.
 
