@@ -5,54 +5,32 @@ import SectionHeading from '@/components/SectionHeading.astro'
 import ExperiencesSection from '@/partials/ExperiencesSection.astro'
 import { getLocale } from '@/functions/getLocale'
 import useTranslations from '@/functions/useTranslations'
-const locale = getLocale(Astro.url) as 'en' | 'es' | 'pt'
+const locale = getLocale(Astro.url)
 const { t } = await useTranslations(locale)
-const copy = {
-  en: [
-    'Building modern and scalable user experiences, with 15+ years in software development across finance, travel, energy and AI-powered applications, from prototyping through continuous production releases. I have led frontend and full-stack development, shaped application architectures and mentored developers, working closely with CTOs and product teams. My preferred stack is Vue / Nuxt, TypeScript and Tailwind CSS, backed by oRPC APIs, Drizzle and PostgreSQL. I focus on clear interfaces, maintainable systems and thoughtful user experiences.',
-    'Technical focus',
-    'Languages',
-    'Selected work',
-    'Historical open-source Nuxt module for downloading CMS images into generated static sites.',
-    'An interactive carbon emission data visualization app using React, TypeScript, Tailwind CSS, d3.js and TanStack Query.',
-    'Print / save PDF'
-  ],
-  es: [
-    'Creo experiencias de usuario modernas y escalables, con más de 15 años en desarrollo de software en finanzas, viajes, energía y aplicaciones con IA, desde el prototipado hasta las entregas continuas en producción. He liderado el desarrollo frontend y full-stack, definido arquitecturas de aplicaciones y acompañado a otros desarrolladores, trabajando estrechamente con CTOs y equipos de producto. Mi stack preferido es Vue / Nuxt, TypeScript y Tailwind CSS, complementado por APIs oRPC, Drizzle y PostgreSQL. Me enfoco en interfaces claras, sistemas fáciles de mantener y una experiencia de usuario cuidada.',
-    'Foco técnico',
-    'Idiomas',
-    'Proyectos seleccionados',
-    'Módulo histórico de código abierto Nuxt para descargar imágenes de CMS en sitios estáticos.',
-    'Una aplicación interactiva de visualización de datos de emisiones de carbono con React, TypeScript, Tailwind CSS, d3.js y TanStack Query.',
-    'Imprimir / guardar PDF'
-  ],
-  pt: [
-    'Crio experiências de usuário modernas e escaláveis, com mais de 15 anos em desenvolvimento de software em finanças, viagens, energia e aplicações com IA, desde a prototipagem até as entregas contínuas em produção. Liderei o desenvolvimento frontend e full-stack, defini arquiteturas de aplicações e orientei desenvolvedores, trabalhando em parceria com CTOs e equipes de produto. Meu stack preferido é Vue / Nuxt, TypeScript e Tailwind CSS, complementado por APIs oRPC, Drizzle e PostgreSQL. Meu foco está em interfaces claras, sistemas fáceis de manter e uma experiência de usuário bem cuidada.',
-    'Foco técnico',
-    'Idiomas',
-    'Projetos selecionados',
-    'Módulo histórico de código aberto Nuxt para baixar imagens de CMS em sites estáticos.',
-    'Um aplicativo interativo de visualização de dados de emissões de carbono com React, TypeScript, Tailwind CSS, d3.js e TanStack Query.',
-    'Imprimir / salvar PDF'
-  ]
-}[locale]
-const focusLabels = {
-  en: ['Frontend', 'Backend and data', 'Tooling and integrations'],
-  es: ['Frontend', 'Backend y datos', 'Herramientas e integraciones'],
-  pt: ['Frontend', 'Backend e dados', 'Ferramentas e integrações']
-}[locale]
 const technicalFocus = [
-  'Vue / Nuxt · TypeScript · Tailwind CSS · React · Material UI · Recharts · TanStack',
-  'Node.js · oRPC / tRPC · Express · Hono · NestJS · GraphQL / Apollo · Drizzle · Prisma · PostgreSQL · SQLite · MongoDB',
-  'Vite · pnpm / Turborepo · AWS · Cloudflare · Docker · Firebase · CI/CD · ' +
-    { en: 'AI integrations', es: 'Integraciones de IA', pt: 'Integrações de IA' }[locale]
-]
+  {
+    label: 'Print.focus.frontend',
+    technologies:
+      'Vue / Nuxt · TypeScript · Tailwind CSS · React · Material UI · Recharts · TanStack'
+  },
+  {
+    label: 'Print.focus.backend',
+    technologies:
+      'Node.js · oRPC / tRPC · Express · Hono · NestJS · GraphQL / Apollo · Drizzle · Prisma · PostgreSQL · SQLite · MongoDB'
+  },
+  {
+    label: 'Print.focus.tooling',
+    technologies:
+      'Vite · pnpm / Turborepo · AWS · Cloudflare · Docker · Firebase · CI/CD · ' +
+      t('Print.aiIntegrations')
+  }
+] as const
 ---
 
 <Default>
   <main class="resume mx-auto max-w-4xl p-6 print:max-w-none print:p-0">
     <Button as="button" class="mb-6 print:hidden" id="print-cv">
-      {copy[6]}
+      {t('Print.printAction')}
     </Button>
     <header class="resume-header">
       <h1 class="text-3xl font-bold print:text-[24pt]">Pablo Miceli</h1>
@@ -65,24 +43,24 @@ const technicalFocus = [
         <a href="https://github.com/d1urno">github.com/d1urno</a> ·{' '}
         <a href="https://www.linkedin.com/in/pmicel/">linkedin.com/in/pmicel</a>
       </p>
-      <p class="my-4 leading-relaxed">{copy[0]}</p>
+      <p class="my-4 leading-relaxed">{t('Print.summary')}</p>
     </header>
     <ExperiencesSection variant="resume" />
     <section class="print:break-inside-avoid">
-      <SectionHeading>{copy[1]}</SectionHeading>
+      <SectionHeading>{t('Print.technicalFocus')}</SectionHeading>
       <div class="space-y-1">
-        {technicalFocus.map((technologies, index) => (
+        {technicalFocus.map((focus) => (
           <p>
-            <strong>{focusLabels[index]}:</strong> {technologies}
+            <strong>{t(focus.label)}:</strong> {focus.technologies}
           </p>
         ))}
       </div>
     </section>
     <section class="print:break-inside-avoid">
-      <SectionHeading>{copy[3]}</SectionHeading>
+      <SectionHeading>{t('Print.selectedWork')}</SectionHeading>
       <p>
         <strong>Trace CDR:</strong>
-        {copy[5]}
+        {t('Print.traceSummary')}
         <a href="https://www.tracecdr.org" target="_blank" rel="noopener noreferrer">
           www.tracecdr.org
         </a>{' '}
@@ -91,14 +69,14 @@ const technicalFocus = [
       </p>
       <p class="mt-2">
         <strong>Nuxt image extractor:</strong>
-        {copy[4]}
+        {t('Print.nuxtSummary')}
         <a href="https://github.com/d1urno/nuxt-image-extractor">
           github.com/d1urno/nuxt-image-extractor
         </a>
       </p>
     </section>
     <section class="print:break-inside-avoid">
-      <SectionHeading>{copy[2]}</SectionHeading>
+      <SectionHeading>{t('Print.languages')}</SectionHeading>
       <p>
         {t('SideSection.spanish')} · {t('SideSection.native')}; {t('SideSection.english')} /{' '}
         {t('SideSection.portuguese')} · {t('SideSection.fluent')}; {t('SideSection.german')} ·{' '}

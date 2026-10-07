@@ -4,22 +4,18 @@ import Button from '@/components/Button.astro'
 import AnimatedLink from '@/components/AnimatedLink.astro'
 import ProfileSection from '@/partials/ProfileSection.astro'
 import ExperiencesSection from '@/partials/ExperiencesSection.astro'
-import { getLocale } from '@/functions/getLocale'
+import { getLocale, localizePath } from '@/functions/getLocale'
+import useTranslations from '@/functions/useTranslations'
 const locale = getLocale(Astro.url)
-const path = locale === 'en' ? '/projects' : '/' + locale + '/projects'
-const labels = {
-  en: ['Email me', 'View projects'],
-  es: ['Envíame un email', 'Ver proyectos'],
-  pt: ['Envie-me um email', 'Ver projetos']
-}
-const label = labels[locale as keyof typeof labels]
+const path = localizePath('/projects', locale)
+const { t } = await useTranslations(locale)
 ---
 
 <MainLayout>
   <ProfileSection />
   <div class="mt-11 flex flex-wrap items-center gap-6">
-    <Button href="mailto:d1urno@gmx.com">{label[0]}</Button>
-    <AnimatedLink variant="action" label={label[1]} arrow="→" href={path} />
+    <Button href="mailto:d1urno@gmx.com">{t('Overview.email')}</Button>
+    <AnimatedLink variant="action" label={t('Overview.projects')} arrow="→" href={path} />
   </div>
   <div class="mt-16 lg:mt-20">
     <ExperiencesSection embedded />

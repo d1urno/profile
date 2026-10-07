@@ -11,9 +11,9 @@ interface Props {
 
 const { compact = false } = Astro.props
 const locale = getLocale(Astro.url)
-const { t } = await useTranslations(locale)
-const projects = getProjects(locale).slice(0, compact ? 2 : undefined)
-const thumbnailLabel = { en: 'Preview of', es: 'Vista previa de', pt: 'Prévia de' }[locale]
+const { t, translations } = await useTranslations(locale)
+const projects = getProjects(translations.Projects).slice(0, compact ? 2 : undefined)
+const thumbnailLabel = t('Projects.thumbnailLabel')
 ---
 
 <section aria-labelledby="projects-heading">

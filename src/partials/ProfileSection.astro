@@ -3,7 +3,7 @@ import { getLocale } from '@/functions/getLocale'
 import Prose from '@/components/Prose.astro'
 import { getEntry, render } from 'astro:content'
 const locale = getLocale(Astro.url)
-const profile = await getEntry('locales', locale + '/profile')
+const profile = await getEntry('profiles', locale + '/profile')
 if (!profile) throw new Error('Missing profile: ' + locale)
 const { Content } = await render(profile)
 ---

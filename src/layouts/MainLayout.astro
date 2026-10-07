@@ -1,15 +1,13 @@
 ---
-import { getLocale, getPagePath } from '@/functions/getLocale'
+import { getLocale, getPagePath, localizePath } from '@/functions/getLocale'
 import Default from '@/layouts/Default.astro'
 import AnimatedLink from '@/components/AnimatedLink.astro'
 import SideSection from '@/partials/SideSection.astro'
 import useTranslations from '@/functions/useTranslations'
 const locale = getLocale(Astro.url)
 const { t } = await useTranslations(locale)
-const localized = (path: string) =>
-  locale === 'en' ? path : '/' + locale + (path === '/' ? '' : path)
 const pagePath = getPagePath(Astro.url)
-const pathname = localized(pagePath === '/tests' ? '/projects' : pagePath)
+const pathname = localizePath(pagePath === '/tests' ? '/projects' : pagePath, locale)
 const tabs = [
   { href: '/', name: t('Tabs.profile') },
   { href: '/projects', name: t('Tabs.projects') },
@@ -41,9 +39,9 @@ const tabs = [
           <AnimatedLink
             variant="tab"
             label={tab.name}
-            href={localized(tab.href)}
-            data-active={pathname === localized(tab.href)}
-            aria-current={pathname === localized(tab.href) ? 'page' : undefined}
+            href={localizePath(tab.href, locale)}
+            data-active={pathname === localizePath(tab.href, locale)}
+            aria-current={pathname === localizePath(tab.href, locale) ? 'page' : undefined}
           />
         ))}
       </nav>

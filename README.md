@@ -12,6 +12,7 @@ Use Node.js 24.15.0 (`.nvmrc`) and pnpm 10.17.0. Supported Node versions are 22.
 | `pnpm dev`                       | Start development server                      |
 | `pnpm build`                     | Type-check and build static pages into dist   |
 | `pnpm check`                     | Check Astro templates and content types       |
+| `pnpm test`                      | Check locale URLs and translation lookup      |
 | `pnpm lint`                      | Run ESLint without changing files             |
 | `pnpm lint:fix`                  | Apply automatic ESLint fixes                  |
 | `pnpm format`                    | Format source files                           |
@@ -37,9 +38,9 @@ Validated on 7 October 2026: strict JSON parsing, package/target references, exa
 
 ## Content
 
-- `src/content/locales/{en,es,pt}`: profiles and shared labels.
+- `src/content/locales/{en,es,pt}`: profile/Score Markdown and complete locale dictionaries in `common.md`, including Overview, Projects, print copy and UI labels. Separate content collections validate each kind of document.
 - `src/content/experiences/{en,es,pt}`: employment titles, dates and descriptions; lower order values appear first.
-- `src/partials/ProjectsSection.astro`: public work samples. Label demos and challenges accurately.
+- `src/data/projects.ts`: stable project IDs, images and destinations; translated descriptions and action labels live in the matching locale dictionary. `ProjectCard.astro` owns the presentation. Label demos and challenges accurately.
 - `src/pages/print.astro`: compact CV source for PDFs.
 - Overview contains the full approved experience timeline after the profile and contact actions. The English actions are “Email me” (the existing public mailto) and “View projects” (the matching locale’s `/projects` page), with faithful Spanish/Portuguese labels.
 - `/experience`, `/en/experience`, `/es/experience` and `/pt/experience` redirect to the matching Overview experience section. Astro returns 301 in development and emits instant refresh/fallback pages in this static build; `.html` inbound paths also work.
@@ -48,7 +49,13 @@ Validated on 7 October 2026: strict JSON parsing, package/target references, exa
 
 `scripts/localized-routes.mjs` explicitly registers English, Spanish and Portuguese pages, including legacy `/en` aliases. Add new translated page names to its route list. Language links retain the current section. Canonical and alternate metadata refer to the same section; print pages are excluded from indexing and the sitemap; legacy Experience redirects are also excluded from the sitemap.
 
+Locale codes and the default language are defined once in `src/i18n/config.ts`. `getLocale`, `getPagePath` and `localizePath` handle canonical and legacy paths for layouts, navigation, language links and redirects. Dictionaries must satisfy `src/i18n/schema.ts`; `useTranslations` exposes typed string keys and reports missing entries clearly. The build synchronizes content types before starting parallel build/type checks, including on a fresh checkout.
+
+Layout and component styles use Tailwind classes in Astro templates. Shared buttons, animated links, headings, social links and prose live in `src/components`; the Vue theme switcher remains an interactive island. The global stylesheet contains Tailwind setup, link/focus defaults, the shared reveal animation, reduced-motion handling and print page settings. Print spacing belongs to each component through `print:` utilities; the experience `resume` variant controls its compact PDF spacing separately from heading levels. Web and PDF summaries can retain their distinct approved wording in the locale dictionaries.
+
 ## PDFs and QA
+
+Browser QA isolates all contexts from Google Analytics requests so navigation and animation checks do not send telemetry or depend on third-party worker callbacks. Application runtime errors still fail the suite.
 
 Run `pnpm build`, then `pnpm cv:pdf`, and visually review the PDF pages. Run `pnpm build` again to copy regenerated public PDFs into dist. Existing public filenames containing `Senior_Product_Engineer` preserve download URLs; PDF contents and browser download names use Full-Stack Engineer positioning.
 

@@ -36,6 +36,13 @@ const browser = await chromium.launch({ executablePath: process.env.CV_BROWSER_P
 const reports = []
 const errors = []
 const arrowGeometry = []
+async function createQaContext(options) {
+  const context = await browser.newContext(options)
+  // Keep every UI scenario isolated from external analytics and its worker callbacks.
+  await context.route('https://www.googletagmanager.com/**', (route) => route.abort())
+  await context.route('https://www.google-analytics.com/**', (route) => route.abort())
+  return context
+}
 async function settleNavigation(page) {
   await page.waitForFunction(() => !document.documentElement.hasAttribute('data-astro-transition'))
 }
@@ -82,10 +89,8 @@ async function checkArrowGeometry(link, context) {
   arrowGeometry.push({ context, ...geometry })
 }
 try {
-  const context = await browser.newContext({ reducedMotion: 'reduce' })
+  const context = await createQaContext({ reducedMotion: 'reduce' })
   const page = await context.newPage()
-  await context.route('https://www.googletagmanager.com/**', (route) => route.abort())
-  await context.route('https://www.google-analytics.com/**', (route) => route.abort())
   page.on('pageerror', (error) =>
     errors.push({ message: error.message, url: page.url(), stack: error.stack })
   )
@@ -192,6 +197,29 @@ try {
             base + (locale === 'en' ? '/' : '/' + locale) + '#experience-heading'
           )
         assert.equal(await page.locator('html').getAttribute('lang'), locale, 'locale: ' + url)
+        const currentSection = route === '/experience' ? '/' : route
+        const canonicalPath =
+          locale === 'en'
+            ? currentSection
+            : '/' + locale + (currentSection === '/' ? '' : currentSection)
+        assert.equal(
+          await page.locator('link[rel="canonical"]').getAttribute('href'),
+          'https://pablomiceli.dev' + canonicalPath,
+          'canonical retains current section and language: ' + url
+        )
+        for (const language of ['en', 'es', 'pt']) {
+          const alternatePath =
+            language === 'en'
+              ? currentSection
+              : '/' + language + (currentSection === '/' ? '' : currentSection)
+          assert.equal(
+            await page
+              .locator(`link[rel="alternate"][hreflang="${language}"]`)
+              .getAttribute('href'),
+            'https://pablomiceli.dev' + alternatePath,
+            'alternate retains current section: ' + url + ' -> ' + language
+          )
+        }
         await page.locator('astro-island[ssr]').count() // Static content is available immediately.
         assert.equal(await page.locator('h1').count(), 1, 'one main heading: ' + url)
         assert.equal(
@@ -406,7 +434,7 @@ try {
     }
   }
   await interactionPage.close()
-  const animatedContext = await browser.newContext({ reducedMotion: 'no-preference' })
+  const animatedContext = await createQaContext({ reducedMotion: 'no-preference' })
   const animatedPage = await animatedContext.newPage()
   animatedPage.on('pageerror', (error) =>
     errors.push({ message: error.message, url: animatedPage.url(), stack: error.stack })
@@ -764,7 +792,7 @@ try {
   }
   const redirectChecks = []
   for (const javaScriptEnabled of [true, false]) {
-    const redirectContext = await browser.newContext({ javaScriptEnabled, reducedMotion: 'reduce' })
+    const redirectContext = await createQaContext({ javaScriptEnabled, reducedMotion: 'reduce' })
     const redirectPage = await redirectContext.newPage()
     redirectPage.on('pageerror', (error) =>
       errors.push({ message: error.message, url: redirectPage.url(), stack: error.stack })

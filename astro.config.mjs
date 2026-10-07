@@ -6,13 +6,7 @@ import sitemap from '@astrojs/sitemap'
 import partytown from '@astrojs/partytown'
 import { unified } from '@astrojs/markdown-remark'
 import rehypeRewrite from 'rehype-rewrite'
-
-const defaultLocale = 'en'
-const locales = {
-  en: 'en-US', // the `defaultLocale` value must present in `locales` keys
-  es: 'es-AR',
-  pt: 'pt-BR'
-}
+import { defaultLocale, locales } from './src/i18n/config.ts'
 
 // https://astro.build/config
 export default defineConfig({

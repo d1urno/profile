@@ -1,10 +1,11 @@
 ---
 import { getLocale } from '@/functions/getLocale'
 import Prose from '@/components/Prose.astro'
+import useTranslations from '@/functions/useTranslations'
 import { getEntry, render } from 'astro:content'
 
 const locale = getLocale(Astro.url)
-const score = await getEntry('locales', `${locale}/score`)
+const score = await getEntry('scores', `${locale}/score`)
 
 if (!score) {
   throw new Error(`Score content not found for locale "${locale}"`)
@@ -12,11 +13,8 @@ if (!score) {
 
 const { data } = score
 const { Content } = await render(score)
-const snapshotNote = {
-  en: 'Saved PageSpeed snapshot. Open the report for details.',
-  es: 'Captura guardada de PageSpeed. Abre el informe para ver los detalles.',
-  pt: 'Captura salva do PageSpeed. Abra o relatório para ver os detalhes.'
-}[locale]
+const { t } = await useTranslations(locale)
+const snapshotNote = t('Score.snapshotNote')
 ---
 
 <section class="print:mt-10" aria-labelledby="score-heading">
