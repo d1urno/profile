@@ -1,13 +1,12 @@
 ---
-import { getLocale } from 'astro-i18n-aut'
+import { getLocale, getPagePath } from '@/functions/getLocale'
 import useTranslations from '@/functions/useTranslations'
 import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
-import { Icon } from 'astro-icon/components'
+import Icon from '@/components/Icon.astro'
 const locale = getLocale(Astro.url)
 const { t } = await useTranslations(locale)
 const speaking = { spanish: 'native', english: 'fluent', portuguese: 'fluent', german: 'beginner' }
-const currentPath =
-  Astro.url.pathname.replace(/\.html$/, '').replace(/^\/(en|es|pt)(?=\/|$)/, '') || '/'
+const currentPath = getPagePath(Astro.url)
 const locales = ['en', 'es', 'pt'].filter((value) => value !== locale)
 ---
 

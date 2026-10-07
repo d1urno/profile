@@ -1,6 +1,6 @@
 ---
 import useTranslations from '@/functions/useTranslations'
-import { getLocale } from 'astro-i18n-aut'
+import { getLocale } from '@/functions/getLocale'
 const { t } = await useTranslations(getLocale(Astro.url))
 const groups = [
   {

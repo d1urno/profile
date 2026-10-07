@@ -1,10 +1,10 @@
 ---
-import { getLocale } from 'astro-i18n-aut'
-import { getEntry } from 'astro:content'
+import { getLocale } from '@/functions/getLocale'
+import { getEntry, render } from 'astro:content'
 const locale = getLocale(Astro.url)
 const profile = await getEntry('locales', locale + '/profile')
 if (!profile) throw new Error('Missing profile: ' + locale)
-const { Content } = await profile.render()
+const { Content } = await render(profile)
 ---
 
 <section aria-labelledby="profile-heading">

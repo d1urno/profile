@@ -1,13 +1,12 @@
 ---
 import { ClientRouter } from 'astro:transitions'
-import { getLocale } from 'astro-i18n-aut'
+import { getLocale, getPagePath } from '@/functions/getLocale'
 import useTranslations from '@/functions/useTranslations'
 import '@/styles/base.css'
 
 const locale = getLocale(Astro.url)
 const { t } = await useTranslations(locale)
-const unlocalizedPath =
-  Astro.url.pathname.replace(/\.html$/, '').replace(/^\/(en|es|pt)(?=\/|$)/, '') || '/'
+const unlocalizedPath = getPagePath(Astro.url)
 const alternate = (language: string) =>
   'https://pablomiceli.dev' +
   (language === 'en'

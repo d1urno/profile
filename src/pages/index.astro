@@ -2,7 +2,7 @@
 import MainLayout from '@/layouts/MainLayout.astro'
 import ProfileSection from '@/partials/ProfileSection.astro'
 import ProjectsSection from '@/partials/ProjectsSection.astro'
-import { getLocale } from 'astro-i18n-aut'
+import { getLocale } from '@/functions/getLocale'
 const locale = getLocale(Astro.url)
 const path = locale === 'en' ? '/experience' : '/' + locale + '/experience'
 const labels = {

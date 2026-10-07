@@ -1,11 +1,13 @@
-import { defineCollection, z } from 'astro:content'
+import { defineCollection } from 'astro:content'
+import { z } from 'astro/zod'
+import { glob } from 'astro/loaders'
 
 const localesCollection = defineCollection({
-  type: 'content'
+  loader: glob({ pattern: '**/*.md', base: './src/content/locales' })
 })
 
 const experiencesCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/experiences' }),
   schema: z.object({
     title: z.string(),
     period: z.string(),

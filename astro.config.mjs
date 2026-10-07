@@ -1,10 +1,10 @@
 import { defineConfig } from 'astro/config'
 import vue from '@astrojs/vue'
 import tailwindcss from '@tailwindcss/vite'
-import icon from 'astro-icon'
-import { i18n } from 'astro-i18n-aut/integration'
+import localizedRoutes from './scripts/localized-routes.mjs'
 import sitemap from '@astrojs/sitemap'
 import partytown from '@astrojs/partytown'
+import { unified } from '@astrojs/markdown-remark'
 import rehypeRewrite from 'rehype-rewrite'
 
 const defaultLocale = 'en'
@@ -31,12 +31,9 @@ export default defineConfig({
     inlineStylesheets: 'always' // experimental
   },
   prefetch: true,
+  compressHTML: true,
   integrations: [
-    i18n({
-      defaultLocale,
-      locales,
-      exclude: ['/robots.txt']
-    }),
+    localizedRoutes(),
     sitemap({
       i18n: {
         locales,
@@ -46,22 +43,23 @@ export default defineConfig({
       filter: (page) => !page.endsWith('/print') && !page.endsWith('/print.html')
     }),
     vue({ appEntrypoint: '/src/vue-main' }),
-    icon(),
     partytown()
   ],
   markdown: {
-    rehypePlugins: [
-      [
-        rehypeRewrite,
-        {
-          rewrite: (node) => {
-            if (node.type === 'element' && node.tagName === 'a' && node.properties.title) {
-              node.properties['data-text'] = node.properties.title
-              delete node.properties.title
+    processor: unified({
+      rehypePlugins: [
+        [
+          rehypeRewrite,
+          {
+            rewrite: (node) => {
+              if (node.type === 'element' && node.tagName === 'a' && node.properties.title) {
+                node.properties['data-text'] = node.properties.title
+                delete node.properties.title
+              }
             }
           }
-        }
+        ]
       ]
-    ]
+    })
   }
 })

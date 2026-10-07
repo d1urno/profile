@@ -1,0 +1,15 @@
+---
+// These SVGs are trusted, checked-in assets. No icon downloader or archive extractor is needed.
+const icons = import.meta.glob('../icons/*.svg', { query: '?raw', import: 'default', eager: true })
+interface Props {
+  name: string
+  class?: string
+}
+const { name, ...attributes } = Astro.props
+const source = icons[`../icons/${name}.svg`] as string | undefined
+if (!source) throw new Error(`Unknown local icon: ${name}`)
+const viewBox = source.match(/viewBox="([^"]+)"/)?.[1] || '0 0 24 24'
+const body = source.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '')
+---
+
+<svg {...attributes} viewBox={viewBox} aria-hidden="true" focusable="false" set:html={body} />

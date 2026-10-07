@@ -1,5 +1,5 @@
 ---
-import { getLocale } from 'astro-i18n-aut'
+import { getLocale, getPagePath } from '@/functions/getLocale'
 import Default from '@/layouts/Default.astro'
 import SideSection from '@/partials/SideSection.astro'
 import useTranslations from '@/functions/useTranslations'
@@ -7,11 +7,7 @@ const locale = getLocale(Astro.url)
 const { t } = await useTranslations(locale)
 const localized = (path: string) =>
   locale === 'en' ? path : '/' + locale + (path === '/' ? '' : path)
-const pathname =
-  Astro.url.pathname
-    .replace(/\.html$/, '')
-    .replace(/^\/en(?=\/|$)/, '')
-    .replace(/\/$/, '') || '/'
+const pathname = localized(getPagePath(Astro.url))
 const tabs = [
   { href: '/', name: t('Tabs.profile') },
   { href: '/experience', name: t('Tabs.experience') },

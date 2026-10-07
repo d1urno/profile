@@ -48,6 +48,7 @@ try {
         const url = locale === 'en' ? route : '/' + locale + (route === '/' ? '' : route)
         const response = await page.goto(base + url)
         assert.equal(response.status(), 200, url)
+        assert.equal(await page.locator('html').getAttribute('lang'), locale, 'locale: ' + url)
         await page.locator('astro-island[ssr]').count() // Static content is available immediately.
         assert.equal(await page.locator('h1').count(), 1, 'one main heading: ' + url)
         assert.equal(
@@ -117,8 +118,7 @@ try {
       const pdfNames = { en: 'English', es: 'Español', pt: 'Português' }
       await page.pdf({
         path: path.join(
-          root,
-          'public',
+          process.env.CV_PDF_DIR || path.join(root, 'public'),
           'Pablo_Miceli_-_Senior_Product_Engineer_(' + pdfNames[locale] + ').pdf'
         ),
         format: 'A4',
@@ -133,6 +133,15 @@ try {
     }
   }
   await page.emulateMedia({ media: 'screen' })
+  for (const locale of ['en', 'es', 'pt']) {
+    for (const route of ['', '/experience', '/projects', '/skills', '/print', '/tests', '/score']) {
+      const response = await page.goto(base + '/' + locale + route)
+      assert.equal(response.status(), 200, 'localized alias: /' + locale + route)
+      assert.equal(await page.locator('html').getAttribute('lang'), locale)
+    }
+  }
+  assert.equal((await context.request.get(base + '/robots.txt')).status(), 200)
+  assert.equal((await context.request.get(base + '/sitemap-index.xml')).status(), 200)
   await writeFile(
     path.join(output, 'browser-report.json'),
     JSON.stringify({ errors, reports }, null, 2)

@@ -1,7 +1,7 @@
 ---
-import { getLocale } from 'astro-i18n-aut'
-import { getEntry } from 'astro:content'
-import { Icon } from 'astro-icon/components'
+import { getLocale } from '@/functions/getLocale'
+import { getEntry, render } from 'astro:content'
+import Icon from '@/components/Icon.astro'
 
 const locale = getLocale(Astro.url)
 const score = await getEntry('locales', `${locale}/score`)
@@ -10,8 +10,8 @@ if (!score) {
   throw new Error(`Score content not found for locale "${locale}"`)
 }
 
-const { data, render } = score
-const { Content } = await render()
+const { data } = score
+const { Content } = await render(score)
 ---
 
 <section class="print:mt-10">

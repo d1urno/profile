@@ -1,6 +1,6 @@
 ---
-import { getLocale } from 'astro-i18n-aut'
-import { getCollection } from 'astro:content'
+import { getLocale } from '@/functions/getLocale'
+import { getCollection, render } from 'astro:content'
 import ExperienceItem from '@/components/ExperienceItem.astro'
 import useTranslations from '@/functions/useTranslations'
 const locale = getLocale(Astro.url)
@@ -19,7 +19,7 @@ const experiences = (
   <Heading id="experience-heading" class="section-heading">{t('ExperiencesSection.title')}</Heading>
   {
     experiences.map(async (experience) => {
-      const { Content } = await experience.render()
+      const { Content } = await render(experience)
       return (
         <ExperienceItem experience={experience.data} resume={resume}>
           <Content />

@@ -1,7 +1,7 @@
 ---
 import Default from '@/layouts/Default.astro'
 import ExperiencesSection from '@/partials/ExperiencesSection.astro'
-import { getLocale } from 'astro-i18n-aut'
+import { getLocale } from '@/functions/getLocale'
 import useTranslations from '@/functions/useTranslations'
 const locale = getLocale(Astro.url) as 'en' | 'es' | 'pt'
 const { t } = await useTranslations(locale)
