@@ -219,6 +219,53 @@ try {
           assert.equal(await page.locator('h2#experience-heading').count(), 1)
           assert.equal(await page.locator('.experience-item h3').count(), 7)
         }
+        if (route === '/projects') {
+          const projects = await page.locator('[data-project-id]').evaluateAll((cards) =>
+            cards.map((card) => ({
+              id: card.dataset.projectId,
+              title: card.querySelector('h2').textContent.trim(),
+              links: Array.from(card.querySelectorAll('a')).map((link) =>
+                link.getAttribute('href')
+              ),
+              thumbnail: card
+                .querySelector('img')
+                ?.getAttribute('src')
+                .split('/')
+                .pop()
+                .split('.')[0]
+            }))
+          )
+          assert.deepEqual(
+            projects,
+            [
+              {
+                id: 'trace-cdr',
+                title: 'Trace CDR',
+                links: ['https://preview.tracecdr-demo.pages.dev/', 'https://www.tracecdr.org'],
+                thumbnail: 'trace-cdr'
+              },
+              {
+                id: 'nuxt-image-extractor',
+                title: 'Nuxt image extractor',
+                links: ['https://github.com/d1urno/nuxt-image-extractor'],
+                thumbnail: undefined
+              },
+              {
+                id: 'dog-and-pony',
+                title: 'Dog & Pony Studios',
+                links: ['https://dps-senior-frontend-test.netlify.app'],
+                thumbnail: 'dog-and-pony'
+              },
+              {
+                id: 'doc88',
+                title: 'Doc88',
+                links: ['https://doc88-frontend-challenge.netlify.app'],
+                thumbnail: 'doc88'
+              }
+            ],
+            'each project retains its own image and destinations: ' + url
+          )
+        }
         for (const tab of await page.locator('nav a').all()) {
           const bounds = await tab.boundingBox()
           assert.ok(

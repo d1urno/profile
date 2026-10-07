@@ -1,194 +1,28 @@
 ---
 import { getLocale } from '@/functions/getLocale'
 import useTranslations from '@/functions/useTranslations'
-import { Image } from 'astro:assets'
-import Icon from '@/components/Icon.astro'
-import AnimatedLink from '@/components/AnimatedLink.astro'
-import traceCdrThumbnail from '@/assets/projects/trace-cdr.png'
-import dogAndPonyThumbnail from '@/assets/projects/dog-and-pony.png'
-import doc88Thumbnail from '@/assets/projects/doc88.png'
-const locale = getLocale(Astro.url) as 'en' | 'es' | 'pt'
-const { t } = await useTranslations(locale)
+import { getProjects } from '@/data/projects'
+import ProjectCard from '@/components/ProjectCard.astro'
+import SectionHeading from '@/components/SectionHeading.astro'
+
 interface Props {
   compact?: boolean
 }
+
 const { compact = false } = Astro.props
-const projects = {
-  en: [
-    [
-      'Public demo · 2025',
-      'Trace CDR',
-      'An interactive carbon emission data visualization app using React, d3.js and TanStack Query. Explore the interface in the public preview.',
-      'React 19 · TypeScript · Tailwind CSS · d3.js · TanStack Query',
-      'Open demo'
-    ],
-    [
-      'Historical open source · 2020',
-      'Nuxt image extractor',
-      'Built a Nuxt module for statically generated sites. It downloads images from a CMS and rewrites page references to local assets. Created for the Matera website workflow; the repository is now archived.',
-      'Nuxt · Node.js · Static generation',
-      'Source and documentation'
-    ],
-    [
-      'Frontend challenge · 2020',
-      'Dog & Pony Studios',
-      'A frontend implementation exercise using Nuxt, Tailwind CSS and Jest.',
-      'Nuxt · Tailwind CSS · Jest',
-      'Open preview'
-    ],
-    [
-      'Frontend challenge · 2020',
-      'Doc88',
-      'A frontend implementation exercise using Vue, TypeScript, Tailwind CSS and Jest.',
-      'Vue 2.6 · TypeScript · Tailwind CSS · Jest',
-      'Open preview'
-    ]
-  ],
-  es: [
-    [
-      'Demo pública · 2025',
-      'Trace CDR',
-      'Una aplicación interactiva de visualización de datos de emisiones de carbono con React, d3.js y TanStack Query. Explora la interfaz en la vista previa pública.',
-      'React 19 · TypeScript · Tailwind CSS · d3.js · TanStack Query',
-      'Abrir demo'
-    ],
-    [
-      'Código abierto histórico · 2020',
-      'Nuxt image extractor',
-      'Desarrollé un módulo de Nuxt para sitios estáticos. Descarga imágenes de un CMS y actualiza las referencias de las páginas a archivos locales. Creado para el proyecto de Matera; el repositorio está archivado.',
-      'Nuxt · Node.js · Generación estática',
-      'Código y documentación'
-    ],
-    [
-      'Desafío frontend · 2020',
-      'Dog & Pony Studios',
-      'Ejercicio de implementación frontend con Nuxt, Tailwind CSS y Jest.',
-      'Nuxt · Tailwind CSS · Jest',
-      'Abrir vista previa'
-    ],
-    [
-      'Desafío frontend · 2020',
-      'Doc88',
-      'Ejercicio de implementación frontend con Vue, TypeScript, Tailwind CSS y Jest.',
-      'Vue 2.6 · TypeScript · Tailwind CSS · Jest',
-      'Abrir vista previa'
-    ]
-  ],
-  pt: [
-    [
-      'Demo pública · 2025',
-      'Trace CDR',
-      'Um aplicativo interativo de visualização de dados de emissões de carbono com React, d3.js e TanStack Query. Explore a interface na prévia pública.',
-      'React 19 · TypeScript · Tailwind CSS · d3.js · TanStack Query',
-      'Abrir demo'
-    ],
-    [
-      'Código aberto histórico · 2020',
-      'Nuxt image extractor',
-      'Desenvolvi um módulo Nuxt para sites estáticos. Ele baixa imagens de um CMS e atualiza as referências das páginas para arquivos locais. Criado para o projeto da Matera; o repositório está arquivado.',
-      'Nuxt · Node.js · Geração estática',
-      'Código e documentação'
-    ],
-    [
-      'Desafio frontend · 2020',
-      'Dog & Pony Studios',
-      'Exercício de implementação frontend com Nuxt, Tailwind CSS e Jest.',
-      'Nuxt · Tailwind CSS · Jest',
-      'Abrir prévia'
-    ],
-    [
-      'Desafio frontend · 2020',
-      'Doc88',
-      'Exercício de implementação frontend com Vue, TypeScript, Tailwind CSS e Jest.',
-      'Vue 2.6 · TypeScript · Tailwind CSS · Jest',
-      'Abrir prévia'
-    ]
-  ]
-}
-const links = [
-  'https://preview.tracecdr-demo.pages.dev/',
-  'https://github.com/d1urno/nuxt-image-extractor',
-  'https://dps-senior-frontend-test.netlify.app',
-  'https://doc88-frontend-challenge.netlify.app'
-]
-const thumbnails = [traceCdrThumbnail, undefined, dogAndPonyThumbnail, doc88Thumbnail]
+const locale = getLocale(Astro.url)
+const { t } = await useTranslations(locale)
+const projects = getProjects(locale).slice(0, compact ? 2 : undefined)
 const thumbnailLabel = { en: 'Preview of', es: 'Vista previa de', pt: 'Prévia de' }[locale]
-const traceLiveSite = {
-  href: 'https://www.tracecdr.org',
-  label: {
-    en: 'Visit live site',
-    es: 'Visitar sitio publicado',
-    pt: 'Visitar site publicado'
-  }[locale]
-}
 ---
 
 <section aria-labelledby="projects-heading">
-  {compact ? (
-    <h2 class="sr-only" id="projects-heading">
-      {t('projectTitle')}
-    </h2>
-  ) : (
-    <h1 class="sr-only" id="projects-heading">
-      {t('projectTitle')}
-    </h1>
-  )}
+  <SectionHeading as={compact ? 'h2' : 'h1'} id="projects-heading" hidden>
+    {t('projectTitle')}
+  </SectionHeading>
   <div class="project-list grid gap-6">
-    {projects[locale].slice(0, compact ? 2 : undefined).map((project, index) => {
-      const thumbnail = thumbnails[index]
-      const actions = [{ href: links[index], label: project[4] }]
-      if (project[1] === 'Trace CDR') actions.push(traceLiveSite)
-      return (
-        <article class="project-item project-item-with-thumbnail grid items-start gap-6 border-t border-stone-300 py-6 first:border-t-0 first:pt-0 sm:grid-cols-[12rem_minmax(0,1fr)] print:break-inside-avoid print:py-[0.6rem] first:print:pt-0 dark:border-slate-700">
-          {thumbnail ? (
-            <Image
-              src={thumbnail}
-              alt={`${thumbnailLabel} ${project[1]}`}
-              class="project-thumbnail aspect-[4/3] w-full rounded-[0.4rem] border border-stone-300 bg-stone-100 object-cover dark:border-slate-700 dark:bg-gray-800"
-              width={640}
-              widths={[192, 384, 640, 1280]}
-              sizes="(min-width: 640px) 192px, calc(100vw - 3rem)"
-              format="webp"
-              loading="lazy"
-              decoding="async"
-            />
-          ) : (
-            <div
-              class="project-thumbnail project-thumbnail-placeholder grid aspect-[4/3] w-full place-items-center rounded-[0.4rem] border border-stone-300 bg-stone-100 text-teal-700 dark:border-slate-700 dark:bg-gray-800 dark:text-teal-300"
-              aria-hidden="true"
-            >
-              <Icon name="image" class="h-16 w-16" />
-            </div>
-          )}
-          <div class="project-content min-w-0">
-            <p class="eyebrow my-3 text-[0.8rem] leading-[1.65] font-[650] tracking-[0.08em] text-teal-800 uppercase dark:text-teal-300">
-              {project[0]}
-            </p>
-            {compact ? (
-              <h3 class="text-xl font-bold">{project[1]}</h3>
-            ) : (
-              <h2 class="my-2 text-[1.2rem] font-bold">{project[1]}</h2>
-            )}
-            <p class="my-3 leading-[1.65]">{project[2]}</p>
-            <p class="project-stack my-3 text-sm leading-[1.65] text-slate-600 dark:text-slate-300">
-              {project[3]}
-            </p>
-            <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
-              {actions.map((action) => (
-                <AnimatedLink
-                  variant="action"
-                  label={action.label}
-                  arrow="↗"
-                  context={project[1]}
-                  href={action.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
-              ))}
-            </div>
-          </div>
-        </article>
-      )
-    })}
+    {projects.map((project) => (
+      <ProjectCard project={project} thumbnailLabel={thumbnailLabel} compact={compact} />
+    ))}
   </div>
 </section>

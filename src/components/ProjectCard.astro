@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets'
+import Icon from '@/components/Icon.astro'
+import AnimatedLink from '@/components/AnimatedLink.astro'
+import type { LocalizedProject } from '@/data/projects'
+
+interface Props {
+  project: LocalizedProject
+  thumbnailLabel: string
+  compact?: boolean
+}
+
+const { project, thumbnailLabel, compact = false } = Astro.props
+const { thumbnail, actions } = project
+---
+
+<article
+  data-project-id={project.id}
+  class="project-item project-item-with-thumbnail grid items-start gap-6 border-t border-stone-300 py-6 first:border-t-0 first:pt-0 sm:grid-cols-[12rem_minmax(0,1fr)] print:break-inside-avoid print:py-[0.6rem] first:print:pt-0 dark:border-slate-700"
+>
+  {thumbnail ? (
+    <Image
+      src={thumbnail}
+      alt={`${thumbnailLabel} ${project.title}`}
+      class="project-thumbnail aspect-[4/3] w-full rounded-[0.4rem] border border-stone-300 bg-stone-100 object-cover dark:border-slate-700 dark:bg-gray-800"
+      width={640}
+      widths={[192, 384, 640, 1280]}
+      sizes="(min-width: 640px) 192px, calc(100vw - 3rem)"
+      format="webp"
+      loading="lazy"
+      decoding="async"
+    />
+  ) : (
+    <div
+      class="project-thumbnail project-thumbnail-placeholder grid aspect-[4/3] w-full place-items-center rounded-[0.4rem] border border-stone-300 bg-stone-100 text-teal-700 dark:border-slate-700 dark:bg-gray-800 dark:text-teal-300"
+      aria-hidden="true"
+    >
+      <Icon name="image" class="h-16 w-16" />
+    </div>
+  )}
+  <div class="project-content min-w-0">
+    <p class="eyebrow my-3 text-[0.8rem] leading-[1.65] font-[650] tracking-[0.08em] text-teal-800 uppercase dark:text-teal-300">
+      {project.eyebrow}
+    </p>
+    {compact ? (
+      <h3 class="text-xl font-bold">{project.title}</h3>
+    ) : (
+      <h2 class="my-2 text-[1.2rem] font-bold">{project.title}</h2>
+    )}
+    <p class="my-3 leading-[1.65]">{project.description}</p>
+    <p class="project-stack my-3 text-sm leading-[1.65] text-slate-600 dark:text-slate-300">
+      {project.stack}
+    </p>
+    <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+      {actions.map((action) => (
+        <AnimatedLink
+          variant="action"
+          label={action.label}
+          arrow="↗"
+          context={project.title}
+          href={action.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        />
+      ))}
+    </div>
+  </div>
+</article>
