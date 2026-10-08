@@ -84,8 +84,8 @@ contact: Contact and profile
   'summary': 'Building modern and scalable user experiences, with 15+ years in software development
     across finance, travel, energy and AI-powered applications, from prototyping through continuous
     production releases. I have led frontend and full-stack development, shaped application
-    architectures and mentored developers, working closely with CTOs and product teams. My preferred
-    stack is Vue / Nuxt, TypeScript and Tailwind CSS, backed by oRPC APIs, Drizzle and PostgreSQL. I
+    architectures and mentored developers, working closely with founders or product teams. My preferred
+    stack is Vue / Nuxt, TypeScript and Tailwind CSS, backed by oRPC / tRPC APIs, Drizzle and PostgreSQL. I
     focus on clear interfaces, maintainable systems and thoughtful user experiences.'
   'technicalFocus': 'Technical focus'
   'languages': 'Languages'

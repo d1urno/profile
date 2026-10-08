@@ -87,8 +87,8 @@ contact: Contacto y perfil
     software en finanzas, viajes, energía y aplicaciones con IA, desde el prototipado hasta las
     entregas continuas en producción. He liderado el desarrollo frontend y full-stack, definido
     arquitecturas de aplicaciones y acompañado a otros desarrolladores, trabajando estrechamente con
-    CTOs y equipos de producto. Mi stack preferido es Vue / Nuxt, TypeScript y Tailwind CSS,
-    complementado por APIs oRPC, Drizzle y PostgreSQL. Me enfoco en interfaces claras, sistemas
+    fundadores o equipos de producto. Mi stack preferido es Vue / Nuxt, TypeScript y Tailwind CSS,
+    complementado por APIs oRPC / tRPC, Drizzle y PostgreSQL. Me enfoco en interfaces claras, sistemas
     fáciles de mantener y una experiencia de usuario cuidada.'
   'technicalFocus': 'Foco técnico'
   'languages': 'Idiomas'
